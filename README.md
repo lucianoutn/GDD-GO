@@ -1,2 +1,2 @@
 # GDD-GO
-Gestion De Datos - Tp
+Gestión De Datos - Tp
