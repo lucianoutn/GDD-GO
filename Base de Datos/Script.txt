@@ -1,0 +1,72 @@
+Use GD2C2016
+Go
+
+/*	--------------------------	CREACION DEL SCHEMA	-------------------------*/
+If NOT EXISTS (Select schema_id from sys.schemas where name = 'GDD_GO')
+	Execute ('CREATE SCHEMA GDD_GO AUTHORIZATION gd;');
+Go
+
+/*----------------------------	BORRADO DE TABLAS	-------------------------*/
+If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'ft_usuario')
+	Drop table GDD_GO.ft_usuario
+
+/*----------------------------	CREACION DE TABLAS	-------------------------*/
+Create Table GDD_GO.ft_usuario
+(	 
+	 id_usuario int identity(1,1)
+	,desc_username nvarchar(250)
+	,desc_password varbinary(32)
+	,id_estado int
+	,primary key (id_usuario)
+)
+
+/*----------------------------	BORRADO DE STORED PROCEDURES	----------------------------*/
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'inicializar_modelo')
+	Drop procedure GDD_GO.inicializar_modelo
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'logearse')
+	Drop procedure GDD_GO.logearse
+Go
+
+/*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
+
+--Iniciar Aplicacion
+Create procedure GDD_GO.inicializar_modelo (@fechasys varchar(10))
+as
+Declare @fecha date = convert(date, substring(@fechasys, 7, 4) + substring(@fechasys, 4, 2) + substring(@fechasys, 1, 2));
+
+Go
+
+--Logeo y seguridad
+Create Procedure GDD_GO.logearse	(	 @user varchar(150)
+										,@pass varchar(150)	)
+As
+Declare @usuario int = 0;
+Declare @estado int = 0;
+
+Select	@usuario = us.id_usuario,
+		@estado = us.id_estado
+From GDD_GO.ft_usuario us
+Where us.desc_username = @user
+
+if (@usuario = 0)
+	Select 'invalido' as mensaje
+else
+	if not exists (Select 'existe' from GDD_GO.ft_usuario us
+					   where us.id_usuario = @usuario and 
+					         us.desc_password = HASHBYTES('SHA2_256', @pass)	)
+	Begin
+		Select 'incorrecto' as mensaje
+	End
+	else
+	Begin
+		Select 'correcto' as mensaje
+	End
+Go
+
+--Genero usuario de sistema por script
+Insert into GDD_GO.ft_usuario	(	 desc_username
+									,desc_password
+									,id_estado	)
+Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
