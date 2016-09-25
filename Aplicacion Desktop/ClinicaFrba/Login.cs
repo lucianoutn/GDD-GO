@@ -42,7 +42,10 @@ namespace ClinicaFrba
                         MessageBox.Show("La contraseña ingresada es incorrecta.", "Contraseña Incorrecta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
                     case "correcto":
-                        MessageBox.Show("Hola Mundo!", "Contraseña Correcta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                        Menu menu = new Menu(textBoxUserName.Text);
+                        menu.Show();
+                        this.Hide();
                         break;
                 }
             }
