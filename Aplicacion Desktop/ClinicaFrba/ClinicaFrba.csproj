@@ -100,6 +100,11 @@
     <Compile Include="Excepciones\EjecucionComandoFallidaException.cs" />
     <Compile Include="Excepciones\ValidacionErroneaClienteException.cs" />
     <Compile Include="Excepciones\ValidacionErroneaUsuarioException.cs" />
+    <Compile Include="GD2C2016DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Listados\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,7 +154,19 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="GD2C2016DataSet.xsc">
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GD2C2016DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GD2C2016DataSet.xss">
+      <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
