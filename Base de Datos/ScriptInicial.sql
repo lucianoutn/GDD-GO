@@ -379,11 +379,8 @@ GO
 --Carga de los estados
 
 INSERT INTO GDD_GO.estado (desc_estado)
-VALUES	 ('Soltero/a')
-		,('Casado/a')
-		,('Viudo/a')
-		,('Concubinato')
-		,('Divorciado/a')
+VALUES	('Habilitado'),
+		('Bloqueado')
 GO
 
 --Carga de roles
