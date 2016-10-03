@@ -19,6 +19,65 @@ If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = '
 If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'usuario')
 	Drop table GDD_GO.usuario
 
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion_por_rol')
+	DROP TABLE GDD_GO.funcion_por_rol
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
+	DROP TABLE GDD_GO.rol
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'roles_por_usuario')
+	DROP TABLE GDD_GO.roles_por_usuario
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion')
+	DROP TABLE GDD_GO.funcion
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_medico')
+	DROP TABLE GDD_GO.plan_medico
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_por_afiliado')
+	DROP TABLE GDD_GO.plan_por_afiliado
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'estado')
+	DROP TABLE GDD_GO.estado
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
+	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
+	DROP TABLE GDD_GO.bono
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono_por_afiliado')
+	DROP TABLE GDD_GO.bono_por_afiliado
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'profesional')
+	DROP TABLE GDD_GO.profesional
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'consulta')
+	DROP TABLE GDD_GO.consulta
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
+	DROP TABLE GDD_GO.turno
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'agenda')
+	DROP TABLE GDD_GO.agenda
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
+	DROP TABLE GDD_GO.tipo_cancelacion
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'profesional_por_especialidad')
+	DROP TABLE GDD_GO.profesional_por_especialidad
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'especialidad')
+	DROP TABLE GDD_GO.especialidad
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_especialidad')
+	DROP TABLE GDD_GO.tipo_especialidad
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+
+
+
 /*----------------------------	CREACION DE TABLAS	-------------------------*/
 Create Table GDD_GO.usuario
 (	 
@@ -49,6 +108,173 @@ Create Table GDD_GO.afiliado
 	,foreign key (id_familiar_principal) references GDD_GO.usuario(id_usuario)
 )
 
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+CREATE TABLE GDD_GO.funcion_por_rol
+(
+	 id_rol int
+	,id_funcion int
+	,foreign key (id_rol) references GDD_GO.rol(id_rol)
+	,foreign key (id_funcion) references GDD_GO.funcion(id_funcion)
+)
+
+CREATE TABLE GDD_GO.rol
+(
+	 id_rol int
+	,desc_rol nvarchar(50)
+	,desc_estado_rol nvarchar(2)
+	,primary key (id_rol)
+)
+
+CREATE TABLE GDD_GO.roles_por_usuario
+(
+	 id_rol int
+	,id_usuario int
+	,foreign key (id_rol) references GDD_GO.rol(id_rol)
+	,foreign key (id_usuario) references GDD_GO.usuario(id_usuario)
+)
+
+CREATE TABLE GDD_GO.funcion
+(
+	 id_funcion int
+	,desc_funcion int
+	,primary key (id_funcion)
+)
+
+CREATE TABLE GDD_GO.plan_medico
+(
+	 id_plan_medico int
+	,descripcion varchar(255)
+	,desc_precio_bono_consulta numeric(18,0)
+	,desc_precio_bono_farmacia numeric(18,0)
+	,primary key (id_plan_medico)
+)
+
+CREATE TABLE GDD_GO.plan_por_afiliado
+(
+	 id_plan_medico int
+	,id_afiliado int
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico
+	,foreign key (id_afiliado) references GDD_GO.afiliado
+)
+
+CREATE TABLE GDD_GO.estado
+(
+	 id_estado int
+	,desc_estado nvarchar(100)
+	,primary key (id_estado)
+)
+
+CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
+(
+	 id_historial int
+	,desc_fecha_modificacion DATETIME
+	,desc_motivo varchar(255)
+	,id_afiliado int
+	,id_plan_medico int
+	,primary key (id_historial)
+	,foreign key (id_afiliado) references GDD_GO.afiliado
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico
+)
+
+CREATE TABLE GDD_GO.bono
+(
+	 id_bono int
+	,id_plan_medico int
+	,primary key (id_bono)
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico
+)
+
+CREATE TABLE GDD_GO.bono_por_afiliado
+(
+	  id_bono int
+	 ,id_afiliado int
+	 ,desc_cantidad int
+	 ,foreign key (id_bono) references GDD_GO.bono
+	 ,foreign key (id_afiliado) references GDD_GO.afiliado
+)
+
+CREATE TABLE GDD_GO.profesional
+(
+	 id_profesional int
+	,desc_tipo_doc nvarchar(5)
+	,desc_dni numeric(18,0)
+	,desc_direccion varchar(255)
+	,desc_telefono numeric(18)
+	,desc_mail varchar(255)
+	,desc_fecha_creacion DATETIME
+	,desc_fecha_nac DATETIME
+	,desc_sexo BIT
+	,desc_matricula varchar(255)
+	,id_usuario int
+	,primary key (id_profesional)
+	,foreign key (id_usuario) references GDD_DO.usuario 	 
+)
+
+CREATE TABLE GDD_GO.consulta
+(
+	 id_consulta int
+	,id_plan_medico int
+	,primary key (id_consulta)
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico
+)
+
+CREATE TABLE GDD_GO.turno
+(
+	 id_turno int
+	,desc_fecha_hora DATETIME
+	,desc_estado BIT
+	,id_afiliado int
+	,id_profesional int
+	,primary key (id_turno)
+	,foreign key (id_afiliado) references GDD_GO.afiliado
+	,foreign key (id_profesional) references GDD_GO.profesional
+)
+
+CREATE TABLE GDD_GO.agenda
+(
+	 id_dia_agenda int
+	,desc_dia int
+	,desc_hora_desde TIME
+	,desc_hora_hasta TIME
+	,id_profesional int
+	,primary key (id_dia_agenda)
+	,foreign key (id_profesional) references GDD_GO.profesional	
+)
+
+CREATE TABLE GDD_GO.tipo_cancelacion
+(
+	 id_tipo_cancelacion int
+	,descripcion varchar(255)
+	,id_turno int
+	,primary key (id_tipo_cancelacion)
+	,foreign key (id_turno) references GDD_GO.turno
+)
+
+CREATE TABLE GDD_GO.profesional_por_especialidad
+(
+	 id_profesional int
+	,id_especialidad int
+	,foreign key (id_profesional) references GDD_GO.profesional
+	,foreign key (id_especialidad) references GDD_GO.especialidad	 	 
+)
+
+CREATE TABLE GDD_GO.especialidad
+(
+	 id_especialidad int
+	,descripcion varchar(255)
+	,id_tipo_especialidad numeric(18,0)
+	,primary key (id_especialidad)
+	,foreign key (id_tipo_especialidad) references GDD_GO.tipo_especialidad
+)
+
+CREATE TABLE GDD_GO.tipo_especialidad
+(
+	 id_tipo_especialidad int
+	,descripcion varchar(255)
+	,primary key (id_tipo_especialidad)
+)
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
 
 
 
