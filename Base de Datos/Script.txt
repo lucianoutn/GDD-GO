@@ -31,7 +31,7 @@ Create Table GDD_GO.usuario
 
 Create Table GDD_GO.afiliado
 (	 
-	 id_afiliado int identity(1,1)
+	 id_afiliado int identity(100,100)
 	,id_nro_familiar int
 	,desc_apellido varchar(255)
 	,desc_nombre varchar(255)
