@@ -136,7 +136,7 @@ CREATE TABLE GDD_GO.roles_por_usuario
 CREATE TABLE GDD_GO.funcion
 (
 	 id_funcion int identity(1,1)
-	,desc_funcion int
+	,desc_funcion nvarchar(200)
 	,primary key (id_funcion)
 )
 
@@ -359,3 +359,40 @@ Select	 Distinct
 		 ,Paciente_Fecha_Nac
 		 ,1
 From gd_esquema.Maestra
+
+/*	***************************	CARGA DE DATOS	**************************** */
+--Carga de las funciones
+INSERT INTO GDD_GO.funciones (desc_funcion)
+VALUES	 ('ABM de rol')
+		,('ABM de afiliado')
+		,('ABM profesional')
+		,('ABM especialidades médicas')
+		,('ABM planes')
+		,('Registrar agenda del médico')
+		,('Compra de bonos')
+		,('Pedir turno')
+		,('Registrar resultado para atención médica')
+		,('Cancelar atención médica')
+		,('Listado estadístico')
+GO
+
+--Carga de los estados
+
+INSERT INTO GDD_GO.estado (desc_estado)
+VALUES	 ('Soltero/a')
+		,('Casado/a')
+		,('Viudo/a')
+		,('Concubinato')
+		,('Divorciado/a')
+GO
+
+--Carga de roles
+INSERT INTO GDD_GO.rol (desc_rol, desc_estado_rol)
+VALUES	 ('Afiliado', 'H')
+		,('Administrativo', 'H')
+		,('Profesional', 'H')
+GO
+
+
+
+/*	***************************	CARGA DE DATOS	**************************** */		
