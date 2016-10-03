@@ -1,17 +1,26 @@
 Use GD2C2016
 Go
 
+
+
+
 /*	--------------------------	CREACION DEL SCHEMA	-------------------------*/
 If NOT EXISTS (Select schema_id from sys.schemas where name = 'GDD_GO')
 	Execute ('CREATE SCHEMA GDD_GO AUTHORIZATION gd;');
 Go
 
+
+
+
 /*----------------------------	BORRADO DE TABLAS	-------------------------*/
-If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'ft_usuario')
-	Drop table GDD_GO.ft_usuario
+If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'afiliado')
+	Drop table GDD_GO.afiliado
+
+If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'usuario')
+	Drop table GDD_GO.usuario
 
 /*----------------------------	CREACION DE TABLAS	-------------------------*/
-Create Table GDD_GO.ft_usuario
+Create Table GDD_GO.usuario
 (	 
 	 id_usuario int identity(1,1)
 	,desc_username nvarchar(250)
@@ -20,6 +29,29 @@ Create Table GDD_GO.ft_usuario
 	,primary key (id_usuario)
 )
 
+Create Table GDD_GO.afiliado
+(	 
+	 id_afiliado int identity(1,1)
+	,id_nro_familiar int
+	,desc_apellido varchar(255)
+	,desc_nombre varchar(255)
+	,desc_tipo_doc nvarchar(5)
+	,desc_dni numeric(18,0)
+	,desc_mail varchar(255)
+	,desc_direccion varchar(255)
+	,desc_telefono numeric(18,0)
+	,desc_fecha_nac datetime
+	,desc_sexo bit
+	,desc_estado_civil int
+	,desc_fecha_creacion datetime
+	,id_familiar_principal int
+	,primary key (id_afiliado)
+	,foreign key (id_familiar_principal) references GDD_GO.usuario(id_usuario)
+)
+
+
+
+
 /*----------------------------	BORRADO DE STORED PROCEDURES	----------------------------*/
 If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'inicializar_modelo')
 	Drop procedure GDD_GO.inicializar_modelo
@@ -27,6 +59,10 @@ Go
 
 If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'logearse')
 	Drop procedure GDD_GO.logearse
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'calcular_id_afiliado')
+	Drop procedure GDD_GO.calcular_id_afiliado
 Go
 
 /*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
@@ -47,15 +83,15 @@ Declare @estado int = 0;
 
 Select	@usuario = us.id_usuario,
 		@estado = us.id_estado
-From GDD_GO.ft_usuario us
+From GDD_GO.usuario us
 Where us.desc_username = @user
 
 if (@usuario = 0)
 	Select 'invalido' as mensaje
 else
-	if not exists (Select 'existe' from GDD_GO.ft_usuario us
-					   where us.id_usuario = @usuario and 
-					         us.desc_password = HASHBYTES('SHA2_256', @pass)	)
+	if not exists (Select 'existe' from GDD_GO.usuario us
+				   where us.id_usuario = @usuario and 
+					     us.desc_password = HASHBYTES('SHA2_256', @pass)	)
 	Begin
 		Select 'incorrecto' as mensaje
 	End
@@ -65,8 +101,35 @@ else
 	End
 Go
 
+
+
+
+
 --Genero usuario de sistema por script
-Insert into GDD_GO.ft_usuario	(	 desc_username
-									,desc_password
-									,id_estado	)
+Insert into GDD_GO.usuario	(	 desc_username
+								,desc_password
+								,id_estado	)
 Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
+
+
+
+
+/*----------------------------	MIGRACION DE DATOS	-------------------------*/
+Insert Into GDD_GO.afiliado		(	desc_apellido
+									,desc_nombre
+									,desc_dni
+									,desc_direccion
+									,desc_telefono
+									,desc_mail
+									,desc_fecha_nac
+									,id_nro_familiar	)
+Select	 Distinct
+		 Paciente_Apellido
+		 ,Paciente_Nombre
+		 ,Paciente_Dni
+		 ,Paciente_Direccion
+		 ,Paciente_Telefono
+		 ,Paciente_Mail
+		 ,Paciente_Fecha_Nac
+		 ,1
+From gd_esquema.Maestra
