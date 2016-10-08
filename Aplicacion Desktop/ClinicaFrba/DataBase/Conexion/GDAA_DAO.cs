@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace ClinicaFRBA.Conexion
+namespace ClinicaFrba.Conexion
 {
     abstract class GDAA_DAO
     {
@@ -13,10 +13,10 @@ namespace ClinicaFRBA.Conexion
 
         protected void iniciar()
         {
-            this.GD2C2016 = new SQLServerBD(ClinicaFRBA.DataBase.Conexion.ConstantesBD.Param_Conexion_urlServidor,
-                ClinicaFRBA.DataBase.Conexion.ConstantesBD.Param_Conexion_usuario,
-                ClinicaFRBA.DataBase.Conexion.ConstantesBD.Param_Conexion_contraseña,
-                ClinicaFRBA.DataBase.Conexion.ConstantesBD.Param_Conexion_nombreBD, "true", "1000");
+            this.GD2C2016 = new SQLServerBD(ClinicaFrba.DataBase.Conexion.ConstantesBD.Param_Conexion_urlServidor,
+                ClinicaFrba.DataBase.Conexion.ConstantesBD.Param_Conexion_usuario,
+                ClinicaFrba.DataBase.Conexion.ConstantesBD.Param_Conexion_contraseña,
+                ClinicaFrba.DataBase.Conexion.ConstantesBD.Param_Conexion_nombreBD, "true", "1000");
             this.GD2C2016.abrir();
         }
 

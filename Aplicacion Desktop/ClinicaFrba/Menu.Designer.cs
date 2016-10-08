@@ -31,6 +31,7 @@
             this.labelFecha = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
+            this.buttonABMAfiliado = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -67,11 +68,22 @@
             this.buttonSalir.UseVisualStyleBackColor = true;
             this.buttonSalir.Click += new System.EventHandler(this.buttonSalir_Click);
             // 
+            // buttonABMAfiliado
+            // 
+            this.buttonABMAfiliado.Location = new System.Drawing.Point(197, 180);
+            this.buttonABMAfiliado.Name = "buttonABMAfiliado";
+            this.buttonABMAfiliado.Size = new System.Drawing.Size(75, 23);
+            this.buttonABMAfiliado.TabIndex = 3;
+            this.buttonABMAfiliado.Text = "ABM Afiliado";
+            this.buttonABMAfiliado.UseVisualStyleBackColor = true;
+            this.buttonABMAfiliado.Click += new System.EventHandler(this.buttonABMAfiliado_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.buttonABMAfiliado);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.labelFecha);
@@ -87,5 +99,6 @@
         private System.Windows.Forms.Label labelFecha;
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Button buttonSalir;
+        private System.Windows.Forms.Button buttonABMAfiliado;
     }
 }

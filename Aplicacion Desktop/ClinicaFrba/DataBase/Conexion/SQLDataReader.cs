@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ClinicaFRBA.DataBase.Conexion
+namespace ClinicaFrba.DataBase.Conexion
 {
     class SQLDataReader
     {

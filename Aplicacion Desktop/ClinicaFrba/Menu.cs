@@ -6,7 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using ClinicaFRBA.DataBase.Conexion;
+using ClinicaFrba.DataBase.Conexion;
+using ClinicaFrba.Abm_Afiliado;
 
 namespace ClinicaFrba
 {
@@ -23,6 +24,12 @@ namespace ClinicaFrba
         {
             Application.Exit();
             this.Close();
+        }
+
+        private void buttonABMAfiliado_Click(object sender, EventArgs e)
+        {
+            SubMenuAfiliado subMenuAf = new SubMenuAfiliado(this);
+            subMenuAf.Show();
         }
     }
 }

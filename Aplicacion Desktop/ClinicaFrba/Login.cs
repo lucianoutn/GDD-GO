@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-using ClinicaFRBA.DataBase.Conexion;
+using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba
 {

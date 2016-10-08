@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Collections;
 using System.Data;
-using ClinicaFRBA.Excepciones;
+using ClinicaFrba.Excepciones;
 
 
-namespace ClinicaFRBA.Conexion
+namespace ClinicaFrba.Conexion
 {
     /// <summary>
     /// La clase se utiliza para manipular la conexion con el servidor SQL

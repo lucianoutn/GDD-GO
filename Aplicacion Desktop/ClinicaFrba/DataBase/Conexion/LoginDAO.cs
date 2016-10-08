@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ClinicaFRBA.Excepciones;
-using ClinicaFRBA.Conexion;
+using ClinicaFrba.Excepciones;
+using ClinicaFrba.Conexion;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ClinicaFRBA.DataBase.Conexion
+namespace ClinicaFrba.DataBase.Conexion
 {
     class LoginDAO : GDAA_DAO
     {

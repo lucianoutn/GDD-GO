@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicaFRBA.DataBase.Entidades
+namespace ClinicaFrba.DataBase.Entidades
 {
     public class Empresa
     {

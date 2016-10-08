@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicaFRBA.DataBase.Conexion
+namespace ClinicaFrba.DataBase.Conexion
 {
     abstract class ConstantesBD
     {

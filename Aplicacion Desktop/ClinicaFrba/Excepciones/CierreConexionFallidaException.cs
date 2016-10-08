@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ClinicaFRBA.Excepciones
+namespace ClinicaFrba.Excepciones
 {
     /// <summary>
     /// La clase es una excepcion que indica que no se pudo cerrar una conexion abierta con el servidor SQL

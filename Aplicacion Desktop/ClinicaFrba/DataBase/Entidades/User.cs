@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClinicaFRBA.ABM_Usuario
+namespace ClinicaFrba.ABM_Usuario
 {
     class User
     {
