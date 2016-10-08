@@ -291,6 +291,11 @@ If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME =
 	Drop procedure GDD_GO.calcular_id_afiliado
 Go
 
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'alta_afiliado')
+	Drop procedure GDD_GO.alta_afiliado
+Go
+
+
 /*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
 
 --Iniciar Aplicacion
@@ -327,6 +332,44 @@ else
 	End
 Go
 
+Create procedure GDD_GO.alta_afiliado (		@nombre varchar(255)
+										   ,@apellido varchar(255)
+										   ,@sexo bit
+										   ,@tipo_doc nvarchar(5)
+										   ,@dni numeric(18,0)
+										   ,@mail varchar(255)
+										   ,@direccion varchar(255)
+										   ,@telefono numeric(18,0)
+										   ,@estado_civil int
+										   ,@fecha_nac datetime
+										   ,@fecha_creacion datetime	)
+
+As
+
+Insert into GDD_GO.afiliado ( desc_nombre
+							 ,desc_apellido
+							 ,desc_sexo
+							 ,desc_tipo_doc
+							 ,desc_dni
+							 ,desc_mail
+							 ,desc_direccion
+							 ,desc_telefono
+							 ,desc_estado_civil
+							 ,desc_fecha_nac
+							 ,desc_fecha_creacion)
+values (	@nombre
+		   ,@apellido
+		   ,@sexo
+		   ,@tipo_doc
+		   ,@dni
+		   ,@mail
+		   ,@direccion
+		   ,@telefono
+		   ,@estado_civil
+		   ,@fecha_nac
+		   ,@fecha_creacion		)
+
+GO
 
 
 
