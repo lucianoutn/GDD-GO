@@ -18,9 +18,6 @@ Go
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion_por_rol')
 	DROP TABLE GDD_GO.funcion_por_rol
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
-	DROP TABLE GDD_GO.rol
-
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'roles_por_usuario')
 	DROP TABLE GDD_GO.roles_por_usuario
 
@@ -35,21 +32,15 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
 	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
-
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
-	DROP TABLE GDD_GO.bono
 	
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono_por_afiliado')
 	DROP TABLE GDD_GO.bono_por_afiliado
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'profesional')
-	DROP TABLE GDD_GO.profesional
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
+	DROP TABLE GDD_GO.bono
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'consulta')
 	DROP TABLE GDD_GO.consulta
-
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
-	DROP TABLE GDD_GO.turno
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'agenda')
 	DROP TABLE GDD_GO.agenda
@@ -66,15 +57,23 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_especialidad')
 	DROP TABLE GDD_GO.tipo_especialidad
 
-If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'afiliado')
-	Drop table GDD_GO.afiliado
-
-If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'usuario')
-	Drop table GDD_GO.usuario
-	
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_medico')
 	DROP TABLE GDD_GO.plan_medico
 
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
+	DROP TABLE GDD_GO.rol
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
+	DROP TABLE GDD_GO.turno
+	
+If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'afiliado')
+	Drop table GDD_GO.afiliado
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'profesional')
+	DROP TABLE GDD_GO.profesional
+
+If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'usuario')
+	Drop table GDD_GO.usuario
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -91,7 +90,7 @@ Create Table GDD_GO.usuario
 
 Create Table GDD_GO.afiliado
 (	 
-	 id_afiliado int identity(100,100)
+	 id_afiliado int identity(1,1)
 	,id_nro_familiar int
 	,desc_apellido varchar(255)
 	,desc_nombre varchar(255)
@@ -106,7 +105,7 @@ Create Table GDD_GO.afiliado
 	,desc_fecha_creacion datetime
 	,id_familiar_principal int
 	,primary key (id_afiliado)
-	,foreign key (id_familiar_principal) references GDD_GO.usuario(id_usuario)
+	,foreign key (id_familiar_principal) references GDD_GO.afiliado(id_afiliado)
 )
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
