@@ -15,17 +15,14 @@ Go
 /*----------------------------	BORRADO DE TABLAS	-------------------------*/
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion_por_rol')
-	DROP TABLE GDD_GO.funcion_por_rol
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funciones_por_rol')
+	DROP TABLE GDD_GO.funciones_por_rol
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'roles_por_usuario')
 	DROP TABLE GDD_GO.roles_por_usuario
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion')
-	DROP TABLE GDD_GO.funcion
-
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_por_afiliado')
-	DROP TABLE GDD_GO.plan_por_afiliado
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'planes_por_afiliado')
+	DROP TABLE GDD_GO.planes_por_afiliado
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'estado')
 	DROP TABLE GDD_GO.estado
@@ -33,11 +30,8 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
 	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
 	
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono_por_afiliado')
-	DROP TABLE GDD_GO.bono_por_afiliado
-
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
-	DROP TABLE GDD_GO.bono
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bonos_por_afiliado')
+	DROP TABLE GDD_GO.bonos_por_afiliado
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'consulta')
 	DROP TABLE GDD_GO.consulta
@@ -48,8 +42,17 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
 	DROP TABLE GDD_GO.tipo_cancelacion
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'profesional_por_especialidad')
-	DROP TABLE GDD_GO.profesional_por_especialidad
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'especialidades_por_profesional')
+	DROP TABLE GDD_GO.especialidades_por_profesional
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
+	DROP TABLE GDD_GO.turno
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion')
+	DROP TABLE GDD_GO.funcion
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
+	DROP TABLE GDD_GO.bono
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'especialidad')
 	DROP TABLE GDD_GO.especialidad
@@ -62,9 +65,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
 	DROP TABLE GDD_GO.rol
-	
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
-	DROP TABLE GDD_GO.turno
 	
 If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'afiliado')
 	Drop table GDD_GO.afiliado
@@ -111,7 +111,7 @@ Create Table GDD_GO.afiliado
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 CREATE TABLE GDD_GO.funcion
 (
-	 id_funcion int
+	 id_funcion int identity(1,1)
 	,desc_funcion int
 	,primary key (id_funcion)
 )
@@ -124,7 +124,7 @@ CREATE TABLE GDD_GO.rol
 	,primary key (id_rol)
 )
 
-CREATE TABLE GDD_GO.funcion_por_rol
+CREATE TABLE GDD_GO.funciones_por_rol
 (
 	 id_rol int
 	,id_funcion int
@@ -142,16 +142,16 @@ CREATE TABLE GDD_GO.roles_por_usuario
 
 CREATE TABLE GDD_GO.plan_medico
 (
-	 id_plan_medico int
+	 id_plan_medico int identity(1,1)
 	,descripcion varchar(255)
 	,desc_precio_bono_consulta numeric(18,0)
 	,desc_precio_bono_farmacia numeric(18,0)
 	,primary key (id_plan_medico)
 )
 
-CREATE TABLE GDD_GO.plan_por_afiliado
+CREATE TABLE GDD_GO.planes_por_afiliado
 (
-	 id_plan_medico int
+	 id_plan_medico int identity(1,1)
 	,id_afiliado int
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico
 	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
@@ -159,14 +159,14 @@ CREATE TABLE GDD_GO.plan_por_afiliado
 
 CREATE TABLE GDD_GO.estado
 (
-	 id_estado int
+	 id_estado int identity(1,1)
 	,desc_estado nvarchar(100)
 	,primary key (id_estado)
 )
 
 CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 (
-	 id_historial int
+	 id_historial int identity(1,1)
 	,desc_fecha_modificacion DATETIME
 	,desc_motivo varchar(255)
 	,id_afiliado int
@@ -178,13 +178,13 @@ CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 
 CREATE TABLE GDD_GO.bono
 (
-	 id_bono int
+	 id_bono int identity(1,1)
 	,id_plan_medico int
 	,primary key (id_bono)
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
 )
 
-CREATE TABLE GDD_GO.bono_por_afiliado
+CREATE TABLE GDD_GO.bonos_por_afiliado
 (
 	  id_bono int
 	 ,id_afiliado int
@@ -195,7 +195,9 @@ CREATE TABLE GDD_GO.bono_por_afiliado
 
 CREATE TABLE GDD_GO.profesional
 (
-	 id_profesional int
+	 id_profesional int identity(1,1)
+	,desc_apellido varchar(255)
+	,desc_nombre varchar(255)
 	,desc_tipo_doc nvarchar(5)
 	,desc_dni numeric(18,0)
 	,desc_direccion varchar(255)
@@ -212,7 +214,7 @@ CREATE TABLE GDD_GO.profesional
 
 CREATE TABLE GDD_GO.consulta
 (
-	 id_consulta int
+	 id_consulta int identity(1,1)
 	,id_plan_medico int
 	,primary key (id_consulta)
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
@@ -220,7 +222,7 @@ CREATE TABLE GDD_GO.consulta
 
 CREATE TABLE GDD_GO.turno
 (
-	 id_turno int
+	 id_turno int identity(1,1)
 	,desc_fecha_hora DATETIME
 	,desc_estado BIT
 	,id_afiliado int
@@ -232,7 +234,7 @@ CREATE TABLE GDD_GO.turno
 
 CREATE TABLE GDD_GO.agenda
 (
-	 id_dia_agenda int
+	 id_dia_agenda int identity(1,1)
 	,desc_dia int
 	,desc_hora_desde TIME
 	,desc_hora_hasta TIME
@@ -243,7 +245,7 @@ CREATE TABLE GDD_GO.agenda
 
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
-	 id_tipo_cancelacion int
+	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
 	,id_turno int
 	,primary key (id_tipo_cancelacion)
@@ -252,24 +254,24 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 
 CREATE TABLE GDD_GO.tipo_especialidad
 (
-	 id_tipo_especialidad int
+	 id_tipo_especialidad numeric(18,0)
 	,descripcion varchar(255)
 	,primary key (id_tipo_especialidad)
 )
 
 CREATE TABLE GDD_GO.especialidad
 (
-	 id_especialidad int
+	 id_especialidad numeric(18,0)
 	,descripcion varchar(255)
-	,id_tipo_especialidad int
+	,id_tipo_especialidad numeric(18,0)
 	,primary key (id_especialidad)
 	,foreign key (id_tipo_especialidad) references GDD_GO.tipo_especialidad(id_tipo_especialidad)
 )
 
-CREATE TABLE GDD_GO.profesional_por_especialidad
+CREATE TABLE GDD_GO.especialidades_por_profesional
 (
 	 id_profesional int
-	,id_especialidad int
+	,id_especialidad numeric(18,0)
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
 	,foreign key (id_especialidad) references GDD_GO.especialidad(id_especialidad)	 
 )
@@ -387,8 +389,10 @@ Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
 
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
+/*AFILIADO*/
 Insert Into GDD_GO.afiliado		(	desc_apellido
 									,desc_nombre
+									,desc_tipo_doc
 									,desc_dni
 									,desc_direccion
 									,desc_telefono
@@ -398,6 +402,7 @@ Insert Into GDD_GO.afiliado		(	desc_apellido
 Select	 Distinct
 		 Paciente_Apellido
 		 ,Paciente_Nombre
+		 ,'DNI'
 		 ,Paciente_Dni
 		 ,Paciente_Direccion
 		 ,Paciente_Telefono
@@ -405,3 +410,59 @@ Select	 Distinct
 		 ,Paciente_Fecha_Nac
 		 ,1
 From gd_esquema.Maestra
+Where Paciente_Dni is not null
+Go
+
+/*PROFESIONAL*/
+Insert into GDD_GO.profesional	(	desc_apellido
+									,desc_nombre
+									,desc_tipo_doc
+									,desc_dni
+									,desc_direccion
+									,desc_telefono
+									,desc_mail
+									,desc_fecha_nac		)
+Select Distinct
+	   Medico_Apellido
+	  ,Medico_Nombre
+	  ,'DNI'
+	  ,Medico_Dni
+	  ,Medico_Direccion
+	  ,Medico_Telefono
+	  ,Medico_Mail
+	  ,Medico_Fecha_Nac
+From gd_esquema.Maestra
+Where Medico_Dni is not null
+Go
+
+/*TIPO ESPECIALIDAD*/
+Insert into GDD_GO.tipo_especialidad	(	id_tipo_especialidad
+										   ,descripcion		)
+Select Distinct 
+	   Tipo_Especialidad_Codigo
+	  ,Tipo_Especialidad_Descripcion
+From gd_esquema.Maestra
+Where Tipo_Especialidad_Codigo is not null
+Go
+
+/*ESPECIALIDAD*/
+Insert into GDD_GO.especialidad		(	id_especialidad
+									   ,descripcion
+									   ,id_tipo_especialidad		)
+Select Distinct
+	   Especialidad_Codigo
+	  ,Especialidad_Descripcion
+	  ,Tipo_Especialidad_Codigo
+From gd_esquema.Maestra
+Where Especialidad_Codigo is not null
+Go
+
+/*ESPECIALIDADES POR PROFESIONAL*/
+Insert into GDD_GO.especialidades_por_profesional	(	id_profesional
+													   ,id_especialidad	)
+Select Distinct pr.id_profesional
+			   ,Especialidad_Codigo
+From gd_esquema.Maestra ma
+Join GDD_GO.profesional pr
+On ma.Medico_Dni = pr.desc_dni
+Go
