@@ -87,11 +87,6 @@ namespace ClinicaFrba.Abm_Afiliado
                             sexo = 0;
                         }
                         
-                        /*
-                        // MANDO A SETEAR TABLAS USUARIO, ROLES_USUARIO Y CLIENTE - ME ESTA TIRANDO ERROR ESTO NO SE POR QUE 
-                        abm_usuario.altaAfiliado(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, desc_fecha_creacion);
-                        MessageBox.Show("El nuevo Cliente fue creado con éxito!");
-                        */
 
                         AltaAfiliado2 altaAfiliado2 = new AltaAfiliado2(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, desc_fecha_creacion, this);
                         altaAfiliado2.Show();
