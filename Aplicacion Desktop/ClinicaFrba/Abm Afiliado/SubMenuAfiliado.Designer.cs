@@ -52,6 +52,7 @@
             this.buttonBajaAfiliado.TabIndex = 1;
             this.buttonBajaAfiliado.Text = "Baja Afiliado";
             this.buttonBajaAfiliado.UseVisualStyleBackColor = true;
+            this.buttonBajaAfiliado.Click += new System.EventHandler(this.buttonBajaAfiliado_Click);
             // 
             // buttonModificarAfiliado
             // 
