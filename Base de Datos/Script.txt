@@ -104,8 +104,10 @@ Create Table GDD_GO.afiliado
 	,desc_estado_civil int
 	,desc_fecha_creacion datetime
 	,id_familiar_principal int
+	,id_usuario int
 	,primary key (id_afiliado)
 	,foreign key (id_familiar_principal) references GDD_GO.afiliado(id_afiliado)
+	,foreign key (id_usuario)  references GDD_GO.usuario(id_usuario)
 )
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
@@ -376,21 +378,87 @@ values (    @nro_familiar
 
 GO
 
-
-
-
---Genero usuario de sistema por script
-Insert into GDD_GO.usuario	(	 desc_username
-								,desc_password
-								,id_estado	)
-Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
-
-
-
-
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
+Create Table #usuarios	(	 id int identity(1,1)
+							,username nvarchar(255)
+							,password varbinary(32)
+							,entidad varchar(50)
+							,id_entidad varchar(75)	)
+
+Insert Into #usuarios 	(	 username
+							,password
+							,entidad
+							,id_entidad	)
+Select	 Distinct
+		 SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)
+		,HASHBYTES('sha2_256',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))
+		,'Profesional'
+		,Medico_Dni
+From gd_esquema.Maestra
+Where Medico_Dni is not null
+
+Insert Into #usuarios 	(	 username
+							,password
+							,entidad
+							,id_entidad	)
+Select	 Distinct
+		 SUBSTRING(Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1)
+		,HASHBYTES('sha2_256',SUBSTRING(Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))
+		,'Afiliado'
+		,Paciente_Dni
+From gd_esquema.Maestra
+Where Paciente_Dni is not null
+
+/*USUARIO*/
+Insert into GDD_GO.usuario	(	desc_username
+							   ,desc_password
+							   ,id_estado	)
+Select us.username
+	  ,us.password
+	  ,1
+From #usuarios us
+where us.entidad = 'Profesional'
+Go
+
+Insert into GDD_GO.usuario	(	desc_username
+							   ,desc_password
+							   ,id_estado	)
+Select us.username
+	  ,us.password
+	  ,1
+From #usuarios us
+where us.entidad = 'Afiliado'
+Go
+
+/*PROFESIONAL*/
+Insert into GDD_GO.profesional	(	 id_usuario
+									,desc_apellido
+									,desc_nombre
+									,desc_tipo_doc
+									,desc_dni
+									,desc_direccion
+									,desc_telefono
+									,desc_mail
+									,desc_fecha_nac		)
+Select Distinct
+	   us.id
+	  ,ma.Medico_Apellido
+	  ,ma.Medico_Nombre
+	  ,'DNI'
+	  ,ma.Medico_Dni
+	  ,ma.Medico_Direccion
+	  ,ma.Medico_Telefono
+	  ,ma.Medico_Mail
+	  ,ma.Medico_Fecha_Nac
+From gd_esquema.Maestra ma
+Join #usuarios us
+	 on us.id_entidad = ma.Medico_Dni And
+	 Medico_Dni is not null
+Go
+
 /*AFILIADO*/
-Insert Into GDD_GO.afiliado		(	desc_apellido
+Insert Into GDD_GO.afiliado		(	 id_usuario
+									,desc_apellido
 									,desc_nombre
 									,desc_tipo_doc
 									,desc_dni
@@ -400,39 +468,20 @@ Insert Into GDD_GO.afiliado		(	desc_apellido
 									,desc_fecha_nac
 									,id_nro_familiar	)
 Select	 Distinct
-		 Paciente_Apellido
-		 ,Paciente_Nombre
+		  us.id
+		 ,ma.Paciente_Apellido
+		 ,ma.Paciente_Nombre
 		 ,'DNI'
-		 ,Paciente_Dni
-		 ,Paciente_Direccion
-		 ,Paciente_Telefono
-		 ,Paciente_Mail
-		 ,Paciente_Fecha_Nac
+		 ,ma.Paciente_Dni
+		 ,ma.Paciente_Direccion
+		 ,ma.Paciente_Telefono
+		 ,ma.Paciente_Mail
+		 ,ma.Paciente_Fecha_Nac
 		 ,1
-From gd_esquema.Maestra
-Where Paciente_Dni is not null
-Go
-
-/*PROFESIONAL*/
-Insert into GDD_GO.profesional	(	desc_apellido
-									,desc_nombre
-									,desc_tipo_doc
-									,desc_dni
-									,desc_direccion
-									,desc_telefono
-									,desc_mail
-									,desc_fecha_nac		)
-Select Distinct
-	   Medico_Apellido
-	  ,Medico_Nombre
-	  ,'DNI'
-	  ,Medico_Dni
-	  ,Medico_Direccion
-	  ,Medico_Telefono
-	  ,Medico_Mail
-	  ,Medico_Fecha_Nac
-From gd_esquema.Maestra
-Where Medico_Dni is not null
+From gd_esquema.Maestra ma
+Join #usuarios us
+	 on us.id_entidad = ma.Paciente_Dni And
+	 Paciente_Dni is not null
 Go
 
 /*TIPO ESPECIALIDAD*/
@@ -479,3 +528,17 @@ join GDD_GO.afiliado af
 join GDD_GO.profesional pr
 	 On Medico_Dni = pr.desc_dni
 Where Turno_Numero is not null And Consulta_Sintomas is not null
+
+
+
+
+Drop Table #usuarios
+
+
+
+
+--Genero usuario de sistema por script
+Insert into GDD_GO.usuario	(	 desc_username
+								,desc_password
+								,id_estado	)
+Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
