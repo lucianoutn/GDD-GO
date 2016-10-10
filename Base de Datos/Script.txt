@@ -47,6 +47,9 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 	
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'turno')
 	DROP TABLE GDD_GO.turno
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'horario')
+	DROP TABLE GDD_GO.horario
 	
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funcion')
 	DROP TABLE GDD_GO.funcion
@@ -225,13 +228,14 @@ CREATE TABLE GDD_GO.consulta
 CREATE TABLE GDD_GO.turno
 (
 	 id_turno numeric(18,0)
-	,desc_fecha_hora DATETIME
 	,desc_estado BIT
 	,id_afiliado int
 	,id_profesional int
+	,id_horario int
 	,primary key (id_turno)
 	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
+	,foreign key (id_horario) references GDD_GO.horario(id_horario)
 )
 
 CREATE TABLE GDD_GO.agenda
@@ -241,8 +245,21 @@ CREATE TABLE GDD_GO.agenda
 	,desc_hora_desde TIME
 	,desc_hora_hasta TIME
 	,id_profesional int
+	,id_especialidad numeric(18,0)
 	,primary key (id_dia_agenda)
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
+	,foreign key (id_especialidad) references GDD_GO.especialidad(id_especialidad)
+)
+
+CREATE TABLE GDD_GO.horario
+(
+	id_horario int identity(1,1)
+	,desc_hora_desde DATETIME
+	,id_dia_agenda int
+	,id_turno numeric(18,0)
+	,primary key (id_horario)
+	,foreign key (id_dia_agenda) references GDD_GO.agenda(id_dia_agenda)
+	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
 
 CREATE TABLE GDD_GO.tipo_cancelacion
@@ -380,10 +397,10 @@ GO
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
 Create Table #usuarios	(	 id int identity(1,1)
-							,username nvarchar(255)
-							,password varbinary(32)
-							,entidad varchar(50)
-							,id_entidad varchar(75)	)
+			,username nvarchar(255)
+			,password varbinary(32)
+			,entidad varchar(50)
+			,id_entidad varchar(75)	)
 
 Insert Into #usuarios 	(	 username
 							,password
