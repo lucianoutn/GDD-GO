@@ -222,7 +222,7 @@ CREATE TABLE GDD_GO.consulta
 
 CREATE TABLE GDD_GO.turno
 (
-	 id_turno int identity(1,1)
+	 id_turno numeric(18,0)
 	,desc_fecha_hora DATETIME
 	,desc_estado BIT
 	,id_afiliado int
@@ -247,7 +247,7 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 (
 	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
-	,id_turno int
+	,id_turno numeric(18,0)
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
@@ -466,3 +466,16 @@ From gd_esquema.Maestra ma
 Join GDD_GO.profesional pr
 On ma.Medico_Dni = pr.desc_dni
 Go
+
+/*TURNO*/
+Insert into GDD_GO.turno	(	id_turno
+							   ,desc_fecha_hora
+							   ,id_afiliado
+							   ,id_profesional	)
+Select Turno_Numero, Turno_Fecha, af.id_afiliado, pr.id_profesional
+From gd_esquema.Maestra
+join GDD_GO.afiliado af
+	 On Paciente_Dni = af.desc_dni
+join GDD_GO.profesional pr
+	 On Medico_Dni = pr.desc_dni
+Where Turno_Numero is not null And Consulta_Sintomas is not null
