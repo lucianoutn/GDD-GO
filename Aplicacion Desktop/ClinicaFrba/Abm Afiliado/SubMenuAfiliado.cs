@@ -21,6 +21,11 @@ namespace ClinicaFrba.Abm_Afiliado
             unMenu = menu;
         }
 
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         private void buttonAltaAfiliado_Click(object sender, EventArgs e)
         {
             AltaAfiliado alta = new AltaAfiliado(this);
@@ -28,9 +33,11 @@ namespace ClinicaFrba.Abm_Afiliado
             this.Hide();
         }
 
-        private void buttonVolver_Click(object sender, EventArgs e)
+        private void buttonBajaAfiliado_Click(object sender, EventArgs e)
         {
-            this.Close();
+            BajaAfiliado alta = new BajaAfiliado(this);
+            alta.Show();
+
         }
     }
 }

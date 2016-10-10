@@ -15,7 +15,8 @@ namespace ClinicaFrba.DataBase.Conexion
         public static String Param_Conexion_nombreBD;
         
         //Todas las tablas
-        public static String tabla_usuarios = "GDD_GO.ft_usuario";
+        public static String tabla_usuarios = "GDD_GO.usuario";
+        public static String tabla_afiliados = "GDD_GO.afiliado";
         
         // Recibe una fecha en formato DD/MM/AAAA y lo convierte a formato de BD: AAAAMMDD 00:00:00.00
         public static String cambiarFormatoFecha(String fecha)

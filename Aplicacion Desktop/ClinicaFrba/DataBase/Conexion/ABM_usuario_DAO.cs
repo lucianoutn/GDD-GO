@@ -50,6 +50,37 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
+        public List<string> get_id_afiliado_multiple(String desc_nombre, String desc_apellido, String desc_dni)
+        {
+            if (desc_nombre != "" || desc_nombre != " ")
+            {
+                desc_nombre = "desc_nombre LIKE '%" + desc_nombre + "%' AND ";
+            }
+            if (desc_apellido != "" || desc_apellido != " ")
+            {
+                desc_apellido = "desc_apellido LIKE '%" + desc_apellido + "%' AND ";
+            }
+            if (desc_dni != "" || desc_dni != " ")
+            {
+                desc_dni = " desc_dni LIKE '%" + desc_dni + "%'";
+            }
+            
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT id_afiliado FROM " + ConstantesBD.tabla_afiliados +
+                                                                             " WHERE " + desc_nombre + desc_apellido + desc_dni +
+                                                                             " ORDER BY id_afiliado asc");
+
+            List<string> resultado = new List<string>();
+
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["id_afiliado"].ToString());
+            }
+
+            lector.Close();
+            return resultado;
+        }
+
         public String get_apellido(String id_afiliado)
         {
             string apellido = "";
@@ -93,6 +124,16 @@ namespace ClinicaFrba.DataBase.Conexion
 
 
             return apellido;
+        }
+
+        public int get_dni(String id_afiliado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_dni from GDD_GO.afiliado where id_afiliado = " + id_afiliado + "");
+            lector.Read();
+            int cantidad;
+            int.TryParse(lector["desc_dni"].ToString(), out cantidad);
+            lector.Close();
+            return cantidad;
         }
 
         public DateTime get_fecha_nac(String id_afiliado)
