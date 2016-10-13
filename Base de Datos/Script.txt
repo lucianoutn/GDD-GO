@@ -97,8 +97,7 @@ Create Table GDD_GO.usuario
 
 Create Table GDD_GO.afiliado
 (	 
-	 id_afiliado int identity(1,1)
-	,id_nro_familiar int
+	 id_afiliado int
 	,desc_apellido varchar(255)
 	,desc_nombre varchar(255)
 	,desc_tipo_doc nvarchar(5)
@@ -370,8 +369,7 @@ Create procedure GDD_GO.alta_afiliado (	    @nro_familiar int
 
 As
 
-Insert into GDD_GO.afiliado ( id_nro_familiar
-							 ,desc_nombre
+Insert into GDD_GO.afiliado ( desc_nombre
 							 ,desc_apellido
 							 ,desc_sexo
 							 ,desc_tipo_doc
@@ -382,8 +380,7 @@ Insert into GDD_GO.afiliado ( id_nro_familiar
 							 ,desc_estado_civil
 							 ,desc_fecha_nac
 							 ,desc_fecha_creacion)
-values (    @nro_familiar
-		   ,@nombre
+values (    @nombre
 		   ,@apellido
 		   ,@sexo
 		   ,@tipo_doc
@@ -409,18 +406,6 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		 SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)
-		,HASHBYTES('sha2_256',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))
-		,'Profesional'
-		,Medico_Dni
-From gd_esquema.Maestra
-Where Medico_Dni is not null
-
-Insert Into #usuarios 	(	 username
-							,password
-							,entidad
-							,id_entidad	)
-Select	 Distinct
 		 SUBSTRING(Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1)
 		,HASHBYTES('sha2_256',SUBSTRING(Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))
 		,'Afiliado'
@@ -428,16 +413,19 @@ Select	 Distinct
 From gd_esquema.Maestra
 Where Paciente_Dni is not null
 
+Insert Into #usuarios 	(	 username
+							,password
+							,entidad
+							,id_entidad	)
+Select	 Distinct
+		 SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)
+		,HASHBYTES('sha2_256',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))
+		,'Profesional'
+		,Medico_Dni
+From gd_esquema.Maestra
+Where Medico_Dni is not null
+
 /*USUARIO*/
-Insert into GDD_GO.usuario	(	desc_username
-							   ,desc_password
-							   ,id_estado	)
-Select us.username
-	  ,us.password
-	  ,1
-From #usuarios us
-where us.entidad = 'Profesional'
-Go
 
 Insert into GDD_GO.usuario	(	desc_username
 							   ,desc_password
@@ -447,6 +435,16 @@ Select us.username
 	  ,1
 From #usuarios us
 where us.entidad = 'Afiliado'
+Go
+
+Insert into GDD_GO.usuario	(	desc_username
+							   ,desc_password
+							   ,id_estado	)
+Select us.username
+	  ,us.password
+	  ,1
+From #usuarios us
+where us.entidad = 'Profesional'
 Go
 
 /*PROFESIONAL*/
@@ -485,7 +483,7 @@ Insert Into GDD_GO.afiliado		(	 id_usuario
 									,desc_telefono
 									,desc_mail
 									,desc_fecha_nac
-									,id_nro_familiar	)
+									,id_afiliado	)
 Select	 Distinct
 		  us.id
 		 ,ma.Paciente_Apellido
@@ -496,7 +494,7 @@ Select	 Distinct
 		 ,ma.Paciente_Telefono
 		 ,ma.Paciente_Mail
 		 ,ma.Paciente_Fecha_Nac
-		 ,1
+		 ,(id*100+1)
 From gd_esquema.Maestra ma
 Join #usuarios us
 	 on us.id_entidad = ma.Paciente_Dni And
