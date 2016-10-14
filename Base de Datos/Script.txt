@@ -286,8 +286,6 @@ CREATE TABLE GDD_GO.horario
 	,foreign key (id_dia_agenda) references GDD_GO.agenda(id_dia_agenda)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
-
-
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
 	 id_tipo_cancelacion int identity(1,1)
@@ -531,8 +529,9 @@ Select Distinct pr.id_profesional
 From gd_esquema.Maestra ma
 Join GDD_GO.profesional pr
 On ma.Medico_Dni = pr.desc_dni
-Go
 
+
+Go
 /*TURNO*/
 Insert into GDD_GO.turno	(	id_turno
 							   ,id_afiliado
@@ -545,7 +544,19 @@ join GDD_GO.profesional pr
 	 On Medico_Dni = pr.desc_dni
 Where Turno_Numero is not null And Consulta_Sintomas is not null
 
-
+Go
+/*Horario*/
+Insert into GDD_GO.horario(
+	id_turno
+	,desc_hora_desde
+)
+Select Turno_Numero, Turno_Fecha
+From gd_esquema.Maestra
+join GDD_GO.afiliado af
+	 On Paciente_Dni = af.desc_dni
+join GDD_GO.profesional pr
+	 On Medico_Dni = pr.desc_dni
+Where Turno_Numero is not null And Consulta_Sintomas is not null
 
 
 Drop Table #usuarios
