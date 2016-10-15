@@ -1,7 +1,7 @@
 Fecha Sistema: 10/11/2016
 
 Parametros Conexion:
-	URL Servidor: ADRIAN\SQLSERVER2012
+	URL Servidor: localhost\SQLSERVER2012
 	Nombre de Usuario: gd
 	Password: gd2016
 	Nombre de base de Datos: GD2C2016

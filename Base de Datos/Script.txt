@@ -319,8 +319,8 @@ If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME =
 	Drop procedure GDD_GO.calcular_id_afiliado
 Go
 
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'alta_afiliado')
-	Drop procedure GDD_GO.alta_afiliado
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'insertar_afiliado')
+	Drop trigger GDD_GO.insertar_afiliado
 Go
 
 
@@ -360,45 +360,6 @@ else
 	End
 Go
 
-Create procedure GDD_GO.alta_afiliado (	    @nro_familiar int
-										   ,@nombre varchar(255)
-										   ,@apellido varchar(255)
-										   ,@sexo bit
-										   ,@tipo_doc nvarchar(5)
-										   ,@dni numeric(18,0)
-										   ,@mail varchar(255)
-										   ,@direccion varchar(255)
-										   ,@telefono numeric(18,0)
-										   ,@estado_civil int
-										   ,@fecha_nac datetime
-										   ,@fecha_creacion datetime	)
-
-As
-
-Insert into GDD_GO.afiliado ( desc_nombre
-							 ,desc_apellido
-							 ,desc_sexo
-							 ,desc_tipo_doc
-							 ,desc_dni
-							 ,desc_mail
-							 ,desc_direccion
-							 ,desc_telefono
-							 ,desc_estado_civil
-							 ,desc_fecha_nac
-							 ,desc_fecha_creacion)
-values (    @nombre
-		   ,@apellido
-		   ,@sexo
-		   ,@tipo_doc
-		   ,@dni
-		   ,@mail
-		   ,@direccion
-		   ,@telefono
-		   ,@estado_civil
-		   ,@fecha_nac
-		   ,@fecha_creacion		)
-
-GO
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
 Create Table #usuarios	(	 id int identity(1,1)
@@ -480,32 +441,46 @@ Join #usuarios us
 Go
 
 /*AFILIADO*/
-Insert Into GDD_GO.afiliado		(	 id_usuario
-									,desc_apellido
-									,desc_nombre
-									,desc_tipo_doc
-									,desc_dni
-									,desc_direccion
-									,desc_telefono
-									,desc_mail
-									,desc_fecha_nac
-									,id_afiliado	)
-Select	 Distinct
-		  us.id
-		 ,ma.Paciente_Apellido
-		 ,ma.Paciente_Nombre
-		 ,'DNI'
-		 ,ma.Paciente_Dni
-		 ,ma.Paciente_Direccion
-		 ,ma.Paciente_Telefono
-		 ,ma.Paciente_Mail
-		 ,ma.Paciente_Fecha_Nac
-		 ,(id*100+1)
+Insert into GDD_GO.afiliado(  id_afiliado
+							 ,desc_nombre
+		   					 ,desc_apellido
+							 ,desc_sexo
+							 ,desc_tipo_doc
+							 ,desc_dni
+							 ,desc_mail
+							 ,desc_direccion
+							 ,desc_telefono
+							 ,desc_estado_civil
+							 ,desc_fecha_creacion
+							 ,desc_fecha_nac
+							 ,id_usuario		)
+Select	 Distinct      
+		 id*100+1
+		,ma.Paciente_Nombre
+		,ma.Paciente_Apellido
+		,1
+		,'DNI'
+		,ma.Paciente_Dni
+		,ma.Paciente_Mail
+		,ma.Paciente_Direccion
+		,ma.Paciente_Telefono
+		,0
+		,GETDATE()
+		,ma.Paciente_Fecha_Nac
+		,us.id
 From gd_esquema.Maestra ma
 Join #usuarios us
 	 on us.id_entidad = ma.Paciente_Dni And
 	 Paciente_Dni is not null
+Order by id
 Go
+
+
+
+Drop Table #usuarios
+
+
+
 
 /*TIPO ESPECIALIDAD*/
 Insert into GDD_GO.tipo_especialidad	(	id_tipo_especialidad
@@ -647,7 +622,7 @@ where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
 
 
-Drop Table #usuarios
+
 
 --Genero usuario de sistema por script
 Insert into GDD_GO.usuario	(	 desc_username
@@ -655,3 +630,68 @@ Insert into GDD_GO.usuario	(	 desc_username
 								,desc_password
 								,id_estado	)
 Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
+Go
+
+Create Trigger GDD_GO.insertar_afiliado
+On GDD_GO.afiliado
+Instead of Insert
+As
+Begin
+	Declare @id_afiliado int
+	Declare @nombre varchar(255)
+	Declare @apellido varchar(255)
+	Declare @sexo bit
+	Declare @tipo_doc nvarchar(5)
+	Declare @dni numeric(18,0)
+	Declare @mail varchar(255)
+	Declare @direccion varchar(255)
+	Declare @telefono numeric(18,0)
+	Declare @estado_civil int
+	Declare @fecha_nac datetime
+	Declare @id_familiar_ppal int
+	Declare @id_usuario int
+
+	Select @nombre = desc_nombre, @apellido = desc_apellido, @sexo = desc_sexo, @tipo_doc = desc_tipo_doc, @dni=desc_dni, @mail=desc_mail, @direccion = desc_direccion, @telefono=desc_telefono, @estado_civil = desc_estado_civil, @fecha_nac = desc_fecha_nac, @id_familiar_ppal=id_familiar_principal, @id_usuario = id_usuario
+	From inserted;
+	
+	If (@id_familiar_ppal is null)
+	Begin
+		Set @id_afiliado = ISNULL((Select (MAX(id_afiliado)+100) from GDD_GO.afiliado),@id_usuario*100+1)
+	End
+	Else
+	Begin
+		Set @id_afiliado = ISNULL((Select (MAX(af.id_afiliado)+1) from GDD_GO.afiliado af where af.id_familiar_principal = @id_familiar_ppal),@id_familiar_ppal+1)
+	End
+
+		Insert into GDD_GO.afiliado(  id_afiliado
+									 ,desc_nombre
+		   							 ,desc_apellido
+									 ,desc_sexo
+									 ,desc_tipo_doc
+									 ,desc_dni
+									 ,desc_mail
+									 ,desc_direccion
+									 ,desc_telefono
+									 ,desc_estado_civil
+									 ,desc_fecha_nac
+									 ,desc_fecha_creacion	
+									 ,id_familiar_principal
+									 ,id_usuario		)
+		Values (    @id_afiliado
+				   ,@nombre
+				   ,@apellido
+				   ,@sexo
+				   ,@tipo_doc
+				   ,@dni
+				   ,@mail
+				   ,@direccion
+				   ,@telefono
+				   ,@estado_civil
+				   ,@fecha_nac
+				   ,GETDATE()	
+				   ,@id_familiar_ppal
+				   ,@id_usuario			)
+
+
+End
+Go
