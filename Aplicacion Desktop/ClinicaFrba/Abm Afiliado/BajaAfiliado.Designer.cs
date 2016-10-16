@@ -46,6 +46,7 @@
             this.buttonBuscar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
+            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -57,7 +58,8 @@
             this.Id,
             this.Apellido,
             this.Nombre,
-            this.Dni});
+            this.Dni,
+            this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(45, 225);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
@@ -208,6 +210,12 @@
             this.buttonEliminar.TabIndex = 50;
             this.buttonEliminar.Text = "Eliminar";
             this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "ID Usuario";
+            this.id_usuario.Name = "id_usuario";
             // 
             // BajaAfiliado
             // 
@@ -249,5 +257,6 @@
         private System.Windows.Forms.Button buttonBuscar;
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
     }
 }

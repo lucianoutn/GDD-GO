@@ -35,6 +35,11 @@ namespace ClinicaFrba.DataBase.Conexion
             this.GD2C2016.ejecutarSentenciaSinRetorno("exec GDD_GO.alta_afiliado @nro_familiar = "+id_nro_familiar+" ,@nombre = '"+desc_Nombre+"' ,@apellido = '"+desc_Apellido+"',@sexo = "+desc_sexo+" ,@tipo_doc = '"+tipo_doc+"' ,@dni = "+desc_Dni+" ,@mail = '"+desc_Mail+"' ,@direccion = '"+desc_Dom+"', @telefono = "+desc_Telefono+", @estado_civil = "+desc_Estado_Civil+", @fecha_nac = '"+desc_fecha_nac+"', @fecha_creacion = '"+desc_fecha_creacion+"'");
         }
 
+        public void bajaAfiliado(int id_usuario)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.usuario Set desc_estado=2 where id_usuario = " + id_usuario);
+        }
+
         public List<string> get_afiliados_con_dni(String dni)
         {
 
@@ -149,6 +154,16 @@ namespace ClinicaFrba.DataBase.Conexion
 
 
             return apellido;
+        }
+
+        public int get_id_usuario(String id_afiliado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_usuario from " + ConstantesBD.tabla_afiliados +" where id_afiliado = " + id_afiliado + "");
+            lector.Read();
+            int cantidad;
+            int.TryParse(lector["id_usuario"].ToString(), out cantidad);
+            lector.Close();
+            return cantidad;
         }
     }
 }

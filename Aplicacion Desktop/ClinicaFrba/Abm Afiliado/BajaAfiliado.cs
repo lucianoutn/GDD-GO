@@ -59,7 +59,8 @@ namespace ClinicaFrba.Abm_Afiliado
                     dataGridViewResultados.Rows.Add(desc_id,
                                               abm_usuario.get_nombre(desc_id).ToString(),
                                               abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString());
+                                              abm_usuario.get_dni(desc_id).ToString(),
+                                              abm_usuario.get_id_usuario(desc_id).ToString());
                 }
             }
             else
@@ -67,7 +68,23 @@ namespace ClinicaFrba.Abm_Afiliado
                 dataGridViewResultados.Rows.Add(desc_id,
                                               abm_usuario.get_nombre(desc_id).ToString(),
                                               abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString());
+                                              abm_usuario.get_dni(desc_id).ToString(),
+                                              abm_usuario.get_id_usuario(desc_id).ToString());
+            }
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
+                int id = int.Parse(fila.Cells["id_usuario"].Value.ToString());
+                abm_usuario.bajaAfiliado(id);
+                MessageBox.Show("Usuario dado de baja exitosamente");
+            }
+            catch
+            {
+                MessageBox.Show("Seleccione una fila");
             }
         }
     }
