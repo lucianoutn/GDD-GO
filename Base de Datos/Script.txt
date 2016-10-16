@@ -29,9 +29,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bonos_por_afiliado')
 	DROP TABLE GDD_GO.bonos_por_afiliado
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'estado')
-	DROP TABLE GDD_GO.estado
-
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
 	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
 	
@@ -86,7 +83,8 @@ Create Table GDD_GO.usuario
 	 id_usuario int identity(1,1)
 	,desc_username nvarchar(250)
 	,desc_password varbinary(32)
-	,id_estado int
+	,desc_estado int
+	,desc_fecha_inhabilitado datetime
 	,primary key (id_usuario)
 )
 
@@ -158,13 +156,6 @@ CREATE TABLE GDD_GO.planes_por_afiliado
 	,id_afiliado int
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico
 	,foreign key (id_afiliado) references GDD_GO.afiliado
-)
-
-CREATE TABLE GDD_GO.estado
-(
-	 id_estado int identity(1,1)
-	,desc_estado nvarchar(100)
-	,primary key (id_estado)
 )
 
 CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
@@ -341,22 +332,27 @@ Declare @usuario int = 0;
 Declare @estado int = 0;
 
 Select	@usuario = us.id_usuario,
-		@estado = us.id_estado
+		@estado = us.desc_estado
 From GDD_GO.usuario us
 Where us.desc_username = @user
 
 if (@usuario = 0)
 	Select 'invalido' as mensaje
 else
-	if not exists (Select 'existe' from GDD_GO.usuario us
-				   where us.id_usuario = @usuario and 
-					     us.desc_password = HASHBYTES('SHA2_256', @pass)	)
-	Begin
-		Select 'incorrecto' as mensaje
-	End
+	if (@estado = 2)
+		Select 'inhabilitado' as mensaje
 	else
 	Begin
-		Select 'correcto' as mensaje
+		if not exists (Select 'existe' from GDD_GO.usuario us
+					   where us.id_usuario = @usuario and 
+							 us.desc_password = HASHBYTES('SHA2_256', @pass)	)
+		Begin
+			Select 'incorrecto' as mensaje
+		End
+		else
+		Begin
+			Select 'correcto' as mensaje
+		End
 	End
 Go
 
@@ -396,7 +392,7 @@ Where Medico_Dni is not null
 
 Insert into GDD_GO.usuario	(	desc_username
 							   ,desc_password
-							   ,id_estado	)
+							   ,desc_estado	)
 Select us.username
 	  ,us.password
 	  ,1
@@ -406,7 +402,7 @@ Go
 
 Insert into GDD_GO.usuario	(	desc_username
 							   ,desc_password
-							   ,id_estado	)
+							   ,desc_estado	)
 Select us.username
 	  ,us.password
 	  ,1
@@ -628,7 +624,7 @@ and		m.Consulta_Sintomas is not null
 Insert into GDD_GO.usuario	(	 desc_username
 				
 								,desc_password
-								,id_estado	)
+								,desc_estado	)
 Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
 Go
 

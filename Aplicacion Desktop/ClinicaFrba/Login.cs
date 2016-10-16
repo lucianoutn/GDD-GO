@@ -41,6 +41,9 @@ namespace ClinicaFrba
                     case "incorrecto":
                         MessageBox.Show("La contraseña ingresada es incorrecta.", "Contraseña Incorrecta", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
+                    case "inhabilitado":
+                        MessageBox.Show("El usuario esta inhabilitado.", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        break;
                     case "correcto":
 
                         Menu menu = new Menu(textBoxUserName.Text);

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
 using ClinicaFrba.DataBase.Conexion;
 using ClinicaFrba.Abm_Afiliado;
 
@@ -15,9 +16,15 @@ namespace ClinicaFrba
     {
         public Menu(string user)
         {
+            leerArchivoConfig();
             InitializeComponent();
             labelUser.Text = user;
             labelFecha.Text = ConstantesBD.fechaSistema.ToString();
+        }
+
+        public Menu()
+        {
+            // TODO: Complete member initialization
         }
 
         private void buttonSalir_Click(object sender, EventArgs e)
@@ -30,6 +37,35 @@ namespace ClinicaFrba
         {
             SubMenuAfiliado subMenuAf = new SubMenuAfiliado(this);
             subMenuAf.Show();
+        }
+
+        private void leerArchivoConfig()
+        {
+            try
+            {
+                using (StreamReader sr = new StreamReader("ArchivoConfiguracion.txt"))
+                {
+                    string line, textoArchivo = "";
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        textoArchivo = textoArchivo + line + "\n";
+                    }
+
+                    char[] delimitadores = { ' ', ',', '.', '\t', '\n' };
+
+                    string[] palabras = textoArchivo.Split(delimitadores);
+
+                    ConstantesBD.fechaSistema = palabras[2];
+                    ConstantesBD.Param_Conexion_urlServidor = palabras[9];
+                    ConstantesBD.Param_Conexion_usuario = palabras[14];
+                    ConstantesBD.Param_Conexion_contraseña = palabras[17];
+                    ConstantesBD.Param_Conexion_nombreBD = palabras[24];
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error al leer el archivo de configuracion", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
