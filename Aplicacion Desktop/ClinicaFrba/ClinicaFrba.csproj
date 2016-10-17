@@ -63,6 +63,18 @@
     <Compile Include="Abm Afiliado\BajaAfiliado.Designer.cs">
       <DependentUpon>BajaAfiliado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Afiliado\ListadoModificar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\ListadoModificar.Designer.cs">
+      <DependentUpon>ListadoModificar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\ModificacionAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\ModificacionAfiliado.Designer.cs">
+      <DependentUpon>ModificacionAfiliado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Afiliado\SubMenuAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +188,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\BajaAfiliado.resx">
       <DependentUpon>BajaAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\ListadoModificar.resx">
+      <DependentUpon>ListadoModificar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\ModificacionAfiliado.resx">
+      <DependentUpon>ModificacionAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>

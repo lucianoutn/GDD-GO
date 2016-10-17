@@ -62,6 +62,7 @@
             this.buttonModificarAfiliado.TabIndex = 2;
             this.buttonModificarAfiliado.Text = "Modificar Afiliado";
             this.buttonModificarAfiliado.UseVisualStyleBackColor = true;
+            this.buttonModificarAfiliado.Click += new System.EventHandler(this.buttonModificarAfiliado_Click);
             // 
             // buttonVolver
             // 

@@ -39,5 +39,11 @@ namespace ClinicaFrba.Abm_Afiliado
             alta.Show();
 
         }
+
+        private void buttonModificarAfiliado_Click(object sender, EventArgs e)
+        {
+            ModificacionAfiliado modificacion = new ModificacionAfiliado(this);
+            modificacion.Show();
+        }
     }
 }

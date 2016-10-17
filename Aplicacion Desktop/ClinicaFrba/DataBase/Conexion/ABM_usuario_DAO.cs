@@ -86,6 +86,20 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
+        public void actualizarAfiliado(String desc_apellido, String desc_nombre, String desc_direccion, String descMail, String descTelefono, String sexo, String fechaNac, String estado_civil,int idAfiliado)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set desc_apellido='"+desc_apellido+
+                                                                              "', desc_nombre = '"+desc_nombre+
+                                                                              "', desc_direccion='"+desc_direccion+
+                                                                              "', desc_mail='"+descMail+
+                                                                              "', desc_telefono="+descTelefono+
+                                                                              ", desc_sexo="+sexo+
+                                                                              ", desc_fecha_nac="+fechaNac+
+                                                                              ", desc_estado_civil="+estado_civil+
+                                                                              " where id_afiliado="+idAfiliado+";");
+            MessageBox.Show("El afiliado ha sido modificada Satisfactoriamente");
+        }
+
         public String get_apellido(String id_afiliado)
         {
             string apellido = "";
