@@ -31,6 +31,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBoxCliente = new System.Windows.Forms.GroupBox();
+            this.radioButtonFemenino = new System.Windows.Forms.RadioButton();
+            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
+            this.label3 = new System.Windows.Forms.Label();
             this.comboEstadoCivil = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.fechaNacimiento = new System.Windows.Forms.DateTimePicker();
@@ -54,9 +57,6 @@
             this.textNombre = new System.Windows.Forms.TextBox();
             this.buttonAlta = new System.Windows.Forms.Button();
             this.labelCliente = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
-            this.radioButtonFemenino = new System.Windows.Forms.RadioButton();
             this.groupBoxCliente.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,6 +113,40 @@
             this.groupBoxCliente.TabIndex = 148;
             this.groupBoxCliente.TabStop = false;
             this.groupBoxCliente.Text = "Datos Cliente";
+            // 
+            // radioButtonFemenino
+            // 
+            this.radioButtonFemenino.AutoSize = true;
+            this.radioButtonFemenino.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonFemenino.Location = new System.Drawing.Point(213, 57);
+            this.radioButtonFemenino.Name = "radioButtonFemenino";
+            this.radioButtonFemenino.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonFemenino.TabIndex = 113;
+            this.radioButtonFemenino.TabStop = true;
+            this.radioButtonFemenino.Text = "Femenino";
+            this.radioButtonFemenino.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMasculino
+            // 
+            this.radioButtonMasculino.AutoSize = true;
+            this.radioButtonMasculino.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButtonMasculino.Location = new System.Drawing.Point(117, 57);
+            this.radioButtonMasculino.Name = "radioButtonMasculino";
+            this.radioButtonMasculino.Size = new System.Drawing.Size(73, 17);
+            this.radioButtonMasculino.TabIndex = 112;
+            this.radioButtonMasculino.TabStop = true;
+            this.radioButtonMasculino.Text = "Masculino";
+            this.radioButtonMasculino.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label3.Location = new System.Drawing.Point(73, 57);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 111;
+            this.label3.Text = "Sexo*:";
             // 
             // comboEstadoCivil
             // 
@@ -303,7 +337,7 @@
             this.buttonAlta.Name = "buttonAlta";
             this.buttonAlta.Size = new System.Drawing.Size(73, 27);
             this.buttonAlta.TabIndex = 147;
-            this.buttonAlta.Text = "Alta";
+            this.buttonAlta.Text = "Siguiente";
             this.buttonAlta.UseVisualStyleBackColor = true;
             this.buttonAlta.Click += new System.EventHandler(this.buttonAlta_Click_1);
             // 
@@ -317,40 +351,6 @@
             this.labelCliente.Size = new System.Drawing.Size(196, 26);
             this.labelCliente.TabIndex = 146;
             this.labelCliente.Text = "ALTA DE AFILIADO";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(73, 57);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 111;
-            this.label3.Text = "Sexo*:";
-            // 
-            // radioButtonMasculino
-            // 
-            this.radioButtonMasculino.AutoSize = true;
-            this.radioButtonMasculino.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.radioButtonMasculino.Location = new System.Drawing.Point(117, 57);
-            this.radioButtonMasculino.Name = "radioButtonMasculino";
-            this.radioButtonMasculino.Size = new System.Drawing.Size(73, 17);
-            this.radioButtonMasculino.TabIndex = 112;
-            this.radioButtonMasculino.TabStop = true;
-            this.radioButtonMasculino.Text = "Masculino";
-            this.radioButtonMasculino.UseVisualStyleBackColor = true;
-            // 
-            // radioButtonFemenino
-            // 
-            this.radioButtonFemenino.AutoSize = true;
-            this.radioButtonFemenino.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.radioButtonFemenino.Location = new System.Drawing.Point(213, 57);
-            this.radioButtonFemenino.Name = "radioButtonFemenino";
-            this.radioButtonFemenino.Size = new System.Drawing.Size(71, 17);
-            this.radioButtonFemenino.TabIndex = 113;
-            this.radioButtonFemenino.TabStop = true;
-            this.radioButtonFemenino.Text = "Femenino";
-            this.radioButtonFemenino.UseVisualStyleBackColor = true;
             // 
             // AltaAfiliado
             // 

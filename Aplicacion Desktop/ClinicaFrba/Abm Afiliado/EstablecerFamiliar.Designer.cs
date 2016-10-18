@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Abm_Afiliado
 {
-    partial class BajaAfiliado
+    partial class EstablecerFamiliar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.buttonVolver = new System.Windows.Forms.Button();
+            this.buttonBuscar = new System.Windows.Forms.Button();
+            this.buttonLimpiar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,53 +41,57 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
-            this.buttonLimpiar = new System.Windows.Forms.Button();
-            this.buttonBuscar = new System.Windows.Forms.Button();
-            this.buttonVolver = new System.Windows.Forms.Button();
-            this.buttonEliminar = new System.Windows.Forms.Button();
+            this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labelCliente = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridViewResultados
+            // buttonEliminar
             // 
-            this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Apellido,
-            this.Nombre,
-            this.Dni,
-            this.id_usuario});
-            this.dataGridViewResultados.Location = new System.Drawing.Point(55, 289);
-            this.dataGridViewResultados.Name = "dataGridViewResultados";
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
-            this.dataGridViewResultados.TabIndex = 0;
+            this.buttonEliminar.Location = new System.Drawing.Point(434, 437);
+            this.buttonEliminar.Name = "buttonEliminar";
+            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
+            this.buttonEliminar.TabIndex = 56;
+            this.buttonEliminar.Text = "Seleccionar";
+            this.buttonEliminar.UseVisualStyleBackColor = true;
+            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
             // 
-            // Id
+            // buttonVolver
             // 
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
+            this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
+            this.buttonVolver.Location = new System.Drawing.Point(64, 438);
+            this.buttonVolver.Name = "buttonVolver";
+            this.buttonVolver.Size = new System.Drawing.Size(75, 23);
+            this.buttonVolver.TabIndex = 55;
+            this.buttonVolver.Text = "Volver";
+            this.buttonVolver.UseVisualStyleBackColor = true;
+            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
-            // Apellido
+            // buttonBuscar
             // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
+            this.buttonBuscar.Location = new System.Drawing.Point(435, 212);
+            this.buttonBuscar.Name = "buttonBuscar";
+            this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
+            this.buttonBuscar.TabIndex = 54;
+            this.buttonBuscar.Text = "Buscar";
+            this.buttonBuscar.UseVisualStyleBackColor = true;
+            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
             // 
-            // Nombre
+            // buttonLimpiar
             // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "DNI";
-            this.Dni.Name = "Dni";
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "ID Usuario";
-            this.id_usuario.Name = "id_usuario";
+            this.buttonLimpiar.Location = new System.Drawing.Point(64, 212);
+            this.buttonLimpiar.Name = "buttonLimpiar";
+            this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.buttonLimpiar.TabIndex = 53;
+            this.buttonLimpiar.Text = "Limpiar";
+            this.buttonLimpiar.UseVisualStyleBackColor = true;
+            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
             // 
             // groupBox1
             // 
@@ -102,10 +104,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(55, 101);
+            this.groupBox1.Location = new System.Drawing.Point(64, 70);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(446, 121);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 52;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
             // 
@@ -177,63 +179,61 @@
             this.textBoxNombre.Size = new System.Drawing.Size(100, 20);
             this.textBoxNombre.TabIndex = 0;
             // 
-            // buttonLimpiar
+            // dataGridViewResultados
             // 
-            this.buttonLimpiar.Location = new System.Drawing.Point(55, 243);
-            this.buttonLimpiar.Name = "buttonLimpiar";
-            this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.buttonLimpiar.TabIndex = 2;
-            this.buttonLimpiar.Text = "Limpiar";
-            this.buttonLimpiar.UseVisualStyleBackColor = true;
-            this.buttonLimpiar.Click += new System.EventHandler(this.buttonLimpiar_Click);
+            this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Apellido,
+            this.Nombre,
+            this.Dni,
+            this.id_usuario});
+            this.dataGridViewResultados.Location = new System.Drawing.Point(64, 258);
+            this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
+            this.dataGridViewResultados.TabIndex = 51;
             // 
-            // buttonBuscar
+            // Id
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(426, 243);
-            this.buttonBuscar.Name = "buttonBuscar";
-            this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
-            this.buttonBuscar.TabIndex = 3;
-            this.buttonBuscar.Text = "Buscar";
-            this.buttonBuscar.UseVisualStyleBackColor = true;
-            this.buttonBuscar.Click += new System.EventHandler(this.buttonBuscar_Click);
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
             // 
-            // buttonVolver
+            // Apellido
             // 
-            this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(55, 469);
-            this.buttonVolver.Name = "buttonVolver";
-            this.buttonVolver.Size = new System.Drawing.Size(75, 23);
-            this.buttonVolver.TabIndex = 49;
-            this.buttonVolver.Text = "Volver";
-            this.buttonVolver.UseVisualStyleBackColor = true;
-            this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
             // 
-            // buttonEliminar
+            // Nombre
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(425, 468);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminar.TabIndex = 50;
-            this.buttonEliminar.Text = "Eliminar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "DNI";
+            this.Dni.Name = "Dni";
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "ID Usuario";
+            this.id_usuario.Name = "id_usuario";
             // 
             // labelCliente
             // 
             this.labelCliente.AutoSize = true;
             this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(168, 48);
+            this.labelCliente.Location = new System.Drawing.Point(165, 23);
             this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(198, 26);
+            this.labelCliente.Size = new System.Drawing.Size(233, 26);
             this.labelCliente.TabIndex = 147;
-            this.labelCliente.Text = "BAJA DE AFILIADO";
+            this.labelCliente.Text = "ELEGIR FAMILIAR PPAL";
             // 
-            // BajaAfiliado
+            // EstablecerFamiliar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 600);
+            this.ClientSize = new System.Drawing.Size(565, 510);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
@@ -241,11 +241,11 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
-            this.Name = "BajaAfiliado";
-            this.Text = "BajaAfiliado";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
+            this.Name = "EstablecerFamiliar";
+            this.Text = "EstablecerFamiliar";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,11 +253,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridViewResultados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
+        private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Button buttonBuscar;
+        private System.Windows.Forms.Button buttonLimpiar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxId;
         private System.Windows.Forms.Label label4;
@@ -267,10 +266,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombre;
-        private System.Windows.Forms.Button buttonLimpiar;
-        private System.Windows.Forms.Button buttonBuscar;
-        private System.Windows.Forms.Button buttonVolver;
-        private System.Windows.Forms.Button buttonEliminar;
+        private System.Windows.Forms.DataGridView dataGridViewResultados;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
         private System.Windows.Forms.Label labelCliente;
     }

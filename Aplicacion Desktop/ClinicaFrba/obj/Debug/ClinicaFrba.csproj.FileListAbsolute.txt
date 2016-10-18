@@ -35,7 +35,6 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afil
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.AltaAfiliado.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.AltaAfiliado2.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.AltaAfiliado.resources
-D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.AltaAfiliado2.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.BajaAfiliado.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.SubMenuAfiliado.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Menu.resources
@@ -44,3 +43,4 @@ C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\Cli
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.ModificacionAfiliado.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.ListadoModificar.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.EstablecerFamiliar.resources

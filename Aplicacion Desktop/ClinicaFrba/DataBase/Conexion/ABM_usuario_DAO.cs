@@ -30,9 +30,20 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
-        public void altaAfiliado(int id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac, String desc_fecha_creacion)
+        public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("exec GDD_GO.alta_afiliado @nro_familiar = "+id_nro_familiar+" ,@nombre = '"+desc_Nombre+"' ,@apellido = '"+desc_Apellido+"',@sexo = "+desc_sexo+" ,@tipo_doc = '"+tipo_doc+"' ,@dni = "+desc_Dni+" ,@mail = '"+desc_Mail+"' ,@direccion = '"+desc_Dom+"', @telefono = "+desc_Telefono+", @estado_civil = "+desc_Estado_Civil+", @fecha_nac = '"+desc_fecha_nac+"', @fecha_creacion = '"+desc_fecha_creacion+"'");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal) Values ('" +
+                                                        desc_Nombre + "','" +
+                                                        desc_Apellido + "'," +
+                                                        desc_sexo + ",'" +
+                                                        tipo_doc + "'," +
+                                                        desc_Dni + ",'" +
+                                                        desc_Mail + "','" +
+                                                        desc_Dom + "'," +
+                                                        desc_Telefono + "," +
+                                                        desc_Estado_Civil + "," +
+                                                        desc_fecha_nac + "," +
+                                                        id_nro_familiar + ")");
         }
 
         public void bajaAfiliado(int id_usuario)

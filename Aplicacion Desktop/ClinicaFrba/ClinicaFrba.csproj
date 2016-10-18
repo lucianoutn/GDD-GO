@@ -51,17 +51,17 @@
     <Compile Include="Abm Afiliado\AltaAfiliado.Designer.cs">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Afiliado\AltaAfiliado2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Abm Afiliado\AltaAfiliado2.Designer.cs">
-      <DependentUpon>AltaAfiliado2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Abm Afiliado\BajaAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Afiliado\BajaAfiliado.Designer.cs">
       <DependentUpon>BajaAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Afiliado\EstablecerFamiliar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Afiliado\EstablecerFamiliar.Designer.cs">
+      <DependentUpon>EstablecerFamiliar.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Afiliado\ListadoModificar.cs">
       <SubType>Form</SubType>
@@ -183,11 +183,11 @@
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Afiliado\AltaAfiliado2.resx">
-      <DependentUpon>AltaAfiliado2.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\BajaAfiliado.resx">
       <DependentUpon>BajaAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Afiliado\EstablecerFamiliar.resx">
+      <DependentUpon>EstablecerFamiliar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\ListadoModificar.resx">
       <DependentUpon>ListadoModificar.cs</DependentUpon>

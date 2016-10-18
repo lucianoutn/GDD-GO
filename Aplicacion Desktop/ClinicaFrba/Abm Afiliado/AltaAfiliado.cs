@@ -73,7 +73,6 @@ namespace ClinicaFrba.Abm_Afiliado
                         String desc_Dom_Calle = textCalle.Text;
                         String desc_Telefono = textTelefono.Text;
                         String desc_Fecha_Nac = fechaNacimiento.Text;
-                        String desc_fecha_creacion = textFechaCre.Text;
                         int desc_Estado_Civil = comboEstadoCivil.SelectedIndex;
                         int sexo;
 
@@ -88,7 +87,7 @@ namespace ClinicaFrba.Abm_Afiliado
                         }
                         
 
-                        AltaAfiliado2 altaAfiliado2 = new AltaAfiliado2(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, desc_fecha_creacion, this);
+                        EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, this);
                         altaAfiliado2.Show();
                             
                         this.Hide();
