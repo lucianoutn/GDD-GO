@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using ClinicaFrba.DataBase.Conexion;
 using ClinicaFrba.Abm_Afiliado;
+using ClinicaFrba.Registrar_Agenta_Medico;
 
 namespace ClinicaFrba
 {
@@ -37,6 +38,20 @@ namespace ClinicaFrba
         {
             SubMenuAfiliado subMenuAf = new SubMenuAfiliado(this);
             subMenuAf.Show();
+        }
+
+        private void buttonCalendar_Click(object sender, EventArgs e)
+        {
+            if (labelUser.Text.CompareTo("Admin") == 0)
+            {
+                VistaProff vistaAdmin = new VistaProff(this);
+                vistaAdmin.Show();
+            }
+            else
+            {
+                VistaCalendario vistaProff = new VistaCalendario(this, labelUser.Text);
+                vistaProff.Show();
+            }
         }
 
         private void leerArchivoConfig()

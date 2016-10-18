@@ -162,11 +162,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrar Agenta Medico\Form1.cs">
+    <Compile Include="Registrar Agenta Medico\AltaNuevoDia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Agenta Medico\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registrar Agenta Medico\AltaNuevoDia.Designer.cs">
+      <DependentUpon>AltaNuevoDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaCalendario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaCalendario.Designer.cs">
+      <DependentUpon>VistaCalendario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaProff.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaProff.Designer.cs">
+      <DependentUpon>VistaProff.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Llegada\Form1.cs">
       <SubType>Form</SubType>
@@ -214,6 +226,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Registrar Agenta Medico\AltaNuevoDia.resx">
+      <DependentUpon>AltaNuevoDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Agenta Medico\VistaCalendario.resx">
+      <DependentUpon>VistaCalendario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Agenta Medico\VistaProff.resx">
+      <DependentUpon>VistaProff.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="GD2C2016DataSet.xsc">
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
     </None>

@@ -5,16 +5,23 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    public partial class Form1 : Form
+    public partial class VistaCalendario : Form
     {
-        public Form1()
+        Menu unMenu;
+
+        public VistaCalendario(Menu menu, String userName)
         {
             InitializeComponent();
+
+            unMenu = menu;
+            UserName.Text = userName;
         }
+    
+    
+    
     }
 }

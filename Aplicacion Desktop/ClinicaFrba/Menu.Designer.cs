@@ -32,6 +32,7 @@
             this.labelUser = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonABMAfiliado = new System.Windows.Forms.Button();
+            this.ButtonCalendar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -78,11 +79,22 @@
             this.buttonABMAfiliado.UseVisualStyleBackColor = true;
             this.buttonABMAfiliado.Click += new System.EventHandler(this.buttonABMAfiliado_Click);
             // 
+            // ButtonCalendar
+            // 
+            this.ButtonCalendar.Location = new System.Drawing.Point(197, 142);
+            this.ButtonCalendar.Name = "ButtonCalendar";
+            this.ButtonCalendar.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCalendar.TabIndex = 4;
+            this.ButtonCalendar.Text = "Calendario";
+            this.ButtonCalendar.UseVisualStyleBackColor = true;
+            this.ButtonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.ButtonCalendar);
             this.Controls.Add(this.buttonABMAfiliado);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.labelUser);
@@ -100,5 +112,6 @@
         private System.Windows.Forms.Label labelUser;
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Button buttonABMAfiliado;
+        private System.Windows.Forms.Button ButtonCalendar;
     }
 }
