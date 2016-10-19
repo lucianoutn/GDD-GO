@@ -83,6 +83,13 @@ Create Table GDD_GO.usuario
 	,primary key (id_usuario)
 )
 
+CREATE TABLE GDD_GO.plan_medico
+(
+	 id_plan_medico int
+	,descripcion varchar(255)
+	,primary key (id_plan_medico)
+)
+
 Create Table GDD_GO.afiliado
 (	 
 	 id_afiliado int
@@ -99,9 +106,11 @@ Create Table GDD_GO.afiliado
 	,desc_fecha_creacion datetime
 	,id_familiar_principal int
 	,id_usuario int
+	,id_plan_medico int
 	,primary key (id_afiliado)
 	,foreign key (id_familiar_principal) references GDD_GO.afiliado(id_afiliado)
 	,foreign key (id_usuario)  references GDD_GO.usuario(id_usuario)
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico (id_plan_medico)
 )
 
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
@@ -136,13 +145,9 @@ CREATE TABLE GDD_GO.roles_por_usuario
 	,foreign key (id_usuario) references GDD_GO.usuario(id_usuario)
 )
 
-CREATE TABLE GDD_GO.plan_medico
-(
-	 id_plan_medico int
-	,descripcion varchar(255)
-	,primary key (id_plan_medico)
-)
 
+
+/*
 CREATE TABLE GDD_GO.planes_por_afiliado
 (
 	 id_plan_medico int
@@ -150,6 +155,7 @@ CREATE TABLE GDD_GO.planes_por_afiliado
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico
 	,foreign key (id_afiliado) references GDD_GO.afiliado
 )
+*/
 
 CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 (
@@ -157,10 +163,10 @@ CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 	,desc_fecha_modificacion DATETIME
 	,desc_motivo varchar(255)
 	,id_afiliado int
-	,id_plan_medico int
+	,id_plan_medico_anterior int
 	,primary key (id_historial)
 	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
-	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
+	,foreign key (id_plan_medico_anterior) references GDD_GO.plan_medico(id_plan_medico)
 )
 
 CREATE TABLE GDD_GO.tipo_bono
@@ -424,6 +430,17 @@ Join #usuarios us
 	 Medico_Dni is not null
 Go
 
+/*Planes Medicos*/
+Insert into GDD_GO.plan_medico(
+	id_plan_medico
+	,descripcion
+)
+Select	distinct m.Plan_Med_Codigo,
+		m.Plan_Med_Descripcion
+From gd_esquema.Maestra m
+
+Go
+
 /*AFILIADO*/
 Insert into GDD_GO.afiliado(  id_afiliado
 							 ,desc_nombre
@@ -437,7 +454,8 @@ Insert into GDD_GO.afiliado(  id_afiliado
 							 ,desc_estado_civil
 							 ,desc_fecha_creacion
 							 ,desc_fecha_nac
-							 ,id_usuario		)
+							 ,id_usuario		
+							 ,id_plan_medico)
 Select	 Distinct      
 		 id*100+1
 		,ma.Paciente_Nombre
@@ -452,6 +470,7 @@ Select	 Distinct
 		,GETDATE()
 		,ma.Paciente_Fecha_Nac
 		,us.id
+		,ma.Plan_Med_Codigo
 From gd_esquema.Maestra ma
 Join #usuarios us
 	 on us.id_entidad = ma.Paciente_Dni And
@@ -523,16 +542,7 @@ join GDD_GO.profesional pr
 Where Turno_Numero is not null And Consulta_Sintomas is not null
 
 Go
-/*Planes Medicos*/
-Insert into GDD_GO.plan_medico(
-	id_plan_medico
-	,descripcion
-)
-Select	distinct m.Plan_Med_Codigo,
-		m.Plan_Med_Descripcion
-From gd_esquema.Maestra m
 
-Go
 /*Tipo_Bono*/
 Insert into GDD_GO.tipo_bono(
 	id_plan_medico
@@ -548,17 +558,8 @@ join gd_esquema.Maestra m	on m.Plan_Med_Codigo = p.id_plan_medico
 where m.Bono_Consulta_Numero is not null
 
 Go
-/*Planes x Afiliados*/
-Insert into GDD_GO.planes_por_afiliado(
-	id_plan_medico,
-	id_afiliado
-)
-Select	m.Plan_Med_Codigo, a.id_afiliado
-From gd_esquema.Maestra m
-join GDD_GO.afiliado a
-	On  a.desc_dni = m.Paciente_Dni
 
-Go
+
 /*Bonos*/
 Insert into GDD_GO.bono(
 	id_bono,
@@ -627,8 +628,9 @@ Begin
 	Declare @fecha_nac datetime
 	Declare @id_familiar_ppal int
 	Declare @id_usuario int
+	Declare @id_plan_medico int
 
-	Select @nombre = desc_nombre, @apellido = desc_apellido, @sexo = desc_sexo, @tipo_doc = desc_tipo_doc, @dni=desc_dni, @mail=desc_mail, @direccion = desc_direccion, @telefono=desc_telefono, @estado_civil = desc_estado_civil, @fecha_nac = desc_fecha_nac, @id_familiar_ppal=id_familiar_principal, @id_usuario = id_usuario
+	Select @nombre = desc_nombre, @apellido = desc_apellido, @sexo = desc_sexo, @tipo_doc = desc_tipo_doc, @dni=desc_dni, @mail=desc_mail, @direccion = desc_direccion, @telefono=desc_telefono, @estado_civil = desc_estado_civil, @fecha_nac = desc_fecha_nac, @id_familiar_ppal=id_familiar_principal, @id_usuario = id_usuario, @id_plan_medico = id_plan_medico
 	From inserted;
 	
 	If (@id_familiar_ppal is null)
@@ -653,7 +655,8 @@ Begin
 									 ,desc_fecha_nac
 									 ,desc_fecha_creacion	
 									 ,id_familiar_principal
-									 ,id_usuario		)
+									 ,id_usuario
+									 ,id_plan_medico	)
 		Values (    @id_afiliado
 				   ,@nombre
 				   ,@apellido
@@ -667,7 +670,8 @@ Begin
 				   ,@fecha_nac
 				   ,GETDATE()	
 				   ,@id_familiar_ppal
-				   ,@id_usuario			)
+				   ,@id_usuario	
+				   ,@id_plan_medico 		)
 
 
 End
