@@ -333,7 +333,7 @@ else
 	Begin
 		if not exists (Select 'existe' from GDD_GO.usuario us
 					   where us.id_usuario = @usuario and 
-							 us.desc_password = HASHBYTES('SHA2_256', @pass)	)
+							 us.desc_password = HASHBYTES('SHA1', @pass)	)--cambiar a sha2_256 para la entrega
 		Begin
 			Select 'incorrecto' as mensaje
 		End
@@ -358,7 +358,7 @@ Insert Into #usuarios 	(	 username
 							,id_entidad	)
 Select	 Distinct
 		 SUBSTRING(Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1)
-		,HASHBYTES('sha2_256',SUBSTRING(Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))
+		,HASHBYTES('sha1',SUBSTRING(Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra
@@ -370,7 +370,7 @@ Insert Into #usuarios 	(	 username
 							,id_entidad	)
 Select	 Distinct
 		 SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)
-		,HASHBYTES('sha2_256',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))
+		,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
 From gd_esquema.Maestra
@@ -605,8 +605,9 @@ Insert into GDD_GO.usuario	(	 desc_username
 				
 								,desc_password
 								,desc_estado	)
-Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1)
+Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1)--cambiar a sha2_256 para la entrega
 Go
+--
 
 Create Trigger GDD_GO.insertar_afiliado
 On GDD_GO.afiliado
