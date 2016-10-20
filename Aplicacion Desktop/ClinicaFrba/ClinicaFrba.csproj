@@ -118,11 +118,13 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="DataBase\Conexion\ABM_usuario_DAO.cs" />
+    <Compile Include="DataBase\Conexion\Profesionales_DAO.cs" />
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />
     <Compile Include="DataBase\Conexion\GDAA_DAO.cs" />
     <Compile Include="DataBase\Conexion\LoginDAO.cs" />
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />
+    <Compile Include="DataBase\Entidades\Class1.cs" />
     <Compile Include="DataBase\Entidades\Cliente.cs" />
     <Compile Include="DataBase\Entidades\Empresa.cs" />
     <Compile Include="DataBase\Entidades\User.cs" />

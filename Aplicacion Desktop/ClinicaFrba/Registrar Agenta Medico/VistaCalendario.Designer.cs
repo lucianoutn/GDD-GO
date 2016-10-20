@@ -28,50 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.UserName = new System.Windows.Forms.Label();
             this.comboBoxEsp = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
-            // 
-            // UserName
-            // 
-            this.UserName.AutoSize = true;
-            this.UserName.Location = new System.Drawing.Point(13, 9);
-            this.UserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.UserName.Name = "UserName";
-            this.UserName.Size = new System.Drawing.Size(65, 19);
-            this.UserName.TabIndex = 0;
-            this.UserName.Text = "Usuario";
             // 
             // comboBoxEsp
             // 
             this.comboBoxEsp.FormattingEnabled = true;
-            this.comboBoxEsp.Location = new System.Drawing.Point(136, 34);
+            this.comboBoxEsp.Location = new System.Drawing.Point(216, 34);
             this.comboBoxEsp.Name = "comboBoxEsp";
-            this.comboBoxEsp.Size = new System.Drawing.Size(252, 27);
+            this.comboBoxEsp.Size = new System.Drawing.Size(186, 27);
             this.comboBoxEsp.TabIndex = 1;
             this.comboBoxEsp.Text = "Especialidades";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 34);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(171, 27);
+            this.comboBox1.TabIndex = 2;
+            this.comboBox1.Text = "Profesionales";
             // 
             // VistaCalendario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(426, 381);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.comboBoxEsp);
-            this.Controls.Add(this.UserName);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "VistaCalendario";
             this.Text = "VistaCalendario";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label UserName;
         private System.Windows.Forms.ComboBox comboBoxEsp;
+        private System.Windows.Forms.ComboBox comboBox1;
 
     }
 }
