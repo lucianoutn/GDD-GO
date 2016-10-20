@@ -59,5 +59,19 @@ namespace ClinicaFrba.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap medicos {
+            get {
+                object obj = ResourceManager.GetObject("medicos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap utnBA {
+            get {
+                object obj = ResourceManager.GetObject("utnBA", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

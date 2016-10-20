@@ -105,6 +105,12 @@
     <Compile Include="AbmRol\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Botonazo\SubMenuBotonazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Botonazo\SubMenuBotonazo.Designer.cs">
+      <DependentUpon>SubMenuBotonazo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Atencion\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,7 @@
     <EmbeddedResource Include="Registrar Agenta Medico\VistaProff.resx">
       <DependentUpon>VistaProff.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
     </None>
@@ -261,7 +268,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\utnBA.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\medicos.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

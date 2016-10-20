@@ -10,6 +10,7 @@ using System.IO;
 using ClinicaFrba.DataBase.Conexion;
 using ClinicaFrba.Abm_Afiliado;
 using ClinicaFrba.Registrar_Agenta_Medico;
+using ClinicaFrba.Botonazo;
 
 namespace ClinicaFrba
 {
@@ -38,6 +39,12 @@ namespace ClinicaFrba
         {
             SubMenuAfiliado subMenuAf = new SubMenuAfiliado(this);
             subMenuAf.Show();
+        }
+
+        private void buttonBotonazo_Click(object sender, EventArgs e)
+        {
+            SubMenuBotonazo subMenu = new SubMenuBotonazo(this);
+            subMenu.Show();
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
@@ -81,6 +88,11 @@ namespace ClinicaFrba
             {
                 MessageBox.Show(ex.Message, "Error al leer el archivo de configuracion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
