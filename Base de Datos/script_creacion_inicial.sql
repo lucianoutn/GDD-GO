@@ -45,9 +45,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_bono')
 	DROP TABLE GDD_GO.tipo_bono
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_medico')
-	DROP TABLE GDD_GO.plan_medico
-
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
 	DROP TABLE GDD_GO.rol
 
@@ -68,6 +65,9 @@ If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = '
 
 If exists (Select 'existe' from INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA = 'GDD_GO' AND  TABLE_NAME = 'usuario')
 	Drop table GDD_GO.usuario
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'plan_medico')
+	DROP TABLE GDD_GO.plan_medico
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
 
@@ -81,6 +81,7 @@ Create Table GDD_GO.usuario
 	,desc_estado int
 	,desc_fecha_inhabilitado datetime
 	,primary key (id_usuario)
+--	,unique (desc_username)
 )
 
 CREATE TABLE GDD_GO.plan_medico
@@ -363,19 +364,19 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		 SUBSTRING(Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1)
-		,HASHBYTES('sha1',SUBSTRING(Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
+		CONCAT(SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1),'_',YEAR(m.Paciente_Fecha_Nac))
+		,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
-From gd_esquema.Maestra
-Where Paciente_Dni is not null
+From gd_esquema.Maestra m
+Where m.Paciente_Dni is not null
 
 Insert Into #usuarios 	(	 username
 							,password
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		 SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)
+		CONCAT(SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1),'_',YEAR(Medico_Fecha_Nac))
 		,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
@@ -676,4 +677,3 @@ Begin
 
 End
 Go
-
