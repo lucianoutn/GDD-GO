@@ -8,7 +8,6 @@ Go
 
 /*----------------------------	BORRADO DE TABLAS	-------------------------*/
 
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funciones_por_rol')
 	DROP TABLE GDD_GO.funciones_por_rol
 
@@ -114,7 +113,6 @@ Create Table GDD_GO.afiliado
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico (id_plan_medico)
 )
 
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
 CREATE TABLE GDD_GO.funcion
 (
 	 id_funcion int identity(1,1)

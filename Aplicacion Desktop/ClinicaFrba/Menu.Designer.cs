@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.labelFecha = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonABMAfiliado = new System.Windows.Forms.Button();
             this.ButtonCalendar = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -63,9 +64,9 @@
             // 
             this.buttonSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalir.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonSalir.Location = new System.Drawing.Point(197, 226);
+            this.buttonSalir.Location = new System.Drawing.Point(269, 313);
             this.buttonSalir.Name = "buttonSalir";
-            this.buttonSalir.Size = new System.Drawing.Size(75, 23);
+            this.buttonSalir.Size = new System.Drawing.Size(75, 36);
             this.buttonSalir.TabIndex = 2;
             this.buttonSalir.Text = "Salir";
             this.buttonSalir.UseVisualStyleBackColor = true;
@@ -73,9 +74,9 @@
             // 
             // buttonABMAfiliado
             // 
-            this.buttonABMAfiliado.Location = new System.Drawing.Point(197, 180);
+            this.buttonABMAfiliado.Location = new System.Drawing.Point(12, 45);
             this.buttonABMAfiliado.Name = "buttonABMAfiliado";
-            this.buttonABMAfiliado.Size = new System.Drawing.Size(75, 23);
+            this.buttonABMAfiliado.Size = new System.Drawing.Size(163, 36);
             this.buttonABMAfiliado.TabIndex = 3;
             this.buttonABMAfiliado.Text = "ABM Afiliado";
             this.buttonABMAfiliado.UseVisualStyleBackColor = true;
@@ -83,9 +84,9 @@
             // 
             // ButtonCalendar
             // 
-            this.ButtonCalendar.Location = new System.Drawing.Point(197, 151);
+            this.ButtonCalendar.Location = new System.Drawing.Point(12, 87);
             this.ButtonCalendar.Name = "ButtonCalendar";
-            this.ButtonCalendar.Size = new System.Drawing.Size(75, 23);
+            this.ButtonCalendar.Size = new System.Drawing.Size(163, 36);
             this.ButtonCalendar.TabIndex = 4;
             this.ButtonCalendar.Text = "Calendario";
             this.ButtonCalendar.UseVisualStyleBackColor = true;
@@ -93,34 +94,47 @@
             // 
             // button1
             // 
-            this.button1.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.button1.Location = new System.Drawing.Point(197, 32);
+            this.button1.Location = new System.Drawing.Point(12, 171);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.Size = new System.Drawing.Size(163, 36);
             this.button1.TabIndex = 5;
-            this.button1.Text = "BOTONAZO";
+            this.button1.Text = "Registrar Resultado de\r\nAtención Médica\r\n\r\n";
             this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(12, 213);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(163, 36);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "Cancelar Atención Médica";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(12, 255);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(163, 36);
+            this.button3.TabIndex = 7;
+            this.button3.Text = "Listado Estadístico";
+            this.button3.UseVisualStyleBackColor = true;
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.utnBA;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.ClientSize = new System.Drawing.Size(356, 361);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ButtonCalendar);
             this.Controls.Add(this.buttonABMAfiliado);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.labelFecha);
-            this.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,5 +148,7 @@
         private System.Windows.Forms.Button buttonABMAfiliado;
         private System.Windows.Forms.Button ButtonCalendar;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

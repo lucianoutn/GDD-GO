@@ -111,11 +111,11 @@
     <Compile Include="Botonazo\SubMenuBotonazo.Designer.cs">
       <DependentUpon>SubMenuBotonazo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.cs">
+    <Compile Include="Cancelar Atencion\CancelacionPorAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Atencion\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Cancelar Atencion\CancelacionPorMedico.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Compra Bono\Form1.cs">
       <SubType>Form</SubType>
@@ -144,12 +144,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Listados\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Listados\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,7 +153,7 @@
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Menu.Designer.cs">
+    <Compile Include="Menu.designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
     <Compile Include="Pedir Turno\Form1.cs">
@@ -194,11 +188,11 @@
     <Compile Include="Registro Llegada\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\Form1.cs">
+    <Compile Include="Registro Resultado\resultadoAtencion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro Resultado\resultadoAtencion.designer.cs">
+      <DependentUpon>resultadoAtencion.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
@@ -243,6 +237,9 @@
     <EmbeddedResource Include="Registrar Agenta Medico\VistaProff.resx">
       <DependentUpon>VistaProff.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\resultadoAtencion.resx">
+      <DependentUpon>resultadoAtencion.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
@@ -273,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\medicos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Listados\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
