@@ -351,8 +351,9 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		(SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + YEAR(m.Paciente_Fecha_Nac))
-		,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
+		SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + CONVERT(varchar(4),YEAR(m.Paciente_Fecha_Nac))
+		--,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra m
@@ -363,8 +364,9 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		(SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1) + '_' + YEAR(Medico_Fecha_Nac))
-		,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
+		SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)+ '_' + CONVERT(varchar(4),YEAR(Medico_Fecha_Nac))
+		--,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
 From gd_esquema.Maestra
