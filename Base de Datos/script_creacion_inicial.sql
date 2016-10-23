@@ -14,9 +14,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'roles_por_usuario')
 	DROP TABLE GDD_GO.roles_por_usuario
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'planes_por_afiliado')
-	DROP TABLE GDD_GO.planes_por_afiliado
-
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'consulta')
 	DROP TABLE GDD_GO.consulta
 
@@ -122,9 +119,9 @@ CREATE TABLE GDD_GO.funcion
 
 CREATE TABLE GDD_GO.rol
 (
-	 id_rol int
-	,desc_rol nvarchar(50)
-	,desc_estado_rol bit
+	 id_rol int identity(1,1)
+	,desc_nombre_rol nvarchar(50) unique not null
+	,desc_estado_rol bit default 1
 	,primary key (id_rol)
 )
 
@@ -593,6 +590,8 @@ join GDD_GO.horario h				ON h.id_turno = t.id_turno
 where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
 
+/*----------------------------	FIN DE MIGRACION DE DATOS	-------------------------*/
+
 --Genero usuario de sistema por script
 Insert into GDD_GO.usuario	(	 desc_username
 				
@@ -600,8 +599,22 @@ Insert into GDD_GO.usuario	(	 desc_username
 								,desc_estado	)
 Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1)--cambiar a sha2_256 para la entrega
 Go
---
 
+--Inserto Roles existentes
+Insert into GDD_GO.rol (	desc_nombre_rol)
+Values ('Administrador')
+Go
+
+Insert into GDD_GO.rol (	desc_nombre_rol)
+Values ('Afiliado')
+Go
+
+Insert into GDD_GO.rol (	desc_nombre_rol)
+Values ('Profesional')
+Go
+							
+
+--
 Create Trigger GDD_GO.insertar_afiliado
 On GDD_GO.afiliado
 Instead of Insert
