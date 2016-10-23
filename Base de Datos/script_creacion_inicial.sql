@@ -101,7 +101,7 @@ Create Table GDD_GO.afiliado
 	,desc_direccion varchar(255)
 	,desc_telefono numeric(18,0)
 	,desc_fecha_nac datetime
-	,desc_sexo bit
+	,desc_sexo varchar(50)
 	,desc_estado_civil int
 	,desc_fecha_creacion datetime
 	,id_familiar_principal int
@@ -124,7 +124,7 @@ CREATE TABLE GDD_GO.rol
 (
 	 id_rol int
 	,desc_rol nvarchar(50)
-	,desc_estado_rol nvarchar(2)
+	,desc_estado_rol bit
 	,primary key (id_rol)
 )
 
@@ -144,17 +144,6 @@ CREATE TABLE GDD_GO.roles_por_usuario
 	,foreign key (id_usuario) references GDD_GO.usuario(id_usuario)
 )
 
-
-
-/*
-CREATE TABLE GDD_GO.planes_por_afiliado
-(
-	 id_plan_medico int
-	,id_afiliado int
-	,foreign key (id_plan_medico) references GDD_GO.plan_medico
-	,foreign key (id_afiliado) references GDD_GO.afiliado
-)
-*/
 
 CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 (
@@ -203,7 +192,7 @@ CREATE TABLE GDD_GO.profesional
 	,desc_mail varchar(255)
 	,desc_fecha_creacion DATETIME
 	,desc_fecha_nac DATETIME
-	,desc_sexo BIT
+	,desc_sexo varchar(50)
 	,desc_matricula varchar(255)
 	,id_usuario int
 	,primary key (id_profesional)
@@ -362,8 +351,8 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		CONCAT(SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',Paciente_Mail)-1),'_',YEAR(m.Paciente_Fecha_Nac))
-		,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
+		(SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + YEAR(m.Paciente_Fecha_Nac))
+		,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra m
@@ -374,7 +363,7 @@ Insert Into #usuarios 	(	 username
 							,entidad
 							,id_entidad	)
 Select	 Distinct
-		CONCAT(SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1),'_',YEAR(Medico_Fecha_Nac))
+		(SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1) + '_' + YEAR(Medico_Fecha_Nac))
 		,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
@@ -407,6 +396,7 @@ Go
 Insert into GDD_GO.profesional	(	 id_usuario
 									,desc_apellido
 									,desc_nombre
+									,desc_sexo
 									,desc_tipo_doc
 									,desc_dni
 									,desc_direccion
@@ -417,6 +407,7 @@ Select Distinct
 	   us.id
 	  ,ma.Medico_Apellido
 	  ,ma.Medico_Nombre
+	  ,'consultar'
 	  ,'DNI'
 	  ,ma.Medico_Dni
 	  ,ma.Medico_Direccion
@@ -459,7 +450,7 @@ Select	 Distinct
 		 id*100+1
 		,ma.Paciente_Nombre
 		,ma.Paciente_Apellido
-		,1
+		,'consultar'
 		,'DNI'
 		,ma.Paciente_Dni
 		,ma.Paciente_Mail
@@ -617,7 +608,7 @@ Begin
 	Declare @id_afiliado int
 	Declare @nombre varchar(255)
 	Declare @apellido varchar(255)
-	Declare @sexo bit
+	Declare @sexo varchar(50)
 	Declare @tipo_doc nvarchar(5)
 	Declare @dni numeric(18,0)
 	Declare @mail varchar(255)

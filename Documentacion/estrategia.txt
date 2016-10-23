@@ -1,3 +1,14 @@
 cosas que vamos a tener q ir documentando:
 
-- 
+
+- criterio para asignar usuarios y pass a afiliados y profesionales?
+- criterio para designar el sexo segun el nuevo modelo de datos
+- hacemos las validaciones de registros repetidos desde la base de datos o desde la app?
+-
+-
+-
+
+
+
+- ANTES DE LA ENTREGA: subir el target a .net 4.5 y cambiar algoritmo de encriptacion a SHA256
+
