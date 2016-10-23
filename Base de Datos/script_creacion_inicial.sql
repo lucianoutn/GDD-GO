@@ -16,9 +16,9 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'consulta')
 	DROP TABLE GDD_GO.consulta
-
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono')
-	DROP TABLE GDD_GO.bono
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'bono_comprado')
+	DROP TABLE GDD_GO.bono_comprado
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
 	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
@@ -84,6 +84,8 @@ CREATE TABLE GDD_GO.plan_medico
 (
 	 id_plan_medico int
 	,descripcion varchar(255)
+	,bono_precio_consulta numeric(18,0)
+	,bono_precio_farmacia numeric(18,0)
 	,primary key (id_plan_medico)
 )
 
@@ -141,7 +143,6 @@ CREATE TABLE GDD_GO.roles_por_usuario
 	,foreign key (id_usuario) references GDD_GO.usuario(id_usuario)
 )
 
-
 CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 (
 	 id_historial int identity(1,1)
@@ -158,23 +159,20 @@ CREATE TABLE GDD_GO.tipo_bono
 (
 	 id_tipo_bono int identity(1,1)
 	,id_plan_medico int
-	,desc_precio_bono_consulta numeric(18,0)
-	,desc_precio_bono_farmacia numeric(18,0)
 	,primary key (id_tipo_bono)
-	,foreign key (id_plan_medico) references GDD_GO.plan_medico
+	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
 )
 
-CREATE TABLE GDD_GO.bono
+CREATE TABLE GDD_GO.bono_comprado
 (
-	 id_bono int
+	  id_bono_comprado int
 	 ,id_tipo_bono int
 	 ,id_afiliado int
-	 ,desc_cantidad int
-	 ,fecha_compra DATETIME
-	 ,fecha_impresion DATETIME
-	 ,primary key (id_bono)
-	 ,foreign key (id_tipo_bono) references GDD_GO.tipo_bono
-	 ,foreign key (id_afiliado) references GDD_GO.afiliado
+	 ,desc_fecha_compra DATETIME
+	 ,desc_fecha_impresion DATETIME
+	 ,primary key (id_bono_comprado)
+	 ,foreign key (id_tipo_bono) references GDD_GO.tipo_bono(id_tipo_bono)
+	 ,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
 )
 
 CREATE TABLE GDD_GO.profesional
@@ -265,9 +263,10 @@ CREATE TABLE GDD_GO.consulta
 	,desc_hora_llegada DATETIME
 	,desc_hora_consulta DATETIME
 	,primary key (id_consulta)
-	,foreign key (id_turno) references GDD_GO.turno
-	,foreign key (id_bono) references GDD_GO.bono
+	,foreign key (id_turno) references GDD_GO.turno(id_turno)
+	,foreign key (id_bono) references GDD_GO.bono_comprado(id_bono_comprado)
 )
+
 
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
@@ -535,13 +534,9 @@ Go
 /*Tipo_Bono*/
 Insert into GDD_GO.tipo_bono(
 	id_plan_medico
-	,desc_precio_bono_consulta
-	,desc_precio_bono_farmacia
 )
 Select distinct 
-	p.id_plan_medico,
-	m.Plan_Med_Precio_Bono_Consulta,
-	m.Plan_Med_Precio_Bono_Farmacia
+	p.id_plan_medico
 From GDD_GO.plan_medico p
 join gd_esquema.Maestra m	on m.Plan_Med_Codigo = p.id_plan_medico
 where m.Bono_Consulta_Numero is not null
@@ -550,25 +545,9 @@ Go
 
 
 /*Bonos*/
-Insert into GDD_GO.bono(
-	id_bono,
-	id_afiliado,
-	id_tipo_bono,
-	desc_cantidad,
-	fecha_compra,
-	fecha_impresion
-)
-Select	m.Bono_Consulta_Numero, a.id_afiliado,t.id_tipo_bono,1,m.Compra_Bono_Fecha,m.Bono_Consulta_Fecha_Impresion
-From gd_esquema.Maestra m 
-join GDD_GO.afiliado a
-	On  a.desc_dni = m.Paciente_Dni
-join GDD_GO.tipo_bono t
-	On	t.id_plan_medico = m.Plan_Med_Codigo
-Where	m.Bono_Consulta_Numero is not NULL 
-and		m.Compra_Bono_Fecha is not NULL 
 
-Go
 /*Consultas*/
+/*
 Insert into GDD_GO.consulta(
 	desc_sintomas
 	,desc_enfermedades
@@ -589,7 +568,7 @@ join GDD_GO.turno t					ON a.id_afiliado = t.id_afiliado and t.id_turno = m.Turn
 join GDD_GO.horario h				ON h.id_turno = t.id_turno
 where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
-
+*/
 /*----------------------------	FIN DE MIGRACION DE DATOS	-------------------------*/
 
 --Genero usuario de sistema por script
