@@ -157,7 +157,7 @@ CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 
 CREATE TABLE GDD_GO.tipo_bono
 (
-	 id_tipo_bono int identity(1,1)
+	 id_tipo_bono numeric(18,0)
 	,id_plan_medico int
 	,primary key (id_tipo_bono)
 	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
@@ -166,7 +166,7 @@ CREATE TABLE GDD_GO.tipo_bono
 CREATE TABLE GDD_GO.bono_comprado
 (
 	  id_bono_comprado int
-	 ,id_tipo_bono int
+	 ,id_tipo_bono numeric(18,0)
 	 ,id_afiliado int
 	 ,desc_fecha_compra DATETIME
 	 ,desc_fecha_impresion DATETIME
@@ -532,17 +532,17 @@ Where Turno_Numero is not null And Consulta_Sintomas is not null
 Go
 
 /*Tipo_Bono*/
-Insert into GDD_GO.tipo_bono(
-	id_plan_medico
+Insert into GDD_GO.tipo_bono(	id_tipo_bono
+							   ,id_plan_medico
 )
 Select distinct 
-	p.id_plan_medico
+				m.Bono_Consulta_Numero
+			   ,p.id_plan_medico
 From GDD_GO.plan_medico p
 join gd_esquema.Maestra m	on m.Plan_Med_Codigo = p.id_plan_medico
-where m.Bono_Consulta_Numero is not null
+where m.Bono_Consulta_Numero is not null and m.Bono_Consulta_Fecha_Impresion is not null
 
 Go
-
 
 /*Bonos*/
 
