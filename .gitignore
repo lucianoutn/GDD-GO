@@ -3,6 +3,7 @@
 
 # User-specific files
 *.suo
+*.v11.suo
 *.user
 *.userosscache
 *.sln.docstates
@@ -11,6 +12,8 @@
 *.userprefs
 
 # Build results
+Aplicacion Desktop/ClinicaFrba/bin/Debug/
+Aplicacion Desktop/ClinicaFrba/obj/Debug/
 [Dd]ebug/
 [Dd]ebugPublic/
 [Rr]elease/
