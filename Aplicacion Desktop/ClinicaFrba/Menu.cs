@@ -47,11 +47,11 @@ namespace ClinicaFrba
                 VistaProff vistaAdmin = new VistaProff(this);
                 vistaAdmin.Show();
             }
-            else
+            /**else
             {
-                VistaCalendario vistaProff = new VistaCalendario(this, labelUser.Text);
+               VistaCalendario vistaProff = new VistaCalendario(this, labelUser.Text);
                 vistaProff.Show();
-            }
+            }**/
         }
 
         private void leerArchivoConfig()

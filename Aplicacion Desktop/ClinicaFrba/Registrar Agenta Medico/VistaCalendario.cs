@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
@@ -23,7 +24,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         }
 
         private void iniciarComboBoxes(String profesional, String especialidad)
-        {
+        {/**
             if (profesional == Nullable)
             {
                 foreach(Profesional i in ProfesionalesDAO.getProfesionales())
@@ -37,7 +38,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
                 {
                     comboBoxEsp.Items.Add(j.getName());
                 }
-            }
+            }**/
         }
 
 

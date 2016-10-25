@@ -13,11 +13,11 @@ namespace ClinicaFrba.DataBase.Conexion
              this.iniciar();    
         }
 
-        public Profesional getProfesionales()
+       /** public getProfesionales()
         {
-                
-        }
+        
+        }**/
 
-
+       
     }
 }
