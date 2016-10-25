@@ -11,6 +11,10 @@ using ClinicaFrba.DataBase.Conexion;
 using ClinicaFrba.Abm_Afiliado;
 using ClinicaFrba.Registrar_Agenta_Medico;
 using ClinicaFrba.AbmRol;
+using ClinicaFrba.Registro_Resultado;
+using ClinicaFrba.Cancelar_Atencion;
+using ClinicaFrba.Listados;
+
 
 namespace ClinicaFrba
 {
@@ -41,11 +45,32 @@ namespace ClinicaFrba
             subMenuAf.Show();
         }
 
+
         private void buttonABMRol_Click(object sender, EventArgs e)
         {
             SubMenuRol subMenuRol = new SubMenuRol();
             subMenuRol.Show();
         }
+
+
+        private void button_RegResultAtenMedica_Click_1(object sender, EventArgs e)
+        {
+            ResultadoAtencion menuAtenMedica = new ResultadoAtencion(this);
+            menuAtenMedica.Show();
+        }
+
+        private void button_CancelarAtencion_Click(object sender, EventArgs e)
+        {
+            CancelarAtencion menuCancelarAtencion = new CancelarAtencion(this);
+            menuCancelarAtencion.Show();
+        }
+
+        private void button_ListadoEstadistico_Click(object sender, EventArgs e)
+        {
+            ListadoEstadistico menuListadoEstadistico = new ListadoEstadistico(this);
+            menuListadoEstadistico.Show();
+        }
+
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
@@ -90,8 +115,5 @@ namespace ClinicaFrba
             }
         }
 
-       
-
-       
     }
 }
