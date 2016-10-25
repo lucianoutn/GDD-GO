@@ -5,32 +5,21 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Conexion;
 
-namespace ClinicaFrba.Registro_Resultado
+namespace ClinicaFrba.Cancelar_Atencion
 {
-    public partial class ResultadoAtencion : Form
+    public partial class CancelarAtencion : Form
     {
         Menu unMenu;
         ABM_usuario_DAO abm_usuario;
 
-        public ResultadoAtencion(Menu menu)
+        public CancelarAtencion(Menu menu)
         {
             abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();
             unMenu = menu;
         }
-
-        private void button_Volver_Click(object sender, EventArgs e)
-        {
-            unMenu.Show();
-            this.Close();
-        }
-
-
-
-       
     }
 }

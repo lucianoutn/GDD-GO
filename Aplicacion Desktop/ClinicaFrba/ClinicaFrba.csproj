@@ -117,6 +117,12 @@
     <Compile Include="Cancelar Atencion\CancelacionPorMedico.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelarAtencion.Designer.cs">
+      <DependentUpon>CancelarAtencion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra Bono\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\ListadoEstadistico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\ListadoEstadistico.Designer.cs">
+      <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -188,11 +200,11 @@
     <Compile Include="Registro Llegada\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\resultadoAtencion.cs">
+    <Compile Include="Registro Resultado\ResultadoAtencion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\resultadoAtencion.designer.cs">
-      <DependentUpon>resultadoAtencion.cs</DependentUpon>
+    <Compile Include="Registro Resultado\ResultadoAtencion.designer.cs">
+      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
@@ -237,8 +249,8 @@
     <EmbeddedResource Include="Registrar Agenta Medico\VistaProff.resx">
       <DependentUpon>VistaProff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\resultadoAtencion.resx">
-      <DependentUpon>resultadoAtencion.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\ResultadoAtencion.resx">
+      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">
@@ -271,9 +283,7 @@
   <ItemGroup>
     <None Include="Resources\medicos.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Listados\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -33,9 +33,9 @@
             this.buttonSalir = new System.Windows.Forms.Button();
             this.buttonABMAfiliado = new System.Windows.Forms.Button();
             this.ButtonCalendar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_RegResultAtenMedica = new System.Windows.Forms.Button();
+            this.button_CancelarAtencion = new System.Windows.Forms.Button();
+            this.button_ListadoEstadistico = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -92,42 +92,44 @@
             this.ButtonCalendar.UseVisualStyleBackColor = true;
             this.ButtonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
             // 
-            // button1
+            // button_RegResultAtenMedica
             // 
-            this.button1.Location = new System.Drawing.Point(12, 171);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 36);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Registrar Resultado de\r\nAtención Médica\r\n\r\n";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_RegResultAtenMedica.Location = new System.Drawing.Point(12, 171);
+            this.button_RegResultAtenMedica.Name = "button_RegResultAtenMedica";
+            this.button_RegResultAtenMedica.Size = new System.Drawing.Size(163, 36);
+            this.button_RegResultAtenMedica.TabIndex = 5;
+            this.button_RegResultAtenMedica.Text = "Registrar Resultado de\r\nAtención Médica\r\n\r\n";
+            this.button_RegResultAtenMedica.UseVisualStyleBackColor = true;
+            this.button_RegResultAtenMedica.Click += new System.EventHandler(this.button_RegResultAtenMedica_Click_1);
             // 
-            // button2
+            // button_CancelarAtencion
             // 
-            this.button2.Location = new System.Drawing.Point(12, 213);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(163, 36);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Cancelar Atención Médica";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button_CancelarAtencion.Location = new System.Drawing.Point(12, 213);
+            this.button_CancelarAtencion.Name = "button_CancelarAtencion";
+            this.button_CancelarAtencion.Size = new System.Drawing.Size(163, 36);
+            this.button_CancelarAtencion.TabIndex = 6;
+            this.button_CancelarAtencion.Text = "Cancelar Atención Médica";
+            this.button_CancelarAtencion.UseVisualStyleBackColor = true;
+            this.button_CancelarAtencion.Click += new System.EventHandler(this.button_CancelarAtencion_Click);
             // 
-            // button3
+            // button_ListadoEstadistico
             // 
-            this.button3.Location = new System.Drawing.Point(12, 255);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(163, 36);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Listado Estadístico";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_ListadoEstadistico.Location = new System.Drawing.Point(12, 255);
+            this.button_ListadoEstadistico.Name = "button_ListadoEstadistico";
+            this.button_ListadoEstadistico.Size = new System.Drawing.Size(163, 36);
+            this.button_ListadoEstadistico.TabIndex = 7;
+            this.button_ListadoEstadistico.Text = "Listado Estadístico";
+            this.button_ListadoEstadistico.UseVisualStyleBackColor = true;
+            this.button_ListadoEstadistico.Click += new System.EventHandler(this.button_ListadoEstadistico_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 361);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button_ListadoEstadistico);
+            this.Controls.Add(this.button_CancelarAtencion);
+            this.Controls.Add(this.button_RegResultAtenMedica);
             this.Controls.Add(this.ButtonCalendar);
             this.Controls.Add(this.buttonABMAfiliado);
             this.Controls.Add(this.buttonSalir);
@@ -147,8 +149,8 @@
         private System.Windows.Forms.Button buttonSalir;
         private System.Windows.Forms.Button buttonABMAfiliado;
         private System.Windows.Forms.Button ButtonCalendar;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_RegResultAtenMedica;
+        private System.Windows.Forms.Button button_CancelarAtencion;
+        private System.Windows.Forms.Button button_ListadoEstadistico;
     }
 }
