@@ -165,9 +165,10 @@ CREATE TABLE GDD_GO.tipo_bono
 
 CREATE TABLE GDD_GO.bono_comprado
 (
-	  id_bono_comprado int
+	  id_bono_comprado int identity(1,1)
 	 ,id_tipo_bono numeric(18,0)
 	 ,id_afiliado int
+	 ,desc_estado bit
 	 ,desc_fecha_compra DATETIME
 	 ,desc_fecha_impresion DATETIME
 	 ,primary key (id_bono_comprado)
@@ -544,12 +545,28 @@ where m.Bono_Consulta_Numero is not null and m.Bono_Consulta_Fecha_Impresion is 
 
 Go
 
-/*Bonos*/
+/*Bonos Comprado*/
+Insert into GDD_GO.bono_comprado(	id_tipo_bono
+								   ,id_afiliado
+								   ,desc_fecha_compra
+								   ,desc_fecha_impresion
+								   ,desc_estado			)
+Select distinct
+	   m.Bono_Consulta_Numero
+	  ,a.id_afiliado
+	  ,m.Compra_Bono_Fecha
+	  ,m.Bono_Consulta_Fecha_Impresion
+	  ,1
+From gd_esquema.Maestra m
+Join GDD_GO.afiliado a
+	 On a.desc_dni = m.Paciente_Dni
+Join GDD_GO.tipo_bono tb
+	 On tb.id_tipo_bono = m.Bono_Consulta_Numero
+Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Fecha_Impresion Is not null
 
 /*Consultas*/
-/*
 Insert into GDD_GO.consulta(
-	desc_sintomas
+	 desc_sintomas
 	,desc_enfermedades
 	,desc_hora_llegada
 	,desc_hora_consulta	
@@ -561,14 +578,17 @@ select	m.Consulta_Sintomas,
 		h.desc_hora_desde,
 		h.desc_hora_desde,
 		t.id_turno,
-		m.Bono_Consulta_Numero
+		bc.id_bono_comprado
 from gd_esquema.Maestra m
 join GDD_GO.afiliado a				ON a.desc_dni = m.Paciente_Dni
 join GDD_GO.turno t					ON a.id_afiliado = t.id_afiliado and t.id_turno = m.Turno_Numero
 join GDD_GO.horario h				ON h.id_turno = t.id_turno
+join GDD_GO.bono_comprado bc		on bc.id_tipo_bono = m.Bono_Consulta_Numero
 where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
-*/
+and		m.Compra_Bono_Fecha is null
+
+
 /*----------------------------	FIN DE MIGRACION DE DATOS	-------------------------*/
 
 --Genero usuario de sistema por script
