@@ -14,11 +14,12 @@ namespace ClinicaFrba.AbmRol
     {
         
         SubMenuRol menuAnterior;
+        ABMRoles_DAO DAO;
 
         public ListarRol(SubMenuRol menu)
         {
             InitializeComponent();
-
+            this.DAO = new ABMRoles_DAO();
             this.menuAnterior = menu;
         }
 
@@ -28,6 +29,15 @@ namespace ClinicaFrba.AbmRol
             this.Close();
         }
 
+        private void listView1_ObtenerRoles(object sender, EventArgs e)
+        {
+            //obtenerRoles.ImageList= DAO.obtenerRoles();
+            //this.Show();
+            //obtenerRoles.Items.
+               List <String> roles = DAO.obtenerRoles();
+               roles.ForEach(delegate(string s) { listView1.Items.Add(s); });
+        }
+        
         
     }
 }
