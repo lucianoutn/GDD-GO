@@ -551,7 +551,7 @@ Insert into GDD_GO.bono_comprado(	id_tipo_bono
 								   ,desc_fecha_compra
 								   ,desc_fecha_impresion
 								   ,desc_estado			)
-Select distinct
+Select
 	   m.Bono_Consulta_Numero
 	  ,a.id_afiliado
 	  ,m.Compra_Bono_Fecha
@@ -560,8 +560,6 @@ Select distinct
 From gd_esquema.Maestra m
 Join GDD_GO.afiliado a
 	 On a.desc_dni = m.Paciente_Dni
-Join GDD_GO.tipo_bono tb
-	 On tb.id_tipo_bono = m.Bono_Consulta_Numero
 Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Fecha_Impresion Is not null
 
 /*Consultas*/
