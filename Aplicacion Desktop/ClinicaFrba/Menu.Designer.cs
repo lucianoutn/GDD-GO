@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Menu));
             this.labelFecha = new System.Windows.Forms.Label();
             this.labelUser = new System.Windows.Forms.Label();
             this.buttonSalir = new System.Windows.Forms.Button();
@@ -36,6 +37,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.buttonABMRol = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -54,7 +56,7 @@
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser.ForeColor = System.Drawing.Color.Maroon;
-            this.labelUser.Location = new System.Drawing.Point(231, 13);
+            this.labelUser.Location = new System.Drawing.Point(303, 13);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(41, 16);
             this.labelUser.TabIndex = 1;
@@ -109,7 +111,6 @@
             this.button2.TabIndex = 6;
             this.button2.Text = "Cancelar Atención Médica";
             this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button3
             // 
@@ -120,6 +121,17 @@
             this.button3.Text = "Listado Estadístico";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // buttonABMRol
+            // 
+            this.buttonABMRol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonABMRol.Location = new System.Drawing.Point(181, 45);
+            this.buttonABMRol.Name = "buttonABMRol";
+            this.buttonABMRol.Size = new System.Drawing.Size(163, 36);
+            this.buttonABMRol.TabIndex = 8;
+            this.buttonABMRol.Text = "ABM Rol";
+            this.buttonABMRol.UseVisualStyleBackColor = true;
+            this.buttonABMRol.Click += new System.EventHandler(this.buttonABMRol_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -129,12 +141,15 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.ButtonCalendar);
+            this.Controls.Add(this.buttonABMRol);
             this.Controls.Add(this.buttonABMAfiliado);
             this.Controls.Add(this.buttonSalir);
             this.Controls.Add(this.labelUser);
             this.Controls.Add(this.labelFecha);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Menu";
-            this.Text = "Menu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Menu Principal";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -150,5 +165,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button buttonABMRol;
     }
 }

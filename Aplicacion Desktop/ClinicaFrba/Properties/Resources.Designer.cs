@@ -60,9 +60,37 @@ namespace ClinicaFrba.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap coach_with_clipboard_400_clr {
+            get {
+                object obj = ResourceManager.GetObject("coach_with_clipboard_400_clr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap medicos {
             get {
                 object obj = ResourceManager.GetObject("medicos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap rolesAlta {
+            get {
+                object obj = ResourceManager.GetObject("rolesAlta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap rolesBaja {
+            get {
+                object obj = ResourceManager.GetObject("rolesBaja", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap rolesMod {
+            get {
+                object obj = ResourceManager.GetObject("rolesMod", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

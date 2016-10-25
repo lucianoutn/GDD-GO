@@ -99,17 +99,35 @@
     <Compile Include="Abm Profesional\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="AbmRol\Form1.cs">
+    <Compile Include="AbmRol\AltaRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AbmRol\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AbmRol\AltaRol.Designer.cs">
+      <DependentUpon>AltaRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Botonazo\SubMenuBotonazo.cs">
+    <Compile Include="AbmRol\BajaRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Botonazo\SubMenuBotonazo.Designer.cs">
-      <DependentUpon>SubMenuBotonazo.cs</DependentUpon>
+    <Compile Include="AbmRol\BajaRol.Designer.cs">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ListarRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ListarRol.Designer.cs">
+      <DependentUpon>ListarRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\ModificacionRol.Designer.cs">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AbmRol\SubMenuRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AbmRol\SubMenuRol.Designer.cs">
+      <DependentUpon>SubMenuRol.cs</DependentUpon>
     </Compile>
     <Compile Include="Cancelar Atencion\CancelacionPorAfiliado.cs">
       <SubType>Form</SubType>
@@ -212,6 +230,21 @@
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\AltaRol.resx">
+      <DependentUpon>AltaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\BajaRol.resx">
+      <DependentUpon>BajaRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ListarRol.resx">
+      <DependentUpon>ListarRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\ModificacionRol.resx">
+      <DependentUpon>ModificacionRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AbmRol\SubMenuRol.resx">
+      <DependentUpon>SubMenuRol.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -273,6 +306,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Listados\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\coach_with_clipboard_400_clr.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rolesMod.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rolesAlta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rolesBaja.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

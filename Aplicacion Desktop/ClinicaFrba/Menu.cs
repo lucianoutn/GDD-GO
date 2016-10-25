@@ -10,6 +10,7 @@ using System.IO;
 using ClinicaFrba.DataBase.Conexion;
 using ClinicaFrba.Abm_Afiliado;
 using ClinicaFrba.Registrar_Agenta_Medico;
+using ClinicaFrba.AbmRol;
 
 namespace ClinicaFrba
 {
@@ -38,6 +39,12 @@ namespace ClinicaFrba
         {
             SubMenuAfiliado subMenuAf = new SubMenuAfiliado(this);
             subMenuAf.Show();
+        }
+
+        private void buttonABMRol_Click(object sender, EventArgs e)
+        {
+            SubMenuRol subMenuRol = new SubMenuRol();
+            subMenuRol.Show();
         }
 
         private void buttonCalendar_Click(object sender, EventArgs e)
@@ -83,9 +90,8 @@ namespace ClinicaFrba
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+       
 
-        }
+       
     }
 }
