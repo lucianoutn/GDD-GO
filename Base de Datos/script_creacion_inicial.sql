@@ -334,7 +334,35 @@ else
 		End
 	End
 Go
+/*----------------------------	BORRADO DE VISTAS	-------------------------*/
 
+If exists (select * FROM sys.views where name = 'vista_rol_usuario')
+Drop view GDD_GO.vista_rol_usuario
+Go
+
+If exists (select * FROM sys.views where name = 'vista_rol_funciones')
+Drop view GDD_GO.vista_rol_funciones
+Go
+
+/*----------------------------	CREACION DE VISTAS	-------------------------*/
+
+Create view GDD_GO.vista_rol_usuario
+As
+Select rxu.*, r.desc_nombre_rol, r.desc_estado_rol 
+from GDD_GO.roles_por_usuario rxu
+left join GDD_GO.rol r
+	on rxu.id_rol = r.id_rol
+Go
+
+Create view GDD_GO.vista_rol_funciones
+As
+Select r.desc_nombre_rol, f.desc_funcion
+From GDD_GO.funciones_por_rol fxr
+left join GDD_GO.rol r
+	on fxr.id_rol = r.id_rol
+left join GDD_GO.funcion f
+	on fxr.id_funcion = f.id_funcion
+Go
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
 Create Table #usuarios	(	 id int identity(1,1)
@@ -599,15 +627,9 @@ Go
 
 --Inserto Roles existentes
 Insert into GDD_GO.rol (	desc_nombre_rol)
-Values ('Administrador')
-Go
-
-Insert into GDD_GO.rol (	desc_nombre_rol)
-Values ('Afiliado')
-Go
-
-Insert into GDD_GO.rol (	desc_nombre_rol)
-Values ('Profesional')
+Values	('Administrador'),
+		('Afiliado'),
+		('Profesional')
 Go
 							
 
