@@ -127,3 +127,12 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registra
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaCalendario.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaProff.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.ResultadoAtencion.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.AltaRol.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.BajaRol.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.ListarRol.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.ModificacionRol.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.SubMenuRol.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.CompraBono.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.SeleccionarBono.resources
+D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.ListadoEstadistico.resources
