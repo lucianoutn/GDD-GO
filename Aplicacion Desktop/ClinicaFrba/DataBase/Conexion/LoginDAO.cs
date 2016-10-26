@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class LoginDAO : GDAA_DAO
+    class LoginDAO : GDD_GO_DAO
     {
         public LoginDAO()
         {

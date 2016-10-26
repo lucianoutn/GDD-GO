@@ -157,7 +157,7 @@
     <Compile Include="DataBase\Conexion\ABMRoles_DAO.cs" />
     <Compile Include="DataBase\Conexion\Profesionales_DAO.cs" />
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />
-    <Compile Include="DataBase\Conexion\GDAA_DAO.cs" />
+    <Compile Include="DataBase\Conexion\GDD_GO_DAO.cs" />
     <Compile Include="DataBase\Conexion\LoginDAO.cs" />
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />

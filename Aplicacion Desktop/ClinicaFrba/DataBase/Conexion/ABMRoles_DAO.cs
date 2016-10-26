@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class ABMRoles_DAO : GDAA_DAO
+    class ABMRoles_DAO : GDD_GO_DAO
     {
         public ABMRoles_DAO() {
        

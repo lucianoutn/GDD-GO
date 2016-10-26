@@ -12,11 +12,13 @@ namespace ClinicaFrba.Compra_Bono
     public partial class SeleccionarBono : Form
     {
         CompraBono unCompraBono;
+        String unIdAfiliado;
 
-        public SeleccionarBono(CompraBono compraBono)
+        public SeleccionarBono(String idAfiliado, CompraBono compraBono)
         {
             InitializeComponent();
             unCompraBono = compraBono;
+            unIdAfiliado = idAfiliado;
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)

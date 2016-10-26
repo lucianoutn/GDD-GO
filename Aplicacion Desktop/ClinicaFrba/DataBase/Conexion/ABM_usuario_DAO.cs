@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class ABM_usuario_DAO : GDAA_DAO
+    class ABM_usuario_DAO : GDD_GO_DAO
     {
         public ABM_usuario_DAO()
         {

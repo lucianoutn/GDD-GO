@@ -6,7 +6,7 @@ using ClinicaFrba.Conexion;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class ProfesionalesDAO: GDAA_DAO
+    class ProfesionalesDAO: GDD_GO_DAO
     {
         public ProfesionalesDAO()
         {

@@ -7,7 +7,7 @@ using System.IO;
 
 namespace ClinicaFrba.Conexion
 {
-    abstract class GDAA_DAO
+    abstract class GDD_GO_DAO
     {
         protected SQLServerBD GD2C2016;
 
