@@ -14,6 +14,7 @@ using ClinicaFrba.AbmRol;
 using ClinicaFrba.Registro_Resultado;
 using ClinicaFrba.Cancelar_Atencion;
 using ClinicaFrba.Listados;
+using ClinicaFrba.Compra_Bono;
 
 
 namespace ClinicaFrba
@@ -84,6 +85,13 @@ namespace ClinicaFrba
                VistaCalendario vistaProff = new VistaCalendario(this, labelUser.Text);
                 vistaProff.Show();
             }**/
+        }
+
+        private void buttonComprarBono_Click(object sender, EventArgs e)
+        {
+            CompraBono compraBono = new CompraBono(this);
+            compraBono.Show();
+            this.Hide();
         }
 
         private void leerArchivoConfig()

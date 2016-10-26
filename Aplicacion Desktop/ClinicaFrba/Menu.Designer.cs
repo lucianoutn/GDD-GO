@@ -38,6 +38,7 @@
             this.button_RegResultAtenMedica = new System.Windows.Forms.Button();
             this.button_CancelarAtencion = new System.Windows.Forms.Button();
             this.button_ListadoEstadistico = new System.Windows.Forms.Button();
+            this.buttonComprarBono = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -94,6 +95,17 @@
             this.ButtonCalendar.UseVisualStyleBackColor = true;
             this.ButtonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
             // 
+            // buttonABMRol
+            // 
+            this.buttonABMRol.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonABMRol.Location = new System.Drawing.Point(181, 45);
+            this.buttonABMRol.Name = "buttonABMRol";
+            this.buttonABMRol.Size = new System.Drawing.Size(163, 36);
+            this.buttonABMRol.TabIndex = 8;
+            this.buttonABMRol.Text = "ABM Rol";
+            this.buttonABMRol.UseVisualStyleBackColor = true;
+            this.buttonABMRol.Click += new System.EventHandler(this.buttonABMRol_Click);
+            // 
             // button_RegResultAtenMedica
             // 
             this.button_RegResultAtenMedica.Location = new System.Drawing.Point(12, 171);
@@ -106,7 +118,6 @@
             // 
             // button_CancelarAtencion
             // 
-
             this.button_CancelarAtencion.Location = new System.Drawing.Point(12, 213);
             this.button_CancelarAtencion.Name = "button_CancelarAtencion";
             this.button_CancelarAtencion.Size = new System.Drawing.Size(163, 36);
@@ -114,7 +125,6 @@
             this.button_CancelarAtencion.Text = "Cancelar Atención Médica";
             this.button_CancelarAtencion.UseVisualStyleBackColor = true;
             this.button_CancelarAtencion.Click += new System.EventHandler(this.button_CancelarAtencion_Click);
-
             // 
             // button_ListadoEstadistico
             // 
@@ -126,22 +136,22 @@
             this.button_ListadoEstadistico.UseVisualStyleBackColor = true;
             this.button_ListadoEstadistico.Click += new System.EventHandler(this.button_ListadoEstadistico_Click);
             // 
-            // buttonABMRol
+            // buttonComprarBono
             // 
-            this.buttonABMRol.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonABMRol.Location = new System.Drawing.Point(181, 45);
-            this.buttonABMRol.Name = "buttonABMRol";
-            this.buttonABMRol.Size = new System.Drawing.Size(163, 36);
-            this.buttonABMRol.TabIndex = 8;
-            this.buttonABMRol.Text = "ABM Rol";
-            this.buttonABMRol.UseVisualStyleBackColor = true;
-            this.buttonABMRol.Click += new System.EventHandler(this.buttonABMRol_Click);
+            this.buttonComprarBono.Location = new System.Drawing.Point(182, 171);
+            this.buttonComprarBono.Name = "buttonComprarBono";
+            this.buttonComprarBono.Size = new System.Drawing.Size(162, 36);
+            this.buttonComprarBono.TabIndex = 9;
+            this.buttonComprarBono.Text = "Comprar Bono";
+            this.buttonComprarBono.UseVisualStyleBackColor = true;
+            this.buttonComprarBono.Click += new System.EventHandler(this.buttonComprarBono_Click);
             // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 361);
+            this.Controls.Add(this.buttonComprarBono);
             this.Controls.Add(this.button_ListadoEstadistico);
             this.Controls.Add(this.button_CancelarAtencion);
             this.Controls.Add(this.button_RegResultAtenMedica);
@@ -171,6 +181,7 @@
         private System.Windows.Forms.Button button_RegResultAtenMedica;
         private System.Windows.Forms.Button button_CancelarAtencion;
         private System.Windows.Forms.Button button_ListadoEstadistico;
+        private System.Windows.Forms.Button buttonComprarBono;
 
     }
 }
