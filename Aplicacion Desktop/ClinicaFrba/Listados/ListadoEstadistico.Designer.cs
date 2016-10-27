@@ -34,14 +34,14 @@
             this.comboBoxSemestre = new System.Windows.Forms.ComboBox();
             this.comboBoxTop5 = new System.Windows.Forms.ComboBox();
             this.dataGridViewTop5 = new System.Windows.Forms.DataGridView();
-            this.button_volver = new System.Windows.Forms.Button();
-            this.button_limpiar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
             this.Col_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_ProfOAf = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_GrupoFam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_volver = new System.Windows.Forms.Button();
+            this.button_limpiar = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,6 +79,7 @@
             this.comboBoxSemestre.Name = "comboBoxSemestre";
             this.comboBoxSemestre.Size = new System.Drawing.Size(384, 21);
             this.comboBoxSemestre.TabIndex = 3;
+            this.comboBoxSemestre.SelectedIndexChanged += new System.EventHandler(this.comboBoxSemestre_SelectedIndexChanged);
             // 
             // comboBoxTop5
             // 
@@ -87,6 +88,7 @@
             this.comboBoxTop5.Name = "comboBoxTop5";
             this.comboBoxTop5.Size = new System.Drawing.Size(384, 21);
             this.comboBoxTop5.TabIndex = 4;
+            this.comboBoxTop5.SelectedIndexChanged += new System.EventHandler(this.comboBoxTop5_SelectedIndexChanged);
             // 
             // dataGridViewTop5
             // 
@@ -100,6 +102,26 @@
             this.dataGridViewTop5.Name = "dataGridViewTop5";
             this.dataGridViewTop5.Size = new System.Drawing.Size(441, 150);
             this.dataGridViewTop5.TabIndex = 5;
+            // 
+            // Col_Especialidad
+            // 
+            this.Col_Especialidad.HeaderText = "Especialidad";
+            this.Col_Especialidad.Name = "Col_Especialidad";
+            // 
+            // Col_ProfOAf
+            // 
+            this.Col_ProfOAf.HeaderText = "Profesional o Afiliado";
+            this.Col_ProfOAf.Name = "Col_ProfOAf";
+            // 
+            // Col_Cantidad
+            // 
+            this.Col_Cantidad.HeaderText = "Cantidad";
+            this.Col_Cantidad.Name = "Col_Cantidad";
+            // 
+            // Col_GrupoFam
+            // 
+            this.Col_GrupoFam.HeaderText = "Grupo Familiar";
+            this.Col_GrupoFam.Name = "Col_GrupoFam";
             // 
             // button_volver
             // 
@@ -137,26 +159,7 @@
             this.comboBoxAnio.Name = "comboBoxAnio";
             this.comboBoxAnio.Size = new System.Drawing.Size(121, 21);
             this.comboBoxAnio.TabIndex = 10;
-            // 
-            // Col_Especialidad
-            // 
-            this.Col_Especialidad.HeaderText = "Especialidad";
-            this.Col_Especialidad.Name = "Col_Especialidad";
-            // 
-            // Col_ProfOAf
-            // 
-            this.Col_ProfOAf.HeaderText = "Profesional o Afiliado";
-            this.Col_ProfOAf.Name = "Col_ProfOAf";
-            // 
-            // Col_Cantidad
-            // 
-            this.Col_Cantidad.HeaderText = "Cantidad";
-            this.Col_Cantidad.Name = "Col_Cantidad";
-            // 
-            // Col_GrupoFam
-            // 
-            this.Col_GrupoFam.HeaderText = "Grupo Familiar";
-            this.Col_GrupoFam.Name = "Col_GrupoFam";
+            this.comboBoxAnio.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnio_SelectedIndexChanged);
             // 
             // Listado_Estadistico
             // 

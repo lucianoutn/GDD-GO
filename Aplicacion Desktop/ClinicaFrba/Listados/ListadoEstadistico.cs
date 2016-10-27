@@ -126,7 +126,72 @@ namespace ClinicaFrba.Listados
 
         }
 
+
+        private void cargar_grid_cancelacionesAfiliado()
+        { 
         
+        }
+
+        private void cargar_grid_cancelacionesProfesional()
+        {
+
+        }
+
+        private void cargar_grid_profMasConsultadosPorEsp()
+        {
+    
+        }
+
+        private void cargar_grid_profConMenosHorasTrabajadas()
+        {
+        
+        }
+
+        private void cargar_grid_afiliadosConMasBonosComp()
+        {
+        
+        }
+
+        private void cargar_grid_profConMasBonosConsultUtil()
+        {
+        
+        }
+
+        private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxSemestre.Enabled = false;
+
+            if(comboBoxSemestre.Text != "")
+            {
+                comboBoxTop5.Enabled = true;
+            }
+            else
+            {
+                comboBoxTop5.Enabled = false;
+            }
+        }
+
+        private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        
+        }
+
+        private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxAnio.Enabled = false;
+
+            if(comboBoxAnio.Text != "")
+            {
+                comboBoxSemestre.Enabled = true;
+            }
+            else
+            {
+                comboBoxSemestre.Enabled = false;
+                comboBoxTop5.Enabled = false;
+            }
+        }
+
+
     
     }
 }
