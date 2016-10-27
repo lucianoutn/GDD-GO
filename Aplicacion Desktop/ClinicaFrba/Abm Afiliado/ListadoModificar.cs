@@ -32,19 +32,16 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void Limpiar_Click(object sender, EventArgs e)
         {
-            textBoxApellido.Text = "";
-            textBoxNombre.Text = "";
             textBoxDireccion.Text = "";
             textBoxMail.Text = "";
             textBoxSexo.Text = "";
-            textBoxFechaNac.Text = "";
             textBoxEstadoCivil.Text = "";
             textBoxTelefono.Text = "";
         }
 
         private void Guardar_Click(object sender, EventArgs e)
         {
-            abm_usuario.actualizarAfiliado(textBoxApellido.Text, textBoxNombre.Text, textBoxDireccion.Text, textBoxMail.Text, textBoxTelefono.Text, textBoxSexo.Text, textBoxFechaNac.Text, textBoxEstadoCivil.Text, afiliado);
+            abm_usuario.actualizarAfiliado(textBoxDireccion.Text, textBoxMail.Text, textBoxTelefono.Text, textBoxSexo.Text,textBoxEstadoCivil.Text, afiliado);
             unMenu.Show();
             this.Close();
         }
