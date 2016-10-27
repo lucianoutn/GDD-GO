@@ -61,7 +61,7 @@
             this.Nombre,
             this.Dni,
             this.id_usuario});
-            this.dataGridViewResultados.Location = new System.Drawing.Point(55, 289);
+            this.dataGridViewResultados.Location = new System.Drawing.Point(9, 261);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 0;
@@ -102,7 +102,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(55, 101);
+            this.groupBox1.Location = new System.Drawing.Point(9, 73);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(446, 121);
             this.groupBox1.TabIndex = 1;
@@ -179,7 +179,7 @@
             // 
             // buttonLimpiar
             // 
-            this.buttonLimpiar.Location = new System.Drawing.Point(55, 243);
+            this.buttonLimpiar.Location = new System.Drawing.Point(9, 215);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
             this.buttonLimpiar.TabIndex = 2;
@@ -189,7 +189,7 @@
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(426, 243);
+            this.buttonBuscar.Location = new System.Drawing.Point(380, 215);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 3;
@@ -200,7 +200,7 @@
             // buttonVolver
             // 
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(55, 469);
+            this.buttonVolver.Location = new System.Drawing.Point(9, 441);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 49;
@@ -210,7 +210,7 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(425, 468);
+            this.buttonEliminar.Location = new System.Drawing.Point(379, 440);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 50;
@@ -223,7 +223,7 @@
             this.labelCliente.AutoSize = true;
             this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(168, 48);
+            this.labelCliente.Location = new System.Drawing.Point(122, 20);
             this.labelCliente.Name = "labelCliente";
             this.labelCliente.Size = new System.Drawing.Size(198, 26);
             this.labelCliente.TabIndex = 147;
@@ -233,7 +233,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 600);
+            this.ClientSize = new System.Drawing.Size(470, 507);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
