@@ -5,7 +5,7 @@ cosas que vamos a tener q ir documentando:
 - criterio para designar el sexo segun el nuevo modelo de datos: se ingresa por default "consultar"
 - hacemos las validaciones de registros repetidos desde la base de datos o desde la app?
 - la contraseña predeterminada de los usuarios es '1234'
--
+- el estado de rol en 0: deshabilitado, 1: habilitado
 -
 
 
