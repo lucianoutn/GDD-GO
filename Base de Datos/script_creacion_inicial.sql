@@ -115,7 +115,7 @@ Create Table GDD_GO.afiliado
 CREATE TABLE GDD_GO.funcion
 (
 	 id_funcion int identity(1,1)
-	,desc_funcion int
+	,desc_funcion nvarchar(50)
 	,primary key (id_funcion)
 )
 
@@ -631,7 +631,23 @@ Values	('Administrador'),
 		('Afiliado'),
 		('Profesional')
 Go
-							
+
+--Inserto Funciones existentes
+Insert into GDD_GO.funcion	(desc_funcion)
+Values	('ABM de Rol'),
+		('ABM de Usuarios'),
+		('ABM de Afiliados'),
+		('ABM de Profesional'),
+		('ABM de Especialidades Medicas'),
+		('ABM de Plan'),
+		('Registrar Agenda Profesional'),
+		('Compra de Bonos'),
+		('Pedido de Turno'),
+		('Registro de llegada para atencion medica'),
+		('Registro de resultado para atencion medica'),
+		('Cancelar atencion medica'),
+		('Listado Estadístico')
+Go							
 
 --
 Create Trigger GDD_GO.insertar_afiliado
