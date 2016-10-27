@@ -715,7 +715,7 @@ Begin
 	Select @id_usuario = id_usuario
 	From deleted;
 	
-	Update GDD_GO.usuario Set desc_estado=2 where id_usuario = @id_usuario;
+	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 
 End
 Go
