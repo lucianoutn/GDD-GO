@@ -30,7 +30,10 @@
         {
             this.buttonVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxBonos = new System.Windows.Forms.ComboBox();
+            this.buttonComprar = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxCantidad = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -47,26 +50,56 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 33);
+            this.label1.Location = new System.Drawing.Point(13, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 50;
             this.label1.Text = "Seleccione un Bono:";
             // 
-            // comboBox1
+            // comboBoxBonos
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(125, 33);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 51;
+            this.comboBoxBonos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxBonos.FormattingEnabled = true;
+            this.comboBoxBonos.Location = new System.Drawing.Point(125, 33);
+            this.comboBoxBonos.Name = "comboBoxBonos";
+            this.comboBoxBonos.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxBonos.TabIndex = 51;
+            // 
+            // buttonComprar
+            // 
+            this.buttonComprar.Location = new System.Drawing.Point(171, 227);
+            this.buttonComprar.Name = "buttonComprar";
+            this.buttonComprar.Size = new System.Drawing.Size(75, 23);
+            this.buttonComprar.TabIndex = 52;
+            this.buttonComprar.Text = "Comprar";
+            this.buttonComprar.UseVisualStyleBackColor = true;
+            this.buttonComprar.Click += new System.EventHandler(this.buttonComprar_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(67, 104);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(52, 13);
+            this.label2.TabIndex = 53;
+            this.label2.Text = "Cantidad:";
+            // 
+            // textBoxCantidad
+            // 
+            this.textBoxCantidad.Location = new System.Drawing.Point(125, 101);
+            this.textBoxCantidad.Name = "textBoxCantidad";
+            this.textBoxCantidad.Size = new System.Drawing.Size(100, 20);
+            this.textBoxCantidad.TabIndex = 54;
             // 
             // SeleccionarBono
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.comboBox1);
+            this.ClientSize = new System.Drawing.Size(257, 267);
+            this.Controls.Add(this.textBoxCantidad);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonComprar);
+            this.Controls.Add(this.comboBoxBonos);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonVolver);
             this.Name = "SeleccionarBono";
@@ -80,6 +113,9 @@
 
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxBonos;
+        private System.Windows.Forms.Button buttonComprar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxCantidad;
     }
 }

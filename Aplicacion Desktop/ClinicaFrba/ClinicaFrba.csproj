@@ -155,6 +155,7 @@
     </Compile>
     <Compile Include="DataBase\Conexion\ABM_usuario_DAO.cs" />
     <Compile Include="DataBase\Conexion\ABMRoles_DAO.cs" />
+    <Compile Include="DataBase\Conexion\PlanMedico_DAO.cs" />
     <Compile Include="DataBase\Conexion\ListadoEstadistico_DAO.cs" />
     <Compile Include="DataBase\Conexion\Profesionales_DAO.cs" />
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />

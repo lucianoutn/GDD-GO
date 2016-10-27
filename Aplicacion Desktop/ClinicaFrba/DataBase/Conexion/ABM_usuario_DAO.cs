@@ -81,8 +81,8 @@ namespace ClinicaFrba.DataBase.Conexion
                 desc_dni = " desc_dni LIKE '%" + desc_dni + "%'";
             }
             
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT id_afiliado FROM " + ConstantesBD.tabla_afiliados +
-                                                                             " WHERE " + desc_nombre + desc_apellido + desc_dni +
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT id_afiliado FROM " + ConstantesBD.tabla_afiliados + " af JOIN GDD_GO.usuario us on af.id_usuario = us.id_usuario And us.desc_estado != 2"+
+                                                                             " AND " + desc_nombre + desc_apellido + desc_dni +
                                                                              " ORDER BY id_afiliado asc");
 
             List<string> resultado = new List<string>();
@@ -184,6 +184,17 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Read();
             int cantidad;
             int.TryParse(lector["id_usuario"].ToString(), out cantidad);
+            lector.Close();
+            return cantidad;
+        }
+
+
+        public int get_plan_medico(String id_afiliado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_plan_medico from GDD_GO.afiliado where id_afiliado="+id_afiliado);
+            lector.Read();
+            int cantidad;
+            int.TryParse(lector["id_plan_medico"].ToString(), out cantidad);
             lector.Close();
             return cantidad;
         }
