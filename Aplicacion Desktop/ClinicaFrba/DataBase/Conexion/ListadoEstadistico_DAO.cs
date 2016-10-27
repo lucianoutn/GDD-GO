@@ -28,6 +28,48 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Close();
             return resultado;
         }
-        
+
+        public SqlDataReader getCancelacionesAfiliados(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
+        public SqlDataReader getCancelacionesProfesional(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
+        public SqlDataReader getProfMasConsultaPorEspecialidad(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
+        public SqlDataReader getProfConMenosHorasTrabajadas(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
+        public SqlDataReader getAfiliadosConMasBonosComprados(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
+        public SqlDataReader getProfConMasBonosConsultUtilizados(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            return resultado;
+        }
+
     }
 }

@@ -68,7 +68,7 @@ namespace ClinicaFrba
 
         private void button_ListadoEstadistico_Click(object sender, EventArgs e)
         {
-            ListadoEstadistico menuListadoEstadistico = new ListadoEstadistico(this);
+            Listado_Estadistico menuListadoEstadistico = new Listado_Estadistico(this);
             menuListadoEstadistico.Show();
         }
 

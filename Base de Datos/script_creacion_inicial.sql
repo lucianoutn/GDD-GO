@@ -291,8 +291,12 @@ If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME =
 	Drop procedure GDD_GO.calcular_id_afiliado
 Go
 
-If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'insertar_afiliado')
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_insertar_afiliado')
 	Drop trigger GDD_GO.insertar_afiliado
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baja_afiliado')
+	Drop trigger GDD_GO.tr_baja_afiliado
 Go
 
 /*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
@@ -650,7 +654,7 @@ Values	('ABM de Rol'),
 Go							
 
 --
-Create Trigger GDD_GO.insertar_afiliado
+Create Trigger GDD_GO.tr_insertar_afiliado
 On GDD_GO.afiliado
 Instead of Insert
 As
@@ -713,6 +717,21 @@ Begin
 				   ,@id_usuario	
 				   ,@id_plan_medico 		)
 
+
+End
+Go
+
+Create Trigger GDD_GO.tr_baja_afiliado
+On GDD_GO.usuario
+Instead of Delete
+As
+Begin
+	Declare @id_usuario int
+
+	Select @id_usuario = id_usuario
+	From deleted;
+	
+	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 
 End
 Go
