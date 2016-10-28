@@ -57,13 +57,19 @@
             this.textNombre = new System.Windows.Forms.TextBox();
             this.buttonAlta = new System.Windows.Forms.Button();
             this.labelCliente = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.labelUserName = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.groupBoxCliente.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(59, 358);
+            this.label1.Location = new System.Drawing.Point(59, 499);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(261, 13);
             this.label1.TabIndex = 150;
@@ -72,7 +78,7 @@
             // buttonVolver
             // 
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(62, 386);
+            this.buttonVolver.Location = new System.Drawing.Point(62, 527);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 48;
@@ -109,10 +115,10 @@
             this.groupBoxCliente.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBoxCliente.Location = new System.Drawing.Point(62, 48);
             this.groupBoxCliente.Name = "groupBoxCliente";
-            this.groupBoxCliente.Size = new System.Drawing.Size(338, 307);
+            this.groupBoxCliente.Size = new System.Drawing.Size(338, 276);
             this.groupBoxCliente.TabIndex = 148;
             this.groupBoxCliente.TabStop = false;
-            this.groupBoxCliente.Text = "Datos Cliente";
+            this.groupBoxCliente.Text = "Datos Afiliado";
             // 
             // radioButtonFemenino
             // 
@@ -333,7 +339,7 @@
             // 
             // buttonAlta
             // 
-            this.buttonAlta.Location = new System.Drawing.Point(327, 382);
+            this.buttonAlta.Location = new System.Drawing.Point(327, 523);
             this.buttonAlta.Name = "buttonAlta";
             this.buttonAlta.Size = new System.Drawing.Size(73, 27);
             this.buttonAlta.TabIndex = 147;
@@ -352,11 +358,61 @@
             this.labelCliente.TabIndex = 146;
             this.labelCliente.Text = "ALTA DE AFILIADO";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.labelPassword);
+            this.groupBox1.Controls.Add(this.textBoxUserName);
+            this.groupBox1.Controls.Add(this.labelUserName);
+            this.groupBox1.Controls.Add(this.textBoxPassword);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.groupBox1.Location = new System.Drawing.Point(67, 350);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(333, 99);
+            this.groupBox1.TabIndex = 151;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Usuario";
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelPassword.Location = new System.Drawing.Point(42, 69);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(56, 13);
+            this.labelPassword.TabIndex = 155;
+            this.labelPassword.Text = "Password:";
+            // 
+            // labelUserName
+            // 
+            this.labelUserName.AutoSize = true;
+            this.labelUserName.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.labelUserName.Location = new System.Drawing.Point(52, 22);
+            this.labelUserName.Name = "labelUserName";
+            this.labelUserName.Size = new System.Drawing.Size(46, 13);
+            this.labelUserName.TabIndex = 154;
+            this.labelUserName.Text = "Usuario:";
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(110, 66);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(95, 20);
+            this.textBoxPassword.TabIndex = 153;
+            this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // textBoxUserName
+            // 
+            this.textBoxUserName.Location = new System.Drawing.Point(110, 19);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(95, 20);
+            this.textBoxUserName.TabIndex = 152;
+            // 
             // AltaAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 492);
+            this.ClientSize = new System.Drawing.Size(434, 605);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBoxCliente);
             this.Controls.Add(this.buttonVolver);
@@ -366,6 +422,8 @@
             this.Text = "AltaAfiliado";
             this.groupBoxCliente.ResumeLayout(false);
             this.groupBoxCliente.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,6 +460,11 @@
         private System.Windows.Forms.RadioButton radioButtonFemenino;
         private System.Windows.Forms.RadioButton radioButtonMasculino;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.TextBox textBoxUserName;
+        private System.Windows.Forms.Label labelUserName;
+        private System.Windows.Forms.TextBox textBoxPassword;
 
     }
 }

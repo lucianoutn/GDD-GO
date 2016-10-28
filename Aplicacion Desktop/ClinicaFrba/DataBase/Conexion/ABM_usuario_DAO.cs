@@ -30,6 +30,21 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
+        public int validarUsuarioExistente(String DNI)
+        {
+            SqlDataReader userExistente = this.GD2C2016.ejecutarSentenciaConRetorno("select 1 from GDD_GO.usuario where desc_username='" + DNI + "';");
+            if (userExistente.HasRows)
+            {
+                userExistente.Close();
+                return 0;
+            }
+            else
+            {
+                userExistente.Close();
+                return 1;
+            }
+        }
+
         public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal) Values ('" +
@@ -49,6 +64,17 @@ namespace ClinicaFrba.DataBase.Conexion
         public void bajaAfiliado(int id_usuario)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.usuario where id_usuario = " + id_usuario);
+        }
+
+
+        public void crearUsuario(String user, String pass)
+        {
+            MessageBox.Show("Insert into GDD_GO.usuario (desc_username, desc_password, desc_estado) Values('" +
+                                                       user + "','" +
+                                                       pass + "', 1);");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.usuario (desc_username, desc_password, desc_estado) Values('"+
+                                                       user + "',HASHBYTES('sha2_256','" +
+                                                       pass+"'), 1);");
         }
 
         public List<string> get_afiliados_con_dni(String dni)

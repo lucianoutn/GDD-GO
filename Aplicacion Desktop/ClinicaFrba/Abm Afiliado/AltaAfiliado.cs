@@ -55,42 +55,52 @@ namespace ClinicaFrba.Abm_Afiliado
                 // DNI EXISTENTE - SI ES = 1 ES PORQUE ES VALIDO EL DNI (NO ESTÁ INGRESADO TODAVIA)
                 if (abm_usuario.validarDNIExistente(textDni.Text) == 1)
                 {
-                    if (comboDominio.SelectedItem == null)
+                    if (abm_usuario.validarUsuarioExistente(textBoxUserName.Text) == 1)
                     {
-                        MessageBox.Show("Debe ingresar un dominio de email. Ayuda: seleccione una de las opciones dadas");
-                    }
-                    else if (comboTipoDoc.SelectedItem == null)
-                    {
-                        MessageBox.Show("Debe ingresar un tipo de documento. Ayuda: seleccione una de las opciones dadas");
-                    }
-                    else
-                    {
-                        String desc_Apellido = textApellido.Text;
-                        String desc_Nombre = textNombre.Text;
-                        String desc_Dni = textDni.Text;
-                        String tipo_doc = comboTipoDoc.SelectedItem.ToString();
-                        String desc_Mail = textMail.Text + "@" + comboDominio.SelectedItem.ToString();
-                        String desc_Dom_Calle = textCalle.Text;
-                        String desc_Telefono = textTelefono.Text;
-                        String desc_Fecha_Nac = fechaNacimiento.Text;
-                        int desc_Estado_Civil = comboEstadoCivil.SelectedIndex;
-                        int sexo;
-
-
-                        if (radioButtonMasculino.Checked)
+                        if (comboDominio.SelectedItem == null)
                         {
-                            sexo = 1;
+                            MessageBox.Show("Debe ingresar un dominio de email. Ayuda: seleccione una de las opciones dadas");
+                        }
+                        else if (comboTipoDoc.SelectedItem == null)
+                        {
+                            MessageBox.Show("Debe ingresar un tipo de documento. Ayuda: seleccione una de las opciones dadas");
                         }
                         else
                         {
-                            sexo = 0;
-                        }
-                        
+                            String desc_Apellido = textApellido.Text;
+                            String desc_Nombre = textNombre.Text;
+                            String desc_Dni = textDni.Text;
+                            String tipo_doc = comboTipoDoc.SelectedItem.ToString();
+                            String desc_Mail = textMail.Text + "@" + comboDominio.SelectedItem.ToString();
+                            String desc_Dom_Calle = textCalle.Text;
+                            String desc_Telefono = textTelefono.Text;
+                            String desc_Fecha_Nac = fechaNacimiento.Text;
+                            int desc_Estado_Civil = comboEstadoCivil.SelectedIndex;
+                            int sexo;
+                            String user = textBoxUserName.Text;
+                            String pass = textBoxPassword.Text;
 
-                        EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, this);
-                        altaAfiliado2.Show();
-                            
-                        this.Hide();
+                            if (radioButtonMasculino.Checked)
+                            {
+                                sexo = 1;
+                            }
+                            else
+                            {
+                                sexo = 0;
+                            }
+
+                            abm_usuario.crearUsuario(user, pass);
+
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, this);
+                            altaAfiliado2.Show();
+
+                            this.Hide();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Username ingresado ya está registrado en el sistema");
+
                     }
                 }
                 else
