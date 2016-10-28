@@ -37,8 +37,6 @@ namespace ClinicaFrba.Abm_Afiliado
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
                 int id_afiliado = int.Parse(fila.Cells["ID"].Value.ToString());
 
-                MessageBox.Show(" "+id_afiliado);
-                
                 ListadoModificar formModificar = new ListadoModificar(id_afiliado, unMenu);
                 formModificar.Show();
                 this.Close();

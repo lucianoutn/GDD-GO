@@ -69,9 +69,6 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public void crearUsuario(String user, String pass)
         {
-            MessageBox.Show("Insert into GDD_GO.usuario (desc_username, desc_password, desc_estado) Values('" +
-                                                       user + "','" +
-                                                       pass + "', 1);");
             this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.usuario (desc_username, desc_password, desc_estado) Values('"+
                                                        user + "',HASHBYTES('sha2_256','" +
                                                        pass+"'), 1);");
