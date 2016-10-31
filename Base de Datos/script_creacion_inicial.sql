@@ -759,3 +759,21 @@ Begin
 			
 End
 Go
+
+-- TRIGGER DE BAJA LOGICA DE ROL 
+Create Trigger  GDD_GO.tr_baja_rol
+On GDD_GO.rol
+After update
+As
+Declare @estado bit
+Declare @id_rol int
+
+Set @estado = (Select desc_estado_rol from inserted)
+Set @id_rol = (Select id_rol from inserted)
+
+if @estado = 0
+begin
+	Delete from GDD_GO.roles_por_usuario
+	where id_rol = @id_rol
+end
+Go
