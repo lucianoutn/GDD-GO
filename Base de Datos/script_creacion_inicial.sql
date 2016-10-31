@@ -66,8 +66,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 	DROP TABLE GDD_GO.plan_medico
 /*-----------------------------------------------------------------------------------------------------------------------------------*/
 
-
-
 /*----------------------------	CREACION DE TABLAS	-------------------------*/
 Create Table GDD_GO.usuario
 (	 
@@ -77,7 +75,7 @@ Create Table GDD_GO.usuario
 	,desc_estado int
 	,desc_fecha_inhabilitado datetime
 	,primary key (id_usuario)
---	,unique (desc_username)
+	,unique (desc_username)
 )
 
 CREATE TABLE GDD_GO.plan_medico
@@ -182,9 +180,9 @@ CREATE TABLE GDD_GO.profesional
 	,desc_apellido varchar(255)
 	,desc_nombre varchar(255)
 	,desc_tipo_doc nvarchar(5)
-	,desc_dni numeric(18,0)
+	,desc_dni int
 	,desc_direccion varchar(255)
-	,desc_telefono numeric(18)
+	,desc_telefono int
 	,desc_mail varchar(255)
 	,desc_fecha_creacion DATETIME
 	,desc_fecha_nac DATETIME
@@ -197,16 +195,16 @@ CREATE TABLE GDD_GO.profesional
 
 CREATE TABLE GDD_GO.tipo_especialidad
 (
-	 id_tipo_especialidad numeric(18,0)
+	 id_tipo_especialidad int
 	,descripcion varchar(255)
 	,primary key (id_tipo_especialidad)
 )
 
 CREATE TABLE GDD_GO.especialidad
 (
-	 id_especialidad numeric(18,0)
+	 id_especialidad int
 	,descripcion varchar(255)
-	,id_tipo_especialidad numeric(18,0)
+	,id_tipo_especialidad int
 	,primary key (id_especialidad)
 	,foreign key (id_tipo_especialidad) references GDD_GO.tipo_especialidad(id_tipo_especialidad)
 )
@@ -214,20 +212,25 @@ CREATE TABLE GDD_GO.especialidad
 CREATE TABLE GDD_GO.especialidades_por_profesional
 (
 	 id_profesional int
-	,id_especialidad numeric(18,0)
+	,id_especialidad int
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
 	,foreign key (id_especialidad) references GDD_GO.especialidad(id_especialidad)	 
 )
 
 CREATE TABLE GDD_GO.agenda
 (
-	 id_dia_agenda int identity(1,1)
-	,desc_dia int
-	,desc_hora_desde TIME
-	,desc_hora_hasta TIME
+	 id_agenda int identity(1,1)
+	,fecha_desde DATETIME
+	,fecha_hasta DATETIME
+	,horario_desde TIME
+	,horario_hasta TIME
+	,horario_desde_especial TIME
+	,horario_hasta_especial TIME
+	,duracion_consulta int
+	,estado int
 	,id_profesional int
-	,id_especialidad numeric(18,0)
-	,primary key (id_dia_agenda)
+	,id_especialidad int
+	,primary key (id_agenda)
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
 	,foreign key (id_especialidad) references GDD_GO.especialidad(id_especialidad)
 )
@@ -247,10 +250,10 @@ CREATE TABLE GDD_GO.horario
 (
 	id_horario int identity(1,1)
 	,desc_hora_desde DATETIME
-	,id_dia_agenda int
+	,id_agenda int
 	,id_turno numeric(18,0)
 	,primary key (id_horario)
-	,foreign key (id_dia_agenda) references GDD_GO.agenda(id_dia_agenda)
+	,foreign key (id_agenda) references GDD_GO.agenda
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
 
@@ -433,7 +436,9 @@ Insert into GDD_GO.profesional	(	 id_usuario
 									,desc_direccion
 									,desc_telefono
 									,desc_mail
-									,desc_fecha_nac		)
+									,desc_fecha_nac
+									,desc_matricula
+									,desc_fecha_creacion		)
 Select Distinct
 	   us.id
 	  ,ma.Medico_Apellido
@@ -445,6 +450,8 @@ Select Distinct
 	  ,ma.Medico_Telefono
 	  ,ma.Medico_Mail
 	  ,ma.Medico_Fecha_Nac
+	  ,'INCOMPLETO'
+	  ,'2016-11-10 00:00:00.000'
 From gd_esquema.Maestra ma
 Join #usuarios us
 	 on us.id_entidad = ma.Medico_Dni And
@@ -534,6 +541,25 @@ From gd_esquema.Maestra ma
 Join GDD_GO.profesional pr
 On ma.Medico_Dni = pr.desc_dni
 
+Go
+/*Agenda*/
+Insert into GDD_GO.agenda(
+	id_profesional,
+	id_especialidad,
+	horario_desde,
+	horario_hasta,
+	horario_desde_especial,
+	horario_hasta_especial,
+	fecha_desde,
+	fecha_hasta,
+	duracion_consulta,
+	estado
+)
+Select	distinct p.id_profesional,
+		x.id_especialidad,
+		null,null,null,null,null,null,null,1
+From GDD_GO.profesional p
+join GDD_GO.especialidades_por_profesional x on p.id_profesional = x.id_profesional
 
 Go
 /*TURNO*/
@@ -551,19 +577,34 @@ Where Turno_Numero is not null And Consulta_Sintomas is null
 Go
 /*Horario*/
 Insert into GDD_GO.horario(
-	id_turno
-	,desc_hora_desde
+	id_turno,
+	desc_hora_desde,
+	id_agenda
 )
-Select Turno_Numero, Turno_Fecha
-From gd_esquema.Maestra
+Select m.Turno_Numero, m.Turno_Fecha, ag.id_agenda
+From gd_esquema.Maestra m
 join GDD_GO.afiliado af
-	 On Paciente_Dni = af.desc_dni
+	On m.Paciente_Dni = af.desc_dni
 join GDD_GO.profesional pr
-	 On Medico_Dni = pr.desc_dni
+	On m.Medico_Dni = pr.desc_dni
+join GDD_GO.agenda ag
+	On	ag.id_profesional = pr.id_profesional
+		and ag.id_especialidad = m.Especialidad_Codigo
 Where Turno_Numero is not null And Consulta_Sintomas is not null
 
 Go
-
+/*Seteo Agenda*/
+Update GDD_GO.agenda
+Set fecha_desde = (
+	select TOP(1) h.desc_hora_desde from GDD_GO.horario h
+	where GDD_GO.agenda.id_agenda = h.id_agenda
+	Order by h.desc_hora_desde ASC
+),	fecha_hasta = (	
+	select TOP(1) h.desc_hora_desde from GDD_GO.horario h
+	where GDD_GO.agenda.id_agenda = h.id_agenda
+	Order by h.desc_hora_desde DESC
+)
+Go
 /*Tipo_Bono*/
 Insert into GDD_GO.tipo_bono(	id_tipo_bono
 							   ,id_plan_medico

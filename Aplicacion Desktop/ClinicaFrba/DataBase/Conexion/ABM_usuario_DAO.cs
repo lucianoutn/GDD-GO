@@ -5,6 +5,7 @@ using System.Text;
 using ClinicaFrba.Conexion;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using ClinicaFrba.ABM_Usuario;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
@@ -220,6 +221,17 @@ namespace ClinicaFrba.DataBase.Conexion
             int.TryParse(lector["id_plan_medico"].ToString(), out cantidad);
             lector.Close();
             return cantidad;
+        }
+
+        public User getUsuarioDe(Int32 _id)
+        {
+            User user = new User();
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select u.* from " + ConstantesBD.tabla_usuarios+" u where u.id_usuario = " +_id.ToString());
+            lector.Read();
+                user.setIdUsuario(lector.GetInt32(0).ToString());
+                user.setUsername(lector.GetString(1));
+            lector.Close();
+            return user;
         }
     }
 }

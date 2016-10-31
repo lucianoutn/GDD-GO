@@ -190,8 +190,5 @@ namespace ClinicaFrba.Listados
                 comboBoxTop5.Enabled = false;
             }
         }
-
-
-    
     }
 }

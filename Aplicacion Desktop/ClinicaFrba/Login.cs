@@ -45,7 +45,6 @@ namespace ClinicaFrba
                         MessageBox.Show("El usuario esta inhabilitado.", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
                     case "correcto":
-
                         Menu menu = new Menu(textBoxUserName.Text);
                         menu.Show();
                         this.Hide();
@@ -58,7 +57,7 @@ namespace ClinicaFrba
         {
             try
             {
-                using (StreamReader sr = new StreamReader("ArchivoConfiguracion.txt"))
+                using (StreamReader sr = new StreamReader("C:/Users/Tc/Desktop/Federico 2016/Gestion de Datos/GDD-GO/Aplicacion Desktop/ClinicaFrba/bin/Debug/ArchivoConfiguracion.txt"))
                 {
                     string line, textoArchivo = "";
                     while ((line = sr.ReadLine()) != null)

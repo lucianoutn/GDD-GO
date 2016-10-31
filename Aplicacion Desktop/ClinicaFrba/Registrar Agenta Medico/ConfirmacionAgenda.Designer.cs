@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    partial class AltaNuevoDia
+    partial class ConfirmacionAgenda
     {
         /// <summary>
         /// Required designer variable.
@@ -28,15 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // AltaNuevoDia
-            // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Name = "AltaNuevoDia";
-            this.Text = "VistaCalendario";
-            this.ResumeLayout(false);
-
+            this.components = new System.ComponentModel.Container();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Text = "ConfirmacionAgenda";
         }
 
         #endregion

@@ -35,6 +35,14 @@ namespace ClinicaFrba.DataBase.Conexion
         public static String tabla_t_especialidad = "GDD_GO.tipo_especialidad";
         public static String tabla_turno = "GDD_GO.turno";
 
+
+        // Recibe una fecha en formato DD/MM/AAAA y devuelve DD si parte==0, MM si parte ==1 y AAAA si parte ==2
+        public static Int32 getParteDeFecha(String fecha,Int32 parte)
+        {
+            char[] delimitadores = { '/' };
+            string[] palabras = fecha.Split(delimitadores);
+            return Int32.Parse(palabras[parte]);
+        }
         // Recibe una fecha en formato DD/MM/AAAA y lo convierte a formato de BD: AAAAMMDD 00:00:00.00
         public static String cambiarFormatoFecha(String fecha)
         {

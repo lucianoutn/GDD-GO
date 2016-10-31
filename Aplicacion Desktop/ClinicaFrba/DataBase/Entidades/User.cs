@@ -9,7 +9,7 @@ namespace ClinicaFrba.ABM_Usuario
     class User
     {
         private String id_usuario;
-
+        private String username;
 
         /* GETTERS Y SETTERS */
         public String getIdUsuario()
@@ -20,6 +20,16 @@ namespace ClinicaFrba.ABM_Usuario
         public void setIdUsuario(String id)
         {
             this.id_usuario = id;
+        }
+
+        public String getUsername()
+        {
+            return this.username;
+        }
+
+        public void setUsername(String name)
+        {
+            this.username = name;
         }
     }
 }

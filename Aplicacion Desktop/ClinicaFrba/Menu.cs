@@ -75,16 +75,18 @@ namespace ClinicaFrba
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            if (labelUser.Text.CompareTo("Admin") == 0)
+            if (labelUser.Text.CompareTo("admin") == 0)
             {
-                VistaProff vistaAdmin = new VistaProff(this);
+                CalendarAdmin vistaAdmin = new CalendarAdmin(this);
                 vistaAdmin.Show();
+                this.Hide();
             }
-            /**else
+            else
             {
-               VistaCalendario vistaProff = new VistaCalendario(this, labelUser.Text);
+                CalendarProf vistaProff = new CalendarProf(this,labelUser.Text);
                 vistaProff.Show();
-            }**/
+                this.Hide();
+            }
         }
 
         private void buttonComprarBono_Click(object sender, EventArgs e)

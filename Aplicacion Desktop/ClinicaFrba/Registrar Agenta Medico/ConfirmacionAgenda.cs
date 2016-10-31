@@ -5,17 +5,15 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    public partial class AltaNuevoDia : Form
+    public partial class ConfirmacionAgenda : Form
     {
-        public AltaNuevoDia()
+        public ConfirmacionAgenda()
         {
             InitializeComponent();
         }
-
     }
 }

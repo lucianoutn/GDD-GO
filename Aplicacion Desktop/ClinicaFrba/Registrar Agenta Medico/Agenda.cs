@@ -9,14 +9,11 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    public partial class VistaProff : Form
+    public partial class Agenda : Form
     {
-        Menu unMenu;
-
-        public VistaProff(Menu menu)
+        public Agenda()
         {
             InitializeComponent();
-            unMenu = menu;
         }
     }
 }
