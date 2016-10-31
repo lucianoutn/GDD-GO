@@ -6,7 +6,7 @@ cosas que vamos a tener q ir documentando:
 - hacemos las validaciones de registros repetidos desde la base de datos o desde la app?
 - la contraseña predeterminada de los usuarios es '1234'
 - el estado de rol en 0: deshabilitado, 1: habilitado
--
+- el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol -id usuario en la tabla roles por usuario. ante la baja del usuario (logica) NO se da de baja la relacion intermedia
 
 
 

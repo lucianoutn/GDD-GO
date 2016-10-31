@@ -651,7 +651,28 @@ Values	('ABM de Rol'),
 		('Registro de resultado para atencion medica'),
 		('Cancelar atencion medica'),
 		('Listado Estadístico')
-Go							
+Go		
+					
+--Establezco los vinculos FuncionesPorRol
+Insert into GDD_GO.funciones_por_rol (id_rol, id_funcion)
+Values	(1,1), (1,2), (1,3), (1,4), (1,5), (1,6), (1,7),(1,8),(1,9),(1,10),(1,11),(1,12),(1,13), 
+		(2,8), (2,9), (2,12),
+		(3,7), (3,11), (3,12)
+		
+Go
+
+--Asignacion de los roles en base a tipo de usuario
+Insert Into GDD_GO.roles_por_usuario	(	 id_usuario, id_rol	)
+Select	 id_usuario, 2
+	From GDD_GO.afiliado
+Union
+select id_usuario, 3 
+	From GDD_GO.profesional
+Union
+select id_usuario , 1
+	From GDD_GO.usuario
+	where desc_username = 'admin'
+go
 
 --
 Create Trigger GDD_GO.tr_insertar_afiliado
@@ -717,7 +738,9 @@ Begin
 				   ,@id_familiar_ppal
 				   ,@id_usuario	
 				   ,@id_plan_medico	)
-
+		
+		Insert into GDD_GO.roles_por_usuario (id_usuario, id_rol)
+		Values (	@id_usuario, 2)
 
 End
 Go
@@ -733,6 +756,6 @@ Begin
 	From deleted;
 	
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
-
+			
 End
 Go
