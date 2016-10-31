@@ -136,3 +136,6 @@ D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Cli
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.CompraBono.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.SeleccionarBono.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources

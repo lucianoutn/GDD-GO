@@ -46,7 +46,10 @@ namespace ClinicaFrba
                         break;
                     case "correcto":
 
-                        Menu menu = new Menu(textBoxUserName.Text);
+                        int id_usuario = loginDAO.get_id_usuario(textBoxUserName.Text);
+                        string rol = loginDAO.get_rol(id_usuario);
+
+                        Menu menu = new Menu(textBoxUserName.Text, rol);
                         menu.Show();
                         this.Hide();
                         break;

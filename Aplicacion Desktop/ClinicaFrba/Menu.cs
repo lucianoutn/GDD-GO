@@ -21,12 +21,44 @@ namespace ClinicaFrba
 {
     public partial class Menu : Form
     {
-        public Menu(string user)
+        private LoginDAO loginDAO;
+
+        public Menu(string user, string rol)
         {
             leerArchivoConfig();
             InitializeComponent();
             labelUser.Text = user;
             labelFecha.Text = ConstantesBD.fechaSistema.ToString();
+            loginDAO = new LoginDAO();
+            List<string> funciones = this.loginDAO.get_funcionalidades(rol);
+            
+            //Visibilidad de funciones, desactivar las que no correspondan al rol
+              if (!(funciones.Contains("ABM de Rol")))
+                    buttonABMRol.Hide();
+            //if (!(funciones.Contains("ABM de Usuarios")))
+           //     boton_abm_roles.Hide();
+              if (!(funciones.Contains("ABM de Afiliados")))
+                    buttonABMAfiliado.Hide();
+          //  if (!(funciones.Contains("ABM de Profesional")))
+           //     boton.Hide();
+          //  if (!(funciones.Contains("ABM de Especialidades Medicas")))
+          //      boton.Hide();
+         //   if (!(funciones.Contains("ABM de Plan")))
+          //      boton.Hide();
+           // if (!(funciones.Contains("Registrar Agenda Profesional")))
+           //     boton.Hide();
+              if (!(funciones.Contains("Compra de Bonos")))
+                    buttonComprarBono.Hide();
+           // if (!(funciones.Contains("Pedido de Turno")))
+          //      boton.Hide();
+          //  if (!(funciones.Contains("Registro de llegada para atencion medica")))
+           //     boton.Hide();
+              if (!(funciones.Contains("Registro de resultado para atencion medica")))
+                    button_RegResultAtenMedica.Hide();
+              if (!(funciones.Contains("Cancelar atencion medica")))
+                    button_CancelarAtencion.Hide();
+              if (!(funciones.Contains("Listado Estadístico")))
+                    button_ListadoEstadistico.Hide();
         }
 
         public Menu()

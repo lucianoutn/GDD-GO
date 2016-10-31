@@ -54,14 +54,16 @@
             // 
             // labelUser
             // 
+            this.labelUser.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser.ForeColor = System.Drawing.Color.Maroon;
-            this.labelUser.Location = new System.Drawing.Point(303, 13);
+            this.labelUser.Location = new System.Drawing.Point(179, 13);
             this.labelUser.Name = "labelUser";
-            this.labelUser.Size = new System.Drawing.Size(41, 16);
+            this.labelUser.Size = new System.Drawing.Size(121, 16);
             this.labelUser.TabIndex = 1;
-            this.labelUser.Text = "User";
+            this.labelUser.Text = "Nombre Usuario";
+            this.labelUser.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // buttonSalir
             // 
