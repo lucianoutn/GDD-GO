@@ -34,7 +34,7 @@ namespace ClinicaFrba.Abm_Planes
             {
                 if (!string.IsNullOrWhiteSpace(abm_usuario.get_nombre(textBoxIdAfiliado.Text)))
                 {
-                    SeleccionarPlan seleccionPlan = new SeleccionarPlan(textBoxIdAfiliado.Text, this);
+                    SeleccionarPlan seleccionPlan = new SeleccionarPlan(textBoxIdAfiliado.Text);
                     seleccionPlan.Show();
                     this.Hide();
                 }

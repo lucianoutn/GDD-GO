@@ -87,7 +87,6 @@
     <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Planes\ABM_Usuario_DAO.cs" />
     <Compile Include="Abm Planes\CambiarPlanMedico.cs">
       <SubType>Form</SubType>
     </Compile>

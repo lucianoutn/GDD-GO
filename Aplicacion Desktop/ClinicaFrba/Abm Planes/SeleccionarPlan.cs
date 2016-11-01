@@ -14,15 +14,13 @@ namespace ClinicaFrba.Abm_Planes
     {
         ABM_usuario_DAO abm_usuario;
         PlanMedico_DAO plan_medico_dao;
-        CambiarPlanMedico unCambiar;
         String unAfiliado;
 
-        public SeleccionarPlan(String id_afiliado, CambiarPlanMedico cambiar)
+        public SeleccionarPlan(String id_afiliado)
         {
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();
             InitializeComponent();
-            unCambiar = cambiar;
             unAfiliado = id_afiliado;
             cargarDatos();
         }
@@ -41,7 +39,6 @@ namespace ClinicaFrba.Abm_Planes
 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
-            unCambiar.Show();
             this.Close();
         }
 
@@ -53,7 +50,6 @@ namespace ClinicaFrba.Abm_Planes
 
             MessageBox.Show("Plan cambiado con exito!");
 
-            unCambiar.Show();
             this.Close();
         }
     }
