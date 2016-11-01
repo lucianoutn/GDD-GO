@@ -227,11 +227,17 @@
     <Compile Include="Registro Llegada\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\ResultadoAtencion.cs">
+    <Compile Include="Registro Resultado\RegistrarResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\ResultadoAtencion.designer.cs">
-      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
+    <Compile Include="Registro Resultado\RegistrarResultado.Designer.cs">
+      <DependentUpon>RegistrarResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\VerificarAtencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
+      <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
@@ -300,8 +306,11 @@
     <EmbeddedResource Include="Registrar Agenta Medico\VistaProff.resx">
       <DependentUpon>VistaProff.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\ResultadoAtencion.resx">
-      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
+      <DependentUpon>RegistrarResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
+      <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">

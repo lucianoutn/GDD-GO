@@ -88,7 +88,7 @@ namespace ClinicaFrba
 
         private void button_RegResultAtenMedica_Click_1(object sender, EventArgs e)
         {
-            ResultadoAtencion menuAtenMedica = new ResultadoAtencion(this);
+            VerificarAtencion menuAtenMedica = new VerificarAtencion(this);
             menuAtenMedica.Show();
         }
 
