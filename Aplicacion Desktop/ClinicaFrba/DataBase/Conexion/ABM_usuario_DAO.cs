@@ -45,9 +45,9 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
-        public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac)
+        public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac, String plan_medico)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal) Values ('" +
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal,id_plan_medico) Values ('" +
                                                         desc_Nombre + "','" +
                                                         desc_Apellido + "'," +
                                                         desc_sexo + ",'" +
@@ -58,8 +58,10 @@ namespace ClinicaFrba.DataBase.Conexion
                                                         desc_Telefono + "," +
                                                         desc_Estado_Civil + "," +
                                                         desc_fecha_nac + "," +
-                                                        id_nro_familiar + ")");
+                                                        id_nro_familiar + "," +
+                                                        plan_medico +")");
         }
+
 
         public void bajaAfiliado(int id_usuario)
         {

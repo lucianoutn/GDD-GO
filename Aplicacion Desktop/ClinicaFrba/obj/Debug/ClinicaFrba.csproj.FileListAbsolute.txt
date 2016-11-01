@@ -123,7 +123,6 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_B
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AltaNuevoDia.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaCalendario.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaProff.resources
-E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.ResultadoAtencion.resources
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.AltaRol.resources
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.BajaRol.resources
@@ -140,3 +139,5 @@ U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Clin
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources

@@ -90,19 +90,32 @@ namespace ClinicaFrba.Abm_Afiliado
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             String familiar = "null";
-            
+            String plan = "null";
+
             try
             {
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
                 int id = int.Parse(fila.Cells["id"].Value.ToString());
                 familiar = "" + id;
 
+                int plan_ppal = abm_usuario.get_plan_medico(familiar);
+                if (plan_ppal != 0)
+                {
+                    plan = "" + plan_ppal;
+                }
+                else
+                {
+                    plan = "null";
+                }  
             }
-            catch {
+            catch
+            {
                 familiar = "null";
             }
 
-            abm_usuario.altaAfiliado(familiar, unDesc_Nombre, unDesc_Apellido,unSexo, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono,unDesc_Estado_Civil, unDesc_Fecha_Nac);
+            abm_usuario.altaAfiliado(familiar, unDesc_Nombre, unDesc_Apellido, unSexo, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Estado_Civil, unDesc_Fecha_Nac, plan);
+            
+          
             MessageBox.Show("Afiliado creado. Bienvenido!");
             this.Close();
             unMenu.Show();
