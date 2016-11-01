@@ -141,3 +141,5 @@ D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Cli
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.CambiarPlanMedico.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SeleccionarPlan.resources

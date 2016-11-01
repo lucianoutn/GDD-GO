@@ -31,6 +31,23 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Close();
             return resultado;
         }
+
+        public List<string> get_id_plan_medico_multiple()
+        {
+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_plan_medico from GDD_GO.plan_medico");
+
+            List<string> resultado = new List<string>();
+
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["id_plan_medico"].ToString());
+            }
+
+            lector.Close();
+            return resultado;
+        }
         
         public void comprarBono(String id_tipo_bono, String id_afiliado)
         {

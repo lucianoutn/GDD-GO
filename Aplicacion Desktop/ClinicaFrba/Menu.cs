@@ -15,6 +15,7 @@ using ClinicaFrba.Registro_Resultado;
 using ClinicaFrba.Cancelar_Atencion;
 using ClinicaFrba.Listados;
 using ClinicaFrba.Compra_Bono;
+using ClinicaFrba.Abm_Planes;
 
 
 namespace ClinicaFrba
@@ -153,6 +154,13 @@ namespace ClinicaFrba
             {
                 MessageBox.Show(ex.Message, "Error al leer el archivo de configuracion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonCambiarPlan_Click(object sender, EventArgs e)
+        {
+            CambiarPlanMedico cambiarPlan = new CambiarPlanMedico(this);
+            this.Hide();
+            cambiarPlan.Show();
         }
 
     }

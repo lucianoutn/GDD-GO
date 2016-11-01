@@ -87,11 +87,18 @@
     <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Planes\Form1.cs">
+    <Compile Include="Abm Planes\ABM_Usuario_DAO.cs" />
+    <Compile Include="Abm Planes\CambiarPlanMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Planes\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Planes\SeleccionarPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\SeleccionarPlan.Designer.cs">
+      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
@@ -256,6 +263,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\SeleccionarPlan.resx">
+      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>

@@ -39,6 +39,7 @@
             this.button_CancelarAtencion = new System.Windows.Forms.Button();
             this.button_ListadoEstadistico = new System.Windows.Forms.Button();
             this.buttonComprarBono = new System.Windows.Forms.Button();
+            this.buttonCambiarPlan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labelFecha
@@ -148,11 +149,22 @@
             this.buttonComprarBono.UseVisualStyleBackColor = true;
             this.buttonComprarBono.Click += new System.EventHandler(this.buttonComprarBono_Click);
             // 
+            // buttonCambiarPlan
+            // 
+            this.buttonCambiarPlan.Location = new System.Drawing.Point(182, 213);
+            this.buttonCambiarPlan.Name = "buttonCambiarPlan";
+            this.buttonCambiarPlan.Size = new System.Drawing.Size(162, 36);
+            this.buttonCambiarPlan.TabIndex = 10;
+            this.buttonCambiarPlan.Text = "Cambiar Plan";
+            this.buttonCambiarPlan.UseVisualStyleBackColor = true;
+            this.buttonCambiarPlan.Click += new System.EventHandler(this.buttonCambiarPlan_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 361);
+            this.Controls.Add(this.buttonCambiarPlan);
             this.Controls.Add(this.buttonComprarBono);
             this.Controls.Add(this.button_ListadoEstadistico);
             this.Controls.Add(this.button_CancelarAtencion);
@@ -184,6 +196,7 @@
         private System.Windows.Forms.Button button_CancelarAtencion;
         private System.Windows.Forms.Button button_ListadoEstadistico;
         private System.Windows.Forms.Button buttonComprarBono;
+        private System.Windows.Forms.Button buttonCambiarPlan;
 
     }
 }

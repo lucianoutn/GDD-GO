@@ -76,6 +76,11 @@ namespace ClinicaFrba.DataBase.Conexion
                                                        pass+"'), 1);");
         }
 
+        public void cambiarPlanMedico(String id_afiliado, String id_plan_medico)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("update GDD_GO.afiliado set id_plan_medico = "+id_plan_medico+"where id_afiliado="+id_afiliado);
+        }
+
         public List<string> get_afiliados_con_dni(String dni)
         {
 
