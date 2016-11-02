@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    public partial class Agenda : Form
+    public partial class VistaAgena : Form
     {
-        public Agenda()
+        public VistaAgena()
         {
             InitializeComponent();
         }

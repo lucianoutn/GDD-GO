@@ -36,6 +36,32 @@ namespace ClinicaFrba.DataBase.Conexion
         public static String tabla_turno = "GDD_GO.turno";
 
 
+        public static bool horarioInicio(Int32 hora, Int32 min, char desc_dia)
+        {
+            if (desc_dia != 'S')
+            {
+                return (hora >= 7) && (hora <= 20);
+            }else{
+                return (hora >= 10) && (hora <= 15);
+            }
+        }
+        public static bool horarioFin(Int32 hora, Int32 min, char desc_dia)
+        {
+            if (desc_dia != 'S')
+            {
+                return (hora >= 7) && (hora <= 20);
+            }
+            else
+            {
+                return (hora >= 10) && (hora <= 15);
+            }
+        }
+        public static String darFormatoFecha(DateTime fecha)
+        {
+            return fecha.Date.Day.ToString() + "/" +
+                                fecha.Date.Month.ToString() + "/" +
+                                fecha.Date.Year.ToString();
+        }
         // Recibe una fecha en formato DD/MM/AAAA y devuelve DD si parte==0, MM si parte ==1 y AAAA si parte ==2
         public static Int32 getParteDeFecha(String fecha,Int32 parte)
         {

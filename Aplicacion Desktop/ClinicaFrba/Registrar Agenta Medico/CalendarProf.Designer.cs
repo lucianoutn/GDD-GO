@@ -34,32 +34,29 @@
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.dateTimePickerIni = new System.Windows.Forms.DateTimePicker();
-            this.textBoxMi = new System.Windows.Forms.TextBox();
-            this.textBoxHf = new System.Windows.Forms.TextBox();
             this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
-            this.textBoxHi = new System.Windows.Forms.TextBox();
-            this.textBoxMf = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.buttonCheck = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTurno = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.errorDateIni = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorDateFin = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorHorarioIni = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorHorarioFin = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBoxL = new System.Windows.Forms.CheckBox();
+            this.checkBoxM = new System.Windows.Forms.CheckBox();
+            this.checkBoxX = new System.Windows.Forms.CheckBox();
+            this.checkBoxJ = new System.Windows.Forms.CheckBox();
+            this.checkBoxV = new System.Windows.Forms.CheckBox();
+            this.checkBoxS = new System.Windows.Forms.CheckBox();
             this.errorDuracion = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorDias = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEsp = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorDateIni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDateFin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorHorarioIni)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorHorarioFin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDuracion)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEsp)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxEsp
@@ -109,68 +106,13 @@
             this.dateTimePickerIni.TabIndex = 5;
             this.dateTimePickerIni.ValueChanged += new System.EventHandler(this.dateTimePickerIni_ValueChanged);
             // 
-            // textBoxMi
-            // 
-            this.textBoxMi.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxMi.Location = new System.Drawing.Point(92, 201);
-            this.textBoxMi.Name = "textBoxMi";
-            this.textBoxMi.Size = new System.Drawing.Size(54, 26);
-            this.textBoxMi.TabIndex = 6;
-            this.textBoxMi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxHf
-            // 
-            this.textBoxHf.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxHf.Location = new System.Drawing.Point(13, 268);
-            this.textBoxHf.Name = "textBoxHf";
-            this.textBoxHf.Size = new System.Drawing.Size(54, 26);
-            this.textBoxHf.TabIndex = 7;
-            this.textBoxHf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // dateTimePickerFin
             // 
             this.dateTimePickerFin.Location = new System.Drawing.Point(157, 142);
             this.dateTimePickerFin.Name = "dateTimePickerFin";
             this.dateTimePickerFin.Size = new System.Drawing.Size(200, 26);
             this.dateTimePickerFin.TabIndex = 8;
-            // 
-            // textBoxHi
-            // 
-            this.textBoxHi.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxHi.Location = new System.Drawing.Point(13, 201);
-            this.textBoxHi.Name = "textBoxHi";
-            this.textBoxHi.Size = new System.Drawing.Size(54, 26);
-            this.textBoxHi.TabIndex = 9;
-            this.textBoxHi.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // textBoxMf
-            // 
-            this.textBoxMf.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxMf.Location = new System.Drawing.Point(92, 268);
-            this.textBoxMf.Name = "textBoxMf";
-            this.textBoxMf.Size = new System.Drawing.Size(54, 26);
-            this.textBoxMf.TabIndex = 10;
-            this.textBoxMf.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Italic);
-            this.label1.Location = new System.Drawing.Point(68, 198);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 31);
-            this.label1.TabIndex = 11;
-            this.label1.Text = ":";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial", 20F, System.Drawing.FontStyle.Italic);
-            this.label2.Location = new System.Drawing.Point(69, 265);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(22, 31);
-            this.label2.TabIndex = 12;
-            this.label2.Text = ":";
+            this.dateTimePickerFin.ValueChanged += new System.EventHandler(this.dateTimePickerFin_ValueChanged);
             // 
             // buttonCheck
             // 
@@ -203,35 +145,26 @@
             // textBoxTurno
             // 
             this.textBoxTurno.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBoxTurno.Location = new System.Drawing.Point(214, 239);
+            this.textBoxTurno.Location = new System.Drawing.Point(148, 307);
             this.textBoxTurno.Name = "textBoxTurno";
-            this.textBoxTurno.Size = new System.Drawing.Size(70, 26);
+            this.textBoxTurno.Size = new System.Drawing.Size(75, 26);
             this.textBoxTurno.TabIndex = 16;
             this.textBoxTurno.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 179);
+            this.label5.Location = new System.Drawing.Point(9, 188);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(143, 19);
+            this.label5.Size = new System.Drawing.Size(184, 19);
             this.label5.TabIndex = 17;
-            this.label5.Text = "INICIO JORNADA:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(9, 246);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(121, 19);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "FIN JORNADA:";
+            this.label5.Text = "Marcar dias que Asistirá:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Italic);
-            this.label7.Location = new System.Drawing.Point(198, 210);
+            this.label7.Location = new System.Drawing.Point(118, 288);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(136, 16);
             this.label7.TabIndex = 19;
@@ -246,41 +179,102 @@
             // 
             this.errorDateFin.ContainerControl = this;
             // 
-            // errorHorarioIni
+            // checkBoxL
             // 
-            this.errorHorarioIni.ContainerControl = this;
+            this.checkBoxL.AutoSize = true;
+            this.checkBoxL.Location = new System.Drawing.Point(20, 231);
+            this.checkBoxL.Name = "checkBoxL";
+            this.checkBoxL.Size = new System.Drawing.Size(37, 23);
+            this.checkBoxL.TabIndex = 20;
+            this.checkBoxL.Text = "L";
+            this.checkBoxL.UseVisualStyleBackColor = true;
+            this.checkBoxL.CheckedChanged += new System.EventHandler(this.checkBoxL_CheckedChanged);
             // 
-            // errorHorarioFin
+            // checkBoxM
             // 
-            this.errorHorarioFin.ContainerControl = this;
+            this.checkBoxM.AutoSize = true;
+            this.checkBoxM.Location = new System.Drawing.Point(77, 231);
+            this.checkBoxM.Name = "checkBoxM";
+            this.checkBoxM.Size = new System.Drawing.Size(42, 23);
+            this.checkBoxM.TabIndex = 21;
+            this.checkBoxM.Text = "M";
+            this.checkBoxM.UseVisualStyleBackColor = true;
+            this.checkBoxM.CheckedChanged += new System.EventHandler(this.checkBoxM_CheckedChanged);
             // 
-            // errorProvider1
+            // checkBoxX
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.checkBoxX.AutoSize = true;
+            this.checkBoxX.Location = new System.Drawing.Point(144, 231);
+            this.checkBoxX.Name = "checkBoxX";
+            this.checkBoxX.Size = new System.Drawing.Size(39, 23);
+            this.checkBoxX.TabIndex = 22;
+            this.checkBoxX.Text = "X";
+            this.checkBoxX.UseVisualStyleBackColor = true;
+            this.checkBoxX.CheckedChanged += new System.EventHandler(this.checkBoxX_CheckedChanged);
+            // 
+            // checkBoxJ
+            // 
+            this.checkBoxJ.AutoSize = true;
+            this.checkBoxJ.Location = new System.Drawing.Point(202, 231);
+            this.checkBoxJ.Name = "checkBoxJ";
+            this.checkBoxJ.Size = new System.Drawing.Size(36, 23);
+            this.checkBoxJ.TabIndex = 23;
+            this.checkBoxJ.Text = "J";
+            this.checkBoxJ.UseVisualStyleBackColor = true;
+            this.checkBoxJ.CheckedChanged += new System.EventHandler(this.checkBoxJ_CheckedChanged);
+            // 
+            // checkBoxV
+            // 
+            this.checkBoxV.AutoSize = true;
+            this.checkBoxV.Location = new System.Drawing.Point(257, 231);
+            this.checkBoxV.Name = "checkBoxV";
+            this.checkBoxV.Size = new System.Drawing.Size(39, 23);
+            this.checkBoxV.TabIndex = 24;
+            this.checkBoxV.Text = "V";
+            this.checkBoxV.UseVisualStyleBackColor = true;
+            this.checkBoxV.CheckedChanged += new System.EventHandler(this.checkBoxV_CheckedChanged);
+            // 
+            // checkBoxS
+            // 
+            this.checkBoxS.AutoSize = true;
+            this.checkBoxS.Location = new System.Drawing.Point(318, 231);
+            this.checkBoxS.Name = "checkBoxS";
+            this.checkBoxS.Size = new System.Drawing.Size(39, 23);
+            this.checkBoxS.TabIndex = 25;
+            this.checkBoxS.Text = "S";
+            this.checkBoxS.UseVisualStyleBackColor = true;
+            this.checkBoxS.CheckedChanged += new System.EventHandler(this.checkBoxS_CheckedChanged);
             // 
             // errorDuracion
             // 
             this.errorDuracion.ContainerControl = this;
+            // 
+            // errorDias
+            // 
+            this.errorDias.ContainerControl = this;
+            // 
+            // errorEsp
+            // 
+            this.errorEsp.ContainerControl = this;
             // 
             // CalendarProf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 383);
+            this.Controls.Add(this.checkBoxS);
+            this.Controls.Add(this.checkBoxV);
+            this.Controls.Add(this.checkBoxJ);
+            this.Controls.Add(this.checkBoxX);
+            this.Controls.Add(this.checkBoxM);
+            this.Controls.Add(this.checkBoxL);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.textBoxTurno);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.buttonCheck);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxMf);
-            this.Controls.Add(this.textBoxHi);
             this.Controls.Add(this.dateTimePickerFin);
-            this.Controls.Add(this.textBoxHf);
-            this.Controls.Add(this.textBoxMi);
             this.Controls.Add(this.dateTimePickerIni);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.buttonBack);
@@ -293,10 +287,9 @@
             this.Text = "VistaCalendario";
             ((System.ComponentModel.ISupportInitialize)(this.errorDateIni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDateFin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorHorarioIni)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorHorarioFin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDuracion)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorDias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEsp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -310,26 +303,24 @@
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.DateTimePicker dateTimePickerIni;
-        private System.Windows.Forms.TextBox textBoxMi;
-        private System.Windows.Forms.TextBox textBoxHf;
         private System.Windows.Forms.DateTimePicker dateTimePickerFin;
-        private System.Windows.Forms.TextBox textBoxHi;
-        private System.Windows.Forms.TextBox textBoxMf;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonCheck;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxTurno;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ErrorProvider errorDateIni;
         private System.Windows.Forms.ErrorProvider errorDateFin;
-        private System.Windows.Forms.ErrorProvider errorHorarioIni;
-        private System.Windows.Forms.ErrorProvider errorHorarioFin;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.CheckBox checkBoxS;
+        private System.Windows.Forms.CheckBox checkBoxV;
+        private System.Windows.Forms.CheckBox checkBoxJ;
+        private System.Windows.Forms.CheckBox checkBoxX;
+        private System.Windows.Forms.CheckBox checkBoxM;
+        private System.Windows.Forms.CheckBox checkBoxL;
         private System.Windows.Forms.ErrorProvider errorDuracion;
+        private System.Windows.Forms.ErrorProvider errorDias;
+        private System.Windows.Forms.ErrorProvider errorEsp;
 
     }
 }

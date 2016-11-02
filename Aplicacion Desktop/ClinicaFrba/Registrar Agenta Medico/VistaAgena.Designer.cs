@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Registrar_Agenta_Medico
 {
-    partial class Agenda
+    partial class VistaAgena
     {
         /// <summary>
         /// Required designer variable.

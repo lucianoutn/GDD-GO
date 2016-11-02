@@ -52,7 +52,6 @@ C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\Cli
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Login.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Menu.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
-C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AltaNuevoDia.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\bin\Debug\ClinicaFrba.exe
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\bin\Debug\ClinicaFrba.pdb
@@ -146,3 +145,5 @@ C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\Cli
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarProf.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarAdmin.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.ResultadoAtencion.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaAgena.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaJornada.resources

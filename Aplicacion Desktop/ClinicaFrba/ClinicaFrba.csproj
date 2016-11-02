@@ -166,6 +166,7 @@
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
+    <Compile Include="DataBase\Entidades\DiaLaboral.cs" />
     <Compile Include="DataBase\Entidades\Profesional.cs" />
     <Compile Include="DataBase\Entidades\Especialidad.cs" />
     <Compile Include="DataBase\Entidades\Cliente.cs" />
@@ -207,11 +208,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Registrar Agenta Medico\Agenda.cs">
+    <Compile Include="Registrar Agenta Medico\VistaAgena.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registrar Agenta Medico\Agenda.Designer.cs">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <Compile Include="Registrar Agenta Medico\VistaAgena.Designer.cs">
+      <DependentUpon>VistaAgena.cs</DependentUpon>
     </Compile>
     <Compile Include="Registrar Agenta Medico\CalendarAdmin.cs">
       <SubType>Form</SubType>
@@ -230,6 +231,12 @@
     </Compile>
     <Compile Include="Registrar Agenta Medico\ConfirmacionAgenda.Designer.cs">
       <DependentUpon>ConfirmacionAgenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaJornada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\VistaJornada.Designer.cs">
+      <DependentUpon>VistaJornada.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Llegada\Form1.cs">
       <SubType>Form</SubType>
@@ -301,14 +308,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Registrar Agenta Medico\Agenda.resx">
-      <DependentUpon>Agenda.cs</DependentUpon>
+    <EmbeddedResource Include="Registrar Agenta Medico\ConfirmacionAgenda.resx">
+      <DependentUpon>ConfirmacionAgenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Agenta Medico\VistaAgena.resx">
+      <DependentUpon>VistaAgena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenta Medico\CalendarAdmin.resx">
       <DependentUpon>CalendarAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenta Medico\CalendarProf.resx">
       <DependentUpon>CalendarProf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Agenta Medico\VistaJornada.resx">
+      <DependentUpon>VistaJornada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\ResultadoAtencion.resx">
       <DependentUpon>ResultadoAtencion.cs</DependentUpon>

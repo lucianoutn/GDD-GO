@@ -125,7 +125,7 @@ namespace ClinicaFrba.Conexion
             try
             {
                 SqlCommand comando = new SqlCommand(sentenciaSQL, this.conexion);
-
+                
                 comando.CommandType = CommandType.Text;
                 return comando.ExecuteReader();
             }
