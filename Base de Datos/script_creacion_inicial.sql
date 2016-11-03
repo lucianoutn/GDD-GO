@@ -291,6 +291,10 @@ If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME =
 	Drop procedure GDD_GO.calcular_id_afiliado
 Go
 
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_cambiar_plan_medico')
+	Drop procedure  GDD_GO.sp_cambiar_plan_medico
+Go
+
 If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_insertar_afiliado')
 	Drop trigger GDD_GO.insertar_afiliado
 Go
@@ -338,6 +342,23 @@ else
 		End
 	End
 Go
+
+
+--CAMBIAR PLAN MEDICO
+Create Procedure  GDD_GO.sp_cambiar_plan_medico	(	 @afiliado int
+													,@plan_medico int	)
+As
+Declare @plan_medico_anterior int;
+Begin
+	Set @plan_medico_anterior = (select id_plan_medico from GDD_GO.afiliado where id_afiliado=@afiliado)
+
+	Update GDD_GO.afiliado set id_plan_medico = @plan_medico where id_afiliado=@afiliado
+
+	Insert into GDD_GO.hist_cambios_plan_afiliado (id_afiliado, desc_fecha_modificacion,id_plan_medico_anterior, desc_motivo)
+	Values
+	(@afiliado, GETDATE(), @plan_medico_anterior, 'Porq si')
+End
+GO
 /*----------------------------	BORRADO DE VISTAS	-------------------------*/
 
 If exists (select * FROM sys.views where name = 'vista_rol_usuario')
