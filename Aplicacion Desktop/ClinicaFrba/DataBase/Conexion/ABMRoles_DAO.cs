@@ -26,5 +26,25 @@ namespace ClinicaFrba.DataBase.Conexion
 
             return nombresRoles;
         }
+
+        /* OBTENGO TODAS LAS FUNCIONES EXISTENTES */
+        public List<string> getfunciones()
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_funcion from GDD_GO.funcion");
+            List<string> resultado = new List<string>();
+            while (lector.Read())
+            {
+                resultado.Add(lector["desc_funcion"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
+         
+        /* INSERTO ROL */
+        public void altaRol(String desc_nombre_rol)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.rol(  desc_nombre_rol ) Values ('" +
+                                                        desc_nombre_rol + "')");
+        }
     }
 }

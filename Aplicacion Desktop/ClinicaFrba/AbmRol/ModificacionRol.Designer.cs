@@ -31,10 +31,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionRol));
             this.buttonVolver = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(106, 232);
@@ -45,16 +47,28 @@
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Location = new System.Drawing.Point(104, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(176, 214);
+            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Modificar Rol";
+            // 
             // ModificacionRol
             // 
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.rolesMod;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(292, 267);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonVolver);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Modificacion Rol";
             this.ResumeLayout(false);
 
         }
@@ -62,6 +76,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.GroupBox groupBox1;
         
     }
 }

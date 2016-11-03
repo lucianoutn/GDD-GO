@@ -17,6 +17,8 @@ cosas que vamos a tener q ir documentando:
 - el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol 
   id usuario en la tabla roles por usuario. ante la baja del usuario (logica) NO se da de baja la relacion intermedia
 
+-cuando se da baja logica de un rol, se ejecuta un triger que baja las relaciones con los usuarios q tenia ese rol. No se da de baja la relacion de ese rol con sus funciones asignadas ante una posible re-habilitacion del mismo
+
 
 
 - ANTES DE LA ENTREGA: subir el target a .net 4.5 y cambiar algoritmo de encriptacion a SHA256

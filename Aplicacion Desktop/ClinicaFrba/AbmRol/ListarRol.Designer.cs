@@ -45,6 +45,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(108, 232);
@@ -100,6 +101,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ListarRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Listar Roles";
             this.Load += new System.EventHandler(this.ListarRol_Load);
             ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gD2C2016Roles)).EndInit();
