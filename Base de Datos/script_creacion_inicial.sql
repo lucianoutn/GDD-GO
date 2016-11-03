@@ -724,8 +724,13 @@ Union
 select id_usuario, 3 
 	From GDD_GO.profesional
 Union
+<<<<<<< HEAD
 select id_usuario , 1
 	From GDD_GO.usuario
+=======
+select id_usuario , 1
+	From GDD_GO.usuario
+>>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506
 	where desc_username = 'admin'
 go
 
@@ -812,3 +817,25 @@ Begin
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 			
 End
+<<<<<<< HEAD
+=======
+Go
+
+-- TRIGGER DE BAJA LOGICA DE ROL 
+Create Trigger  GDD_GO.tr_baja_rol
+On GDD_GO.rol
+After update
+As
+Declare @estado bit
+Declare @id_rol int
+
+Set @estado = (Select desc_estado_rol from inserted)
+Set @id_rol = (Select id_rol from inserted)
+
+if @estado = 0
+begin
+	Delete from GDD_GO.roles_por_usuario
+	where id_rol = @id_rol
+end
+Go
+>>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506

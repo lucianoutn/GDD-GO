@@ -87,11 +87,17 @@
     <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Planes\Form1.cs">
+    <Compile Include="Abm Planes\CambiarPlanMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Planes\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Planes\SeleccionarPlan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\SeleccionarPlan.Designer.cs">
+      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
@@ -244,11 +250,17 @@
     <Compile Include="Registro Llegada\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\ResultadoAtencion.cs">
+    <Compile Include="Registro Resultado\RegistrarResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\ResultadoAtencion.designer.cs">
-      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
+    <Compile Include="Registro Resultado\RegistrarResultado.Designer.cs">
+      <DependentUpon>RegistrarResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\VerificarAtencion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
+      <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
@@ -267,6 +279,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\SeleccionarPlan.resx">
+      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
@@ -323,8 +341,11 @@
     <EmbeddedResource Include="Registrar Agenta Medico\VistaJornada.resx">
       <DependentUpon>VistaJornada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\ResultadoAtencion.resx">
-      <DependentUpon>ResultadoAtencion.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
+      <DependentUpon>RegistrarResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
+      <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">

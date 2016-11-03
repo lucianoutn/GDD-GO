@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Conexion;
+using ClinicaFrba.Abm_Planes;
 
 namespace ClinicaFrba.Compra_Bono
 {
@@ -33,9 +34,17 @@ namespace ClinicaFrba.Compra_Bono
 
             lista_bonos = plan_medico_dao.get_id_bono_multiple(abm_usuario.get_plan_medico(unIdAfiliado));
 
-            for (int i = 0; i < lista_bonos.Count; i++)
+            if (lista_bonos.Count == 0)
             {
-                comboBoxBonos.Items.Add(lista_bonos[i]);
+                SeleccionarPlan unSeleccionar = new SeleccionarPlan(unIdAfiliado);
+                unSeleccionar.Show();
+            }
+            else
+            {
+                for (int i = 0; i < lista_bonos.Count; i++)
+                {
+                    comboBoxBonos.Items.Add(lista_bonos[i]);
+                }
             }
         }
 

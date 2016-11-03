@@ -44,8 +44,17 @@ namespace ClinicaFrba
                     case "inhabilitado":
                         MessageBox.Show("El usuario esta inhabilitado.", "Usuario inhabilitado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         break;
+<<<<<<< HEAD
                     case "correcto":
                         Menu menu = new Menu(textBoxUserName.Text);
+=======
+                    case "correcto":
+
+                        int id_usuario = loginDAO.get_id_usuario(textBoxUserName.Text);
+                        string rol = loginDAO.get_rol(id_usuario);
+
+                        Menu menu = new Menu(textBoxUserName.Text, rol);
+>>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506
                         menu.Show();
                         this.Hide();
                         break;
