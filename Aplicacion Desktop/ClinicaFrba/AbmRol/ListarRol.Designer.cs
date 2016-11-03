@@ -28,19 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.rolBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.gD2C2016Roles = new ClinicaFrba.GD2C2016Roles();
-            this.gD2C2016DataSet = new ClinicaFrba.GD2C2016DataSet();
-            this.gD2C2016DataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rolTableAdapter = new ClinicaFrba.GD2C2016RolesTableAdapters.rolTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016Roles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016DataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -67,30 +57,6 @@
             this.listView1.View = System.Windows.Forms.View.SmallIcon;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_ObtenerRoles);
             // 
-            // rolBindingSource
-            // 
-            this.rolBindingSource.DataMember = "rol";
-            this.rolBindingSource.DataSource = this.gD2C2016Roles;
-            // 
-            // gD2C2016Roles
-            // 
-            this.gD2C2016Roles.DataSetName = "GD2C2016Roles";
-            this.gD2C2016Roles.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gD2C2016DataSet
-            // 
-            this.gD2C2016DataSet.DataSetName = "GD2C2016DataSet";
-            this.gD2C2016DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // gD2C2016DataSetBindingSource
-            // 
-            this.gD2C2016DataSetBindingSource.DataSource = this.gD2C2016DataSet;
-            this.gD2C2016DataSetBindingSource.Position = 0;
-            // 
-            // rolTableAdapter
-            // 
-            this.rolTableAdapter.ClearBeforeFill = true;
-            // 
             // ListarRol
             // 
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.rolesAlta;
@@ -103,10 +69,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listar Roles";
             this.Load += new System.EventHandler(this.ListarRol_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.rolBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016Roles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gD2C2016DataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -115,11 +77,6 @@
 
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.ListView listView1;
-        private GD2C2016DataSet gD2C2016DataSet;
-        private System.Windows.Forms.BindingSource gD2C2016DataSetBindingSource;
-        private GD2C2016Roles gD2C2016Roles;
-        private System.Windows.Forms.BindingSource rolBindingSource;
-        private GD2C2016RolesTableAdapters.rolTableAdapter rolTableAdapter;
        
     }
 }

@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BajaRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.eliminar = new System.Windows.Forms.Button();
+            this.comboBajaRol = new System.Windows.Forms.ComboBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -49,12 +52,34 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.comboBajaRol);
+            this.groupBox1.Controls.Add(this.eliminar);
             this.groupBox1.Location = new System.Drawing.Point(104, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(176, 214);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Baja Rol";
+            // 
+            // eliminar
+            // 
+            this.eliminar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.eliminar.ForeColor = System.Drawing.Color.Maroon;
+            this.eliminar.Location = new System.Drawing.Point(95, 185);
+            this.eliminar.Name = "eliminar";
+            this.eliminar.Size = new System.Drawing.Size(75, 23);
+            this.eliminar.TabIndex = 5;
+            this.eliminar.Text = "Eliminar";
+            this.eliminar.UseVisualStyleBackColor = true;
+            // 
+            // comboBajaRol
+            // 
+            this.comboBajaRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBajaRol.FormattingEnabled = true;
+            this.comboBajaRol.Location = new System.Drawing.Point(14, 19);
+            this.comboBajaRol.Name = "comboBajaRol";
+            this.comboBajaRol.Size = new System.Drawing.Size(156, 21);
+            this.comboBajaRol.TabIndex = 6;
             // 
             // BajaRol
             // 
@@ -67,6 +92,8 @@
             this.Name = "BajaRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Baja Rol";
+            this.Load += new System.EventHandler(this.BajaRol_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -75,6 +102,8 @@
 
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button eliminar;
+        private System.Windows.Forms.ComboBox comboBajaRol;
      
     }
 }

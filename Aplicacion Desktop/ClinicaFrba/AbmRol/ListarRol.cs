@@ -60,7 +60,7 @@ namespace ClinicaFrba.AbmRol
         {
             //cargo la vista de roles
             listView1.Clear();
-            List<String> roles = DAO.obtenerRoles();
+            List<String> roles = DAO.obtenerRolesActivos();
             //roles.ForEach(delegate(string s) { listView1.Items.Add(s); });
             roles.ForEach(delegate(string s) { listView1.Items.Add(new ListViewItem(s)); });
                

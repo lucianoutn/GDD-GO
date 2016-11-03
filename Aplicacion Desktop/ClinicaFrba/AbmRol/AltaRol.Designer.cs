@@ -31,12 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxNombreRol = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.checkedListFunciones = new System.Windows.Forms.CheckedListBox();
             this.crear = new System.Windows.Forms.Button();
+            this.checkedListFunciones = new System.Windows.Forms.CheckedListBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxNombreRol = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -69,39 +69,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crear Rol";
             // 
-            // label1
+            // crear
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre rol:*";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Funciones:*";
-            // 
-            // textBoxNombreRol
-            // 
-            this.textBoxNombreRol.Location = new System.Drawing.Point(70, 20);
-            this.textBoxNombreRol.Name = "textBoxNombreRol";
-            this.textBoxNombreRol.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNombreRol.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(67, 174);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "* campos obligatorios";
+            this.crear.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.crear.ForeColor = System.Drawing.Color.Maroon;
+            this.crear.Location = new System.Drawing.Point(95, 190);
+            this.crear.Name = "crear";
+            this.crear.Size = new System.Drawing.Size(75, 23);
+            this.crear.TabIndex = 4;
+            this.crear.Text = "Crear";
+            this.crear.UseVisualStyleBackColor = true;
+            this.crear.Click += new System.EventHandler(this.crear_Click);
             // 
             // checkedListFunciones
             // 
@@ -112,16 +90,39 @@
             this.checkedListFunciones.Size = new System.Drawing.Size(164, 109);
             this.checkedListFunciones.TabIndex = 3;
             // 
-            // crear
+            // label3
             // 
-            this.crear.ForeColor = System.Drawing.Color.Maroon;
-            this.crear.Location = new System.Drawing.Point(95, 190);
-            this.crear.Name = "crear";
-            this.crear.Size = new System.Drawing.Size(75, 23);
-            this.crear.TabIndex = 4;
-            this.crear.Text = "Crear";
-            this.crear.UseVisualStyleBackColor = true;
-            this.crear.Click += new System.EventHandler(this.crear_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(67, 174);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "* campos obligatorios";
+            // 
+            // textBoxNombreRol
+            // 
+            this.textBoxNombreRol.Location = new System.Drawing.Point(70, 20);
+            this.textBoxNombreRol.Name = "textBoxNombreRol";
+            this.textBoxNombreRol.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNombreRol.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(63, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Funciones:*";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Nombre rol:*";
             // 
             // AltaRol
             // 

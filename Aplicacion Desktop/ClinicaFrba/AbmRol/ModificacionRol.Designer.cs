@@ -32,6 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.reactivar = new System.Windows.Forms.Button();
+            this.modificar = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -50,12 +53,36 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.modificar);
+            this.groupBox1.Controls.Add(this.reactivar);
             this.groupBox1.Location = new System.Drawing.Point(104, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(176, 214);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar Rol";
+            // 
+            // reactivar
+            // 
+            this.reactivar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.reactivar.ForeColor = System.Drawing.Color.Maroon;
+            this.reactivar.Location = new System.Drawing.Point(6, 185);
+            this.reactivar.Name = "reactivar";
+            this.reactivar.Size = new System.Drawing.Size(75, 23);
+            this.reactivar.TabIndex = 8;
+            this.reactivar.Text = "Re-Activar";
+            this.reactivar.UseVisualStyleBackColor = true;
+            // 
+            // modificar
+            // 
+            this.modificar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.modificar.ForeColor = System.Drawing.Color.Maroon;
+            this.modificar.Location = new System.Drawing.Point(95, 185);
+            this.modificar.Name = "modificar";
+            this.modificar.Size = new System.Drawing.Size(75, 23);
+            this.modificar.TabIndex = 9;
+            this.modificar.Text = "Modificar";
+            this.modificar.UseVisualStyleBackColor = true;
             // 
             // ModificacionRol
             // 
@@ -69,6 +96,7 @@
             this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Rol";
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -77,6 +105,8 @@
 
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button reactivar;
+        private System.Windows.Forms.Button modificar;
         
     }
 }
