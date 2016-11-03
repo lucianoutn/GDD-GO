@@ -2,11 +2,20 @@ cosas que vamos a tener q ir documentando:
 
 
 - criterio para asignar usuarios y pass a afiliados y profesionales?
-- criterio para designar el sexo segun el nuevo modelo de datos: se ingresa por default "consultar"
-- hacemos las validaciones de registros repetidos desde la base de datos o desde la app?
+	usuario del mail hasta el arroba + _ + año de nacimiento
+
+- criterio para designar el sexo segun el nuevo modelo de datos: 
+	se ingresa por default "consultar"
+
+- hacemos las validaciones de registros repetidos desde la base de datos o desde la app? 
+	desde app se validan usuarios repetidos
+
 - la contraseña predeterminada de los usuarios es '1234'
+
 - el estado de rol en 0: deshabilitado, 1: habilitado
-- el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol -id usuario en la tabla roles por usuario. ante la baja del usuario (logica) NO se da de baja la relacion intermedia
+
+- el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol 
+  id usuario en la tabla roles por usuario. ante la baja del usuario (logica) NO se da de baja la relacion intermedia
 
 
 
