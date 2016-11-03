@@ -29,6 +29,11 @@ namespace ClinicaFrba.AbmRol
             this.Close();
         }
 
+        private void AltaRol_Load(object sender, EventArgs e)
+        {
+
+        }
+
         
 
     }
