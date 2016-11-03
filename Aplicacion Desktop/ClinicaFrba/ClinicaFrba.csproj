@@ -250,6 +250,12 @@
     <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </Compile>
+    <Compile Include="SinImplementar\SinImplementarSubMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SinImplementar\SinImplementarSubMenu.Designer.cs">
+      <DependentUpon>SinImplementarSubMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SinImplementar\SinImplementarSubMenu.resx">
+      <DependentUpon>SinImplementarSubMenu.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">

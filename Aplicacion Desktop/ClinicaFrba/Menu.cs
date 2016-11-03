@@ -16,6 +16,7 @@ using ClinicaFrba.Cancelar_Atencion;
 using ClinicaFrba.Listados;
 using ClinicaFrba.Compra_Bono;
 using ClinicaFrba.Abm_Planes;
+using ClinicaFrba.SinImplementar;
 
 
 namespace ClinicaFrba
@@ -60,6 +61,8 @@ namespace ClinicaFrba
                     button_CancelarAtencion.Hide();
               if (!(funciones.Contains("Listado Estadístico")))
                     button_ListadoEstadistico.Hide();
+              if (rol == "Profesional")
+                  buttonCambiarPlan.Hide();
         }
 
         public Menu()
@@ -161,6 +164,31 @@ namespace ClinicaFrba
             CambiarPlanMedico cambiarPlan = new CambiarPlanMedico(this);
             this.Hide();
             cambiarPlan.Show();
+        }
+
+        private void ABMProfesional_Click(object sender, EventArgs e)
+        {
+            SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
+            sinImplementarSubMenu.Show();
+
+        }
+
+        private void ABMUsuario_Click(object sender, EventArgs e)
+        {
+            SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
+            sinImplementarSubMenu.Show();
+        }
+
+        private void ABMEspecialidadesMedicas_Click(object sender, EventArgs e)
+        {
+            SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
+            sinImplementarSubMenu.Show();
+        }
+
+        private void ABMPlan_Click(object sender, EventArgs e)
+        {
+            SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
+            sinImplementarSubMenu.Show();
         }
 
     }

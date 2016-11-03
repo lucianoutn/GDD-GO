@@ -38,9 +38,10 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(100, 232);
+            this.buttonVolver.Location = new System.Drawing.Point(108, 232);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 4;
@@ -50,6 +51,7 @@
             // 
             // Alta
             // 
+            this.Alta.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Alta.Location = new System.Drawing.Point(47, 129);
             this.Alta.Name = "Alta";
             this.Alta.Size = new System.Drawing.Size(75, 23);
@@ -60,6 +62,7 @@
             // 
             // Modificar
             // 
+            this.Modificar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Modificar.Location = new System.Drawing.Point(47, 187);
             this.Modificar.Name = "Modificar";
             this.Modificar.Size = new System.Drawing.Size(75, 23);
@@ -70,6 +73,7 @@
             // 
             // Baja
             // 
+            this.Baja.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Baja.Location = new System.Drawing.Point(47, 158);
             this.Baja.Name = "Baja";
             this.Baja.Size = new System.Drawing.Size(75, 23);
@@ -80,6 +84,7 @@
             // 
             // Listar
             // 
+            this.Listar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Listar.Location = new System.Drawing.Point(47, 100);
             this.Listar.Name = "Listar";
             this.Listar.Size = new System.Drawing.Size(75, 23);
