@@ -60,5 +60,11 @@ namespace ClinicaFrba.DataBase.Conexion
             this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.rol(  desc_nombre_rol ) Values ('" +
                                                         desc_nombre_rol + "')");
         }
+
+        /* ELIMINI ROL (hay un TR en la DB que hace su baja logica con un instead of delete */
+        public void bajaRol(String desc_nombre_rol)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.rol where desc_nombre_rol = '" + desc_nombre_rol +"'");
+        }
     }
 }

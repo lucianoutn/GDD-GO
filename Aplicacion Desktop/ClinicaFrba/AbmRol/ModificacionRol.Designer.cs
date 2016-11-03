@@ -32,8 +32,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.reactivar = new System.Windows.Forms.Button();
             this.modificar = new System.Windows.Forms.Button();
+            this.reactivar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,17 +62,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar Rol";
             // 
-            // reactivar
-            // 
-            this.reactivar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.reactivar.ForeColor = System.Drawing.Color.Maroon;
-            this.reactivar.Location = new System.Drawing.Point(6, 185);
-            this.reactivar.Name = "reactivar";
-            this.reactivar.Size = new System.Drawing.Size(75, 23);
-            this.reactivar.TabIndex = 8;
-            this.reactivar.Text = "Re-Activar";
-            this.reactivar.UseVisualStyleBackColor = true;
-            // 
             // modificar
             // 
             this.modificar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -83,6 +72,18 @@
             this.modificar.TabIndex = 9;
             this.modificar.Text = "Modificar";
             this.modificar.UseVisualStyleBackColor = true;
+            this.modificar.Click += new System.EventHandler(this.modificar_Click);
+            // 
+            // reactivar
+            // 
+            this.reactivar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.reactivar.ForeColor = System.Drawing.Color.Maroon;
+            this.reactivar.Location = new System.Drawing.Point(6, 185);
+            this.reactivar.Name = "reactivar";
+            this.reactivar.Size = new System.Drawing.Size(75, 23);
+            this.reactivar.TabIndex = 8;
+            this.reactivar.Text = "Re-Activar";
+            this.reactivar.UseVisualStyleBackColor = true;
             // 
             // ModificacionRol
             // 

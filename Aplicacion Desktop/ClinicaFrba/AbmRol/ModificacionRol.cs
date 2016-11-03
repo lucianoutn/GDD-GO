@@ -28,6 +28,21 @@ namespace ClinicaFrba.AbmRol
             this.Close();
         }
 
+        private void modificar_Click(object sender, EventArgs e)
+        {
+
+            /*if (.SelectedItem == null)
+                MessageBox.Show("Debe seleccionar un Rol");
+            else
+            {
+
+                MessageBox.Show("Rol modificado con exito");
+                this.menuAnterior.Show();
+                this.Close();
+            }
+            */
+        }
+
         
     }
 }

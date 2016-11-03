@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BajaRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.eliminar = new System.Windows.Forms.Button();
             this.comboBajaRol = new System.Windows.Forms.ComboBox();
+            this.eliminar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Baja Rol";
             // 
+            // comboBajaRol
+            // 
+            this.comboBajaRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBajaRol.FormattingEnabled = true;
+            this.comboBajaRol.Location = new System.Drawing.Point(14, 19);
+            this.comboBajaRol.Name = "comboBajaRol";
+            this.comboBajaRol.Size = new System.Drawing.Size(156, 21);
+            this.comboBajaRol.TabIndex = 6;
+            // 
             // eliminar
             // 
             this.eliminar.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -71,15 +80,7 @@
             this.eliminar.TabIndex = 5;
             this.eliminar.Text = "Eliminar";
             this.eliminar.UseVisualStyleBackColor = true;
-            // 
-            // comboBajaRol
-            // 
-            this.comboBajaRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBajaRol.FormattingEnabled = true;
-            this.comboBajaRol.Location = new System.Drawing.Point(14, 19);
-            this.comboBajaRol.Name = "comboBajaRol";
-            this.comboBajaRol.Size = new System.Drawing.Size(156, 21);
-            this.comboBajaRol.TabIndex = 6;
+            this.eliminar.Click += new System.EventHandler(this.eliminar_Click);
             // 
             // BajaRol
             // 

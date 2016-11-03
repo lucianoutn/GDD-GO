@@ -36,6 +36,20 @@ namespace ClinicaFrba.AbmRol
             roles.ForEach(delegate(string s) {comboBajaRol.Items.Add(s); });
         }
 
+        private void eliminar_Click(object sender, EventArgs e)
+        {
+            if (comboBajaRol.SelectedItem == null)
+                MessageBox.Show("Debe seleccionar un Rol");
+            else
+            {
+                String nombre = comboBajaRol.SelectedItem.ToString();
+                DAO.bajaRol(nombre);
+                MessageBox.Show("Rol dado de baja con exito");
+                this.menuAnterior.Show();
+                this.Close();
+            }
+        }
+
         
     }
 }

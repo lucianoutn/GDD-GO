@@ -782,8 +782,23 @@ Begin
 End
 Go
 
--- TRIGGER DE BAJA LOGICA DE ROL 
+-- TRIGGERs DE BAJA LOGICA DE ROL 
 Create Trigger  GDD_GO.tr_baja_rol
+On GDD_GO.rol
+Instead of delete
+AS
+Begin
+	Declare @id_rol int
+	
+	Select @id_rol = id_rol
+	From deleted
+	Update GDD_GO.rol 
+	Set desc_estado_rol = 0
+	where id_rol = @id_rol
+End
+Go
+
+Create Trigger  GDD_GO.tr_baja_rol_por_usuario
 On GDD_GO.rol
 After update
 As
