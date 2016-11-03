@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaAfiliado));
             this.label1 = new System.Windows.Forms.Label();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBoxCliente = new System.Windows.Forms.GroupBox();
@@ -59,9 +60,9 @@
             this.labelCliente = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.labelPassword = new System.Windows.Forms.Label();
+            this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.groupBoxCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -156,6 +157,7 @@
             // 
             // comboEstadoCivil
             // 
+            this.comboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEstadoCivil.FormattingEnabled = true;
             this.comboEstadoCivil.Location = new System.Drawing.Point(116, 157);
             this.comboEstadoCivil.Name = "comboEstadoCivil";
@@ -181,6 +183,7 @@
             // 
             // comboTipoDoc
             // 
+            this.comboTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboTipoDoc.FormattingEnabled = true;
             this.comboTipoDoc.Location = new System.Drawing.Point(116, 80);
             this.comboTipoDoc.Name = "comboTipoDoc";
@@ -271,6 +274,7 @@
             // 
             // comboDominio
             // 
+            this.comboDominio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboDominio.FormattingEnabled = true;
             this.comboDominio.Location = new System.Drawing.Point(234, 103);
             this.comboDominio.Name = "comboDominio";
@@ -382,6 +386,13 @@
             this.labelPassword.TabIndex = 155;
             this.labelPassword.Text = "Password:";
             // 
+            // textBoxUserName
+            // 
+            this.textBoxUserName.Location = new System.Drawing.Point(110, 19);
+            this.textBoxUserName.Name = "textBoxUserName";
+            this.textBoxUserName.Size = new System.Drawing.Size(95, 20);
+            this.textBoxUserName.TabIndex = 152;
+            // 
             // labelUserName
             // 
             this.labelUserName.AutoSize = true;
@@ -400,13 +411,6 @@
             this.textBoxPassword.TabIndex = 153;
             this.textBoxPassword.UseSystemPasswordChar = true;
             // 
-            // textBoxUserName
-            // 
-            this.textBoxUserName.Location = new System.Drawing.Point(110, 19);
-            this.textBoxUserName.Name = "textBoxUserName";
-            this.textBoxUserName.Size = new System.Drawing.Size(95, 20);
-            this.textBoxUserName.TabIndex = 152;
-            // 
             // AltaAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -418,7 +422,9 @@
             this.Controls.Add(this.buttonVolver);
             this.Controls.Add(this.buttonAlta);
             this.Controls.Add(this.labelCliente);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AltaAfiliado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AltaAfiliado";
             this.groupBoxCliente.ResumeLayout(false);
             this.groupBoxCliente.PerformLayout();

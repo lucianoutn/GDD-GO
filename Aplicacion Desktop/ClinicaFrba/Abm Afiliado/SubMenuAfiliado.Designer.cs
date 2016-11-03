@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubMenuAfiliado));
             this.buttonAltaAfiliado = new System.Windows.Forms.Button();
             this.buttonBajaAfiliado = new System.Windows.Forms.Button();
             this.buttonModificarAfiliado = new System.Windows.Forms.Button();
@@ -85,7 +86,9 @@
             this.Controls.Add(this.buttonModificarAfiliado);
             this.Controls.Add(this.buttonBajaAfiliado);
             this.Controls.Add(this.buttonAltaAfiliado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubMenuAfiliado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.ResumeLayout(false);
 
