@@ -93,11 +93,23 @@
     <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
       <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Planes\ComprarPlanMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\ComprarPlanMedico.Designer.cs">
+      <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Planes\SeleccionarPlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Planes\SeleccionarPlan.Designer.cs">
       <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Planes\SubMenuPlanMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\SubMenuPlanMedico.Designer.cs">
+      <DependentUpon>SubMenuPlanMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
@@ -277,8 +289,14 @@
     <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
       <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\ComprarPlanMedico.resx">
+      <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\SeleccionarPlan.resx">
       <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\SubMenuPlanMedico.resx">
+      <DependentUpon>SubMenuPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>

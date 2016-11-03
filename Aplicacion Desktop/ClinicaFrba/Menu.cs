@@ -62,7 +62,7 @@ namespace ClinicaFrba
               if (!(funciones.Contains("Listado Estadístico")))
                     button_ListadoEstadistico.Hide();
               if (rol == "Profesional")
-                  buttonCambiarPlan.Hide();
+                  buttonPlanMedico.Hide();
         }
 
         public Menu()
@@ -159,13 +159,6 @@ namespace ClinicaFrba
             }
         }
 
-        private void buttonCambiarPlan_Click(object sender, EventArgs e)
-        {
-            CambiarPlanMedico cambiarPlan = new CambiarPlanMedico(this);
-            this.Hide();
-            cambiarPlan.Show();
-        }
-
         private void ABMProfesional_Click(object sender, EventArgs e)
         {
             SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
@@ -189,6 +182,13 @@ namespace ClinicaFrba
         {
             SinImplementarSubMenu sinImplementarSubMenu = new SinImplementarSubMenu();
             sinImplementarSubMenu.Show();
+        }
+
+        private void buttonPlanMedico_Click(object sender, EventArgs e)
+        {
+            SubMenuPlanMedico menu = new SubMenuPlanMedico(this);
+            menu.Show();
+            this.Hide();
         }
 
     }

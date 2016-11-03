@@ -5,17 +5,17 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba.Abm_Planes
 {
-    public partial class CambiarPlanMedico : Form
+    public partial class ComprarPlanMedico : Form
     {
         SubMenuPlanMedico unMenu;
         ABM_usuario_DAO abm_usuario;
-        public CambiarPlanMedico(SubMenuPlanMedico menu)
+
+        public ComprarPlanMedico(SubMenuPlanMedico menu)
         {
             abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();
@@ -28,7 +28,7 @@ namespace ClinicaFrba.Abm_Planes
             this.Close();
         }
 
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBoxIdAfiliado.Text))
             {

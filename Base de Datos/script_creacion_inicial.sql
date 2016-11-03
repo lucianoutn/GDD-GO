@@ -346,7 +346,8 @@ Go
 
 --CAMBIAR PLAN MEDICO
 Create Procedure  GDD_GO.sp_cambiar_plan_medico	(	 @afiliado int
-													,@plan_medico int	)
+													,@plan_medico int
+													,@motivo varchar(255)	)
 As
 Declare @plan_medico_anterior int;
 Begin
@@ -356,7 +357,7 @@ Begin
 
 	Insert into GDD_GO.hist_cambios_plan_afiliado (id_afiliado, desc_fecha_modificacion,id_plan_medico_anterior, desc_motivo)
 	Values
-	(@afiliado, GETDATE(), @plan_medico_anterior, 'Porq si')
+	(@afiliado, GETDATE(), @plan_medico_anterior, @motivo)
 End
 GO
 /*----------------------------	BORRADO DE VISTAS	-------------------------*/

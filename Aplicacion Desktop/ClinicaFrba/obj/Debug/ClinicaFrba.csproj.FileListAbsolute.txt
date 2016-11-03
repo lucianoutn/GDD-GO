@@ -147,3 +147,6 @@ U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Clin
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
