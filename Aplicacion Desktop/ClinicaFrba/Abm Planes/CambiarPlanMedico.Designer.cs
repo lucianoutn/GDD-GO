@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambiarPlanMedico));
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             // 
             // buttonEliminar
             // 
+            this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEliminar.Location = new System.Drawing.Point(187, 212);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
@@ -46,6 +48,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(21, 212);
             this.buttonVolver.Name = "buttonVolver";
@@ -80,8 +83,10 @@
             this.Controls.Add(this.textBoxIdAfiliado);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CambiarPlanMedico";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Cambio de plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 

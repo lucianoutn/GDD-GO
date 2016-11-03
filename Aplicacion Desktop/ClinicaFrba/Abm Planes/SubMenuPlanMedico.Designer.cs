@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubMenuPlanMedico));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonCambiarPlan = new System.Windows.Forms.Button();
             this.buttonComprarPlan = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(96, 200);
             this.buttonVolver.Name = "buttonVolver";
@@ -74,8 +76,10 @@
             this.Controls.Add(this.buttonComprarPlan);
             this.Controls.Add(this.buttonCambiarPlan);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubMenuPlanMedico";
-            this.Text = "SubMenuPlanMedico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Plan Medico";
             this.ResumeLayout(false);
 
         }

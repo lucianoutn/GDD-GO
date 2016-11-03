@@ -37,16 +37,16 @@ namespace ClinicaFrba
             //Visibilidad de funciones, desactivar las que no correspondan al rol
               if (!(funciones.Contains("ABM de Rol")))
                     buttonABMRol.Hide();
-            //if (!(funciones.Contains("ABM de Usuarios")))
-           //     boton_abm_roles.Hide();
+              if (!(funciones.Contains("ABM de Usuarios")))
+                    ABMUsuario.Hide();
               if (!(funciones.Contains("ABM de Afiliados")))
                     buttonABMAfiliado.Hide();
-          //  if (!(funciones.Contains("ABM de Profesional")))
-           //     boton.Hide();
-          //  if (!(funciones.Contains("ABM de Especialidades Medicas")))
-          //      boton.Hide();
-         //   if (!(funciones.Contains("ABM de Plan")))
-          //      boton.Hide();
+              if (!(funciones.Contains("ABM de Profesional")))
+                    ABMProfesional.Hide();
+              if (!(funciones.Contains("ABM de Especialidades Medicas")))
+                    ABMEspecialidadesMedicas.Hide();
+              if (!(funciones.Contains("ABM de Plan")))
+                    ABMPlan.Hide();
            // if (!(funciones.Contains("Registrar Agenda Profesional")))
            //     boton.Hide();
               if (!(funciones.Contains("Compra de Bonos")))

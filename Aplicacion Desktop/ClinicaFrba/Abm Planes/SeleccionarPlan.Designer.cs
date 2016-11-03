@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarPlan));
             this.buttonCambiar = new System.Windows.Forms.Button();
             this.comboBoxPlanes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             // 
             // buttonCambiar
             // 
+            this.buttonCambiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCambiar.Location = new System.Drawing.Point(166, 175);
             this.buttonCambiar.Name = "buttonCambiar";
             this.buttonCambiar.Size = new System.Drawing.Size(75, 23);
@@ -66,6 +68,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(32, 175);
             this.buttonVolver.Name = "buttonVolver";
@@ -102,8 +105,10 @@
             this.Controls.Add(this.comboBoxPlanes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarPlan";
-            this.Text = "SeleccionarPlan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Seleccionar Plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 

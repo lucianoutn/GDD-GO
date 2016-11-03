@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComprarPlanMedico));
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxIdAfiliado = new System.Windows.Forms.TextBox();
             this.buttonSeleccionar = new System.Windows.Forms.Button();
@@ -52,6 +53,7 @@
             // 
             // buttonSeleccionar
             // 
+            this.buttonSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSeleccionar.Location = new System.Drawing.Point(189, 212);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(75, 23);
@@ -62,6 +64,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(23, 212);
             this.buttonVolver.Name = "buttonVolver";
@@ -80,8 +83,10 @@
             this.Controls.Add(this.textBoxIdAfiliado);
             this.Controls.Add(this.buttonSeleccionar);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComprarPlanMedico";
-            this.Text = "ComprarPlanMedico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Comprar Plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 
