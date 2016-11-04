@@ -14,11 +14,12 @@ namespace ClinicaFrba.AbmRol
     {
         
         SubMenuRol menuAnterior;
+        ABMRoles_DAO DAO;
 
         public ModificacionRol(SubMenuRol menu)
         {
             InitializeComponent();
-
+            this.DAO = new ABMRoles_DAO();
             this.menuAnterior = menu;
         }
 
@@ -41,6 +42,33 @@ namespace ClinicaFrba.AbmRol
                 this.Close();
             }
             */
+        }
+
+        private void ModificacionRol_Load(object sender, EventArgs e)
+        {
+            List<String> roles = DAO.obtenerRoles();
+            roles.ForEach(delegate(string s) { comboModRol.Items.Add(s); });
+            reactivar.Hide();
+            
+        }
+
+        private void comboModRol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            reactivar.Hide();
+            String rolSeleccionado = comboModRol.SelectedItem.ToString();
+            bool estado = DAO.consultaEstadoRol(rolSeleccionado);
+            if (!estado)
+                reactivar.Show();
+
+        }
+
+        private void reactivar_Click(object sender, EventArgs e)
+        {
+            String rolSeleccionado = comboModRol.SelectedItem.ToString();
+            DAO.reactivarRol(rolSeleccionado);
+            MessageBox.Show("Rol re-activado con exito");
+            this.Close();
+            this.menuAnterior.Show();
         }
 
         

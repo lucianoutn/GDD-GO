@@ -34,6 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.modificar = new System.Windows.Forms.Button();
             this.reactivar = new System.Windows.Forms.Button();
+            this.comboModRol = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.comboModRol);
             this.groupBox1.Controls.Add(this.modificar);
             this.groupBox1.Controls.Add(this.reactivar);
             this.groupBox1.Location = new System.Drawing.Point(104, 12);
@@ -84,6 +86,17 @@
             this.reactivar.TabIndex = 8;
             this.reactivar.Text = "Re-Activar";
             this.reactivar.UseVisualStyleBackColor = true;
+            this.reactivar.Click += new System.EventHandler(this.reactivar_Click);
+            // 
+            // comboModRol
+            // 
+            this.comboModRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboModRol.FormattingEnabled = true;
+            this.comboModRol.Location = new System.Drawing.Point(14, 19);
+            this.comboModRol.Name = "comboModRol";
+            this.comboModRol.Size = new System.Drawing.Size(156, 21);
+            this.comboModRol.TabIndex = 10;
+            this.comboModRol.SelectedIndexChanged += new System.EventHandler(this.comboModRol_SelectedIndexChanged);
             // 
             // ModificacionRol
             // 
@@ -97,6 +110,7 @@
             this.Name = "ModificacionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Modificacion Rol";
+            this.Load += new System.EventHandler(this.ModificacionRol_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -108,6 +122,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button reactivar;
         private System.Windows.Forms.Button modificar;
+        private System.Windows.Forms.ComboBox comboModRol;
         
     }
 }

@@ -61,10 +61,30 @@ namespace ClinicaFrba.DataBase.Conexion
                                                         desc_nombre_rol + "')");
         }
 
-        /* ELIMINI ROL (hay un TR en la DB que hace su baja logica con un instead of delete */
+        /* ELIMINO ROL (hay un TR en la DB que hace su baja logica con un instead of delete */
         public void bajaRol(String desc_nombre_rol)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.rol where desc_nombre_rol = '" + desc_nombre_rol +"'");
+        }
+
+       
+        /* CONSULTO EL ESTADO DEL ROL PARA MOSTRAR O NO SU REACTIVACION */
+        public bool consultaEstadoRol(String rolSeleccionado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select [desc_estado_rol] from GDD_GO.rol where desc_nombre_rol = '" + rolSeleccionado +"'");
+
+            lector.Read();
+            bool estado = (bool)lector["desc_estado_rol"];
+            lector.Close();
+            return estado;
+            
+            
+        }
+        
+        /* REACTIVO ROL */
+        public void reactivarRol(string rolSeleccionado)
+        {
+            this.GD2C2016.ejecutarSentenciaConRetorno("Update GDD_GO.rol Set desc_estado_rol = 1 where desc_nombre_rol = '" + rolSeleccionado + "'");
         }
     }
 }

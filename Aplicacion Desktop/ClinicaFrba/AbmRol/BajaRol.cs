@@ -31,7 +31,7 @@ namespace ClinicaFrba.AbmRol
 
         private void BajaRol_Load(object sender, EventArgs e)
         {
-           // comboBajaRol.Items.Add
+           
             List<String> roles = DAO.obtenerRolesActivos();
             roles.ForEach(delegate(string s) {comboBajaRol.Items.Add(s); });
         }
