@@ -9,20 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Conexion;
 
-namespace ClinicaFrba.Compra_Bono
+namespace ClinicaFrba.Abm_Planes
 {
-    public partial class CompraBono : Form
+    public partial class SeleccionarAfiliado : Form
     {
-        Menu unMenu;
+        SubMenuPlanMedico unMenu;
         ABM_usuario_DAO abm_usuario;
-        PlanMedico_DAO plan_medico_dao;
+        int opcionElegida;
 
-        public CompraBono(Menu menu)
+        public SeleccionarAfiliado(SubMenuPlanMedico menu, int opcion)
         {
+            abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();
             unMenu = menu;
-            abm_usuario = new ABM_usuario_DAO();
-            plan_medico_dao = new PlanMedico_DAO();
+            opcionElegida = opcion;
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
@@ -31,23 +31,22 @@ namespace ClinicaFrba.Compra_Bono
             this.Close();
         }
 
-        private void buttonSiguiente_Click(object sender, EventArgs e)
+        private void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(textBoxIdAfiliado.Text))
             {
                 if (!string.IsNullOrWhiteSpace(abm_usuario.get_nombre(textBoxIdAfiliado.Text)))
                 {
-                    List<string> lista_bonos = new List<string>();
-                    lista_bonos = plan_medico_dao.get_id_bono_multiple(abm_usuario.get_plan_medico(textBoxIdAfiliado.Text));
-
-                    if (lista_bonos.Count == 0)
+                    if (opcionElegida == 0)
                     {
-                        MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
+                        CambiarPlanMedico seleccionPlan = new CambiarPlanMedico(textBoxIdAfiliado.Text, this);
+                        seleccionPlan.Show();
+                        this.Hide();
                     }
                     else
                     {
-                        SeleccionarBono seleccionBono = new SeleccionarBono(textBoxIdAfiliado.Text ,lista_bonos, this);
-                        seleccionBono.Show();
+                        ComprarPlanMedico comprarPlan = new ComprarPlanMedico(textBoxIdAfiliado.Text, this);
+                        comprarPlan.Show();
                         this.Hide();
                     }
                 }

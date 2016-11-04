@@ -87,11 +87,11 @@
     <Compile Include="Abm Especialidades Medicas\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Planes\CambiarPlanMedico.cs">
+    <Compile Include="Abm Planes\SeleccionarAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
-      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    <Compile Include="Abm Planes\SeleccionarAfiliado.Designer.cs">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Planes\ComprarPlanMedico.cs">
       <SubType>Form</SubType>
@@ -99,11 +99,11 @@
     <Compile Include="Abm Planes\ComprarPlanMedico.Designer.cs">
       <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Abm Planes\SeleccionarPlan.cs">
+    <Compile Include="Abm Planes\CambiarPlanMedico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Abm Planes\SeleccionarPlan.Designer.cs">
-      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Planes\SubMenuPlanMedico.cs">
       <SubType>Form</SubType>
@@ -303,14 +303,14 @@
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
-      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Planes\SeleccionarAfiliado.resx">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\ComprarPlanMedico.resx">
       <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Abm Planes\SeleccionarPlan.resx">
-      <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
+      <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\SubMenuPlanMedico.resx">
       <DependentUpon>SubMenuPlanMedico.cs</DependentUpon>

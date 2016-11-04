@@ -50,6 +50,16 @@ namespace ClinicaFrba.AbmRol
                 DAO.altaRol(desc_nombre_rol);
 
                 //aca insertar en la tabla de funciones x rol
+                List<String> funciones = new List<string>();
+                foreach (var item in checkedListFunciones.CheckedItems)
+                {
+                    funciones.Add(item.ToString());
+                }
+                
+                funciones.ForEach(delegate(string f) {
+                    DAO.InsertarFuncionRol(f, desc_nombre_rol);
+                });
+                
                 MessageBox.Show("Rol creado con exito");
                 this.Hide();
                 this.menuAnterior.Show();

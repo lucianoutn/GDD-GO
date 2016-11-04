@@ -29,64 +29,86 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CambiarPlanMedico));
-            this.buttonEliminar = new System.Windows.Forms.Button();
-            this.buttonVolver = new System.Windows.Forms.Button();
+            this.buttonCambiar = new System.Windows.Forms.Button();
+            this.comboBoxPlanes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxIdAfiliado = new System.Windows.Forms.TextBox();
+            this.buttonVolver = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxMotivo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // buttonEliminar
+            // buttonCambiar
             // 
-            this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonEliminar.Location = new System.Drawing.Point(187, 212);
-            this.buttonEliminar.Name = "buttonEliminar";
-            this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
-            this.buttonEliminar.TabIndex = 58;
-            this.buttonEliminar.Text = "Seleccionar";
-            this.buttonEliminar.UseVisualStyleBackColor = true;
-            this.buttonEliminar.Click += new System.EventHandler(this.buttonEliminar_Click);
+            this.buttonCambiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonCambiar.Location = new System.Drawing.Point(166, 175);
+            this.buttonCambiar.Name = "buttonCambiar";
+            this.buttonCambiar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCambiar.TabIndex = 58;
+            this.buttonCambiar.Text = "Cambiar";
+            this.buttonCambiar.UseVisualStyleBackColor = true;
+            this.buttonCambiar.Click += new System.EventHandler(this.buttonCambiar_Click);
+            // 
+            // comboBoxPlanes
+            // 
+            this.comboBoxPlanes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxPlanes.FormattingEnabled = true;
+            this.comboBoxPlanes.Location = new System.Drawing.Point(141, 48);
+            this.comboBoxPlanes.Name = "comboBoxPlanes";
+            this.comboBoxPlanes.Size = new System.Drawing.Size(100, 21);
+            this.comboBoxPlanes.TabIndex = 57;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(29, 51);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(102, 13);
+            this.label1.TabIndex = 56;
+            this.label1.Text = "Seleccione un Plan:";
             // 
             // buttonVolver
             // 
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(21, 212);
+            this.buttonVolver.Location = new System.Drawing.Point(32, 175);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
-            this.buttonVolver.TabIndex = 57;
+            this.buttonVolver.TabIndex = 55;
             this.buttonVolver.Text = "Volver";
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
-            // label1
+            // label2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 60;
-            this.label1.Text = "Id Afiliado:";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Motivo Del Cambio:";
             // 
-            // textBoxIdAfiliado
+            // textBoxMotivo
             // 
-            this.textBoxIdAfiliado.Location = new System.Drawing.Point(80, 26);
-            this.textBoxIdAfiliado.Name = "textBoxIdAfiliado";
-            this.textBoxIdAfiliado.Size = new System.Drawing.Size(100, 20);
-            this.textBoxIdAfiliado.TabIndex = 59;
+            this.textBoxMotivo.Location = new System.Drawing.Point(141, 99);
+            this.textBoxMotivo.Name = "textBoxMotivo";
+            this.textBoxMotivo.Size = new System.Drawing.Size(100, 20);
+            this.textBoxMotivo.TabIndex = 60;
             // 
-            // CambiarPlanMedico
+            // SeleccionarPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(286, 257);
+            this.ClientSize = new System.Drawing.Size(278, 220);
+            this.Controls.Add(this.textBoxMotivo);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.buttonCambiar);
+            this.Controls.Add(this.comboBoxPlanes);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBoxIdAfiliado);
-            this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CambiarPlanMedico";
+            this.Name = "SeleccionarPlan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cambio de plan";
+            this.Text = "Seleccionar Plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,9 +116,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Button buttonEliminar;
-        private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Button buttonCambiar;
+        private System.Windows.Forms.ComboBox comboBoxPlanes;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxIdAfiliado;
+        private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxMotivo;
     }
 }

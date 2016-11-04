@@ -85,5 +85,8 @@ namespace ClinicaFrba
                 MessageBox.Show(ex.Message, "Error al leer el archivo de configuracion", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
+       
     }
 }
