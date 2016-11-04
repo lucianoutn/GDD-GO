@@ -14,37 +14,27 @@ namespace ClinicaFrba.Compra_Bono
     public partial class SeleccionarBono : Form
     {
         CompraBono unCompraBono;
-        String unIdAfiliado;
+        List<string> un_lista_bonos;
         ABM_usuario_DAO abm_usuario;
         PlanMedico_DAO plan_medico_dao;
+        String unIdAfiliado;
 
-        public SeleccionarBono(String idAfiliado, CompraBono compraBono)
+        public SeleccionarBono(String idAfiliado, List<string> lista_bonos, CompraBono compraBono)
         {
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();
             InitializeComponent();
             unCompraBono = compraBono;
+            un_lista_bonos = lista_bonos;
             unIdAfiliado = idAfiliado;
             cargarDatos();
         }
 
         private void cargarDatos()
         {
-            List<string> lista_bonos = new List<string>();
-
-            lista_bonos = plan_medico_dao.get_id_bono_multiple(abm_usuario.get_plan_medico(unIdAfiliado));
-
-            if (lista_bonos.Count == 0)
+            for (int i = 0; i < un_lista_bonos.Count; i++)
             {
-                MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
-                this.Close();
-            }
-            else
-            {
-                for (int i = 0; i < lista_bonos.Count; i++)
-                {
-                    comboBoxBonos.Items.Add(lista_bonos[i]);
-                }
+                comboBoxBonos.Items.Add(un_lista_bonos[i]);
             }
         }
 

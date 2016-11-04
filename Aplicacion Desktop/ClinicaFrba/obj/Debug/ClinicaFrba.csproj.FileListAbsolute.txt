@@ -105,7 +105,6 @@ D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AltaNuevoDia.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaCalendario.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaProff.resources
-D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.ResultadoAtencion.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.CompraBono.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.SeleccionarBono.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Afiliado.BajaAfiliado.resources
@@ -155,3 +154,11 @@ D:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.exe
 D:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SeleccionarAfiliado.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.CambiarPlanMedico.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
