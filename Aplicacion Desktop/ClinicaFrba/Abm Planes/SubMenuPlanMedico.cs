@@ -24,21 +24,20 @@ namespace ClinicaFrba.Abm_Planes
 
         private void buttonCambiarPlan_Click(object sender, EventArgs e)
         {
-            CambiarPlanMedico cambiarPlan = new CambiarPlanMedico(this);
+            SeleccionarAfiliado cambiarPlan = new SeleccionarAfiliado(this,0);
             this.Hide();
             cambiarPlan.Show();
         }
 
         private void buttonComprarPlan_Click(object sender, EventArgs e)
         {
-            CambiarPlanMedico cambiarPlan = new CambiarPlanMedico(this);
+            SeleccionarAfiliado cambiarPlan = new SeleccionarAfiliado(this,1);
             this.Hide();
             cambiarPlan.Show();
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
-            ComprarPlanMedico cambiarPlan = new ComprarPlanMedico(this);
             unMenu.Show();
             this.Close();
         }

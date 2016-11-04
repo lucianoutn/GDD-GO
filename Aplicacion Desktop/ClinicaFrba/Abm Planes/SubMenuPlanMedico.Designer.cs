@@ -60,7 +60,7 @@
             // buttonComprarPlan
             // 
             this.buttonComprarPlan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonComprarPlan.Location = new System.Drawing.Point(61, 135);
+            this.buttonComprarPlan.Location = new System.Drawing.Point(58, 119);
             this.buttonComprarPlan.Name = "buttonComprarPlan";
             this.buttonComprarPlan.Size = new System.Drawing.Size(162, 36);
             this.buttonComprarPlan.TabIndex = 60;
