@@ -28,14 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarPlan));
             this.buttonCambiar = new System.Windows.Forms.Button();
             this.comboBoxPlanes = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonVolver = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxMotivo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonCambiar
             // 
+            this.buttonCambiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCambiar.Location = new System.Drawing.Point(166, 175);
             this.buttonCambiar.Name = "buttonCambiar";
             this.buttonCambiar.Size = new System.Drawing.Size(75, 23);
@@ -64,6 +68,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(32, 175);
             this.buttonVolver.Name = "buttonVolver";
@@ -73,17 +78,37 @@
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(32, 99);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(99, 13);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Motivo Del Cambio:";
+            // 
+            // textBoxMotivo
+            // 
+            this.textBoxMotivo.Location = new System.Drawing.Point(141, 99);
+            this.textBoxMotivo.Name = "textBoxMotivo";
+            this.textBoxMotivo.Size = new System.Drawing.Size(100, 20);
+            this.textBoxMotivo.TabIndex = 60;
+            // 
             // SeleccionarPlan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(278, 220);
+            this.Controls.Add(this.textBoxMotivo);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCambiar);
             this.Controls.Add(this.comboBoxPlanes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarPlan";
-            this.Text = "SeleccionarPlan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Seleccionar Plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -95,5 +120,7 @@
         private System.Windows.Forms.ComboBox comboBoxPlanes;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonVolver;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBoxMotivo;
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionAfiliado));
             this.buttonModificar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
@@ -228,7 +229,9 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ModificacionAfiliado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ModificacionAfiliado";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

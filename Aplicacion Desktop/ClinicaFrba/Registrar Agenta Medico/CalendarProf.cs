@@ -116,9 +116,8 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
                 }
                 else
                 {
-                    dateTimePickerFin.Enabled = true;
-                    cambioFechaI = true;
                     inicio = dateTimePickerIni.Value.Date;
+                    cambioFechaI = true;
                 }
             }
         }

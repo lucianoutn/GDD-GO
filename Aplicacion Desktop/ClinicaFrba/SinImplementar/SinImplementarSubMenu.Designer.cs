@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba.AbmRol
+﻿namespace ClinicaFrba.SinImplementar
 {
-    partial class ListarRol
+    partial class SinImplementarSubMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ListarRol));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SinImplementarSubMenu));
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonVolver = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
             this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(31, 109);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(233, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Funcionalidad sin implementar según enunciado";
             // 
             // buttonVolver
             // 
-            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(108, 232);
@@ -46,37 +54,25 @@
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
-            // listView1
+            // SinImplementarSubMenu
             // 
-            this.listView1.Location = new System.Drawing.Point(142, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.ShowItemToolTips = true;
-            this.listView1.Size = new System.Drawing.Size(138, 214);
-            this.listView1.TabIndex = 6;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.SmallIcon;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_ObtenerRoles);
-            // 
-            // ListarRol
-            // 
-            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.rolesAlta;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 267);
-            this.Controls.Add(this.listView1);
             this.Controls.Add(this.buttonVolver);
+            this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "ListarRol";
+            this.Name = "SinImplementarSubMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Listar Roles";
-            this.Load += new System.EventHandler(this.ListarRol_Load);
+            this.Text = "**NO DISPONIBLE**";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonVolver;
-        private System.Windows.Forms.ListView listView1;
-       
     }
 }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Entidades;
+using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba.Registrar_Agenta_Medico
 {
@@ -23,21 +24,21 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
 
         public ConfirmacionAgenda(Form previoForm, Form posForm,
-                        Profesional prof, Especialidad esp,DateTime fechaIni,
-                        DateTime fechaFin,Int32 d_turno,List<DiaLaboral> lista)
+                        Object prof, Object esp,DateTime fechaIni,
+                        DateTime fechaFin,Int32 d_turno,Object lista)
         {
             InitializeComponent();
             menu = posForm;
             try
             {
-                menu = posForm;
-                calendario = previoForm;
-                profesional = prof;
-                especialidad = esp;
+                menu = (Form)posForm;
+                calendario = (Form)previoForm;
+                profesional = (Profesional)prof;
+                especialidad = (Especialidad)esp;
                 inicio = fechaIni;
                 fin = fechaFin;
                 t_consulta = d_turno;
-                lista_dias = lista;
+                lista_dias = (List<DiaLaboral>) lista;
             }
             catch (Exception e)
             {   
@@ -48,7 +49,41 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
         private void mostrarPorPantalla()
         {
-
+            Calendario_DAO calendarioDAO = new Calendario_DAO();
+            l_nombreProfesional.Text = profesional.toString();
+            l_especialidad.Text = especialidad.toString();
+            l_valorDuracion.Text = t_consulta.ToString();
+            l_ValorHoras.Text = (calendarioDAO.controlHorarios(lista_dias)/100).ToString();
+            l_valorDias.Text = calendarioDAO.stringAgenda(lista_dias);
+            l_valorTurnos.Text = (calendarioDAO.controlHorarios(lista_dias) / deSexaADeci(t_consulta)).ToString();
+            l_ValorInicio.Text = inicio.ToString();
+            l_valorFin.Text = fin.ToString(); 
         }
+
+        private Int32 deSexaADeci(Int32 a)
+        {
+            return a * 100 / 60;
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            calendario.Show();
+            this.Close();
+        }
+
+        private void buttonConfirm_Click(object sender, EventArgs e)
+        {
+            Calendario_DAO calendarioDAO = new Calendario_DAO();
+            try
+            {
+                calendarioDAO.newCalendar(profesional, especialidad, inicio, fin, t_consulta, lista_dias);
+            }
+            catch (Exception)
+            {                
+                throw new Excepciones.EjecucionComandoFallidaException("fallo nueva Agenda");
+            }
+        }
+
+    
     }
 }

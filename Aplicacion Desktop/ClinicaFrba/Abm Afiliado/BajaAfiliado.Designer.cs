@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BajaAfiliado));
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -241,7 +242,9 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BajaAfiliado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BajaAfiliado";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
             this.groupBox1.ResumeLayout(false);

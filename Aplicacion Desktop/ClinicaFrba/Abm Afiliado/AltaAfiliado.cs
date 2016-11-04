@@ -61,6 +61,24 @@ namespace ClinicaFrba.Abm_Afiliado
                         {
                             MessageBox.Show("Debe ingresar un dominio de email. Ayuda: seleccione una de las opciones dadas");
                         }
+                        if (!radioButtonMasculino.Checked & !radioButtonFemenino.Checked)
+                        {
+                            MessageBox.Show("Debe seleccionar el sexo");
+                        }
+                        if (textCalle.Modified == false)
+                        {
+                            MessageBox.Show("Debe ingresar una dirección");
+                        }
+                        if (textTelefono.Modified == false)
+                        {
+                            MessageBox.Show("Debe ingresar un telefono");
+                        }
+                        if (comboEstadoCivil.SelectedItem == null)
+                        {
+                            MessageBox.Show("Debe seleccionar estado civil");
+                        }
+
+
                         else if (comboTipoDoc.SelectedItem == null)
                         {
                             MessageBox.Show("Debe ingresar un tipo de documento. Ayuda: seleccione una de las opciones dadas");
@@ -109,5 +127,6 @@ namespace ClinicaFrba.Abm_Afiliado
                 }
             }
 
+       
         }
     }

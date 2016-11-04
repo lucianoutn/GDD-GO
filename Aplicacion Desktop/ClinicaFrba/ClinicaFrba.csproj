@@ -93,11 +93,23 @@
     <Compile Include="Abm Planes\CambiarPlanMedico.Designer.cs">
       <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Planes\ComprarPlanMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\ComprarPlanMedico.Designer.cs">
+      <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Planes\SeleccionarPlan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Abm Planes\SeleccionarPlan.Designer.cs">
       <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Abm Planes\SubMenuPlanMedico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\SubMenuPlanMedico.Designer.cs">
+      <DependentUpon>SubMenuPlanMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Abm Profesional\Form1.cs">
       <SubType>Form</SubType>
@@ -188,6 +200,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="GD2C2016Roles.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GD2C2016Roles.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Listados\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +279,12 @@
     <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </Compile>
+    <Compile Include="SinImplementar\SinImplementarSubMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SinImplementar\SinImplementarSubMenu.Designer.cs">
+      <DependentUpon>SinImplementarSubMenu.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Abm Afiliado\AltaAfiliado.resx">
       <DependentUpon>AltaAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,8 +306,14 @@
     <EmbeddedResource Include="Abm Planes\CambiarPlanMedico.resx">
       <DependentUpon>CambiarPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\ComprarPlanMedico.resx">
+      <DependentUpon>ComprarPlanMedico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\SeleccionarPlan.resx">
       <DependentUpon>SeleccionarPlan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\SubMenuPlanMedico.resx">
+      <DependentUpon>SubMenuPlanMedico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\AltaRol.resx">
       <DependentUpon>AltaRol.cs</DependentUpon>
@@ -347,6 +376,9 @@
     <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SinImplementar\SinImplementarSubMenu.resx">
+      <DependentUpon>SinImplementarSubMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="GD2C2016DataSet.xsc">
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
@@ -358,6 +390,17 @@
     </None>
     <None Include="GD2C2016DataSet.xss">
       <DependentUpon>GD2C2016DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GD2C2016Roles.xsc">
+      <DependentUpon>GD2C2016Roles.xsd</DependentUpon>
+    </None>
+    <None Include="GD2C2016Roles.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GD2C2016Roles.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GD2C2016Roles.xss">
+      <DependentUpon>GD2C2016Roles.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

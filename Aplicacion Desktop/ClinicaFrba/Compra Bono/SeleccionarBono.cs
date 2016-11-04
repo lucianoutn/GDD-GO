@@ -36,8 +36,8 @@ namespace ClinicaFrba.Compra_Bono
 
             if (lista_bonos.Count == 0)
             {
-                SeleccionarPlan unSeleccionar = new SeleccionarPlan(unIdAfiliado);
-                unSeleccionar.Show();
+                MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
+                this.Close();
             }
             else
             {

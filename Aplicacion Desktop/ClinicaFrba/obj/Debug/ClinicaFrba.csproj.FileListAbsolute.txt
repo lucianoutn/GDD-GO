@@ -88,7 +88,6 @@ U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Clin
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AltaNuevoDia.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaCalendario.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaProff.resources
-U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.resultadoAtencion.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\GenerateResource.read.1.tlog
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\GenerateResource.write.1.tlog
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.SubMenuRol.resources
@@ -132,7 +131,6 @@ D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Cli
 D:\Facultad\Tercer nivel\GDD\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
-<<<<<<< HEAD
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.AltaRol.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.BajaRol.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.ListarRol.resources
@@ -143,10 +141,8 @@ C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\Cli
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarProf.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarAdmin.resources
-C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.ResultadoAtencion.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaAgena.resources
 C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaJornada.resources
-=======
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.CompraBono.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Compra_Bono.SeleccionarBono.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.Listado_Estadistico.resources
@@ -156,4 +152,24 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.CambiarPlanMedico.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SeleccionarPlan.resources
->>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.CambiarPlanMedico.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SeleccionarPlan.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
+D:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
+D:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.exe
+D:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.CambiarPlanMedico.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.ComprarPlanMedico.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SeleccionarPlan.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.SubMenuPlanMedico.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.ConfirmacionAgenda.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
+C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources

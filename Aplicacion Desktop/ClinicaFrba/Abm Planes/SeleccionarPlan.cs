@@ -46,7 +46,7 @@ namespace ClinicaFrba.Abm_Planes
         {
             String planSeleccionado = comboBoxPlanes.SelectedItem.ToString();
 
-            abm_usuario.cambiarPlanMedico(unAfiliado, planSeleccionado);
+            abm_usuario.cambiarPlanMedico(unAfiliado, planSeleccionado, textBoxMotivo.Text);
 
             MessageBox.Show("Plan cambiado con exito!");
 

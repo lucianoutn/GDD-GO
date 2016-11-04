@@ -225,10 +225,6 @@ CREATE TABLE GDD_GO.agenda
 	 id_agenda int identity(1,1)
 	,fecha_desde DATETIME
 	,fecha_hasta DATETIME
-	,horario_desde TIME
-	,horario_hasta TIME
-	,horario_desde_especial TIME
-	,horario_hasta_especial TIME
 	,duracion_consulta int
 	,estado int
 	,id_profesional int
@@ -240,12 +236,12 @@ CREATE TABLE GDD_GO.agenda
 
 CREATE TABLE GDD_GO.dia_laboral
 (
-	 id_dia_laboral int identity(1,1)
+	 id_dia_laboral char
 	,horario_desde TIME
 	,horario_hasta TIME
 	,estado int
 	,id_agenda int 
-	,primary key (id_dia_laboral)
+	,primary key (id_dia_laboral,id_agenda)
 	,foreign key (id_agenda) references GDD_GO.agenda
 )
 
@@ -265,9 +261,11 @@ CREATE TABLE GDD_GO.horario
 	id_horario int identity(1,1)
 	,desc_hora_desde DATETIME
 	,id_agenda int
+	,id_dia_laboral char NULL
 	,id_turno numeric(18,0)
 	,primary key (id_horario)
 	,foreign key (id_agenda) references GDD_GO.agenda
+	,foreign key (id_dia_laboral,id_agenda) references GDD_GO.dia_laboral
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
 
@@ -306,6 +304,10 @@ Go
 
 If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'calcular_id_afiliado')
 	Drop procedure GDD_GO.calcular_id_afiliado
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_cambiar_plan_medico')
+	Drop procedure  GDD_GO.sp_cambiar_plan_medico
 Go
 
 If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_insertar_afiliado')
@@ -355,6 +357,24 @@ else
 		End
 	End
 Go
+
+
+--CAMBIAR PLAN MEDICO
+Create Procedure  GDD_GO.sp_cambiar_plan_medico	(	 @afiliado int
+													,@plan_medico int
+													,@motivo varchar(255)	)
+As
+Declare @plan_medico_anterior int;
+Begin
+	Set @plan_medico_anterior = (select id_plan_medico from GDD_GO.afiliado where id_afiliado=@afiliado)
+
+	Update GDD_GO.afiliado set id_plan_medico = @plan_medico where id_afiliado=@afiliado
+
+	Insert into GDD_GO.hist_cambios_plan_afiliado (id_afiliado, desc_fecha_modificacion,id_plan_medico_anterior, desc_motivo)
+	Values
+	(@afiliado, GETDATE(), @plan_medico_anterior, @motivo)
+End
+GO
 /*----------------------------	BORRADO DE VISTAS	-------------------------*/
 
 If exists (select * FROM sys.views where name = 'vista_rol_usuario')
@@ -560,10 +580,6 @@ Go
 Insert into GDD_GO.agenda(
 	id_profesional,
 	id_especialidad,
-	horario_desde,
-	horario_hasta,
-	horario_desde_especial,
-	horario_hasta_especial,
 	fecha_desde,
 	fecha_hasta,
 	duracion_consulta,
@@ -571,9 +587,22 @@ Insert into GDD_GO.agenda(
 )
 Select	distinct p.id_profesional,
 		x.id_especialidad,
-		null,null,null,null,null,null,null,1
+		null,null,null,1
 From GDD_GO.profesional p
 join GDD_GO.especialidades_por_profesional x on p.id_profesional = x.id_profesional
+
+/*Dias_Laborales*/
+Insert into GDD_GO.dia_laboral(
+	id_dia_laboral,
+	id_agenda,
+	horario_desde,
+	horario_hasta,
+	estado
+)
+Select	distinct 'z',
+		ag.id_agenda,
+		null,null,1
+From GDD_GO.agenda ag
 
 Go
 /*TURNO*/
@@ -592,10 +621,11 @@ Go
 /*Horario*/
 Insert into GDD_GO.horario(
 	id_turno,
+	id_dia_laboral,
 	desc_hora_desde,
 	id_agenda
 )
-Select m.Turno_Numero, m.Turno_Fecha, ag.id_agenda
+Select m.Turno_Numero, d.id_dia_laboral, m.Turno_Fecha, ag.id_agenda
 From gd_esquema.Maestra m
 join GDD_GO.afiliado af
 	On m.Paciente_Dni = af.desc_dni
@@ -604,6 +634,8 @@ join GDD_GO.profesional pr
 join GDD_GO.agenda ag
 	On	ag.id_profesional = pr.id_profesional
 		and ag.id_especialidad = m.Especialidad_Codigo
+join GDD_GO.dia_laboral d
+	On	ag.id_agenda = d.id_agenda
 Where Turno_Numero is not null And Consulta_Sintomas is not null
 
 Go
@@ -616,8 +648,9 @@ Set fecha_desde = (
 ),	fecha_hasta = (	
 	select TOP(1) h.desc_hora_desde from GDD_GO.horario h
 	where GDD_GO.agenda.id_agenda = h.id_agenda
-	Order by h.desc_hora_desde DESC
-)
+	Order by h.desc_hora_desde DESC)
+
+
 Go
 /*Tipo_Bono*/
 Insert into GDD_GO.tipo_bono(	id_tipo_bono
@@ -724,13 +757,8 @@ Union
 select id_usuario, 3 
 	From GDD_GO.profesional
 Union
-<<<<<<< HEAD
 select id_usuario , 1
 	From GDD_GO.usuario
-=======
-select id_usuario , 1
-	From GDD_GO.usuario
->>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506
 	where desc_username = 'admin'
 go
 
@@ -817,12 +845,25 @@ Begin
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 			
 End
-<<<<<<< HEAD
-=======
 Go
 
--- TRIGGER DE BAJA LOGICA DE ROL 
+-- TRIGGERs DE BAJA LOGICA DE ROL 
 Create Trigger  GDD_GO.tr_baja_rol
+On GDD_GO.rol
+Instead of delete
+AS
+Begin
+	Declare @id_rol int
+	
+	Select @id_rol = id_rol
+	From deleted
+	Update GDD_GO.rol 
+	Set desc_estado_rol = 0
+	where id_rol = @id_rol
+End
+Go
+
+Create Trigger  GDD_GO.tr_baja_rol_por_usuario
 On GDD_GO.rol
 After update
 As
@@ -838,4 +879,4 @@ begin
 	where id_rol = @id_rol
 end
 Go
->>>>>>> d68c83a78400d3bbf924a41e0de77b13fe9f5506
+
