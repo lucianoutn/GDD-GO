@@ -84,7 +84,55 @@ namespace ClinicaFrba.DataBase.Conexion
         /* REACTIVO ROL */
         public void reactivarRol(string rolSeleccionado)
         {
-            this.GD2C2016.ejecutarSentenciaConRetorno("Update GDD_GO.rol Set desc_estado_rol = 1 where desc_nombre_rol = '" + rolSeleccionado + "'");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.rol Set desc_estado_rol = 1 where desc_nombre_rol = '" + rolSeleccionado + "'");
+        }
+
+        /* OBTENGO FUNCINALIDADES X ROL */
+        public List<string> get_funcionalidades(string rol)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_funcion from GDD_GO.vista_rol_funciones where desc_nombre_rol = '" +
+                                                                                rol + "'");
+            List<string> resultado = new List<string>();
+            while (lector.Read())
+            {
+                resultado.Add(lector["desc_funcion"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
+
+        public void InsertarFuncionRol(string funcion, string desc_nombre_rol)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_rol from GDD_GO.rol where desc_nombre_rol = '" +
+                                                                                                                desc_nombre_rol + "'");
+            reader.Read();
+            int id_rol = Int32.Parse(reader["id_rol"].ToString());
+            reader.Close();
+            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_funcion from GDD_GO.funcion where desc_funcion = '" + funcion + "'");
+            reader.Read();
+            int id_funcion = Int32.Parse(reader["id_funcion"].ToString());           
+            reader.Close();
+
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.funciones_por_rol values ("+ id_rol +","+ id_funcion +")");
+         
+        }
+        
+        public void EliminarFuncionRol(string funcion, string desc_nombre_rol)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_rol from GDD_GO.rol where desc_nombre_rol = '" +
+                                                                                                                desc_nombre_rol + "'");
+            reader.Read();
+            int id_rol = Int32.Parse(reader["id_rol"].ToString());
+            reader.Close();
+            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_funcion from GDD_GO.funcion where desc_funcion = '" + funcion + "'");
+            reader.Read();
+            int id_funcion = Int32.Parse(reader["id_funcion"].ToString());
+            reader.Close();
+
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Delete from GDD_GO.funciones_por_rol where id_rol =" + id_rol + "and id_funcion =" + id_funcion);
+
+
+
         }
     }
 }

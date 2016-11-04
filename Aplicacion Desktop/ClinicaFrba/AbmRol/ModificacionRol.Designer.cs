@@ -32,9 +32,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ModificacionRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboModRol = new System.Windows.Forms.ComboBox();
             this.modificar = new System.Windows.Forms.Button();
             this.reactivar = new System.Windows.Forms.Button();
-            this.comboModRol = new System.Windows.Forms.ComboBox();
+            this.checkedListFunciones = new System.Windows.Forms.CheckedListBox();
+            this.cambiarFunciones = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +56,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.cambiarFunciones);
+            this.groupBox1.Controls.Add(this.checkedListFunciones);
             this.groupBox1.Controls.Add(this.comboModRol);
             this.groupBox1.Controls.Add(this.modificar);
             this.groupBox1.Controls.Add(this.reactivar);
@@ -63,6 +67,16 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Modificar Rol";
+            // 
+            // comboModRol
+            // 
+            this.comboModRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboModRol.FormattingEnabled = true;
+            this.comboModRol.Location = new System.Drawing.Point(14, 19);
+            this.comboModRol.Name = "comboModRol";
+            this.comboModRol.Size = new System.Drawing.Size(156, 21);
+            this.comboModRol.TabIndex = 10;
+            this.comboModRol.SelectedIndexChanged += new System.EventHandler(this.comboModRol_SelectedIndexChanged);
             // 
             // modificar
             // 
@@ -88,15 +102,23 @@
             this.reactivar.UseVisualStyleBackColor = true;
             this.reactivar.Click += new System.EventHandler(this.reactivar_Click);
             // 
-            // comboModRol
+            // checkedListFunciones
             // 
-            this.comboModRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboModRol.FormattingEnabled = true;
-            this.comboModRol.Location = new System.Drawing.Point(14, 19);
-            this.comboModRol.Name = "comboModRol";
-            this.comboModRol.Size = new System.Drawing.Size(156, 21);
-            this.comboModRol.TabIndex = 10;
-            this.comboModRol.SelectedIndexChanged += new System.EventHandler(this.comboModRol_SelectedIndexChanged);
+            this.checkedListFunciones.CheckOnClick = true;
+            this.checkedListFunciones.FormattingEnabled = true;
+            this.checkedListFunciones.Location = new System.Drawing.Point(6, 70);
+            this.checkedListFunciones.Name = "checkedListFunciones";
+            this.checkedListFunciones.Size = new System.Drawing.Size(164, 109);
+            this.checkedListFunciones.TabIndex = 8;
+            // 
+            // cambiarFunciones
+            // 
+            this.cambiarFunciones.AutoSize = true;
+            this.cambiarFunciones.Location = new System.Drawing.Point(6, 54);
+            this.cambiarFunciones.Name = "cambiarFunciones";
+            this.cambiarFunciones.Size = new System.Drawing.Size(100, 13);
+            this.cambiarFunciones.TabIndex = 11;
+            this.cambiarFunciones.Text = "Cambiar Funciones:";
             // 
             // ModificacionRol
             // 
@@ -112,6 +134,7 @@
             this.Text = "Modificacion Rol";
             this.Load += new System.EventHandler(this.ModificacionRol_Load);
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -123,6 +146,8 @@
         private System.Windows.Forms.Button reactivar;
         private System.Windows.Forms.Button modificar;
         private System.Windows.Forms.ComboBox comboModRol;
+        private System.Windows.Forms.CheckedListBox checkedListFunciones;
+        private System.Windows.Forms.Label cambiarFunciones;
         
     }
 }

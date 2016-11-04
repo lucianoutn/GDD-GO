@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompraBono));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.textBoxIdAfiliado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,6 +37,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(12, 227);
             this.buttonVolver.Name = "buttonVolver";
@@ -63,6 +65,7 @@
             // 
             // buttonSiguiente
             // 
+            this.buttonSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSiguiente.Location = new System.Drawing.Point(197, 227);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 23);
@@ -80,8 +83,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxIdAfiliado);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CompraBono";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Comprar Bono";
             this.ResumeLayout(false);
             this.PerformLayout();
 

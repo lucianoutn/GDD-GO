@@ -99,7 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.medicos;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(405, 202);
+            this.ClientSize = new System.Drawing.Size(405, 255);
             this.Controls.Add(this.buttonIngresar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelPassword);
