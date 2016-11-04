@@ -53,6 +53,7 @@ namespace ClinicaFrba.Abm_Planes
 
             MessageBox.Show("Plan cambiado con exito!");
 
+            unMenu.Show();
             this.Close();
         }
     }
