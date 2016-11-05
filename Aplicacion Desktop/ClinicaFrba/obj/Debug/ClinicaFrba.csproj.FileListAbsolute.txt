@@ -85,9 +85,6 @@ U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\Clin
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Login.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Menu.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
-U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.AltaNuevoDia.resources
-U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaCalendario.resources
-U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaProff.resources
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\GenerateResource.read.1.tlog
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\GenerateResource.write.1.tlog
 U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.AbmRol.SubMenuRol.resources
@@ -185,3 +182,11 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registra
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelacionPorAfiliado.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelacionPorMedico.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelarAtencion.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelacionPorAfiliado.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelacionPorMedico.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Cancelar_Atencion.CancelarAtencion.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.ConfirmacionAgenda.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaAgena.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarAdmin.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.CalendarProf.resources
+U:\Dropbox\U.T.N\GDD\TP\git\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaJornada.resources

@@ -61,7 +61,7 @@ namespace ClinicaFrba.DataBase.Conexion
                                                         desc_nombre_rol + "')");
         }
 
-        /* ELIMINO ROL (hay un TR en la DB que hace su baja logica con un instead of delete */
+        /* ELIMINO ROL (hay un TR en la DB que hace su baja logica con un instead of delete) */
         public void bajaRol(String desc_nombre_rol)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.rol where desc_nombre_rol = '" + desc_nombre_rol +"'");
