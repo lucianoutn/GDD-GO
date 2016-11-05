@@ -21,5 +21,25 @@ namespace ClinicaFrba.Cancelar_Atencion
             InitializeComponent();
             unMenu = menu;
         }
+
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            unMenu.Show();
+            this.Close();
+        }
+
+        private void buttonPlanMedico_Click(object sender, EventArgs e)
+        {
+            CancelacionPorMedico cancelarMed = new CancelacionPorMedico(this);
+            cancelarMed.Show();
+            this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            CancelacionPorAfiliado cancelarAfi = new CancelacionPorAfiliado(this);
+            cancelarAfi.Show();
+            this.Hide();
+        }
     }
 }

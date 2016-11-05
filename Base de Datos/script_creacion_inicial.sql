@@ -77,6 +77,7 @@ Create Table GDD_GO.usuario
 	,desc_password varbinary(32)
 	,desc_estado int
 	,desc_fecha_inhabilitado datetime
+	,intentos_login int
 	,primary key (id_usuario)
 	,unique (desc_username)
 )
@@ -337,16 +338,18 @@ Create Procedure GDD_GO.logearse	(	 @user varchar(150)
 As
 Declare @usuario int = 0;
 Declare @estado int = 0;
+Declare @intentos int = 0;
 
 Select	@usuario = us.id_usuario,
-		@estado = us.desc_estado
+		@estado = us.desc_estado,
+		@intentos = us.intentos_login
 From GDD_GO.usuario us
 Where us.desc_username = @user
 
 if (@usuario = 0)
 	Select 'invalido' as mensaje
 else
-	if (@estado = 2)
+	if (@estado = 2 OR @intentos = 3)
 		Select 'inhabilitado' as mensaje
 	else
 	Begin
@@ -355,10 +358,12 @@ else
 							 us.desc_password = HASHBYTES('SHA1', @pass)	)--cambiar a sha2_256 para la entrega
 		Begin
 			Select 'incorrecto' as mensaje
+			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
 		End
 		else
 		Begin
 			Select 'correcto' as mensaje
+			Update GDD_GO.usuario set intentos_login = 0 where id_usuario=@usuario
 		End
 	End
 Go
@@ -473,10 +478,12 @@ Where Medico_Dni is not null
 
 Insert into GDD_GO.usuario	(	desc_username
 							   ,desc_password
-							   ,desc_estado	)
+							   ,desc_estado
+							   ,intentos_login		)
 Select us.username
 	  ,us.password
 	  ,1
+	  ,0
 From #usuarios us
 where us.entidad = 'Afiliado'
 Go
@@ -744,8 +751,9 @@ and		m.Compra_Bono_Fecha is null
 Insert into GDD_GO.usuario	(	 desc_username
 				
 								,desc_password
-								,desc_estado	)
-Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1)--cambiar a sha2_256 para la entrega
+								,desc_estado
+								,intentos_login		)
+Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
 Go
 
 --Inserto Roles existentes
