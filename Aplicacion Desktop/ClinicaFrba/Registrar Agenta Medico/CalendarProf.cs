@@ -145,11 +145,6 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             }
         }
 
-        private void buttonCheck_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
             if (validarCamposCompletados())

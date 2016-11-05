@@ -35,7 +35,6 @@
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.dateTimePickerIni = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerFin = new System.Windows.Forms.DateTimePicker();
-            this.buttonCheck = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxTurno = new System.Windows.Forms.TextBox();
@@ -113,16 +112,6 @@
             this.dateTimePickerFin.Size = new System.Drawing.Size(200, 26);
             this.dateTimePickerFin.TabIndex = 8;
             this.dateTimePickerFin.ValueChanged += new System.EventHandler(this.dateTimePickerFin_ValueChanged);
-            // 
-            // buttonCheck
-            // 
-            this.buttonCheck.Location = new System.Drawing.Point(148, 339);
-            this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(75, 32);
-            this.buttonCheck.TabIndex = 13;
-            this.buttonCheck.Text = "Check";
-            this.buttonCheck.UseVisualStyleBackColor = true;
-            this.buttonCheck.Click += new System.EventHandler(this.buttonCheck_Click);
             // 
             // label3
             // 
@@ -273,7 +262,6 @@
             this.Controls.Add(this.textBoxTurno);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.buttonCheck);
             this.Controls.Add(this.dateTimePickerFin);
             this.Controls.Add(this.dateTimePickerIni);
             this.Controls.Add(this.buttonConfirm);
@@ -304,7 +292,6 @@
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.DateTimePicker dateTimePickerIni;
         private System.Windows.Forms.DateTimePicker dateTimePickerFin;
-        private System.Windows.Forms.Button buttonCheck;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxTurno;

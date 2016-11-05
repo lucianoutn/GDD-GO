@@ -910,3 +910,5 @@ begin
 	where id_rol = @id_rol
 end
 Go
+
+select * from GDD_GO.a
