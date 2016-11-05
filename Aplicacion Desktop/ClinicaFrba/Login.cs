@@ -61,7 +61,7 @@ namespace ClinicaFrba
         {
             try
             {
-                using (StreamReader sr = new StreamReader("C:/Users/Tc/Desktop/Federico 2016/Gestion de Datos/GDD-GO/Aplicacion Desktop/ClinicaFrba/bin/Debug/ArchivoConfiguracion.txt"))
+                using (StreamReader sr = new StreamReader("ArchivoConfiguracion.txt"))
                 {
                     string line, textoArchivo = "";
                     while ((line = sr.ReadLine()) != null)
