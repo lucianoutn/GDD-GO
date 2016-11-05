@@ -42,6 +42,9 @@
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.l_ValorInicio = new System.Windows.Forms.Label();
             this.l_valorFin = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // l_nombreProfesional
@@ -56,7 +59,7 @@
             // l_especialidad
             // 
             this.l_especialidad.AutoSize = true;
-            this.l_especialidad.Location = new System.Drawing.Point(282, 13);
+            this.l_especialidad.Location = new System.Drawing.Point(224, 13);
             this.l_especialidad.Name = "l_especialidad";
             this.l_especialidad.Size = new System.Drawing.Size(97, 13);
             this.l_especialidad.TabIndex = 1;
@@ -65,7 +68,7 @@
             // l_duracionTurno
             // 
             this.l_duracionTurno.AutoSize = true;
-            this.l_duracionTurno.Location = new System.Drawing.Point(282, 119);
+            this.l_duracionTurno.Location = new System.Drawing.Point(224, 119);
             this.l_duracionTurno.Name = "l_duracionTurno";
             this.l_duracionTurno.Size = new System.Drawing.Size(98, 13);
             this.l_duracionTurno.TabIndex = 2;
@@ -74,7 +77,7 @@
             // l_valorDuracion
             // 
             this.l_valorDuracion.AutoSize = true;
-            this.l_valorDuracion.Location = new System.Drawing.Point(402, 119);
+            this.l_valorDuracion.Location = new System.Drawing.Point(347, 119);
             this.l_valorDuracion.Name = "l_valorDuracion";
             this.l_valorDuracion.Size = new System.Drawing.Size(77, 13);
             this.l_valorDuracion.TabIndex = 3;
@@ -83,7 +86,7 @@
             // l_horasSemana
             // 
             this.l_horasSemana.AutoSize = true;
-            this.l_horasSemana.Location = new System.Drawing.Point(282, 78);
+            this.l_horasSemana.Location = new System.Drawing.Point(224, 78);
             this.l_horasSemana.Name = "l_horasSemana";
             this.l_horasSemana.Size = new System.Drawing.Size(98, 13);
             this.l_horasSemana.TabIndex = 4;
@@ -92,7 +95,7 @@
             // l_ValorHoras
             // 
             this.l_ValorHoras.AutoSize = true;
-            this.l_ValorHoras.Location = new System.Drawing.Point(402, 78);
+            this.l_ValorHoras.Location = new System.Drawing.Point(347, 78);
             this.l_ValorHoras.Name = "l_ValorHoras";
             this.l_ValorHoras.Size = new System.Drawing.Size(62, 13);
             this.l_ValorHoras.TabIndex = 5;
@@ -119,7 +122,7 @@
             // l_TurnosPorSemana
             // 
             this.l_TurnosPorSemana.AutoSize = true;
-            this.l_TurnosPorSemana.Location = new System.Drawing.Point(282, 161);
+            this.l_TurnosPorSemana.Location = new System.Drawing.Point(224, 161);
             this.l_TurnosPorSemana.Name = "l_TurnosPorSemana";
             this.l_TurnosPorSemana.Size = new System.Drawing.Size(101, 13);
             this.l_TurnosPorSemana.TabIndex = 8;
@@ -128,7 +131,7 @@
             // l_valorTurnos
             // 
             this.l_valorTurnos.AutoSize = true;
-            this.l_valorTurnos.Location = new System.Drawing.Point(402, 161);
+            this.l_valorTurnos.Location = new System.Drawing.Point(347, 161);
             this.l_valorTurnos.Name = "l_valorTurnos";
             this.l_valorTurnos.Size = new System.Drawing.Size(92, 13);
             this.l_valorTurnos.TabIndex = 9;
@@ -166,17 +169,47 @@
             // l_valorFin
             // 
             this.l_valorFin.AutoSize = true;
-            this.l_valorFin.Location = new System.Drawing.Point(282, 48);
+            this.l_valorFin.Location = new System.Drawing.Point(224, 48);
             this.l_valorFin.Name = "l_valorFin";
             this.l_valorFin.Size = new System.Drawing.Size(54, 13);
             this.l_valorFin.TabIndex = 13;
             this.l_valorFin.Text = "Fecha Fin";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(431, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(18, 13);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "hs";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(431, 119);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(23, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "min";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(431, 161);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(82, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Posibles Turnos";
             // 
             // ConfirmacionAgenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 261);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.l_valorFin);
             this.Controls.Add(this.l_ValorInicio);
             this.Controls.Add(this.buttonConfirm);
@@ -214,5 +247,8 @@
         private System.Windows.Forms.Button buttonConfirm;
         private System.Windows.Forms.Label l_ValorInicio;
         private System.Windows.Forms.Label l_valorFin;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

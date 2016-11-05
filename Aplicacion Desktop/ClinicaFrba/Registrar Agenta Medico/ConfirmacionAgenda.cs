@@ -82,8 +82,9 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             {                
                 throw new Excepciones.EjecucionComandoFallidaException("fallo nueva Agenda");
             }
+            menu.Show();
+            calendario.Close();
+            this.Close();        
         }
-
-    
     }
 }

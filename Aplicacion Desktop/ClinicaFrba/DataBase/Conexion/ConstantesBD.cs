@@ -19,6 +19,7 @@ namespace ClinicaFrba.DataBase.Conexion
         public static String tabla_afiliados = "GDD_GO.afiliado";
         public static String tabla_agenda = "GDD_GO.agenda";
         public static String tabla_bono_comprado = "GDD_GO.bono_comprado";
+        public static String tabla_dia_laboral = "GDD_GO.dia_laboral";
         public static String tabla_consulta = "GDD_GO.consulta";
         public static String tabla_especialidad = "GDD_GO.especialidad";
         public static String tabla_esp_por_profesional = "GDD_GO.especialidades_por_profesional"; 

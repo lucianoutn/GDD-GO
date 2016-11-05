@@ -235,69 +235,55 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
         private void checkBoxL_CheckedChanged(object sender, EventArgs e)
         {
-            errorDias.Clear();
-            if (checkBoxL.Checked)
-            {
-                VistaJornada vista = new VistaJornada(this, 'L');
-                vista.Show();
-                this.Hide();
-            }
+            manejarCheck(checkBoxL.Checked, 'L');
         }
 
         private void checkBoxM_CheckedChanged(object sender, EventArgs e)
         {
-            errorDias.Clear();
-            if (checkBoxM.Checked)
-            {
-                VistaJornada vista = new VistaJornada(this, 'M');
-                vista.Show();
-                this.Hide();
-            }
+            manejarCheck(checkBoxM.Checked, 'M');
         }
 
         private void checkBoxX_CheckedChanged(object sender, EventArgs e)
         {
-            errorDias.Clear();
-            if (checkBoxX.Checked)
-            {
-                VistaJornada vista = new VistaJornada(this, 'X');
-                vista.Show();
-                this.Hide();
-            }
+            manejarCheck(checkBoxX.Checked, 'X');
         }
 
         private void checkBoxJ_CheckedChanged(object sender, EventArgs e)
         {
-            errorDias.Clear();
-            if (checkBoxJ.Checked)
-            {
-                VistaJornada vista = new VistaJornada(this, 'J');
-                vista.Show();
-                this.Hide();
-            }
+            manejarCheck(checkBoxJ.Checked, 'J');
         }
 
         private void checkBoxV_CheckedChanged(object sender, EventArgs e)
         {
-            errorDias.Clear();
-            if (checkBoxV.Checked)
-            {
-                VistaJornada vista = new VistaJornada(this, 'V');
-                vista.Show();
-                this.Hide();
-            }
+            manejarCheck(checkBoxV.Checked, 'V');
         }
 
         private void checkBoxS_CheckedChanged(object sender, EventArgs e)
         {
+            manejarCheck(checkBoxS.Checked, 'S');
+        }
+
+
+        private void manejarCheck(Boolean resultado, char letra)
+        {
             errorDias.Clear();
-            if (checkBoxS.Checked)
+            if (resultado)
             {
-                VistaJornada vista = new VistaJornada(this, 'S');
+                VistaJornada vista = new VistaJornada(this, letra);
                 vista.Show();
                 this.Hide();
             }
+            else
+            {
+                foreach (DiaLaboral item in lista_dias)
+                {
+                    if (item.getdia().Equals(letra))
+                    {
+                        lista_dias.Remove(item);
+                        return;
+                    }
+                }
+            }
         }
-
     }
 }

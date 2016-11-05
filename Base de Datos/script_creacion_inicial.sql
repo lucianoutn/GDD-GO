@@ -44,11 +44,11 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'rol')
 	DROP TABLE GDD_GO.rol
 
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'agenda')
-	DROP TABLE GDD_GO.agenda
-	
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'dia_laboral')
 	DROP TABLE GDD_GO.dia_laboral
+
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'agenda')
+	DROP TABLE GDD_GO.agenda	
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'especialidad')
 	DROP TABLE GDD_GO.especialidad
@@ -318,6 +318,11 @@ If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baj
 	Drop trigger GDD_GO.tr_baja_afiliado
 Go
 
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_Agregar_Agenda')
+	Drop procedure GDD_GO.sp_Agregar_Agenda
+Go
+
+
 /*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
 --Iniciar Aplicacion
 Create procedure GDD_GO.inicializar_modelo (@fechasys varchar(10))
@@ -374,6 +379,32 @@ Begin
 	Values
 	(@afiliado, GETDATE(), @plan_medico_anterior, @motivo)
 End
+GO
+
+--Nueva Agenda
+Create Procedure  GDD_GO.sp_Agregar_Agenda(
+		@profesional int,
+		@especialidad int,
+		@fecha_desde Datetime,
+		@fecha_hasta Datetime,	
+		@consulta int)
+As
+Declare @agenda int;
+Begin
+	INSERT INTO GDD_GO.agenda(
+			id_profesional, id_especialidad,
+            fecha_desde, fecha_hasta,duracion_consulta, estado)
+            VALUES (
+			@profesional,
+			@especialidad,
+			@fecha_desde,
+			@fecha_hasta,
+			@consulta, 0)
+
+	set @agenda = (select TOP(1) id_agenda from GDD_GO.agenda order by id_agenda desc)
+
+	select @agenda as mensaje
+	end
 GO
 /*----------------------------	BORRADO DE VISTAS	-------------------------*/
 
@@ -879,4 +910,3 @@ begin
 	where id_rol = @id_rol
 end
 Go
-
