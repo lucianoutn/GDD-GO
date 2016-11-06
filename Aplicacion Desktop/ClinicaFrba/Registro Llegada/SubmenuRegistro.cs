@@ -46,6 +46,15 @@ namespace ClinicaFrba.Registro_Llegada
             profesionales.ForEach(delegate(string s) { comboProfesional.Items.Add(s); });
         }
 
+        private void comboProfesional_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string profElegido = comboProfesional.SelectedItem.ToString();
+            dataGridTurno.Rows.Clear();
+            dataGridTurno.Refresh();
+
+
+        }
+
        
     }
 }
