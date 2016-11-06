@@ -1,6 +1,6 @@
 ﻿namespace ClinicaFrba.Cancelar_Atencion
 {
-    partial class CancelarAtencion
+    partial class CancelacionPorAfiliado
     {
         /// <summary>
         /// Required designer variable.
@@ -29,14 +29,12 @@
         private void InitializeComponent()
         {
             this.buttonVolver = new System.Windows.Forms.Button();
-            this.buttonPlanMedico = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonVolver
             // 
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(101, 190);
+            this.buttonVolver.Location = new System.Drawing.Point(44, 212);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 0;
@@ -44,36 +42,14 @@
             this.buttonVolver.UseVisualStyleBackColor = true;
             this.buttonVolver.Click += new System.EventHandler(this.buttonVolver_Click);
             // 
-            // buttonPlanMedico
-            // 
-            this.buttonPlanMedico.Location = new System.Drawing.Point(61, 43);
-            this.buttonPlanMedico.Name = "buttonPlanMedico";
-            this.buttonPlanMedico.Size = new System.Drawing.Size(162, 36);
-            this.buttonPlanMedico.TabIndex = 14;
-            this.buttonPlanMedico.Text = "Cancelación Médico";
-            this.buttonPlanMedico.UseVisualStyleBackColor = true;
-            this.buttonPlanMedico.Click += new System.EventHandler(this.buttonPlanMedico_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(61, 112);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(162, 36);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Cancelación Afiliado";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // CancelarAtencion
+            // CancelacionPorAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonPlanMedico);
             this.Controls.Add(this.buttonVolver);
-            this.Name = "CancelarAtencion";
-            this.Text = "CancelarAtencion";
+            this.Name = "CancelacionPorAfiliado";
+            this.Text = "CancelacionPorAfiliado";
             this.ResumeLayout(false);
 
         }
@@ -81,9 +57,5 @@
         #endregion
 
         private System.Windows.Forms.Button buttonVolver;
-        private System.Windows.Forms.Button buttonPlanMedico;
-        private System.Windows.Forms.Button button1;
-
-
     }
 }

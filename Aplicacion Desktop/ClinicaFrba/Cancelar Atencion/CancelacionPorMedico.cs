@@ -6,12 +6,23 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba.Cancelar_Atencion
 {
     public partial class CancelacionPorMedico : Form
     {
-        
+        Form unMenu;
+
+        public CancelacionPorMedico(Form menu)
+        {
+            InitializeComponent();
+            unMenu = menu;
+        }
+
+        private void buttonVolver_Click(object sender, EventArgs e)
+        {
+            unMenu.Show();
+            this.Close();
+        }
     }
 }

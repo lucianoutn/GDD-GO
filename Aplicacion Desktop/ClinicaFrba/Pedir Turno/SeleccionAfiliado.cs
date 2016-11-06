@@ -17,19 +17,19 @@ namespace ClinicaFrba.Pedir_Turno
         Menu menu;
         String username;
         bool check;
-        List<Cliente> lista_Clientes;
+        List<Afiliado> lista_Afiliados;
 
         public SeleccionAfiliado(Menu menuPrevio)
         {
             InitializeComponent();
             menu = menuPrevio;
             check=false;
-//            ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
-//            lista_prof = profesionalesDAO.getProfesionales();
-//            foreach (Profesional aux in lista_prof)
-//            {
-//                comboBoxAf.Items.Add(aux.toString());
-//            }
+            Clientes_DAO DAO = new Clientes_DAO();
+            lista_Afiliados = DAO.getAfiliados();
+            foreach (Afiliado aux in lista_Afiliados)
+            {
+                comboBoxAf.Items.Add(aux.toString());
+            }
         }
 
 
@@ -43,16 +43,16 @@ namespace ClinicaFrba.Pedir_Turno
         {
             if (check)
             {
-                Form1 vistaProff = new Form1();
-                vistaProff.Show();
+                Form1 formTurno = new Form1();
+                formTurno.Show();
                 this.Hide();
             }
         }
 
         private void comboBoxAf_SelectedIndexChanged(object sender, EventArgs e)
         {
-/*            foreach (Profesional aux
-                in lista)
+            foreach (Afiliado aux
+                in lista_Afiliados)
             {
                 if (aux.toString().CompareTo(comboBoxAf.SelectedItem) == 0)
                 {
@@ -62,6 +62,6 @@ namespace ClinicaFrba.Pedir_Turno
                     return;
                 }
             }
-*/        }
+        }
     }
 }

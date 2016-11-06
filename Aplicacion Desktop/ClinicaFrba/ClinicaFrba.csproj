@@ -150,8 +150,14 @@
     <Compile Include="Cancelar Atencion\CancelacionPorAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Cancelar Atencion\CancelacionPorAfiliado.Designer.cs">
+      <DependentUpon>CancelacionPorAfiliado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cancelar Atencion\CancelacionPorMedico.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\CancelacionPorMedico.Designer.cs">
+      <DependentUpon>CancelacionPorMedico.cs</DependentUpon>
     </Compile>
     <Compile Include="Cancelar Atencion\CancelarAtencion.cs">
       <SubType>Form</SubType>
@@ -335,6 +341,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AbmRol\SubMenuRol.resx">
       <DependentUpon>SubMenuRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelacionPorAfiliado.resx">
+      <DependentUpon>CancelacionPorAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelacionPorMedico.resx">
+      <DependentUpon>CancelacionPorMedico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarAtencion.resx">
+      <DependentUpon>CancelarAtencion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\CompraBono.resx">
       <DependentUpon>CompraBono.cs</DependentUpon>
