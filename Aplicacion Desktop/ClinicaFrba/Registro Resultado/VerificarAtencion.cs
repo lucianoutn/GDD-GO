@@ -34,10 +34,22 @@ namespace ClinicaFrba.Registro_Resultado
         }
 
         public void cargarDatos()
-        {
+        {           
             //labelHoraLlegada.Text = DateTime.Now.ToString("G");
             labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
         }
+
+        private void button_cargarAfiliado_Click(object sender, EventArgs e)
+        {
+            String afiliado = textBoxAfiliado.Text;
+            
+            DateTime fecha =  regResult.mostrarFechaTurno(afiliado);
+            labelFechaTurno.Text = ConstantesBD.darFormatoFecha(fecha);
+            
+            labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
+        }
+
+
 
         private void button_abrirCosulta_Click(object sender, EventArgs e)
         {
@@ -51,8 +63,9 @@ namespace ClinicaFrba.Registro_Resultado
                             regResult.cargarLlegadaEnConsulta(nroAfiliado, hora);
                             
 
-                            RegistrarResultado subMenRegistraResult = new RegistrarResultado(this);
+                            RegistrarResultado subMenRegistraResult = new RegistrarResultado(this, nroAfiliado);
                             subMenRegistraResult.Show();
+                            this.Hide();
                         }
                         else
                         {
@@ -82,10 +95,6 @@ namespace ClinicaFrba.Registro_Resultado
                 MessageBox.Show("Ingresar solo números", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-        
-
-
-        
 
 
 

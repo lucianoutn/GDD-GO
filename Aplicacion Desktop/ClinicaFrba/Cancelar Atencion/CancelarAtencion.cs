@@ -29,16 +29,23 @@ namespace ClinicaFrba.Cancelar_Atencion
         }
 
         private void buttonPlanMedico_Click(object sender, EventArgs e)
-        {
+        {/*
             CancelacionPorMedico cancelarMed = new CancelacionPorMedico(this);
             cancelarMed.Show();
+          * */
+            SeleccionarProfesional seleccionProfesional = new SeleccionarProfesional(this);
+            seleccionProfesional.Show();
             this.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
             CancelacionPorAfiliado cancelarAfi = new CancelacionPorAfiliado(this);
             cancelarAfi.Show();
+            */
+            SeleccionarAfiliado seleccionAfiliado = new SeleccionarAfiliado(this);
+            seleccionAfiliado.Show();
             this.Hide();
         }
     }

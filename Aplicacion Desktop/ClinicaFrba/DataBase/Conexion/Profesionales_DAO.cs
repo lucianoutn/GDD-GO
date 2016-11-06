@@ -140,5 +140,72 @@ namespace ClinicaFrba.DataBase.Conexion
                 throw new Exception("El READ del comando se encuentra vacio", e);
             }
         }
+
+        public List<Profesional> get_profesional_multiple(String desc_nombre, String desc_apellido, String desc_dni)
+        {
+            List<Profesional> lista = new List<Profesional>();
+
+            if (desc_nombre != "" || desc_nombre != " ")
+            {
+                desc_nombre = "desc_nombre LIKE '%" + desc_nombre + "%' AND ";
+            }
+            if (desc_apellido != "" || desc_apellido != " ")
+            {
+                desc_apellido = "desc_apellido LIKE '%" + desc_apellido + "%' AND ";
+            }
+            if (desc_dni != "" || desc_dni != " ")
+            {
+                desc_dni = " desc_dni LIKE '%" + desc_dni + "%'";
+            }
+
+            SqlDataReader r = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT * FROM " + ConstantesBD.tabla_profesional + " af JOIN GDD_GO.usuario us on af.id_usuario = us.id_usuario And us.desc_estado != 2" +
+                                                                             " AND " + desc_nombre + desc_apellido + desc_dni +
+                                                                             " ORDER BY id_profesional asc");
+
+            try
+            {
+                while (r.Read())
+                {
+                    Profesional profesional = null;
+                    profesional = new Profesional(
+                                    r.GetInt32(0),
+                                    r.GetString(1),
+                                    r.GetString(2),
+                                    r.GetString(3),
+                                    r.GetInt32(4),
+                                    r.GetString(5),
+                                    r.GetInt32(6),
+                                    r.GetString(7),
+                                    r.GetDateTime(8),
+                                    r.GetDateTime(9),
+                                    r.GetString(10),
+                                    r.GetString(11),
+                                    r.GetInt32(12));
+                    lista.Add(profesional);
+                }
+                r.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El READ del comando se encuentra vacio", e);
+            }
+        }
+
+        public String get_nombre(int id_afiliado)
+        {
+            string apellido = "";
+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_nombre+' '+desc_apellido from GDD_GO.profesional where id_profesional = " + id_afiliado + "");
+            List<string> resultado = new List<string>();
+
+            if (lector.Read())
+                apellido = (string)lector[0];
+            lector.Close();
+
+
+            return apellido;
+        }
+
     }
 }

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AltaRol));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.limpiar = new System.Windows.Forms.Button();
             this.crear = new System.Windows.Forms.Button();
             this.checkedListFunciones = new System.Windows.Forms.CheckedListBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -56,6 +57,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox1.Controls.Add(this.limpiar);
             this.groupBox1.Controls.Add(this.crear);
             this.groupBox1.Controls.Add(this.checkedListFunciones);
             this.groupBox1.Controls.Add(this.label3);
@@ -68,6 +70,18 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Crear Rol";
+            // 
+            // limpiar
+            // 
+            this.limpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.limpiar.ForeColor = System.Drawing.Color.Maroon;
+            this.limpiar.Location = new System.Drawing.Point(6, 190);
+            this.limpiar.Name = "limpiar";
+            this.limpiar.Size = new System.Drawing.Size(75, 23);
+            this.limpiar.TabIndex = 4;
+            this.limpiar.Text = "Limpiar";
+            this.limpiar.UseVisualStyleBackColor = true;
+            this.limpiar.Click += new System.EventHandler(this.limpiar_Click);
             // 
             // crear
             // 
@@ -152,6 +166,7 @@
         private System.Windows.Forms.CheckedListBox checkedListFunciones;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button crear;
+        private System.Windows.Forms.Button limpiar;
         
     }
 }

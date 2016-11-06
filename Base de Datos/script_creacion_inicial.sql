@@ -323,6 +323,10 @@ If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME =
 	Drop procedure GDD_GO.sp_Agregar_Agenda
 Go
 
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_cancelar_turno')
+	Drop trigger GDD_GO.tr_cancelar_turno
+Go
+
 
 /*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
 --Iniciar Aplicacion
@@ -660,8 +664,9 @@ Go
 /*TURNO*/
 Insert into GDD_GO.turno	(	id_turno
 							   ,id_afiliado
-							   ,id_profesional	)
-Select Turno_Numero, af.id_afiliado, pr.id_profesional
+							   ,id_profesional
+							   ,desc_estado	)
+Select Turno_Numero, af.id_afiliado, pr.id_profesional, 0
 From gd_esquema.Maestra
 join GDD_GO.afiliado af
 	 On Paciente_Dni = af.desc_dni
@@ -933,3 +938,12 @@ begin
 end
 Go
 
+Create Trigger  GDD_GO.tr_cancelar_turno
+On GDD_GO.tipo_cancelacion
+After insert
+As
+Declare @id_turno int
+
+Set @id_turno = (Select id_turno from inserted)
+Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
+Go

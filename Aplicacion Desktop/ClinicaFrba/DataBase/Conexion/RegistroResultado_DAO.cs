@@ -41,9 +41,19 @@ namespace ClinicaFrba.DataBase.Conexion
             MessageBox.Show("UPDATE GDD_GO.consulta set desc_hora_llegada = '" + llegada +
                                                       "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");
             this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_hora_llegada = '" + llegada +
-                                                      "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");
+                                                      "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");        
+        }
 
-            
+        public void cargarDiagnosticoEnConsulta(String unAfi, String unSintoma, String unDiagnostico)
+        {
+            int turno = get_turno(unAfi);
+            MessageBox.Show("UPDATE GDD_GO.consulta set desc_sintomas = '" + unSintoma +
+                                                     "', desc_enfermedades = '" + unDiagnostico +
+                                                     "' WHERE id_turno = '" + turno + "';");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_sintomas = '" + unSintoma + 
+                                                                               "', desc_enfermedades = '" + unDiagnostico + 
+                                                                               "' WHERE id_turno = '" + turno + "';");
+        
         }
 
         public int get_turno(String idAfiliado)
@@ -58,5 +68,27 @@ namespace ClinicaFrba.DataBase.Conexion
 
             return turno;
         }
+
+        public DateTime mostrarFechaTurno(String idAfiliado)
+        {
+            int turno = get_turno(idAfiliado);
+            DateTime fechaTurno = new DateTime(1998, 04, 30);
+
+            MessageBox.Show("SELECT DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) FROM GDD_GO.consulta WHERE id_turno = '" + turno + "';");
+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) FROM GDD_GO.consulta WHERE id_turno = '" + turno + "';");
+            List<string> resultado = new List<string>();
+            if (lector.Read())
+            {
+                fechaTurno = (DateTime)lector[0];
+            }
+
+            lector.Close();
+
+            return fechaTurno;
+        }
+ 
+
+
     }
 }

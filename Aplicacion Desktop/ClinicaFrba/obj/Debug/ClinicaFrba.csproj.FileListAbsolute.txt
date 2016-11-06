@@ -1,3 +1,0 @@
-C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
-C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.exe
-C:\Users\Tc\Desktop\Federico 2016\Gestion de Datos\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
