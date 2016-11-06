@@ -939,11 +939,11 @@ end
 Go
 
 Create Trigger  GDD_GO.tr_cancelar_turno
-On GDD_GO.turno
+On GDD_GO.tipo_cancelacion
 After insert
 As
 Declare @id_turno int
 
 Set @id_turno = (Select id_turno from inserted)
-Update GDD_GO.turno set desc_estado=0 where id_turno = @id_turno;
+Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
