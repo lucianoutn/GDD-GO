@@ -32,10 +32,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxHora = new System.Windows.Forms.TextBox();
             this.button_abrirCosulta = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
-            this.dateTimePickerAtMed = new System.Windows.Forms.DateTimePicker();
+            this.labelFechaTurno = new System.Windows.Forms.Label();
+            this.labelHoraLlegada = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxAfiliado
@@ -44,6 +44,7 @@
             this.textBoxAfiliado.Name = "textBoxAfiliado";
             this.textBoxAfiliado.Size = new System.Drawing.Size(208, 20);
             this.textBoxAfiliado.TabIndex = 0;
+            this.textBoxAfiliado.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxAfiliado_KeyPress);
             // 
             // label1
             // 
@@ -72,13 +73,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Hora:";
             // 
-            // textBoxHora
-            // 
-            this.textBoxHora.Location = new System.Drawing.Point(75, 95);
-            this.textBoxHora.Name = "textBoxHora";
-            this.textBoxHora.Size = new System.Drawing.Size(100, 20);
-            this.textBoxHora.TabIndex = 5;
-            // 
             // button_abrirCosulta
             // 
             this.button_abrirCosulta.ForeColor = System.Drawing.Color.DarkRed;
@@ -100,22 +94,33 @@
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
-            // dateTimePickerAtMed
+            // labelFechaTurno
             // 
-            this.dateTimePickerAtMed.Location = new System.Drawing.Point(75, 54);
-            this.dateTimePickerAtMed.Name = "dateTimePickerAtMed";
-            this.dateTimePickerAtMed.Size = new System.Drawing.Size(212, 20);
-            this.dateTimePickerAtMed.TabIndex = 108;
+            this.labelFechaTurno.AutoSize = true;
+            this.labelFechaTurno.Location = new System.Drawing.Point(79, 60);
+            this.labelFechaTurno.Name = "labelFechaTurno";
+            this.labelFechaTurno.Size = new System.Drawing.Size(81, 13);
+            this.labelFechaTurno.TabIndex = 12;
+            this.labelFechaTurno.Text = "Fecha del turno";
+            // 
+            // labelHoraLlegada
+            // 
+            this.labelHoraLlegada.AutoSize = true;
+            this.labelHoraLlegada.Location = new System.Drawing.Point(79, 95);
+            this.labelHoraLlegada.Name = "labelHoraLlegada";
+            this.labelHoraLlegada.Size = new System.Drawing.Size(82, 13);
+            this.labelHoraLlegada.TabIndex = 13;
+            this.labelHoraLlegada.Text = "Hora de llegada";
             // 
             // VerificarAtencion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(312, 204);
-            this.Controls.Add(this.dateTimePickerAtMed);
+            this.Controls.Add(this.labelHoraLlegada);
+            this.Controls.Add(this.labelFechaTurno);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.button_abrirCosulta);
-            this.Controls.Add(this.textBoxHora);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -133,9 +138,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxHora;
         private System.Windows.Forms.Button button_abrirCosulta;
         private System.Windows.Forms.Button button_Volver;
-        private System.Windows.Forms.DateTimePicker dateTimePickerAtMed;
+        private System.Windows.Forms.Label labelFechaTurno;
+        private System.Windows.Forms.Label labelHoraLlegada;
     }
 }

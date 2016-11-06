@@ -187,6 +187,7 @@
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />
     <Compile Include="DataBase\Conexion\GDD_GO_DAO.cs" />
     <Compile Include="DataBase\Conexion\LoginDAO.cs" />
+    <Compile Include="DataBase\Conexion\RegistroResultado_DAO.cs" />
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
@@ -276,7 +277,7 @@
     <Compile Include="Registro Resultado\RegistrarResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\RegistrarResultado.Designer.cs">
+    <Compile Include="Registro Resultado\RegistrarResultado.designer.cs">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\VerificarAtencion.cs">

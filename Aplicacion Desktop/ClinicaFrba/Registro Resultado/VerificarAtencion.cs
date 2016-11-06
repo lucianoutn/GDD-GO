@@ -15,10 +15,13 @@ namespace ClinicaFrba.Registro_Resultado
     {
         Menu unMenu;
         ABM_usuario_DAO abm_usuario;
+        RegistroResultado_DAO regResult;
+      
 
         public VerificarAtencion(Menu menu)
         {
             abm_usuario = new ABM_usuario_DAO();
+            regResult = new RegistroResultado_DAO();
             InitializeComponent();
             unMenu = menu;
             cargarDatos();
@@ -32,23 +35,51 @@ namespace ClinicaFrba.Registro_Resultado
 
         public void cargarDatos()
         {
-            dateTimePickerAtMed.Format = DateTimePickerFormat.Custom;
-            dateTimePickerAtMed.CustomFormat = "dd'/'MM'/'yyyy";
-            dateTimePickerAtMed.Text = "05/05/2016";
+            //labelHoraLlegada.Text = DateTime.Now.ToString("G");
+            labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
         }
 
         private void button_abrirCosulta_Click(object sender, EventArgs e)
         {
             if (!(string.IsNullOrWhiteSpace(textBoxAfiliado.Text)))
             {
-                if (!(string.IsNullOrWhiteSpace(dateTimePickerAtMed.Text)))
-                {
-                    if (!(string.IsNullOrWhiteSpace(dateTimePickerAtMed.Text)))
-                    {
-                        RegistrarResultado subMenRegistraResult = new RegistrarResultado(this);
-                        subMenRegistraResult.Show();
-                    }
-                }
+                        if (regResult.afiliadoExistente(textBoxAfiliado.Text) == 0)
+                        {
+                            String nroAfiliado = textBoxAfiliado.Text;
+                            String hora = labelHoraLlegada.Text;
+
+                            regResult.cargarLlegadaEnConsulta(nroAfiliado, hora);
+                            
+
+                            RegistrarResultado subMenRegistraResult = new RegistrarResultado(this);
+                            subMenRegistraResult.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("No posee turno", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }              
+            }
+        }
+      
+
+        private void textBoxAfiliado_KeyPress(object sender, KeyPressEventArgs e) // Detecta desde el teclado que el ingreso sea de nros
+        {
+            if (Char.IsDigit(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsSeparator(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else
+            {
+                e.Handled = true;
+                MessageBox.Show("Ingresar solo números", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         
