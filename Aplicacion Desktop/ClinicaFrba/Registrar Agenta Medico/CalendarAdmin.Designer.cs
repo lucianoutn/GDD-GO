@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CalendarAdmin));
             this.buttonBack1 = new System.Windows.Forms.Button();
             this.buttonConfirm1 = new System.Windows.Forms.Button();
             this.comboBoxProff = new System.Windows.Forms.ComboBox();
@@ -35,6 +36,7 @@
             // 
             // buttonBack1
             // 
+            this.buttonBack1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBack1.Location = new System.Drawing.Point(29, 132);
             this.buttonBack1.Name = "buttonBack1";
             this.buttonBack1.Size = new System.Drawing.Size(75, 32);
@@ -45,6 +47,7 @@
             // 
             // buttonConfirm1
             // 
+            this.buttonConfirm1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonConfirm1.Location = new System.Drawing.Point(193, 133);
             this.buttonConfirm1.Name = "buttonConfirm1";
             this.buttonConfirm1.Size = new System.Drawing.Size(75, 31);
@@ -73,8 +76,10 @@
             this.Controls.Add(this.buttonBack1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalendarAdmin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VistaCalendario";
             this.ResumeLayout(false);
 

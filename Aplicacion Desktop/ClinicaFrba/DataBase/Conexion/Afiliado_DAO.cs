@@ -8,9 +8,9 @@ using System.Text;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class Clientes_DAO : GDD_GO_DAO
+    class Afiliado_DAO : GDD_GO_DAO
     {
-        public Clientes_DAO()
+        public Afiliado_DAO()
         {
             this.iniciar();    
         }
@@ -34,18 +34,11 @@ namespace ClinicaFrba.DataBase.Conexion
                     Afiliado afiliado = null;
                     afiliado = new Afiliado(
                                     r.GetInt32(0),
-                                    r.GetString(1),
                                     r.GetString(2),
+                                    r.GetString(1),
                                     r.GetString(3),
                                     r.GetInt32(4),
-                                    r.GetString(5),
-                                    r.GetInt32(6),
-                                    r.GetString(7),
-                                    r.GetDateTime(8),
-                                    r.GetDateTime(9),
-                                    r.GetString(10),
-                                    r.GetString(11),
-                                    r.GetInt32(12));
+                                    r.GetInt32(13));
                     lista.Add(afiliado);
                 }
                 r.Close();

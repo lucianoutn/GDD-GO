@@ -17,6 +17,7 @@ using ClinicaFrba.Listados;
 using ClinicaFrba.Compra_Bono;
 using ClinicaFrba.Abm_Planes;
 using ClinicaFrba.SinImplementar;
+using ClinicaFrba.Registro_Llegada;
 
 
 namespace ClinicaFrba
@@ -47,14 +48,14 @@ namespace ClinicaFrba
                     ABMEspecialidadesMedicas.Hide();
               if (!(funciones.Contains("ABM de Plan")))
                     ABMPlan.Hide();
-           // if (!(funciones.Contains("Registrar Agenda Profesional")))
-           //     boton.Hide();
+              if (!(funciones.Contains("Registrar Agenda Profesional")))
+                    ButtonCalendar.Hide();
               if (!(funciones.Contains("Compra de Bonos")))
                     buttonComprarBono.Hide();
-           // if (!(funciones.Contains("Pedido de Turno")))
-          //      boton.Hide();
-          //  if (!(funciones.Contains("Registro de llegada para atencion medica")))
-           //     boton.Hide();
+              if (!(funciones.Contains("Pedido de Turno")))
+                    pedidoTurno.Hide();
+              if (!(funciones.Contains("Registro de llegada para atencion medica")))
+                    button_RegLlegadaAtenMedica.Hide();
               if (!(funciones.Contains("Registro de resultado para atencion medica")))
                     button_RegResultAtenMedica.Hide();
               if (!(funciones.Contains("Cancelar atencion medica")))
@@ -62,7 +63,7 @@ namespace ClinicaFrba
               if (!(funciones.Contains("Listado Estadístico")))
                     button_ListadoEstadistico.Hide();
               if (rol == "Profesional")
-                  buttonPlanMedico.Hide();
+                    buttonPlanMedico.Hide();
         }
 
         public Menu()
@@ -191,6 +192,17 @@ namespace ClinicaFrba
             SubMenuPlanMedico menu = new SubMenuPlanMedico(this);
             menu.Show();
             this.Hide();
+        }
+
+        private void button_RegLlegadaAtenMedica_Click(object sender, EventArgs e)
+        {
+            SubmenuRegistro menu = new SubmenuRegistro();
+            menu.Show();
+        }
+
+        private void pedidoTurno_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

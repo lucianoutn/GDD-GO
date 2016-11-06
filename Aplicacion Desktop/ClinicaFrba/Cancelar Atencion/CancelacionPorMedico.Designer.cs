@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelacionPorMedico));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(40, 213);
             this.buttonVolver.Name = "buttonVolver";
@@ -48,7 +50,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CancelacionPorMedico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CancelacionPorMedico";
             this.ResumeLayout(false);
 

@@ -180,6 +180,9 @@
     <Compile Include="DataBase\Conexion\ABM_usuario_DAO.cs" />
     <Compile Include="DataBase\Conexion\ABMRoles_DAO.cs" />
     <Compile Include="DataBase\Conexion\Calendario_DAO.cs" />
+    <Compile Include="DataBase\Conexion\Afiliado_DAO.cs" />
+    <Compile Include="DataBase\Conexion\Horarios_DAO.cs" />
+    <Compile Include="DataBase\Conexion\RegistroLlegada_DAO.cs" />
     <Compile Include="DataBase\Conexion\Especialidades_DAO.cs" />
     <Compile Include="DataBase\Conexion\PlanMedico_DAO.cs" />
     <Compile Include="DataBase\Conexion\ListadoEstadistico_DAO.cs" />
@@ -187,10 +190,13 @@
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />
     <Compile Include="DataBase\Conexion\GDD_GO_DAO.cs" />
     <Compile Include="DataBase\Conexion\LoginDAO.cs" />
+    <Compile Include="DataBase\Conexion\RegistroResultado_DAO.cs" />
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />
+    <Compile Include="DataBase\Entidades\Afiliado.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
     <Compile Include="DataBase\Entidades\DiaLaboral.cs" />
+    <Compile Include="DataBase\Entidades\Horario.cs" />
     <Compile Include="DataBase\Entidades\Profesional.cs" />
     <Compile Include="DataBase\Entidades\Especialidad.cs" />
     <Compile Include="DataBase\Entidades\Cliente.cs" />
@@ -229,17 +235,23 @@
     <Compile Include="Menu.designer.cs">
       <DependentUpon>Menu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pedir Turno\ConfirmacionTurno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\ConfirmacionTurno.Designer.cs">
+      <DependentUpon>ConfirmacionTurno.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pedir Turno\SeleccionAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pedir Turno\SeleccionAfiliado.Designer.cs">
       <DependentUpon>SeleccionAfiliado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pedir Turno\Form1.cs">
+    <Compile Include="Pedir Turno\FormNuevoTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Pedir Turno\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Pedir Turno\FormNuevoTurno.Designer.cs">
+      <DependentUpon>FormNuevoTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -273,16 +285,16 @@
     <Compile Include="Registrar Agenta Medico\VistaJornada.Designer.cs">
       <DependentUpon>VistaJornada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Llegada\Form1.cs">
+    <Compile Include="Registro Llegada\SubmenuRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Llegada\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro Llegada\SubmenuRegistro.Designer.cs">
+      <DependentUpon>SubmenuRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\RegistrarResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\RegistrarResultado.Designer.cs">
+    <Compile Include="Registro Resultado\RegistrarResultado.designer.cs">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\VerificarAtencion.cs">
@@ -366,6 +378,12 @@
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\ConfirmacionTurno.resx">
+      <DependentUpon>ConfirmacionTurno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedir Turno\FormNuevoTurno.resx">
+      <DependentUpon>FormNuevoTurno.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Pedir Turno\SeleccionAfiliado.resx">
       <DependentUpon>SeleccionAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -393,6 +411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenta Medico\VistaJornada.resx">
       <DependentUpon>VistaJornada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\SubmenuRegistro.resx">
+      <DependentUpon>SubmenuRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>

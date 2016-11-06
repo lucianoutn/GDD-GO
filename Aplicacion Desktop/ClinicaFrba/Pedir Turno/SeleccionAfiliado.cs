@@ -24,7 +24,7 @@ namespace ClinicaFrba.Pedir_Turno
             InitializeComponent();
             menu = menuPrevio;
             check=false;
-            Clientes_DAO DAO = new Clientes_DAO();
+            Afiliado_DAO DAO = new Afiliado_DAO();
             lista_Afiliados = DAO.getAfiliados();
             foreach (Afiliado aux in lista_Afiliados)
             {
@@ -43,7 +43,7 @@ namespace ClinicaFrba.Pedir_Turno
         {
             if (check)
             {
-                Form1 formTurno = new Form1();
+                FormNuevoTurno formTurno = new FormNuevoTurno(this, menu,username);
                 formTurno.Show();
                 this.Hide();
             }

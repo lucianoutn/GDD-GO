@@ -7,52 +7,57 @@ using System.Data.SqlClient;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
-    class ABMRoles_DAO : GDD_GO_DAO
+    class RegistroLlegada_DAO : GDD_GO_DAO
     {
-        public ABMRoles_DAO() {
+        public RegistroLlegada_DAO()
+        {
        
             this.iniciar();
         }
 
-        /* OBTENGO TODOS LOS NOMBRES DE ROLES QUE EXISTEN*/
-        public List<string> obtenerRoles()        {
-            SqlDataReader roles = this.GD2C2016.ejecutarSentenciaConRetorno("Select [desc_nombre_rol] from [GDD_GO].[rol]");
-            List<string> nombresRoles = new List<string>();
-            while (roles.Read())
+        /* OBTENGO TODOS LOS NOMBRES DE ESPECIALIDADES QUE EXISTEN*/
+        public List<string> obtenerEspecialidades()        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select [descripcion] from [GDD_GO].[especialidad]");
+            List<string> especialidades = new List<string>();
+            while (reader.Read())
             {
-                nombresRoles.Add(roles["desc_nombre_rol"].ToString());
+                especialidades.Add(reader["descripcion"].ToString());
             }
-            roles.Close();
+            reader.Close();
 
-            return nombresRoles;
+            return especialidades;
         }
 
-        /* OBTENGO TODOS LOS NOMBRES DE ROLES activos*/
-        public List<string> obtenerRolesActivos()
+        /* OBTENGO TODOS LOS NOMBRES DE PROFESIONALES QUE EXISTEN*/
+        public List<string> obtenerProfesionales()
         {
-            SqlDataReader roles = this.GD2C2016.ejecutarSentenciaConRetorno("Select [desc_nombre_rol] from [GDD_GO].[rol] where [desc_estado_rol] = 1");
-            List<string> nombresRoles = new List<string>();
-            while (roles.Read())
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select (desc_apellido +' '+ desc_nombre)as c from [GDD_GO].[profesional]");
+            List<string> profesionales = new List<string>();
+            while (reader.Read())
             {
-                nombresRoles.Add(roles["desc_nombre_rol"].ToString());
+                profesionales.Add(reader["c"].ToString());
             }
-            roles.Close();
+            reader.Close();
 
-            return nombresRoles;
+            return profesionales;
         }
-
-        /* OBTENGO TODAS LAS FUNCIONES EXISTENTES */
-        public List<string> getfunciones()
+       
+        /* OBTENGO LOS NOMBRES DE PROFESIONALES SEGUN ESPECIALIDAD */
+        public List<string> obtenerProfesionalesPorEspecialidad(string especialidadElegida)
         {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_funcion from GDD_GO.funcion");
-            List<string> resultado = new List<string>();
-            while (lector.Read())
+            //CREAR UNA VISTA//CREAR UNA VISTA//CREAR UNA VISTA//CREAR UNA VISTA//CREAR UNA VISTA
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select nombre from [GDD_GO].[vista_especialidad_profesional] where descripcion = '"+especialidadElegida+"'");
+            List<string> profesionales = new List<string>();
+            while (reader.Read())
             {
-                resultado.Add(lector["desc_funcion"].ToString());
+                profesionales.Add(reader["nombre"].ToString());
             }
-            lector.Close();
-            return resultado;
+            reader.Close();
+
+            return profesionales;
         }
+       
+      
          
         /* INSERTO ROL */
         public void altaRol(String desc_nombre_rol)
@@ -134,5 +139,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
 
         }
+
+        
     }
 }
