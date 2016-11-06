@@ -32,7 +32,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public void cancelarTurno(int id_turno, string motivo)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno) values ("+motivo+", "+id_turno+")");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno) values ('"+motivo+"', "+id_turno+")");
         }
 
         public int get_profesional(int id_turno)

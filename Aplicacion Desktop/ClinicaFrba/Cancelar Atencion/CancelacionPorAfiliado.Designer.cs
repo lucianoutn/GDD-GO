@@ -38,6 +38,7 @@
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxMotivo = new System.Windows.Forms.TextBox();
+            this.labelCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,7 +46,7 @@
             // 
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(68, 407);
+            this.buttonVolver.Location = new System.Drawing.Point(52, 288);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 0;
@@ -61,7 +62,7 @@
             this.Profesional,
             this.Especialidad,
             this.Id_turno});
-            this.dataGridViewResultados.Location = new System.Drawing.Point(68, 240);
+            this.dataGridViewResultados.Location = new System.Drawing.Point(52, 114);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
             this.dataGridViewResultados.Size = new System.Drawing.Size(339, 161);
             this.dataGridViewResultados.TabIndex = 1;
@@ -89,18 +90,18 @@
             // 
             // buttonCancelar
             // 
-            this.buttonCancelar.Location = new System.Drawing.Point(332, 407);
+            this.buttonCancelar.Location = new System.Drawing.Point(316, 281);
             this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancelar.Size = new System.Drawing.Size(75, 37);
             this.buttonCancelar.TabIndex = 2;
-            this.buttonCancelar.Text = "Cancelar";
+            this.buttonCancelar.Text = "Cancelar Turno";
             this.buttonCancelar.UseVisualStyleBackColor = true;
             this.buttonCancelar.Click += new System.EventHandler(this.buttonCancelar_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 186);
+            this.label1.Location = new System.Drawing.Point(52, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 3;
@@ -108,16 +109,28 @@
             // 
             // textBoxMotivo
             // 
-            this.textBoxMotivo.Location = new System.Drawing.Point(125, 183);
+            this.textBoxMotivo.Location = new System.Drawing.Point(109, 57);
             this.textBoxMotivo.Name = "textBoxMotivo";
             this.textBoxMotivo.Size = new System.Drawing.Size(100, 20);
             this.textBoxMotivo.TabIndex = 4;
+            // 
+            // labelCliente
+            // 
+            this.labelCliente.AutoSize = true;
+            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.labelCliente.Location = new System.Drawing.Point(90, 9);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(255, 26);
+            this.labelCliente.TabIndex = 148;
+            this.labelCliente.Text = "CANCELACION DE TURNO";
             // 
             // CancelacionPorAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(548, 494);
+            this.ClientSize = new System.Drawing.Size(437, 343);
+            this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.textBoxMotivo);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonCancelar);
@@ -144,5 +157,6 @@
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxMotivo;
+        private System.Windows.Forms.Label labelCliente;
     }
 }
