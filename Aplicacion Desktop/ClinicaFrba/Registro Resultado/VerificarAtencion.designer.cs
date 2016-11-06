@@ -36,6 +36,7 @@
             this.button_Volver = new System.Windows.Forms.Button();
             this.labelFechaTurno = new System.Windows.Forms.Label();
             this.labelHoraLlegada = new System.Windows.Forms.Label();
+            this.button_cargarAfiliado = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxAfiliado
@@ -76,7 +77,7 @@
             // button_abrirCosulta
             // 
             this.button_abrirCosulta.ForeColor = System.Drawing.Color.DarkRed;
-            this.button_abrirCosulta.Location = new System.Drawing.Point(178, 151);
+            this.button_abrirCosulta.Location = new System.Drawing.Point(309, 151);
             this.button_abrirCosulta.Name = "button_abrirCosulta";
             this.button_abrirCosulta.Size = new System.Drawing.Size(109, 23);
             this.button_abrirCosulta.TabIndex = 10;
@@ -112,11 +113,22 @@
             this.labelHoraLlegada.TabIndex = 13;
             this.labelHoraLlegada.Text = "Hora de llegada";
             // 
+            // button_cargarAfiliado
+            // 
+            this.button_cargarAfiliado.Location = new System.Drawing.Point(309, 12);
+            this.button_cargarAfiliado.Name = "button_cargarAfiliado";
+            this.button_cargarAfiliado.Size = new System.Drawing.Size(109, 23);
+            this.button_cargarAfiliado.TabIndex = 14;
+            this.button_cargarAfiliado.Text = "Carga Afiliado";
+            this.button_cargarAfiliado.UseVisualStyleBackColor = true;
+            this.button_cargarAfiliado.Click += new System.EventHandler(this.button_cargarAfiliado_Click);
+            // 
             // VerificarAtencion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 204);
+            this.ClientSize = new System.Drawing.Size(463, 204);
+            this.Controls.Add(this.button_cargarAfiliado);
             this.Controls.Add(this.labelHoraLlegada);
             this.Controls.Add(this.labelFechaTurno);
             this.Controls.Add(this.button_Volver);
@@ -142,5 +154,6 @@
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Label labelFechaTurno;
         private System.Windows.Forms.Label labelHoraLlegada;
+        private System.Windows.Forms.Button button_cargarAfiliado;
     }
 }
