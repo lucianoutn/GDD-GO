@@ -421,6 +421,10 @@ If exists (select * FROM sys.views where name = 'vista_rol_funciones')
 Drop view GDD_GO.vista_rol_funciones
 Go
 
+If exists (select * FROM sys.views where name = 'vista_especialidad_profesional')
+Drop view GDD_GO.vista_especialidad_profesional
+Go
+
 /*----------------------------	CREACION DE VISTAS	-------------------------*/
 
 Create view GDD_GO.vista_rol_usuario
@@ -439,6 +443,16 @@ left join GDD_GO.rol r
 	on fxr.id_rol = r.id_rol
 left join GDD_GO.funcion f
 	on fxr.id_funcion = f.id_funcion
+Go
+
+Create view GDD_GO.vista_especialidad_profesional
+As
+Select (p.desc_apellido+' '+p.desc_nombre)as nombre, e.descripcion
+From GDD_GO.especialidades_por_profesional exf
+left join GDD_GO.profesional p
+	on exf.id_profesional = p.id_profesional
+left join GDD_GO.especialidad e
+	on exf.id_especialidad = e.id_especialidad
 Go
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/

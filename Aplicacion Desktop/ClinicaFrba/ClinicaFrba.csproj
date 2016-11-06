@@ -180,6 +180,7 @@
     <Compile Include="DataBase\Conexion\ABM_usuario_DAO.cs" />
     <Compile Include="DataBase\Conexion\ABMRoles_DAO.cs" />
     <Compile Include="DataBase\Conexion\Calendario_DAO.cs" />
+    <Compile Include="DataBase\Conexion\RegistroLlegada_DAO.cs" />
     <Compile Include="DataBase\Conexion\Especialidades_DAO.cs" />
     <Compile Include="DataBase\Conexion\PlanMedico_DAO.cs" />
     <Compile Include="DataBase\Conexion\ListadoEstadistico_DAO.cs" />
@@ -268,11 +269,11 @@
     <Compile Include="Registrar Agenta Medico\VistaJornada.Designer.cs">
       <DependentUpon>VistaJornada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Llegada\Form1.cs">
+    <Compile Include="Registro Llegada\SubmenuRegistro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Llegada\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Registro Llegada\SubmenuRegistro.Designer.cs">
+      <DependentUpon>SubmenuRegistro.cs</DependentUpon>
     </Compile>
     <Compile Include="Registro Resultado\RegistrarResultado.cs">
       <SubType>Form</SubType>
@@ -385,6 +386,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenta Medico\VistaJornada.resx">
       <DependentUpon>VistaJornada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Llegada\SubmenuRegistro.resx">
+      <DependentUpon>SubmenuRegistro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>

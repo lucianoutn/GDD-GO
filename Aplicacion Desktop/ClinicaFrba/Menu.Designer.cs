@@ -45,6 +45,8 @@
             this.ABMPlan = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonPlanMedico = new System.Windows.Forms.Button();
+            this.button_RegLlegadaAtenMedica = new System.Windows.Forms.Button();
+            this.pedidoTurno = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,7 +67,7 @@
             this.labelUser.AutoSize = true;
             this.labelUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUser.ForeColor = System.Drawing.Color.Maroon;
-            this.labelUser.Location = new System.Drawing.Point(179, 13);
+            this.labelUser.Location = new System.Drawing.Point(178, 13);
             this.labelUser.Name = "labelUser";
             this.labelUser.Size = new System.Drawing.Size(121, 16);
             this.labelUser.TabIndex = 1;
@@ -77,7 +79,7 @@
             this.buttonSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSalir.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonSalir.Location = new System.Drawing.Point(269, 313);
+            this.buttonSalir.Location = new System.Drawing.Point(269, 365);
             this.buttonSalir.Name = "buttonSalir";
             this.buttonSalir.Size = new System.Drawing.Size(75, 36);
             this.buttonSalir.TabIndex = 2;
@@ -210,7 +212,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::ClinicaFrba.Properties.Resources.utnBA;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 313);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 366);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(189, 35);
             this.pictureBox1.TabIndex = 12;
@@ -226,14 +228,38 @@
             this.buttonPlanMedico.UseVisualStyleBackColor = true;
             this.buttonPlanMedico.Click += new System.EventHandler(this.buttonPlanMedico_Click);
             // 
+            // button_RegLlegadaAtenMedica
+            // 
+            this.button_RegLlegadaAtenMedica.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_RegLlegadaAtenMedica.Location = new System.Drawing.Point(182, 297);
+            this.button_RegLlegadaAtenMedica.Name = "button_RegLlegadaAtenMedica";
+            this.button_RegLlegadaAtenMedica.Size = new System.Drawing.Size(163, 36);
+            this.button_RegLlegadaAtenMedica.TabIndex = 11;
+            this.button_RegLlegadaAtenMedica.Text = "Registro de Llegada para la Atención Médica";
+            this.button_RegLlegadaAtenMedica.UseVisualStyleBackColor = true;
+            this.button_RegLlegadaAtenMedica.Click += new System.EventHandler(this.button_RegLlegadaAtenMedica_Click);
+            // 
+            // pedidoTurno
+            // 
+            this.pedidoTurno.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pedidoTurno.Location = new System.Drawing.Point(12, 297);
+            this.pedidoTurno.Name = "pedidoTurno";
+            this.pedidoTurno.Size = new System.Drawing.Size(163, 36);
+            this.pedidoTurno.TabIndex = 11;
+            this.pedidoTurno.Text = "Pedido de Turno";
+            this.pedidoTurno.UseVisualStyleBackColor = true;
+            this.pedidoTurno.Click += new System.EventHandler(this.pedidoTurno_Click);
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(356, 361);
+            this.ClientSize = new System.Drawing.Size(356, 413);
             this.Controls.Add(this.buttonPlanMedico);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pedidoTurno);
+            this.Controls.Add(this.button_RegLlegadaAtenMedica);
             this.Controls.Add(this.ABMPlan);
             this.Controls.Add(this.ABMEspecialidadesMedicas);
             this.Controls.Add(this.ABMProfesional);
@@ -277,6 +303,8 @@
         private System.Windows.Forms.Button ABMPlan;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonPlanMedico;
+        private System.Windows.Forms.Button button_RegLlegadaAtenMedica;
+        private System.Windows.Forms.Button pedidoTurno;
 
     }
 }
