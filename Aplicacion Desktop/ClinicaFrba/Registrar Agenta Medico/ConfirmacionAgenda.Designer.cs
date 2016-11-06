@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ConfirmacionAgenda));
             this.l_nombreProfesional = new System.Windows.Forms.Label();
             this.l_especialidad = new System.Windows.Forms.Label();
             this.l_duracionTurno = new System.Windows.Forms.Label();
@@ -139,6 +140,7 @@
             // 
             // buttonBack
             // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBack.Location = new System.Drawing.Point(16, 220);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
@@ -149,6 +151,7 @@
             // 
             // buttonConfirm
             // 
+            this.buttonConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonConfirm.Location = new System.Drawing.Point(434, 220);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
@@ -224,7 +227,9 @@
             this.Controls.Add(this.l_duracionTurno);
             this.Controls.Add(this.l_especialidad);
             this.Controls.Add(this.l_nombreProfesional);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfirmacionAgenda";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ConfirmacionAgenda";
             this.ResumeLayout(false);
             this.PerformLayout();

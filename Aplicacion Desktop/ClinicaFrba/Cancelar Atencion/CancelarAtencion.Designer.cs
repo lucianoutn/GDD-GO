@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelarAtencion));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonPlanMedico = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(101, 190);
             this.buttonVolver.Name = "buttonVolver";
@@ -46,6 +48,7 @@
             // 
             // buttonPlanMedico
             // 
+            this.buttonPlanMedico.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonPlanMedico.Location = new System.Drawing.Point(61, 43);
             this.buttonPlanMedico.Name = "buttonPlanMedico";
             this.buttonPlanMedico.Size = new System.Drawing.Size(162, 36);
@@ -56,6 +59,7 @@
             // 
             // button1
             // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.Location = new System.Drawing.Point(61, 112);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 36);
@@ -72,7 +76,9 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.buttonPlanMedico);
             this.Controls.Add(this.buttonVolver);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CancelarAtencion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CancelarAtencion";
             this.ResumeLayout(false);
 

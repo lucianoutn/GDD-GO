@@ -12,14 +12,14 @@ cosas que vamos a tener q ir documentando:
 
 - la contraseña predeterminada de los usuarios es '1234'
 
-- el estado de rol en 0: deshabilitado, 1: habilitado
+DOCUMENTADO- el estado de rol en 0: deshabilitado, 1: habilitado
 
-- el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol 
+DOCUMENTADO- el alta de un afiliado tiene un trigger que al efectuarse también establece la relacion con su rol 
   id usuario en la tabla roles por usuario. ante la baja del usuario (logica) NO se da de baja la relacion intermedia
 
-- cuando desde la app se da de baja un rol se realiza un delete de la tabla que acciona un TR instead of delete sobre rol que le hace el update al estado del mismo dandolo de baja logica
+DOCUMENTADO- cuando desde la app se da de baja un rol se realiza un delete de la tabla que acciona un TR instead of delete sobre rol que le hace el update al estado del mismo dandolo de baja logica
 
--cuando se da baja logica de un rol, se ejecuta un triger que baja las relaciones con los usuarios q tenia ese rol. No se da de baja la relacion de ese rol con sus funciones asignadas ante una posible re-habilitacion del mismo
+DOCUMENTADO-cuando se da baja logica de un rol, se ejecuta un triger que baja las relaciones con los usuarios q tenia ese rol. No se da de baja la relacion de ese rol con sus funciones asignadas ante una posible re-habilitacion del mismo
 
 
 
