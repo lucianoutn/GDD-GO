@@ -66,7 +66,13 @@ namespace ClinicaFrba.AbmRol
             }
         }
 
-        
+        private void limpiar_Click(object sender, EventArgs e)
+        {
+            textBoxNombreRol.Clear();
+
+            for (int i = 0; i < checkedListFunciones.Items.Count; i++)
+                checkedListFunciones.SetItemChecked(i, false);
+        }
         
 
     }
