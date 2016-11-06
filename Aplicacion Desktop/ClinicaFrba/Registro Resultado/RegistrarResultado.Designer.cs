@@ -32,15 +32,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSintoma = new System.Windows.Forms.TextBox();
             this.textBoxDiagnostico = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button_Volver = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.button_cerrarConsulta = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelAfiliado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 35);
+            this.label1.Location = new System.Drawing.Point(12, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 0;
@@ -57,7 +58,7 @@
             // 
             // textBoxSintoma
             // 
-            this.textBoxSintoma.Location = new System.Drawing.Point(87, 32);
+            this.textBoxSintoma.Location = new System.Drawing.Point(87, 43);
             this.textBoxSintoma.Name = "textBoxSintoma";
             this.textBoxSintoma.Size = new System.Drawing.Size(144, 20);
             this.textBoxSintoma.TabIndex = 2;
@@ -69,15 +70,6 @@
             this.textBoxDiagnostico.Size = new System.Drawing.Size(144, 20);
             this.textBoxDiagnostico.TabIndex = 3;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(254, 30);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Agregar";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // button_Volver
             // 
             this.button_Volver.Location = new System.Drawing.Point(16, 153);
@@ -88,24 +80,44 @@
             this.button_Volver.UseVisualStyleBackColor = true;
             this.button_Volver.Click += new System.EventHandler(this.button_Volver_Click);
             // 
-            // button3
+            // button_cerrarConsulta
             // 
-            this.button3.ForeColor = System.Drawing.Color.DarkRed;
-            this.button3.Location = new System.Drawing.Point(231, 153);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(98, 23);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Cerrar consulta";
-            this.button3.UseVisualStyleBackColor = true;
+            this.button_cerrarConsulta.ForeColor = System.Drawing.Color.DarkRed;
+            this.button_cerrarConsulta.Location = new System.Drawing.Point(231, 153);
+            this.button_cerrarConsulta.Name = "button_cerrarConsulta";
+            this.button_cerrarConsulta.Size = new System.Drawing.Size(98, 23);
+            this.button_cerrarConsulta.TabIndex = 6;
+            this.button_cerrarConsulta.Text = "Cerrar consulta";
+            this.button_cerrarConsulta.UseVisualStyleBackColor = true;
+            this.button_cerrarConsulta.Click += new System.EventHandler(this.button_cerrarConsulta_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Afiliado: ";
+            // 
+            // labelAfiliado
+            // 
+            this.labelAfiliado.AutoSize = true;
+            this.labelAfiliado.Location = new System.Drawing.Point(87, 12);
+            this.labelAfiliado.Name = "labelAfiliado";
+            this.labelAfiliado.Size = new System.Drawing.Size(53, 13);
+            this.labelAfiliado.TabIndex = 8;
+            this.labelAfiliado.Text = "unAfiliado";
             // 
             // RegistrarResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 196);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.labelAfiliado);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.button_cerrarConsulta);
             this.Controls.Add(this.button_Volver);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxDiagnostico);
             this.Controls.Add(this.textBoxSintoma);
             this.Controls.Add(this.label2);
@@ -123,8 +135,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxSintoma;
         private System.Windows.Forms.TextBox textBoxDiagnostico;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button_Volver;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button_cerrarConsulta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelAfiliado;
     }
 }
