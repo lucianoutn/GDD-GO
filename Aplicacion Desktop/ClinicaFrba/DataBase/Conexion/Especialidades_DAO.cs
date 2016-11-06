@@ -73,5 +73,28 @@ namespace ClinicaFrba.DataBase.Conexion
 
 
 
+        public String get_descripcion_segun_turno(int id_afiliado)
+        {
+            string descripcion = "";
+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select es.descripcion " +
+                                                                             "from GDD_GO.turno tu " +
+                                                                             "Join GDD_GO.horario ho " +
+                                                                             "on ho.id_turno = tu.id_turno " +
+                                                                             "Join GDD_GO.agenda ag " +
+                                                                             "on ho.id_agenda=ag.id_agenda " +
+                                                                             "Join GDD_GO.especialidad es " +
+                                                                             "on ag.id_especialidad = es.id_especialidad " +
+                                                                             "where tu.id_turno=" + id_afiliado);
+            List<string> resultado = new List<string>();
+
+            if (lector.Read())
+                descripcion = (string)lector[0];
+            lector.Close();
+
+
+            return descripcion;
+        }
+
     }
 }
