@@ -165,6 +165,18 @@
     <Compile Include="Cancelar Atencion\CancelarAtencion.Designer.cs">
       <DependentUpon>CancelarAtencion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Cancelar Atencion\SeleccionarAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\SeleccionarAfiliado.Designer.cs">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cancelar Atencion\SeleccionarProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cancelar Atencion\SeleccionarProfesional.Designer.cs">
+      <DependentUpon>SeleccionarProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Compra Bono\CompraBono.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -191,6 +203,7 @@
     <Compile Include="DataBase\Conexion\RegistroResultado_DAO.cs" />
     <Compile Include="DataBase\Conexion\SQLDataReader.cs" />
     <Compile Include="DataBase\Conexion\SQLServerBD.cs" />
+    <Compile Include="DataBase\Conexion\Turno_DAO.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
     <Compile Include="DataBase\Entidades\DiaLaboral.cs" />
     <Compile Include="DataBase\Entidades\Profesional.cs" />
@@ -346,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\CancelarAtencion.resx">
       <DependentUpon>CancelarAtencion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\SeleccionarAfiliado.resx">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cancelar Atencion\SeleccionarProfesional.resx">
+      <DependentUpon>SeleccionarProfesional.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Compra Bono\CompraBono.resx">
       <DependentUpon>CompraBono.cs</DependentUpon>

@@ -12,11 +12,13 @@ namespace ClinicaFrba.Cancelar_Atencion
     public partial class CancelacionPorMedico : Form
     {
         Form unMenu;
+        String profesional;
 
-        public CancelacionPorMedico(Form menu)
+        public CancelacionPorMedico(Form menu, String id_profesional)
         {
             InitializeComponent();
             unMenu = menu;
+            profesional = id_profesional;
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
