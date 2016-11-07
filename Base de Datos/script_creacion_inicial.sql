@@ -905,9 +905,13 @@ Begin
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 	
 	Insert into GDD_GO.tipo_cancelacion (	descripcion
-										   ,id_turno	)
+										   ,id_turno
+										   ,id_usuario
+										   ,desc_usuario	)
 	Select 'Afiliado dado de baja'
 		   ,tu.id_turno
+		   ,af.id_afiliado
+		   ,1
 	From GDD_GO.afiliado af
 		 Join GDD_GO.turno tu
 		 On tu.id_afiliado = af.id_afiliado
