@@ -29,7 +29,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EstablecerFamiliar));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarAfiliado));
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonBuscar = new System.Windows.Forms.Button();
@@ -231,7 +231,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.labelCliente.TabIndex = 147;
             this.labelCliente.Text = "SELECCIONAR AFILIADO";
             // 
-            // EstablecerFamiliar
+            // SeleccionarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -244,9 +244,9 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "EstablecerFamiliar";
+            this.Name = "SeleccionarAfiliado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "EstablecerFamiliar";
+            this.Text = "Seleccionar Afiliado";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
