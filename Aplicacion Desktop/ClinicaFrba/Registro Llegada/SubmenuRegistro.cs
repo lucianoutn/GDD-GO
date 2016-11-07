@@ -43,6 +43,7 @@ namespace ClinicaFrba.Registro_Llegada
             string especialidadElegida = comboEspecialidad.SelectedItem.ToString();
             List<String> profesionales = DAO.obtenerProfesionalesPorEspecialidad(especialidadElegida);
             comboProfesional.Items.Clear();
+            comboProfesional.ResetText();
             profesionales.ForEach(delegate(string s) { comboProfesional.Items.Add(s); });
         }
 
@@ -51,7 +52,8 @@ namespace ClinicaFrba.Registro_Llegada
             string profElegido = comboProfesional.SelectedItem.ToString();
             dataGridTurno.Rows.Clear();
             dataGridTurno.Refresh();
-
+            List<string> turnosHoy = DAO.getTurnosHoy(profElegido);
+            turnosHoy.ForEach(delegate(string s) { dataGridTurno.Rows.Add(s); });
 
         }
 
