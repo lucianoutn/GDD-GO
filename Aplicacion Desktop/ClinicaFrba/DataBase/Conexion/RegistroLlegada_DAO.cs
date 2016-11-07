@@ -57,109 +57,47 @@ namespace ClinicaFrba.DataBase.Conexion
             return profesionales;
         }
        
-      
-         
-        /* INSERTO ROL */
-        public void altaRol(String desc_nombre_rol)
-        {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.rol(  desc_nombre_rol ) Values ('" +
-                                                        desc_nombre_rol + "')");
-        }
-
-        /* ELIMINO ROL (hay un TR en la DB que hace su baja logica con un instead of delete) */
-        public void bajaRol(String desc_nombre_rol)
-        {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.rol where desc_nombre_rol = '" + desc_nombre_rol +"'");
-        }
-
-       
-        /* CONSULTO EL ESTADO DEL ROL PARA MOSTRAR O NO SU REACTIVACION */
-        public bool consultaEstadoRol(String rolSeleccionado)
-        {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select [desc_estado_rol] from GDD_GO.rol where desc_nombre_rol = '" + rolSeleccionado +"'");
-
-            lector.Read();
-            bool estado = (bool)lector["desc_estado_rol"];
-            lector.Close();
-            return estado;
-            
-            
-        }
-        
-        /* REACTIVO ROL */
-        public void reactivarRol(string rolSeleccionado)
-        {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.rol Set desc_estado_rol = 1 where desc_nombre_rol = '" + rolSeleccionado + "'");
-        }
-
-        /* OBTENGO FUNCINALIDADES X ROL */
-        public List<string> get_funcionalidades(string rol)
-        {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_funcion from GDD_GO.vista_rol_funciones where desc_nombre_rol = '" +
-                                                                                rol + "'");
-            List<string> resultado = new List<string>();
-            while (lector.Read())
-            {
-                resultado.Add(lector["desc_funcion"].ToString());
-            }
-            lector.Close();
-            return resultado;
-        }
-
-        public void InsertarFuncionRol(string funcion, string desc_nombre_rol)
-        {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_rol from GDD_GO.rol where desc_nombre_rol = '" +
-                                                                                                                desc_nombre_rol + "'");
-            reader.Read();
-            int id_rol = Int32.Parse(reader["id_rol"].ToString());
-            reader.Close();
-            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_funcion from GDD_GO.funcion where desc_funcion = '" + funcion + "'");
-            reader.Read();
-            int id_funcion = Int32.Parse(reader["id_funcion"].ToString());           
-            reader.Close();
-
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.funciones_por_rol values ("+ id_rol +","+ id_funcion +")");
-         
-        }
-        
-        public void EliminarFuncionRol(string funcion, string desc_nombre_rol)
-        {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_rol from GDD_GO.rol where desc_nombre_rol = '" +
-                                                                                                                desc_nombre_rol + "'");
-            reader.Read();
-            int id_rol = Int32.Parse(reader["id_rol"].ToString());
-            reader.Close();
-            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_funcion from GDD_GO.funcion where desc_funcion = '" + funcion + "'");
-            reader.Read();
-            int id_funcion = Int32.Parse(reader["id_funcion"].ToString());
-            reader.Close();
-
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Delete from GDD_GO.funciones_por_rol where id_rol =" + id_rol + "and id_funcion =" + id_funcion);
-
-
-
-        }
-
-
-
-        public List<string> getTurnosHoy(string profElegido)
+        /* obtengo id del turno para el dia de la fecha */
+        public List<int> turnosHoy(string profElegido)
         {
 
             SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from GDD_GO.profesional where desc_apellido +' '+ desc_nombre = '"+profElegido+"'");
             reader.Read();
             int idprofElegido = Int32.Parse(reader["id_profesional"].ToString());
             reader.Close();
-            
-
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = '2015-3-31' /*convert(date, GETDATE())*/ and t.id_profesional = '" + idprofElegido + "'");
+           
+           SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = /*'2015-3-31' */ convert(date, GETDATE()) and t.id_profesional = '" + idprofElegido + "' order by desc_hora_desde asc");
  
-            List<string> resultado = new List<string>();
-            while (lector.Read())
-            {
-                resultado.Add(lector["*"].ToString());
-            }
-            lector.Close();
-            return resultado;
+           List<int> resultado = new List<int>();
+           while (lector.Read())
+             {
+               resultado.Add(Int32.Parse(lector["id_turno"].ToString()));
+             }
+           lector.Close();
+           return resultado;
+           
+        }
+
+        public string getHoraTurno(int turno_id)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno =+'"+turno_id+"'");
+            reader.Read();
+            DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
+            reader.Close();
+            return hora.ToString("hh':'mm");
+        }
+
+        public string getAfTurno(int id_turno)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno =+'" + id_turno + "'");
+            reader.Read();
+            int id_afiliado = Int32.Parse(reader["id_afiliado"].ToString());
+            reader.Close();
+            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select (desc_apellido +' '+ desc_nombre)as nombre from GDD_GO.afiliado where id_afiliado =+'" + id_afiliado + "'");
+            reader.Read();
+            string nombre = reader["nombre"].ToString();
+            reader.Close();
+            return nombre;
         }
     }
 }

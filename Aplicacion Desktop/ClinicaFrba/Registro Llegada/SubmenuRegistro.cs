@@ -50,10 +50,22 @@ namespace ClinicaFrba.Registro_Llegada
         private void comboProfesional_SelectedIndexChanged(object sender, EventArgs e)
         {
             string profElegido = comboProfesional.SelectedItem.ToString();
+            //int idProfElegido = DAO.getidProf(profElegido);
             dataGridTurno.Rows.Clear();
             dataGridTurno.Refresh();
-            List<string> turnosHoy = DAO.getTurnosHoy(profElegido);
-            turnosHoy.ForEach(delegate(string s) { dataGridTurno.Rows.Add(s); });
+                       
+            List<int> turnosHoy = DAO.turnosHoy(profElegido);
+            //turnosHoy.ForEach(delegate(string s) { dataGridTurno.Rows.Add(s); });
+
+            for (int i = 0; i < turnosHoy.Count; i++)
+            {
+                int id_turno = turnosHoy[i];
+
+                dataGridTurno.Rows.Add(id_turno,
+                                          DAO.getHoraTurno(id_turno),
+                                          DAO.getAfTurno(id_turno));
+                                          
+            }
 
         }
 

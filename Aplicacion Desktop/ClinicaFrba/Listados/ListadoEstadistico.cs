@@ -32,12 +32,11 @@ namespace ClinicaFrba.Listados
             //Para no poder editar el comboBox
             comboBoxTop5.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            comboBoxTop5.Items.Add("Afiliados con más cancelaciones por especialidad");
-            comboBoxTop5.Items.Add("Profesionales con más cancelaciones por especialidad");
+            comboBoxTop5.Items.Add("Especialidades con más cancelaciones");
             comboBoxTop5.Items.Add("Profesionales más consultados por especialidad");
-            comboBoxTop5.Items.Add("Profesionales con menos horas trabajadas");
+            comboBoxTop5.Items.Add("Profesionales con menos horas trabajadas por especialidad");
             comboBoxTop5.Items.Add("Afiliados con más bonos comprados");
-            comboBoxTop5.Items.Add("Profesionales con más bonos de consulta utilizados");
+            comboBoxTop5.Items.Add("Especialidades con más bonos de consulta utilizados");
 
             comboBoxSemestre.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -46,6 +45,21 @@ namespace ClinicaFrba.Listados
 
             comboBoxAnio.DropDownStyle = ComboBoxStyle.DropDownList;
 
+            comboBoxMes.Items.Add("01");
+            comboBoxMes.Items.Add("02");
+            comboBoxMes.Items.Add("03");
+            comboBoxMes.Items.Add("04");
+            comboBoxMes.Items.Add("05");
+            comboBoxMes.Items.Add("06");
+            comboBoxMes.Items.Add("07");
+            comboBoxMes.Items.Add("08");
+            comboBoxMes.Items.Add("09");
+            comboBoxMes.Items.Add("10");
+            comboBoxMes.Items.Add("11");
+            comboBoxMes.Items.Add("12");
+
+            comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
+
             foreach (string aux in listEstDAO.get_anios())
             {
                 comboBoxAnio.Items.Add(aux);
@@ -53,6 +67,7 @@ namespace ClinicaFrba.Listados
 
             comboBoxTop5.Enabled = true;
             comboBoxSemestre.Enabled = true;
+            comboBoxMes.Enabled = false;
         }
 
         private void button_volver_Click(object sender, EventArgs e)
@@ -66,10 +81,12 @@ namespace ClinicaFrba.Listados
             comboBoxAnio.SelectedIndex = -1;
             comboBoxTop5.SelectedIndex = -1;
             comboBoxSemestre.SelectedIndex = -1;
+            comboBoxMes.SelectedIndex = -1;
             dataGridViewTop5.Rows.Clear();
             comboBoxSemestre.Enabled = true;
             comboBoxTop5.Enabled = true;
             comboBoxAnio.Enabled = true;
+            comboBoxMes.Enabled = true;
         }
 
         public void cargar_lista()
@@ -98,19 +115,15 @@ namespace ClinicaFrba.Listados
 
             switch (comboBoxTop5.Text)
             { 
-                case "Afiliados con más cancelaciones por especialidad":
-                    lectorTop5 = listEstDAO.getCancelacionesAfiliados(condicionSemAnio);
-                    break;
-
-                case "Profesionales con más cancelaciones por especialidad":
-                    lectorTop5 = listEstDAO.getCancelacionesProfesional(condicionSemAnio);
+                case "Especialidades con más cancelaciones": /*Tanto de afiliados como profesionales*/
+                    lectorTop5 = listEstDAO.getCancelaciones(condicionSemAnio);
                     break;
 
                 case "Profesionales más consultados por especialidad":
                     lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionSemAnio);
                     break;
 
-                case "Profesionales con menos horas trabajadas":
+                case "Profesionales con menos horas trabajadas por especialidad":
                     lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionSemAnio);
                     break;
 
@@ -118,7 +131,7 @@ namespace ClinicaFrba.Listados
                     lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionSemAnio);
                     break;
 
-                case "Profesionales con más bonos de consulta utilizados":
+                case "Especialidades con más bonos de consulta utilizados":
                     lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionSemAnio);
                     break;
 
@@ -127,14 +140,9 @@ namespace ClinicaFrba.Listados
         }
 
 
-        private void cargar_grid_cancelacionesAfiliado()
+        private void cargar_grid_cancelaciones()
         { 
         
-        }
-
-        private void cargar_grid_cancelacionesProfesional()
-        {
-
         }
 
         private void cargar_grid_profMasConsultadosPorEsp()
@@ -163,6 +171,7 @@ namespace ClinicaFrba.Listados
 
             if(comboBoxSemestre.Text != "")
             {
+                comboBoxMes.Enabled = false;
                 comboBoxTop5.Enabled = true;
             }
             else
@@ -171,9 +180,19 @@ namespace ClinicaFrba.Listados
             }
         }
 
-        private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
         {
-        
+            comboBoxMes.Enabled = false;
+
+            if (comboBoxMes.Text != "")
+            {
+                comboBoxSemestre.Enabled = false;
+                comboBoxTop5.Enabled = true;
+            }
+            else
+            {
+                comboBoxTop5.Enabled = false;
+            }
         }
 
         private void comboBoxAnio_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,5 +209,13 @@ namespace ClinicaFrba.Listados
                 comboBoxTop5.Enabled = false;
             }
         }
+
+        private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        
     }
 }

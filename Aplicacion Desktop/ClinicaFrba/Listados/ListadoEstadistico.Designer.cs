@@ -40,8 +40,9 @@
             this.Col_GrupoFam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_volver = new System.Windows.Forms.Button();
             this.button_limpiar = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.comboBoxAnio = new System.Windows.Forms.ComboBox();
+            this.labelMes = new System.Windows.Forms.Label();
+            this.comboBoxMes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +78,7 @@
             this.comboBoxSemestre.FormattingEnabled = true;
             this.comboBoxSemestre.Location = new System.Drawing.Point(82, 50);
             this.comboBoxSemestre.Name = "comboBoxSemestre";
-            this.comboBoxSemestre.Size = new System.Drawing.Size(384, 21);
+            this.comboBoxSemestre.Size = new System.Drawing.Size(121, 21);
             this.comboBoxSemestre.TabIndex = 3;
             this.comboBoxSemestre.SelectedIndexChanged += new System.EventHandler(this.comboBoxSemestre_SelectedIndexChanged);
             // 
@@ -135,22 +136,13 @@
             // 
             // button_limpiar
             // 
-            this.button_limpiar.Location = new System.Drawing.Point(204, 310);
+            this.button_limpiar.Location = new System.Drawing.Point(391, 310);
             this.button_limpiar.Name = "button_limpiar";
             this.button_limpiar.Size = new System.Drawing.Size(75, 23);
             this.button_limpiar.TabIndex = 8;
             this.button_limpiar.Text = "Limpiar";
             this.button_limpiar.UseVisualStyleBackColor = true;
             this.button_limpiar.Click += new System.EventHandler(this.button_limpiar_Click);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(391, 310);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 9;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
             // 
             // comboBoxAnio
             // 
@@ -161,13 +153,32 @@
             this.comboBoxAnio.TabIndex = 10;
             this.comboBoxAnio.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnio_SelectedIndexChanged);
             // 
+            // labelMes
+            // 
+            this.labelMes.AutoSize = true;
+            this.labelMes.Location = new System.Drawing.Point(309, 53);
+            this.labelMes.Name = "labelMes";
+            this.labelMes.Size = new System.Drawing.Size(30, 13);
+            this.labelMes.TabIndex = 11;
+            this.labelMes.Text = "Mes:";
+            // 
+            // comboBoxMes
+            // 
+            this.comboBoxMes.FormattingEnabled = true;
+            this.comboBoxMes.Location = new System.Drawing.Point(345, 49);
+            this.comboBoxMes.Name = "comboBoxMes";
+            this.comboBoxMes.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMes.TabIndex = 12;
+            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
+            // 
             // Listado_Estadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 345);
+            this.Controls.Add(this.comboBoxMes);
+            this.Controls.Add(this.labelMes);
             this.Controls.Add(this.comboBoxAnio);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button_limpiar);
             this.Controls.Add(this.button_volver);
             this.Controls.Add(this.dataGridViewTop5);
@@ -194,11 +205,12 @@
         private System.Windows.Forms.DataGridView dataGridViewTop5;
         private System.Windows.Forms.Button button_volver;
         private System.Windows.Forms.Button button_limpiar;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBoxAnio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Especialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_ProfOAf;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Cantidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_GrupoFam;
+        private System.Windows.Forms.Label labelMes;
+        private System.Windows.Forms.ComboBox comboBoxMes;
     }
 }

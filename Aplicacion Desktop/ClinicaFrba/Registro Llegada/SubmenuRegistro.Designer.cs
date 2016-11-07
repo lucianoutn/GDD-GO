@@ -37,6 +37,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridTurno = new System.Windows.Forms.DataGridView();
+            this.idTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nombreAfiliado = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
@@ -71,6 +74,7 @@
             // 
             // comboProfesional
             // 
+            this.comboProfesional.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboProfesional.FormattingEnabled = true;
             this.comboProfesional.Location = new System.Drawing.Point(9, 80);
             this.comboProfesional.Name = "comboProfesional";
@@ -80,6 +84,7 @@
             // 
             // comboEspecialidad
             // 
+            this.comboEspecialidad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboEspecialidad.FormattingEnabled = true;
             this.comboEspecialidad.Location = new System.Drawing.Point(9, 33);
             this.comboEspecialidad.Name = "comboEspecialidad";
@@ -120,10 +125,35 @@
             // 
             this.dataGridTurno.BackgroundColor = System.Drawing.Color.White;
             this.dataGridTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridTurno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.idTurno,
+            this.Horario,
+            this.nombreAfiliado});
             this.dataGridTurno.Location = new System.Drawing.Point(6, 19);
             this.dataGridTurno.Name = "dataGridTurno";
             this.dataGridTurno.Size = new System.Drawing.Size(479, 178);
             this.dataGridTurno.TabIndex = 8;
+            // 
+            // idTurno
+            // 
+            this.idTurno.HeaderText = "Nº Turno";
+            this.idTurno.Name = "idTurno";
+            this.idTurno.ReadOnly = true;
+            this.idTurno.Width = 60;
+            // 
+            // Horario
+            // 
+            this.Horario.HeaderText = "Horario";
+            this.Horario.Name = "Horario";
+            this.Horario.ReadOnly = true;
+            this.Horario.Width = 80;
+            // 
+            // nombreAfiliado
+            // 
+            this.nombreAfiliado.HeaderText = "Nombre Afiliado";
+            this.nombreAfiliado.Name = "nombreAfiliado";
+            this.nombreAfiliado.ReadOnly = true;
+            this.nombreAfiliado.Width = 250;
             // 
             // SubmenuRegistro
             // 
@@ -158,5 +188,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridTurno;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idTurno;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nombreAfiliado;
     }
 }
