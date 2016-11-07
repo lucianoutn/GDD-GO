@@ -64,7 +64,7 @@ namespace ClinicaFrba.DataBase.Conexion
         }
 
 
-        public void bajaAfiliado(int id_usuario)
+        public void bajaAfiliado(int id_usuario, int id_afiliado)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Delete GDD_GO.usuario where id_usuario = " + id_usuario);
         }

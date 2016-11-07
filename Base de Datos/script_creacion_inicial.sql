@@ -290,6 +290,8 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
 	,id_turno numeric(18,0)
+	,id_usuario int
+	,desc_usuario int
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
@@ -903,9 +905,13 @@ Begin
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 	
 	Insert into GDD_GO.tipo_cancelacion (	descripcion
-										   ,id_turno	)
+										   ,id_turno
+										   ,id_usuario
+										   ,desc_usuario	)
 	Select 'Afiliado dado de baja'
 		   ,tu.id_turno
+		   ,af.id_afiliado
+		   ,1
 	From GDD_GO.afiliado af
 		 Join GDD_GO.turno tu
 		 On tu.id_afiliado = af.id_afiliado

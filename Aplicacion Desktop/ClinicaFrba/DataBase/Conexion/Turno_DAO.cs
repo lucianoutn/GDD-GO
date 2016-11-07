@@ -30,9 +30,9 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
-        public void cancelarTurno(int id_turno, string motivo)
+        public void cancelarTurno(int id_turno, string motivo, int desc__cancelacion_usuario, int desc_usuario)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno) values ('"+motivo+"', "+id_turno+")");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) values ('" + motivo + "', " + id_turno + ", " + desc__cancelacion_usuario + ","+desc_usuario+")");
         }
 
         public int get_profesional(int id_turno)
