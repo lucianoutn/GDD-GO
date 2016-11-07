@@ -48,6 +48,31 @@ namespace ClinicaFrba.DataBase.Conexion
                 throw new Exception("El READ del comando se encuentra vacio", e);
             }
         }
+        public Int32 getIDAfiliado(String username)
+        {
+            SqlDataReader r = null;
+            try
+            {
+                r = GD2C2016.ejecutarSentenciaConRetorno("select * from " + ConstantesBD.tabla_afiliados +
+                    " a join "+ConstantesBD.tabla_usuarios+" u on a.id_usuario = u.id_usuario where "+
+                    "u.desc_username = '"+username+"'");
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
+            }
+            try
+            {
+                r.Read();
+                Int32 aux = r.GetInt32(0); 
+                    r.Close();
+                return aux;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El READ del comando se encuentra vacio", e);
+            }
+        }
 
     }
 }

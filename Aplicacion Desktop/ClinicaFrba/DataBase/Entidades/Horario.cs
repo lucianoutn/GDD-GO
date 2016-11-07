@@ -23,6 +23,10 @@ namespace ClinicaFrba.DataBase.Entidades
         }
 
 
+        public DateTime getFecha()
+        {
+            return fecha;
+        }
         public String getDate()
         {
             return fecha.Year.ToString() + "-" + fecha.Month.ToString() + "-" + fecha.Day.ToString();
@@ -39,6 +43,10 @@ namespace ClinicaFrba.DataBase.Entidades
         public String getDuracion()
         {
             return duracion.ToString();
+        }
+        public Int32 getAgenda()
+        {
+            return id_Agenda;
         }
     }
 }

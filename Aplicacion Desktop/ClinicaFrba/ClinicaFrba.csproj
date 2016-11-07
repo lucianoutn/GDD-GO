@@ -213,8 +213,6 @@
     <Compile Include="DataBase\Entidades\Horario.cs" />
     <Compile Include="DataBase\Entidades\Profesional.cs" />
     <Compile Include="DataBase\Entidades\Especialidad.cs" />
-    <Compile Include="DataBase\Entidades\Cliente.cs" />
-    <Compile Include="DataBase\Entidades\Empresa.cs" />
     <Compile Include="DataBase\Entidades\User.cs" />
     <Compile Include="Excepciones\CierreConexionFallidaException.cs" />
     <Compile Include="Excepciones\ConexionFallidaException.cs" />
@@ -486,7 +484,9 @@
   <ItemGroup>
     <None Include="Resources\medicos.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\fondo.PNG" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Resources\coach_with_clipboard_400_clr.png" />
   </ItemGroup>

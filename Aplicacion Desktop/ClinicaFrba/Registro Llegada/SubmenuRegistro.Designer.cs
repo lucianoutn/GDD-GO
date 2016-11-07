@@ -35,11 +35,11 @@
             this.comboEspecialidad = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridTurno = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dataGridTurno = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -47,7 +47,7 @@
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(328, 232);
+            this.buttonVolver.Location = new System.Drawing.Point(328, 298);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 5;
@@ -57,16 +57,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.comboProfesional);
             this.groupBox1.Controls.Add(this.comboEspecialidad);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(197, 120);
+            this.groupBox1.Size = new System.Drawing.Size(228, 120);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Indicar Profesional del turno pactado";
+            this.groupBox1.Text = "(1º) Indicar Profesional del turno pactado";
             // 
             // comboProfesional
             // 
@@ -104,30 +105,33 @@
             this.label1.TabIndex = 8;
             this.label1.Text = "Especialidad (puede filtrar)";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+            this.groupBox2.Controls.Add(this.dataGridTurno);
+            this.groupBox2.Location = new System.Drawing.Point(246, 13);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(491, 204);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "(2º) Seleccionar Afiliado";
+            // 
             // dataGridTurno
             // 
-            this.dataGridTurno.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridTurno.BackgroundColor = System.Drawing.Color.White;
             this.dataGridTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridTurno.Location = new System.Drawing.Point(6, 19);
             this.dataGridTurno.Name = "dataGridTurno";
-            this.dataGridTurno.Size = new System.Drawing.Size(510, 178);
+            this.dataGridTurno.Size = new System.Drawing.Size(479, 178);
             this.dataGridTurno.TabIndex = 8;
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.dataGridTurno);
-            this.groupBox2.Location = new System.Drawing.Point(215, 13);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(522, 203);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Seleccionar Afiliado";
             // 
             // SubmenuRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(749, 267);
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(749, 333);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.buttonVolver);
@@ -138,8 +142,8 @@
             this.Load += new System.EventHandler(this.SubmenuRegistro_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).EndInit();
             this.ResumeLayout(false);
 
         }

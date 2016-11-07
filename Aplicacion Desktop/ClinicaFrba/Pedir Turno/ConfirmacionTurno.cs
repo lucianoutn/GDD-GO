@@ -60,7 +60,10 @@ namespace ClinicaFrba.Pedir_Turno
         {
             try
             {
-
+                Turno_DAO DAO = new Turno_DAO();
+                Afiliado_DAO aux = new Afiliado_DAO();
+                DAO.agendar_Turno(horario.getAgenda(),aux.getIDAfiliado(username),
+                    profesional.getid(),especialidad.getID(),horario.getFecha());
             }
             catch (Exception)
             {                

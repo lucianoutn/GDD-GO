@@ -140,6 +140,26 @@ namespace ClinicaFrba.DataBase.Conexion
 
         }
 
-        
+
+
+        public List<string> getTurnosHoy(string profElegido)
+        {
+
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from GDD_GO.profesional where desc_apellido +' '+ desc_nombre = '"+profElegido+"'");
+            reader.Read();
+            int idprofElegido = Int32.Parse(reader["id_profesional"].ToString());
+            reader.Close();
+            
+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = '2015-3-31' /*convert(date, GETDATE())*/ and t.id_profesional = '" + idprofElegido + "'");
+ 
+            List<string> resultado = new List<string>();
+            while (lector.Read())
+            {
+                resultado.Add(lector["*"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
     }
 }

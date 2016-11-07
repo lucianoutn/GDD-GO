@@ -262,11 +262,9 @@ CREATE TABLE GDD_GO.horario
 	id_horario int identity(1,1)
 	,desc_hora_desde DATETIME
 	,id_agenda int
-	,id_dia_laboral char NULL
 	,id_turno numeric(18,0)
 	,primary key (id_horario)
 	,foreign key (id_agenda) references GDD_GO.agenda
-	,foreign key (id_dia_laboral,id_agenda) references GDD_GO.dia_laboral
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
 
@@ -680,11 +678,10 @@ Go
 /*Horario*/
 Insert into GDD_GO.horario(
 	id_turno,
-	id_dia_laboral,
 	desc_hora_desde,
 	id_agenda
 )
-Select m.Turno_Numero, d.id_dia_laboral, m.Turno_Fecha, ag.id_agenda
+Select m.Turno_Numero, m.Turno_Fecha, ag.id_agenda
 From gd_esquema.Maestra m
 join GDD_GO.afiliado af
 	On m.Paciente_Dni = af.desc_dni
@@ -693,8 +690,6 @@ join GDD_GO.profesional pr
 join GDD_GO.agenda ag
 	On	ag.id_profesional = pr.id_profesional
 		and ag.id_especialidad = m.Especialidad_Codigo
-join GDD_GO.dia_laboral d
-	On	ag.id_agenda = d.id_agenda
 Where Turno_Numero is not null And Consulta_Sintomas is not null
 
 Go
@@ -962,13 +957,4 @@ Set @id_turno = (Select id_turno from inserted)
 Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
 
-select * from GDD_GO.agenda a
-join GDD_GO.dia_laboral d
-on d.id_agenda = a.id_agenda
-where a.id_profesional = 8
-and a.id_especialidad = 10033
-and a.fecha_hasta >= '2016-11-10 00:00:00.00'
 
-select count(*) from GDD_GO.horario h
-where h.id_agenda = 50
-and h.desc_hora_desde = '2016-11-11 12:30:00.00'

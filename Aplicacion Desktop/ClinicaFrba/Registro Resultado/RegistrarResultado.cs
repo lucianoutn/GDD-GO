@@ -43,7 +43,7 @@ namespace ClinicaFrba.Registro_Resultado
             String sintoma = textBoxSintoma.Text;
             String diagnostico = textBoxDiagnostico.Text;
             regResult.cargarDiagnosticoEnConsulta(afiliado, sintoma, diagnostico);
-            MessageBox.Show("Consulta cargada con éxito", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            MessageBox.Show("Diagnóstico cargado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.None);
 
             this.Close();
 

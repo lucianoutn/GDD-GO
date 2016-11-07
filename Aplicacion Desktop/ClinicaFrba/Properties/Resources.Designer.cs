@@ -67,6 +67,13 @@ namespace ClinicaFrba.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap fondo {
+            get {
+                object obj = ResourceManager.GetObject("fondo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap medicos {
             get {
                 object obj = ResourceManager.GetObject("medicos", resourceCulture);

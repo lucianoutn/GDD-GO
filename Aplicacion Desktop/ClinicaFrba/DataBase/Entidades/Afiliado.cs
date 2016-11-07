@@ -42,7 +42,7 @@ namespace ClinicaFrba.DataBase.Entidades
         {
             return desc_dni;
         }
-        public String gwtusername()
+        public String getusername()
         {
             return username;
         }

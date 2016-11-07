@@ -31,7 +31,7 @@ namespace ClinicaFrba.Pedir_Turno
             anterior = eleccion;
             menu = menuppal;
             username = name;
-
+            popApp.Hide();
             prof_es_unico = false;
             esp_es_unica = false;
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
@@ -127,7 +127,7 @@ namespace ClinicaFrba.Pedir_Turno
         {
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
-
+            popApp.Show();
             if (!(esp_es_unica && prof_es_unico))
             {
                 return;
@@ -144,6 +144,7 @@ namespace ClinicaFrba.Pedir_Turno
             }
             dataGridView.Refresh();
             dataGridView.Sort(dataGridView.Columns[1],ListSortDirection.Ascending);
+            popApp.Hide();
         }
 
         private void buttonBack_Click(object sender, EventArgs e)

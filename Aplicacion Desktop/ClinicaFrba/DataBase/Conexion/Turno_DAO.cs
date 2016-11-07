@@ -70,5 +70,53 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Close();
             return cantidad;
         }
+
+
+
+
+        public void agendar_Turno(Int32 agenda, Int32 afiliado, Int32 prof, Int32 esp, DateTime hora)
+        {
+            GD2C2016.ejecutarSentenciaSinRetorno("Begin Transaction");
+            SqlDataReader resultado;
+            try
+            {
+                this.GD2C2016.ejecutarSentenciaSinRetorno(
+                        "insert into GDD_GO.turno (id_afiliado,id_profesional,desc_estado)"+
+                        "values("+afiliado.ToString()+","+prof.ToString()+",0)");
+
+                resultado = this.GD2C2016.ejecutarSentenciaConRetorno(
+                        "select TOP(1) id_turno from GDD_GO.turno order by id_turno desc");
+            }
+            catch (Exception)
+            {
+                GD2C2016.ejecutarSentenciaSinRetorno("ROLLBACK");
+                throw new Exception("Imposible Agregar Agenda");
+            }
+            if (!resultado.Read())
+            {
+                throw new Exception("No Retorno");
+            }
+            Int32 aux = resultado.GetInt32(0);
+            resultado.Close();
+            try
+            {
+                    this.GD2C2016.ejecutarSentenciaSinRetorno(
+                        "insert into GDD_GO.horario (id_agenda,id_turno,desc_hora_desde)"+
+                        "values(" + agenda.ToString() + "," +aux.ToString() +"," + fechaSQL(hora) + ")");
+            }
+            catch (Exception)
+            {
+                GD2C2016.ejecutarSentenciaSinRetorno("ROLLBACK");
+                throw new Exception("imposible gregar Horario");
+            }
+            GD2C2016.ejecutarSentenciaSinRetorno("COMMIT");
+        }
+
+        private String fechaSQL(DateTime f)
+        {
+            return "'" + f.Year.ToString() + "-" + f.Month.ToString() + "-" + f.Day.ToString() +
+                    " " + f.Hour.ToString() + ":" + f.Minute.ToString() + ":00.000'";
+        }
+
     }
 }
