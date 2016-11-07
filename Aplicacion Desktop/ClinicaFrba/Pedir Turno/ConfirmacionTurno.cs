@@ -13,30 +13,25 @@ namespace ClinicaFrba.Pedir_Turno
 {
     public partial class ConfirmacionTurno : Form
     {
-        private Form menu;
-        private Form calendario;
+        private Form anterior;
+        private Form siguiente;
         private Profesional profesional;
         private Especialidad especialidad;
-        private DateTime inicio;
-        private DateTime fin;
-        private Int32 t_consulta;
-        private List<DiaLaboral> lista_dias;
+        private String username;
+        private Horario horario;
 
 
-        public ConfirmacionTurno(Form previoForm, Form posForm)
+        public ConfirmacionTurno(Form previoForm, Form posForm, Object h, Object prof, Object esp, String user)
         {
             InitializeComponent();
-            menu = posForm;
             try
             {
-//                menu = (Form)posForm;
- //               calendario = (Form)previoForm;
-  //              profesional = (Profesional)prof;
-   //             especialidad = (Especialidad)esp;
-    //            inicio = fechaIni;
-     //           fin = fechaFin;
-      //          t_consulta = d_turno;
-       //         lista_dias = (List<DiaLaboral>) lista;
+                anterior = previoForm;
+                siguiente = posForm;
+                horario = (Horario)h;
+                profesional = (Profesional)prof;
+                especialidad = (Especialidad)esp;
+                username = user;
             }
             catch (Exception e)
             {   
@@ -47,41 +42,31 @@ namespace ClinicaFrba.Pedir_Turno
 
         private void mostrarPorPantalla()
         {
-            Calendario_DAO calendarioDAO = new Calendario_DAO();
+            l_valorDias.Text = username;
             l_nombreProfesional.Text = profesional.toString();
             l_especialidad.Text = especialidad.toString();
-            l_valorDuracion.Text = t_consulta.ToString();
-            l_ValorHoras.Text = (calendarioDAO.controlHorarios(lista_dias)/100).ToString();
-            l_valorDias.Text = calendarioDAO.stringAgenda(lista_dias);
-            l_valorTurnos.Text = (calendarioDAO.controlHorarios(lista_dias) / deSexaADeci(t_consulta)).ToString();
-            l_ValorInicio.Text = inicio.ToString();
-            l_valorFin.Text = fin.ToString(); 
+            l_valorDuracion.Text = horario.getDuracion();
+            l_ValorHoras.Text = horario.getDate()+" - "+horario.getTime();
         }
 
-        private Int32 deSexaADeci(Int32 a)
-        {
-            return a * 100 / 60;
-        }
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            calendario.Show();
+            anterior.Show();
             this.Close();
         }
 
         private void buttonConfirm_Click(object sender, EventArgs e)
         {
-            Calendario_DAO calendarioDAO = new Calendario_DAO();
             try
             {
-                calendarioDAO.newCalendar(profesional, especialidad, inicio, fin, t_consulta, lista_dias);
+
             }
             catch (Exception)
             {                
-                throw new Excepciones.EjecucionComandoFallidaException("fallo nueva Agenda");
+                throw new Excepciones.EjecucionComandoFallidaException("fallo nuevo Turno");
             }
-            menu.Show();
-            calendario.Close();
+            siguiente.Show();
             this.Close();        
         }
     }

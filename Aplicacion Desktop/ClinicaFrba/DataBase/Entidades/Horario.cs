@@ -8,23 +8,12 @@ namespace ClinicaFrba.DataBase.Entidades
 {
     class Horario
     {
+        public Int32 orden;
         private Int32 id;
         private Int32 id_Agenda;
         private DateTime fecha;
         private Int32 duracion;
-        private Int32 id_prof;
-        private Int32 id_esp;
 
-
-        public Horario(Int32 _id, Int32 _id_agenda, DateTime date, Int32 t_consulta, Int32 profID, Int32 espID)
-        {
-            id = _id;
-            id_Agenda = _id_agenda;
-            fecha = date;
-            duracion = t_consulta;
-            id_prof = profID;
-            id_esp = espID;
-        }
         public Horario(Int32 _id, Int32 _id_agenda, DateTime date, Int32 t_consulta)
         {
             id = _id;
@@ -36,25 +25,20 @@ namespace ClinicaFrba.DataBase.Entidades
 
         public String getDate()
         {
-            return "";
+            return fecha.Year.ToString() + "-" + fecha.Month.ToString() + "-" + fecha.Day.ToString();
         }
         public String getTime()
         {
-            return "";
+            return fecha.Hour.ToString() + ":" + fecha.Minute.ToString();
         }
+        public String getDay()
+        {
+            return fecha.DayOfWeek.ToString();
+        }
+
         public String getDuracion()
         {
             return duracion.ToString();
         }
-        public Int32 getProf()
-        {
-            return 0;
-        }
-        public Int32 getEsp()
-        {
-            return 0;
-        }
-
-    
     }
 }

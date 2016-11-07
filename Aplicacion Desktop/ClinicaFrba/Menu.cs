@@ -121,7 +121,7 @@ namespace ClinicaFrba
             }
             else
             {
-                CalendarProf vistaProff = new CalendarProf(this,labelUser.Text);
+                CalendarProf vistaProff = new CalendarProf(this,this,labelUser.Text);
                 vistaProff.Show();
                 this.Hide();
             }

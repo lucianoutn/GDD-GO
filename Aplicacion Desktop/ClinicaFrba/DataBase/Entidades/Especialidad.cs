@@ -21,6 +21,6 @@ namespace ClinicaFrba.DataBase.Entidades
         public int getID(){ return _id;}
         public String getDescripcion(){return descripcion;}
         public String getTipo() { return descripcion_Tipo; }
-        public String toString() { return getDescripcion() + " - " + getTipo(); }
+        public String toString() { return getDescripcion(); }
     }
 }

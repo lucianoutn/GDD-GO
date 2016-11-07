@@ -31,13 +31,15 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HorarioAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,9 +47,9 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(95, 29);
+            this.comboBox1.Location = new System.Drawing.Point(156, 29);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(260, 21);
+            this.comboBox1.Size = new System.Drawing.Size(278, 21);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -55,9 +57,9 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(95, 56);
+            this.comboBox2.Location = new System.Drawing.Point(156, 56);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(260, 21);
+            this.comboBox2.Size = new System.Drawing.Size(278, 21);
             this.comboBox2.TabIndex = 1;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -65,38 +67,23 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AllowUserToOrderColumns = true;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Key,
             this.FechaAtencion,
-            this.HorarioAtencion,
+            this.Dia,
+            this.Horario,
             this.Duracion});
             this.dataGridView.Location = new System.Drawing.Point(12, 109);
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
-            this.dataGridView.Size = new System.Drawing.Size(343, 150);
+            this.dataGridView.Size = new System.Drawing.Size(422, 192);
             this.dataGridView.TabIndex = 2;
-            // 
-            // FechaAtencion
-            // 
-            this.FechaAtencion.HeaderText = "Fecha";
-            this.FechaAtencion.Name = "FechaAtencion";
-            this.FechaAtencion.ReadOnly = true;
-            // 
-            // HorarioAtencion
-            // 
-            this.HorarioAtencion.HeaderText = "Horario";
-            this.HorarioAtencion.Name = "HorarioAtencion";
-            this.HorarioAtencion.ReadOnly = true;
-            // 
-            // Duracion
-            // 
-            this.Duracion.HeaderText = "DuracionAtencion";
-            this.Duracion.Name = "Duracion";
-            this.Duracion.ReadOnly = true;
             // 
             // buttonNext
             // 
-            this.buttonNext.Location = new System.Drawing.Point(279, 307);
+            this.buttonNext.Location = new System.Drawing.Point(359, 307);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 3;
@@ -126,17 +113,52 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 63);
+            this.label2.Location = new System.Drawing.Point(9, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Especialidad";
             // 
+            // Key
+            // 
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            this.Key.ReadOnly = true;
+            this.Key.Width = 30;
+            // 
+            // FechaAtencion
+            // 
+            this.FechaAtencion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FechaAtencion.HeaderText = "Fecha";
+            this.FechaAtencion.Name = "FechaAtencion";
+            this.FechaAtencion.ReadOnly = true;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 80;
+            // 
+            // Horario
+            // 
+            this.Horario.HeaderText = "Horario";
+            this.Horario.Name = "Horario";
+            this.Horario.ReadOnly = true;
+            this.Horario.Width = 90;
+            // 
+            // Duracion
+            // 
+            this.Duracion.HeaderText = "Duracion";
+            this.Duracion.Name = "Duracion";
+            this.Duracion.ReadOnly = true;
+            this.Duracion.Width = 60;
+            // 
             // FormNuevoTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 342);
+            this.ClientSize = new System.Drawing.Size(446, 342);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonBack);
@@ -157,12 +179,14 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaAtencion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn HorarioAtencion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
         private System.Windows.Forms.Button buttonNext;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Key;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FechaAtencion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
     }
 }

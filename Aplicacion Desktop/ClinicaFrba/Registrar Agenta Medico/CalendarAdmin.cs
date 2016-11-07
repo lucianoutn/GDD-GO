@@ -43,9 +43,9 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         {
             if (check)
             {
-                CalendarProf vistaProff = new CalendarProf(this, username);
+                CalendarProf vistaProff = new CalendarProf(this,menu, username);
                 vistaProff.Show();
-                this.Hide();
+                this.Close();
             }
         }
 

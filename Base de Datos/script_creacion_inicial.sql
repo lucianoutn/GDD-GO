@@ -237,7 +237,7 @@ CREATE TABLE GDD_GO.agenda
 
 CREATE TABLE GDD_GO.dia_laboral
 (
-	 id_dia_laboral char
+	 id_dia_laboral Char
 	,horario_desde DATETIME
 	,horario_hasta DATETIME
 	,estado int
@@ -290,6 +290,8 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
 	,id_turno numeric(18,0)
+	,id_usuario int
+	,desc_usuario int
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
@@ -901,7 +903,19 @@ Begin
 	From deleted;
 	
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
-			
+	
+	Insert into GDD_GO.tipo_cancelacion (	descripcion
+										   ,id_turno
+										   ,id_usuario
+										   ,desc_usuario	)
+	Select 'Afiliado dado de baja'
+		   ,tu.id_turno
+		   ,af.id_afiliado
+		   ,1
+	From GDD_GO.afiliado af
+		 Join GDD_GO.turno tu
+		 On tu.id_afiliado = af.id_afiliado
+	Where af.id_usuario=@id_usuario
 End
 Go
 
@@ -948,3 +962,13 @@ Set @id_turno = (Select id_turno from inserted)
 Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
 
+select * from GDD_GO.agenda a
+join GDD_GO.dia_laboral d
+on d.id_agenda = a.id_agenda
+where a.id_profesional = 8
+and a.id_especialidad = 10033
+and a.fecha_hasta >= '2016-11-10 00:00:00.00'
+
+select count(*) from GDD_GO.horario h
+where h.id_agenda = 50
+and h.desc_hora_desde = '2016-11-11 12:30:00.00'

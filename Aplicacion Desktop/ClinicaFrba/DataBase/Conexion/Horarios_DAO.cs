@@ -37,7 +37,7 @@ namespace ClinicaFrba.DataBase.Conexion
             }
             while (r.Read())
             {
-                DiaAuxiliar aux = new DiaAuxiliar(r.GetInt32(0), r.GetInt32(3),
+                DiaAuxiliar aux = new DiaAuxiliar(r.GetInt32(0), r.GetInt32(3), r.GetString(7)[0],
                             r.GetDateTime(1), r.GetDateTime(2),
                             r.GetDateTime(8), r.GetDateTime(9));
                 lista_D.Add(aux);
@@ -48,6 +48,7 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 list.AddRange(armarDia(item));
             }
+
             return list;
         }
 
@@ -58,7 +59,7 @@ namespace ClinicaFrba.DataBase.Conexion
             try
             {
                 r = GD2C2016.ejecutarSentenciaConRetorno(
-                        "select h.id_horario,a.id_agenda,h.desc_hora_desde,a.duracion_consulta,a.id_profesional,a.id_especialidad "+
+                        "select h.id_horario,a.id_agenda,h.desc_hora_desde,a.duracion_consulta "+
                         "from " + ConstantesBD.tabla_agenda + " a " +
                         "join " + ConstantesBD.tabla_horario + " h " +
                         "on h.id_agenda = a.id_agenda "+
@@ -66,7 +67,7 @@ namespace ClinicaFrba.DataBase.Conexion
                         "and a.id_especialidad = " + esp + " " +
                         "and a.fecha_hasta >= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
                         "and h.desc_hora_desde > '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
-                        "and h.id_turno = null");
+                        "and h.id_turno = null  order by h.desc_hora_desde");
             }
             catch (Exception e)
             {
@@ -76,8 +77,7 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 while (r.Read())
                 {
-                    Horario item = new Horario(r.GetInt32(0),r.GetInt32(1),r.GetDateTime(2),
-                        r.GetInt32(3),r.GetInt32(4),r.GetInt32(5));
+                    Horario item = new Horario(r.GetInt32(0),r.GetInt32(1),r.GetDateTime(2),r.GetInt32(3));
                     list.Add(item);
                 }
             }
@@ -95,7 +95,10 @@ namespace ClinicaFrba.DataBase.Conexion
             DateTime aux = dia.fecha;
             while (dia.fechafin.CompareTo(aux) >= 0)
             {
-                list.AddRange(armarHorarios(dia.agenda, dia.duracion, aux, dia.inicio, dia.fin));
+                if(es_diaLaboral(aux.DayOfWeek,dia.dia))
+                {
+                    list.AddRange(armarHorarios(dia.agenda, dia.duracion, aux, dia.inicio, dia.fin));
+                }
                 aux = aux.AddDays(1);
             }
             return list;
@@ -107,12 +110,18 @@ namespace ClinicaFrba.DataBase.Conexion
             List<Horario> list = new List<Horario>();
             DateTime aux = fecha;
 
-            while   (inicio.TimeOfDay.CompareTo(aux.TimeOfDay) <= 0 &&
-                    fin.TimeOfDay.CompareTo(aux.TimeOfDay) >= 0)
+            while (inicio.TimeOfDay.CompareTo(aux.TimeOfDay) > 0)
+            {
+                aux = aux.AddMinutes(Double.Parse(duracion.ToString()));
+            }
+
+            while ( inicio.TimeOfDay.CompareTo(aux.TimeOfDay) <= 0
+                &&  fin.TimeOfDay.CompareTo(aux.TimeOfDay) >= 0)
             {
                 if (!existe_Horario_que_Ocupa(agenda, aux))
                 {
                     Horario item = new Horario(0, agenda, aux, duracion);
+                    list.Add(item);
                 }
                 aux = aux.AddMinutes(Double.Parse(duracion.ToString()));
             }
@@ -126,7 +135,7 @@ namespace ClinicaFrba.DataBase.Conexion
             try
             {
                 r = GD2C2016.ejecutarSentenciaConRetorno(
-                        "select * from " + ConstantesBD.tabla_horario + " h" +
+                        "select count(*) from " + ConstantesBD.tabla_horario + " h" +
                         " where h.id_agenda = "+agenda.ToString()+
                         " and h.desc_hora_desde = "+ fechaSQL(fecha));
             }
@@ -137,16 +146,17 @@ namespace ClinicaFrba.DataBase.Conexion
             try
             {
                 r.Read();
-                aux = r.GetInt32(0) == 0;
-                r.Close();
+                aux = r.GetInt32(0) != 0;
             }
             catch (Exception e)
             {
                 throw new Exception("El READ del comando se encuentra vacio", e);
             }
+            r.Close();
             return aux;
         }
-        private String fechaSQL(DateTime f)
+
+        public String fechaSQL(DateTime f)
         {
             return "'" + f.Year.ToString() + "-" + f.Month.ToString() + "-" + f.Day.ToString() +
                     " " + f.Hour.ToString() + ":" + f.Minute.ToString() + ":00.000'";
@@ -164,7 +174,22 @@ namespace ClinicaFrba.DataBase.Conexion
                 fechaConFormato = s + fechaConFormato;
                 fechaConFormato = "-" + fechaConFormato;
             }
-            return fechaConFormato.Substring(1) + " 00:00:00.00";
+            return fechaConFormato.Substring(1) + " 00:00:00.000";
         }
+        private Boolean es_diaLaboral(DayOfWeek a, char b)
+        {
+            return b.Equals(convertirDia(a));
+        }
+        private char convertirDia(DayOfWeek a)
+        {
+            if (a.Equals(DayOfWeek.Monday)) return 'L';
+            else if (a.Equals(DayOfWeek.Tuesday)) return 'M';
+            else if (a.Equals(DayOfWeek.Wednesday)) return 'X';
+            else if (a.Equals(DayOfWeek.Thursday)) return 'J';
+            else if (a.Equals(DayOfWeek.Friday)) return 'V';
+            else if (a.Equals(DayOfWeek.Saturday)) return 'S';
+            else return 'D';
+        }
+    
     }
 }

@@ -79,7 +79,10 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
                 int id = int.Parse(fila.Cells["id_usuario"].Value.ToString());
-                abm_usuario.bajaAfiliado(id);
+                int id_afiliado = int.Parse(fila.Cells["Id"].Value.ToString());
+
+                abm_usuario.bajaAfiliado(id,id_afiliado);
+                
                 MessageBox.Show("Usuario dado de baja exitosamente");
             }
             catch

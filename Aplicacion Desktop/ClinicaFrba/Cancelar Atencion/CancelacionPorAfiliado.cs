@@ -59,7 +59,7 @@ namespace ClinicaFrba.Cancelar_Atencion
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
                 int id = int.Parse(fila.Cells["Id_turno"].Value.ToString());
 
-                turno_dao.cancelarTurno(id, textBoxMotivo.Text);
+                turno_dao.cancelarTurno(id, textBoxMotivo.Text,id_afiliado,1);
 
                 MessageBox.Show("Turno cancelado");
         }

@@ -23,7 +23,7 @@ namespace ClinicaFrba.Pedir_Turno
         private Boolean esp_es_unica;
         private Profesional profesional;
         private Especialidad especialidad;
-
+        private List<Horario> lista;
 
         public FormNuevoTurno(Form eleccion,Form menuppal, String name)
         {
@@ -34,7 +34,6 @@ namespace ClinicaFrba.Pedir_Turno
 
             prof_es_unico = false;
             esp_es_unica = false;
-
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
             lista_prof = profesionalesDAO.getProfesionales();
             foreach (Profesional aux
@@ -101,6 +100,7 @@ namespace ClinicaFrba.Pedir_Turno
         private void actualizarEspecialidades()
         {
             comboBox2.Items.Clear();
+            lista_esp.Clear();
             Especialidades_DAO especialidades_DAO = new Especialidades_DAO();
             lista_esp = especialidades_DAO.get_especialidadesDe(profesional.getid());
             foreach (Especialidad aux
@@ -113,6 +113,7 @@ namespace ClinicaFrba.Pedir_Turno
         private void actualizarProfesionales()
         {
             comboBox1.Items.Clear();
+            lista_prof.Clear();
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
             lista_prof = profesionalesDAO.getProfesionalesConEspecialidad(especialidad.getID());
             foreach (Profesional aux
@@ -126,18 +127,23 @@ namespace ClinicaFrba.Pedir_Turno
         {
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
+
             if (!(esp_es_unica && prof_es_unico))
             {
                 return;
             }
-
             Horarios_DAO DAO = new Horarios_DAO();
-            List<Horario> lista = DAO.getHorariosDe(profesional, especialidad);
+            lista = DAO.getHorariosDe(profesional, especialidad);
+            Int32 aux = 0;
             foreach (Horario item in lista)
             {
+                item.orden = aux;
                 dataGridView.Rows.Add(
-                    item.getDate(),item.getTime(),item.getDuracion());
+                    item.orden,item.getDate(),item.getDay(),item.getTime(),item.getDuracion());
+                aux++;
             }
+            dataGridView.Refresh();
+            dataGridView.Sort(dataGridView.Columns[1],ListSortDirection.Ascending);
         }
 
         private void buttonBack_Click(object sender, EventArgs e)
@@ -150,20 +156,18 @@ namespace ClinicaFrba.Pedir_Turno
         {
             try
             {
-                DataGridViewRow fila = dataGridView.SelectedRows[0];
+                Int32 i = (Int32) dataGridView.SelectedRows[0].Cells["Key"].Value;
+                Horario h = lista.Find(x => x.orden.Equals(i));
+                ConfirmacionTurno confirmacion =
+                    new ConfirmacionTurno(this, menu, (Object)h, (Object)profesional, (Object)especialidad, username);
 
- 
+                this.Hide();
+                confirmacion.Show();
             }
             catch
             {
-
+                throw new Exception("Ni idea");
             }
-            ConfirmacionTurno confirmacion = new ConfirmacionTurno(this,menu);
-            this.Hide();
-            confirmacion.Show();
         }
-
-
-
     }
 }

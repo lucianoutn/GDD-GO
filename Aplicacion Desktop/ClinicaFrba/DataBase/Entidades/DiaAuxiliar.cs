@@ -13,8 +13,9 @@ namespace ClinicaFrba.DataBase.Entidades
         public DateTime fechafin;
         public DateTime inicio;
         public DateTime fin;
+        public Char dia;
 
-        public DiaAuxiliar(Int32 a, Int32 b,
+        public DiaAuxiliar(Int32 a, Int32 b, Char z,
                         DateTime c, DateTime d,
                         DateTime e, DateTime f)
         {
@@ -24,6 +25,10 @@ namespace ClinicaFrba.DataBase.Entidades
             fechafin = d;
             inicio = e;
             fin = f;
+            dia = z;
+        }
+        public DiaAuxiliar()
+        {
         }
 
     }

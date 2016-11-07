@@ -104,8 +104,9 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 r = GD2C2016.ejecutarSentenciaConRetorno(
                     "select p.* from " + ConstantesBD.tabla_profesional+
-                    " p join " + ConstantesBD.tabla_esp_por_profesional +" t on "
-                    + ID_esp.ToString() +" = t.id_especialidad");
+                    " p join " + ConstantesBD.tabla_esp_por_profesional +" t on "+
+                    " p.id_profesional = t.id_profesional where "+
+                    ID_esp.ToString() +" = t.id_especialidad");
             }
             catch (Exception e)
             {

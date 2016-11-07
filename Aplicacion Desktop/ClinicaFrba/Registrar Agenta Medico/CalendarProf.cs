@@ -13,7 +13,8 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 {
     public partial class CalendarProf : Form
     {
-        private Form menu;
+        private Form anterior;
+        private Form siguiente;
         private Profesional profesional;
         private Especialidad especialidad;
         private DateTime inicio;
@@ -24,10 +25,11 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         private List<Especialidad> lista_esp;
         private List<DiaLaboral> lista_dias;
 
-        public CalendarProf(Form menuPrevio, String username)
+        public CalendarProf(Form menuPrevio, Form menuSig, String username)
         {
             InitializeComponent();
-            menu = menuPrevio;
+            anterior = menuPrevio;
+            siguiente = menuSig;
 
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
             profesional = profesionalesDAO.getProfesionalDeNombre(username);
@@ -86,7 +88,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
-            menu.Show();
+            anterior.Show();
             this.Close();
         }
 
@@ -151,7 +153,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             {
                 if (validarDatos())
                 {
-                    ConfirmacionAgenda confirmacion = new ConfirmacionAgenda(this,menu,
+                    ConfirmacionAgenda confirmacion = new ConfirmacionAgenda(this,siguiente,
                         profesional, especialidad, inicio, fin,
                         Int32.Parse(textBoxTurno.Text),lista_dias);
                     confirmacion.Show();
@@ -266,7 +268,6 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             {
                 VistaJornada vista = new VistaJornada(this, letra);
                 vista.Show();
-                this.Hide();
             }
             else
             {
