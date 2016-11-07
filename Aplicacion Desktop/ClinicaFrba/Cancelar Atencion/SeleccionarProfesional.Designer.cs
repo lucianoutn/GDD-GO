@@ -242,7 +242,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
             this.Name = "SeleccionarProfesional";
-            this.Text = "SeleccionarProfesional";
+            this.Text = "Seleccionar Profesional";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();

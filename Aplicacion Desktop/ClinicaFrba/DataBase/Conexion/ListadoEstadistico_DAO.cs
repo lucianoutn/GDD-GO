@@ -1,9 +1,11 @@
 ﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ClinicaFrba.Conexion;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
@@ -18,6 +20,7 @@ namespace ClinicaFrba.DataBase.Conexion
         
         public List<string> get_anios()
         {
+            MessageBox.Show("SELECT distinct YEAR(desc_hora_desde) as ANIOS FROM " + ConstantesBD.tabla_horario);
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct YEAR(desc_hora_desde) as ANIOS FROM " + ConstantesBD.tabla_horario);
             List<string> resultado = new List<string>();
 
@@ -29,14 +32,7 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
-        public SqlDataReader getCancelacionesAfiliados(string condicion)
-        {
-            SqlDataReader resultado;
-            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
-            return resultado;
-        }
-
-        public SqlDataReader getCancelacionesProfesional(string condicion)
+        public SqlDataReader getCancelaciones(string condicion)
         {
             SqlDataReader resultado;
             resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
