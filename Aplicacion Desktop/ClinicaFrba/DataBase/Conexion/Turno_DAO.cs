@@ -35,6 +35,14 @@ namespace ClinicaFrba.DataBase.Conexion
             this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) values ('" + motivo + "', " + id_turno + ", " + desc__cancelacion_usuario + ","+desc_usuario+")");
         }
 
+        public void cancelarTurnoProfesional(string motivo, string desc__cancelacion_usuario, DateTime hora_desde, DateTime hora_hasta)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) "+
+                                                      "select '"+motivo+"',	tu.id_turno,		id_afiliado,		2"+
+                                                      " from GDD_GO.horario ho Join GDD_GO.turno tu On tu.id_turno=ho.id_horario And "+
+	                                                  " desc_hora_desde >= '"+hora_desde+"' and desc_hora_desde <= '"+hora_hasta+"' where id_afiliado="+desc__cancelacion_usuario);
+        }
+
         public int get_profesional(int id_turno)
         {
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from GDD_GO.turno where id_turno=" + id_turno);

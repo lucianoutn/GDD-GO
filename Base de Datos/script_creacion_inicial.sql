@@ -8,6 +8,10 @@ Go
 
 /*----------------------------	BORRADO DE TABLAS	-------------------------*/
 
+	
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
+	DROP TABLE GDD_GO.tipo_cancelacion
+
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'funciones_por_rol')
 	DROP TABLE GDD_GO.funciones_por_rol
 
@@ -22,9 +26,6 @@ IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = '
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'hist_cambios_plan_afiliado')
 	DROP TABLE GDD_GO.hist_cambios_plan_afiliado
-	
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
-	DROP TABLE GDD_GO.tipo_cancelacion
 
 IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'especialidades_por_profesional')
 	DROP TABLE GDD_GO.especialidades_por_profesional
@@ -359,7 +360,7 @@ else
 	Begin
 		if not exists (Select 'existe' from GDD_GO.usuario us
 					   where us.id_usuario = @usuario and 
-							 us.desc_password = HASHBYTES('SHA1', @pass)	)--cambiar a sha2_256 para la entrega
+							 us.desc_password = HASHBYTES('sha2_256', @pass)	)--cambiar a sha2_256 para la entrega
 		Begin
 			Select 'incorrecto' as mensaje
 			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
@@ -473,7 +474,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + CONVERT(varchar(4),YEAR(m.Paciente_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra m
@@ -486,7 +487,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)+ '_' + CONVERT(varchar(4),YEAR(Medico_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
 From gd_esquema.Maestra
@@ -769,7 +770,7 @@ Insert into GDD_GO.usuario	(	 desc_username
 								,desc_password
 								,desc_estado
 								,intentos_login		)
-Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
+Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
 Go
 
 --Inserto Roles existentes
@@ -893,25 +894,51 @@ Instead of Delete
 As
 Begin
 	Declare @id_usuario int
-
+	Declare @id_turno numeric(18,0)
+	Declare @id_afiliado int
+	Declare @desc_usuario int
 	Select @id_usuario = id_usuario
 	From deleted;
 	
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
-	
-	Insert into GDD_GO.tipo_cancelacion (	descripcion
-										   ,id_turno
-										   ,id_usuario
-										   ,desc_usuario	)
-	Select 'Afiliado dado de baja'
-		   ,tu.id_turno
-		   ,af.id_afiliado
-		   ,1
-	From GDD_GO.afiliado af
-		 Join GDD_GO.turno tu
-		 On tu.id_afiliado = af.id_afiliado
-	Where af.id_usuario=@id_usuario
+
+	 DECLARE my_Cursor CURSOR FOR Select tu.id_turno
+										,af.id_afiliado
+										,1
+								From GDD_GO.afiliado af
+										Join GDD_GO.turno tu
+										On tu.id_afiliado = af.id_afiliado
+								Where af.id_usuario=@id_usuario;
+
+	 OPEN my_Cursor 
+	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario
+
+	 WHILE @@FETCH_STATUS = 0 
+	 BEGIN 
+		 Insert into GDD_GO.tipo_cancelacion (	descripcion
+											   ,id_turno
+											   ,id_usuario
+											   ,desc_usuario	)
+		values( 'Afiliado dado de baja'
+			   ,@id_turno
+			   ,@id_afiliado
+			   ,@desc_usuario)
+	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario  
+	 END
+
+	CLOSE my_Cursor
+	DEALLOCATE my_Cursor
 End
+Go
+
+Create Trigger  GDD_GO.tr_cancelar_turno
+On GDD_GO.tipo_cancelacion
+FOR insert
+As
+Declare @id_turno int
+
+Set @id_turno = (Select id_turno from inserted)
+Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
 
 -- TRIGGERs DE BAJA LOGICA DE ROL 
@@ -957,4 +984,18 @@ Set @id_turno = (Select id_turno from inserted)
 Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
 
+/*
+IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
+	DROP TABLE GDD_GO.tipo_cancelacion
+CREATE TABLE GDD_GO.tipo_cancelacion
+(
+	 id_tipo_cancelacion int identity(1,1)
+	,descripcion varchar(255)
+	,id_turno numeric(18,0)
+	,id_usuario int
+	,desc_usuario int
+	,primary key (id_tipo_cancelacion)
+	,foreign key (id_turno) references GDD_GO.turno(id_turno)
+)
+*/
 
