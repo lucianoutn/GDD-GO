@@ -38,7 +38,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             }
             else
             {
-                turno_dao.cancelarTurnoProfesional(textBoxMotivo.Text, unProfesional, dateTimePickerIni.Value, dateTimePickerFin.Value);
+//                turno_dao.cancelarTurnoProfesional(textBoxMotivo.Text, unProfesional, dateTimePickerIni.Value, dateTimePickerFin.Value);
                 MessageBox.Show("Turnos cancelados");
             }
         }
