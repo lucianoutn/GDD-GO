@@ -57,7 +57,7 @@ namespace ClinicaFrba.DataBase.Entidades
 
         public String toString()
         {
-            return get_dni()+" - " + get_nombre() + get_apellido();
+            return get_apellido()+ ", "+get_nombre()+" - "+get_dni();
         }
 
 

@@ -21,7 +21,7 @@ namespace ClinicaFrba.DataBase.Conexion
             SqlDataReader r = null;
             try
             {
-                r = GD2C2016.ejecutarSentenciaConRetorno("select * from " + ConstantesBD.tabla_afiliados);
+                r = GD2C2016.ejecutarSentenciaConRetorno("select * from " + ConstantesBD.tabla_afiliados + " Order by desc_apellido,desc_nombre");
             }
             catch (Exception e)
             {
@@ -31,8 +31,7 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 while (r.Read())
                 {
-                    Afiliado afiliado = null;
-                    afiliado = new Afiliado(
+                    Afiliado afiliado = new Afiliado(
                                     r.GetInt32(0),
                                     r.GetString(2),
                                     r.GetString(1),

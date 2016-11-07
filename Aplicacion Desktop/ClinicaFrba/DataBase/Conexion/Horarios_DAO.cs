@@ -19,7 +19,7 @@ namespace ClinicaFrba.DataBase.Conexion
         public List<Horario> getHorariosDe(Profesional prof, Especialidad esp)
         {
             List<Horario> list =  agregarHorariosLibres(prof.getid().ToString(),esp.getID().ToString());
-
+            List<DiaAuxiliar> lista_D = new List<DiaAuxiliar>();
             SqlDataReader r = null;
             try
             {
@@ -27,29 +27,27 @@ namespace ClinicaFrba.DataBase.Conexion
                         "select * from " + ConstantesBD.tabla_agenda + " a " +
                         "join " + ConstantesBD.tabla_dia_laboral + " d " +
                         "on d.id_agenda = a.id_agenda " +
-                        "where a.id_profesional = " + prof.getid().ToString() + " " +
-                        "and a.id_especialidad = " + esp.getID().ToString() + " " +
-                        "and a.fecha_hasta >= '" + ConstantesBD.cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ");
+                        "where a.id_profesional = " + prof.getid() + " " +
+                        "and a.id_especialidad = " + esp.getID() + " " +
+                        "and a.fecha_hasta >= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ");
             }
             catch (Exception e)
             {
                 throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
             }
-            try
+            while (r.Read())
             {
-                while (r.Read())
-                {
-                    list.AddRange(armarDia(
-                         r.GetInt32(0), r.GetChar(3),
-                         r.GetDateTime(1), r.GetDateTime(2),
-                         r.GetDateTime(8), r.GetDateTime(9)));
-                }
-            }
-            catch (Exception e)
-            {
-                throw new Exception("El READ del comando se encuentra vacio", e);
+                DiaAuxiliar aux = new DiaAuxiliar(r.GetInt32(0), r.GetInt32(3),
+                            r.GetDateTime(1), r.GetDateTime(2),
+                            r.GetDateTime(8), r.GetDateTime(9));
+                lista_D.Add(aux);
             }
             r.Close();
+
+            foreach (DiaAuxiliar item in lista_D)
+            {
+                list.AddRange(armarDia(item));
+            }
             return list;
         }
 
@@ -60,14 +58,14 @@ namespace ClinicaFrba.DataBase.Conexion
             try
             {
                 r = GD2C2016.ejecutarSentenciaConRetorno(
-                        "select h.id_horario,h.desc_hora_desde,a.id_profesional,a.id_especialidad,a.duracion_consulta "+
+                        "select h.id_horario,a.id_agenda,h.desc_hora_desde,a.duracion_consulta,a.id_profesional,a.id_especialidad "+
                         "from " + ConstantesBD.tabla_agenda + " a " +
                         "join " + ConstantesBD.tabla_horario + " h " +
                         "on h.id_agenda = a.id_agenda "+
                         "where a.id_profesional = " + prof + " " +
                         "and a.id_especialidad = " + esp + " " +
-                        "and a.fecha_hasta >= '" + ConstantesBD.fechaSistema + "' " +
-                        "and h.desc_hora_desde > '" + ConstantesBD.fechaSistema + "' " +
+                        "and a.fecha_hasta >= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
+                        "and h.desc_hora_desde > '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
                         "and h.id_turno = null");
             }
             catch (Exception e)
@@ -78,8 +76,8 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 while (r.Read())
                 {
-                    Horario item = new Horario(r.GetInt32(0),r.GetDateTime(1),
-                        r.GetInt32(4),r.GetInt32(2),r.GetInt32(3));
+                    Horario item = new Horario(r.GetInt32(0),r.GetInt32(1),r.GetDateTime(2),
+                        r.GetInt32(3),r.GetInt32(4),r.GetInt32(5));
                     list.Add(item);
                 }
             }
@@ -87,19 +85,18 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 throw new Exception("El READ del comando se encuentra vacio", e);
             }
+            r.Close();
             return list;
         }
 
-        private List<Horario> armarDia(Int32 agenda,Int32 duracion,
-                                DateTime fecha, DateTime fechafin,
-                                DateTime inicio, DateTime fin)
+        private List<Horario> armarDia(DiaAuxiliar dia)
         {
             List<Horario> list = new List<Horario>();
-            DateTime aux = fecha;
-            while (fechafin.CompareTo(aux) >= 0)
+            DateTime aux = dia.fecha;
+            while (dia.fechafin.CompareTo(aux) >= 0)
             {
-                list.AddRange(armarHorarios(agenda,duracion,aux,inicio,fin));
-                aux = fecha.AddDays(1);
+                list.AddRange(armarHorarios(dia.agenda, dia.duracion, aux, dia.inicio, dia.fin));
+                aux = aux.AddDays(1);
             }
             return list;
         }
@@ -155,9 +152,19 @@ namespace ClinicaFrba.DataBase.Conexion
                     " " + f.Hour.ToString() + ":" + f.Minute.ToString() + ":00.000'";
         }
 
-        private String horaSQL(String f)
+        private String cambiarFormatoFecha(String fecha)
         {
-            return "'" + Int32.Parse(f) / 100 + ":" + Int32.Parse(f) % 100 + ":00.000'";
-        }    
+            String fechaConFormato = "";
+            char[] delimitadores = { '/' };
+
+            string[] palabras = fecha.Split(delimitadores);
+
+            foreach (string s in palabras)
+            {
+                fechaConFormato = s + fechaConFormato;
+                fechaConFormato = "-" + fechaConFormato;
+            }
+            return fechaConFormato.Substring(1) + " 00:00:00.00";
+        }
     }
 }

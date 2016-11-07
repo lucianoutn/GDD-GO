@@ -21,7 +21,7 @@ namespace ClinicaFrba.DataBase.Conexion
             SqlDataReader r = null;
             try
             {
-                r = GD2C2016.ejecutarSentenciaConRetorno("select * from " + ConstantesBD.tabla_profesional);
+                r = GD2C2016.ejecutarSentenciaConRetorno("select * from " + ConstantesBD.tabla_profesional+" Order by desc_apellido,desc_nombre");
             }
             catch (Exception e)
             {

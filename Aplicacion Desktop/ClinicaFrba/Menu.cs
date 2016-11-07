@@ -18,6 +18,7 @@ using ClinicaFrba.Compra_Bono;
 using ClinicaFrba.Abm_Planes;
 using ClinicaFrba.SinImplementar;
 using ClinicaFrba.Registro_Llegada;
+using ClinicaFrba.Pedir_Turno;
 
 
 namespace ClinicaFrba
@@ -202,7 +203,18 @@ namespace ClinicaFrba
 
         private void pedidoTurno_Click(object sender, EventArgs e)
         {
-
+            if (labelUser.Text.CompareTo("admin") == 0)
+            {
+                SeleccionAfiliado vista = new SeleccionAfiliado(this);
+                vista.Show();
+                this.Hide();
+            }
+            else
+            {
+                FormNuevoTurno vista = new FormNuevoTurno(this, this, labelUser.Text);
+                    vista.Show();
+                this.Hide();
+            }
         }
 
     }

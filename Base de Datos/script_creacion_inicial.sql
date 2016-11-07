@@ -97,7 +97,7 @@ Create Table GDD_GO.afiliado
 	,desc_apellido varchar(255)
 	,desc_nombre varchar(255)
 	,desc_tipo_doc nvarchar(5)
-	,desc_dni numeric(18,0)
+	,desc_dni int
 	,desc_mail varchar(255)
 	,desc_direccion varchar(255)
 	,desc_telefono numeric(18,0)
@@ -238,8 +238,8 @@ CREATE TABLE GDD_GO.agenda
 CREATE TABLE GDD_GO.dia_laboral
 (
 	 id_dia_laboral char
-	,horario_desde TIME
-	,horario_hasta TIME
+	,horario_desde DATETIME
+	,horario_hasta DATETIME
 	,estado int
 	,id_agenda int 
 	,primary key (id_dia_laboral,id_agenda)
@@ -947,3 +947,4 @@ Declare @id_turno int
 Set @id_turno = (Select id_turno from inserted)
 Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
+

@@ -208,6 +208,7 @@
     <Compile Include="DataBase\Entidades\Afiliado.cs" />
     <Compile Include="DataBase\Conexion\Turno_DAO.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
+    <Compile Include="DataBase\Entidades\DiaAuxiliar.cs" />
     <Compile Include="DataBase\Entidades\DiaLaboral.cs" />
     <Compile Include="DataBase\Entidades\Horario.cs" />
     <Compile Include="DataBase\Entidades\Profesional.cs" />

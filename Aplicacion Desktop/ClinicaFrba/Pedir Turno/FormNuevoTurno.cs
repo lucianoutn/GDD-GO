@@ -54,6 +54,28 @@ namespace ClinicaFrba.Pedir_Turno
             comboBox2.Enabled = true;
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            foreach (Profesional i in lista_prof)
+            {
+                if (i.toString().CompareTo(comboBox1.SelectedItem) == 0)
+                {
+                    profesional = i;
+                    prof_es_unico = true;
+                    if (!esp_es_unica)
+                    {
+                        comboBox2.Items.Clear();
+                        actualizarEspecialidades();
+                    }
+                    else
+                    {
+                        iniciarGrid();
+                    }
+                    return;
+                }
+            }
+        }
+
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             foreach (Especialidad i in lista_esp)
@@ -64,6 +86,7 @@ namespace ClinicaFrba.Pedir_Turno
                     esp_es_unica = true;
                     if (!prof_es_unico)
                     {
+                        comboBox1.Items.Clear();
                         actualizarProfesionales();
                     }
                     else
@@ -75,28 +98,9 @@ namespace ClinicaFrba.Pedir_Turno
             }
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            foreach (Profesional i in lista_prof)
-            {
-                if (i.toString().CompareTo(comboBox1.SelectedItem) == 0)
-                {
-                    profesional = i;
-                    prof_es_unico = true;
-                    if (!esp_es_unica)
-                    {
-                        actualizarEspecialidades();
-                    }
-                    else
-                    {
-                        iniciarGrid();
-                    }
-                    return;
-                }
-            }
-        }
         private void actualizarEspecialidades()
         {
+            comboBox2.Items.Clear();
             Especialidades_DAO especialidades_DAO = new Especialidades_DAO();
             lista_esp = especialidades_DAO.get_especialidadesDe(profesional.getid());
             foreach (Especialidad aux
@@ -105,8 +109,10 @@ namespace ClinicaFrba.Pedir_Turno
                 comboBox2.Items.Add(aux.toString());
             }
         }
+
         private void actualizarProfesionales()
         {
+            comboBox1.Items.Clear();
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
             lista_prof = profesionalesDAO.getProfesionalesConEspecialidad(especialidad.getID());
             foreach (Profesional aux

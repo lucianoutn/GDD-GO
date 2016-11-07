@@ -130,7 +130,7 @@ namespace ClinicaFrba.DataBase.Conexion
         
         private String horaSQL(String f)
         {
-            return "'" + Int32.Parse(f) / 100 + ":" + Int32.Parse(f)%100 + ":00.000'";
+            return "'2011-11-11 " + Int32.Parse(f) / 100 + ":" + Int32.Parse(f)%100 + ":00.000'";
         }
     }
 }
