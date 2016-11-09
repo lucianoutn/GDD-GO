@@ -984,8 +984,8 @@ Set @id_turno = (Select id_turno from inserted)
 Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
 Go
 
-/*
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
+
+/*IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
 	DROP TABLE GDD_GO.tipo_cancelacion
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
@@ -996,6 +996,6 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	,desc_usuario int
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
-)
-*/
+)*/
+
 

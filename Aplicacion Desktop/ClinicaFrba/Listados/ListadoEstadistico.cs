@@ -121,6 +121,7 @@ namespace ClinicaFrba.Listados
 
                 case "Profesionales más consultados por especialidad":
                     lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionSemAnio);
+                    cargar_grid_profMasConsultadosPorEsp(lectorTop5);
                     break;
 
                 case "Profesionales con menos horas trabajadas por especialidad":
@@ -145,10 +146,51 @@ namespace ClinicaFrba.Listados
         
         }
 
-        private void cargar_grid_profMasConsultadosPorEsp()
+
+
+
+
+
+
+
+
+        private void cargar_grid_profMasConsultadosPorEsp(SqlDataReader lector)
         {
-    
+            SqlDataReader lectorT5;
+            int i = 0;
+
+            lectorT5 = lector;
+
+            List<DataGridViewRow> filas = new List<DataGridViewRow>();
+            Object[] columnas = new Object[6];
+
+            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
+
+            while (lectorT5.Read())
+            {
+                i++;
+                columnas[0] = i.ToString();
+                columnas[1] = lectorT5["desc_apellido"].ToString();
+                columnas[2] = lectorT5["desc_nombre"].ToString();
+                columnas[3] = lectorT5["Especialidad"].ToString();
+                columnas[4] = lectorT5["Cantidad"].ToString();
+                columnas[5] = lectorT5["Grupo Fam"].ToString();
+                
+                filas.Add(new DataGridViewRow());
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());
+            }   
         }
+
+
+
+
+
+
+
+
+
+
+
 
         private void cargar_grid_profConMenosHorasTrabajadas()
         {
