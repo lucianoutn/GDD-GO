@@ -973,18 +973,6 @@ begin
 	where id_rol = @id_rol
 end
 Go
-
-Create Trigger  GDD_GO.tr_cancelar_turno
-On GDD_GO.tipo_cancelacion
-After insert
-As
-Declare @id_turno int
-
-Set @id_turno = (Select id_turno from inserted)
-Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
-Go
-
-
 /*IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
 	DROP TABLE GDD_GO.tipo_cancelacion
 CREATE TABLE GDD_GO.tipo_cancelacion
