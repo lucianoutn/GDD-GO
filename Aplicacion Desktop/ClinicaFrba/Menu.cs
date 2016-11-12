@@ -26,14 +26,30 @@ namespace ClinicaFrba
     public partial class Menu : Form
     {
         private LoginDAO loginDAO;
+        private ABM_usuario_DAO usuarioDAO;
+        int id_usuario_logeado;
 
-        public Menu(string user, string rol)
+        public Menu(string user,int id_usuario, string rol)
         {
             leerArchivoConfig();
             InitializeComponent();
             labelUser.Text = user;
+            id_usuario_logeado = id_usuario;
+
+
             labelFecha.Text = ConstantesBD.fechaSistema.ToString();
             loginDAO = new LoginDAO();
+            usuarioDAO = new ABM_usuario_DAO();
+
+            if (rol == "Profesional")
+            {
+                id_usuario_logeado = usuarioDAO.get_id_profesional(id_usuario_logeado);
+            }
+            else
+            {
+                id_usuario_logeado = usuarioDAO.get_id_afiliado(id_usuario_logeado);
+            }
+
             List<string> funciones = this.loginDAO.get_funcionalidades(rol);
             
             //Visibilidad de funciones, desactivar las que no correspondan al rol
