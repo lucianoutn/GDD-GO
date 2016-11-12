@@ -360,7 +360,7 @@ else
 	Begin
 		if not exists (Select 'existe' from GDD_GO.usuario us
 					   where us.id_usuario = @usuario and 
-							 us.desc_password = HASHBYTES('sha2_256', @pass)	)--cambiar a sha2_256 para la entrega
+							 us.desc_password = HASHBYTES('sha1', @pass)	)--cambiar a sha2_256 para la entrega
 		Begin
 			Select 'incorrecto' as mensaje
 			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
@@ -474,7 +474,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + CONVERT(varchar(4),YEAR(m.Paciente_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra m
@@ -487,7 +487,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)+ '_' + CONVERT(varchar(4),YEAR(Medico_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
 From gd_esquema.Maestra
@@ -770,7 +770,7 @@ Insert into GDD_GO.usuario	(	 desc_username
 								,desc_password
 								,desc_estado
 								,intentos_login		)
-Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
+Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
 Go
 
 --Inserto Roles existentes
