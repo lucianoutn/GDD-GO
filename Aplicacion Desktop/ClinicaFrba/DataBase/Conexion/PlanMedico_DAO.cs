@@ -32,10 +32,10 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
-        public List<string> get_id_plan_medico_multiple()
+        public List<string> get_id_plan_medico_multiple(String id_plan)
         {
 
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_plan_medico from GDD_GO.plan_medico");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_plan_medico from GDD_GO.plan_medico where id_plan_medico!=" + id_plan);
 
             List<string> resultado = new List<string>();
 

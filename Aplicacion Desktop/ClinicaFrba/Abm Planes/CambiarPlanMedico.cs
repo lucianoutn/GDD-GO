@@ -29,13 +29,18 @@ namespace ClinicaFrba.Abm_Planes
 
         private void cargarDatos()
         {
+            String id_plan = "0";
+            if (abm_usuario.get_plan_medico(unAfiliado) != 0)
+            {
+                id_plan = abm_usuario.get_plan_medico(unAfiliado).ToString();
+            };
 
             dataGridViewPlan.Rows.Clear();
             dataGridViewPlan.Refresh();
 
             List<string> lista_planes = new List<string>();
 
-            lista_planes = plan_medico_dao.get_id_plan_medico_multiple();
+            lista_planes = plan_medico_dao.get_id_plan_medico_multiple(id_plan);
 
             for (int i = 0; i < lista_planes.Count; i++)
             {

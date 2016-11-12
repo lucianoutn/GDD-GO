@@ -29,19 +29,27 @@ namespace ClinicaFrba.Abm_Planes
 
         private void cargarDatos()
         {
+
+            dataGridViewPlan.Rows.Clear();
+            dataGridViewPlan.Refresh();
+
             List<string> lista_planes = new List<string>();
 
-            lista_planes = plan_medico_dao.get_id_plan_medico_multiple();
+            lista_planes = plan_medico_dao.get_id_plan_medico_multiple("0");
 
             for (int i = 0; i < lista_planes.Count; i++)
             {
-                comboBoxPlanes.Items.Add(lista_planes[i]);
+                dataGridViewPlan.Rows.Add(lista_planes[i]
+                                         , plan_medico_dao.get_nombre(lista_planes[i]));
             }
         }
 
         private void buttonComprar_Click(object sender, EventArgs e)
         {
-            String planSeleccionado = comboBoxPlanes.SelectedItem.ToString();
+            DataGridViewRow fila = dataGridViewPlan.SelectedRows[0];
+            int id = int.Parse(fila.Cells["id_plan"].Value.ToString());
+
+            String planSeleccionado = id.ToString();
 
             if (abm_usuario.get_plan_medico(unAfiliado) == 0)
             {
