@@ -14,10 +14,10 @@ namespace ClinicaFrba.Abm_Planes
     {
         ABM_usuario_DAO abm_usuario;
         PlanMedico_DAO plan_medico_dao;
-        SeleccionarAfiliado unMenu;
+        Form unMenu;
         String unAfiliado;
 
-        public ComprarPlanMedico(String id_afiliado, SeleccionarAfiliado menu)
+        public ComprarPlanMedico(String id_afiliado, Form menu)
         {
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();

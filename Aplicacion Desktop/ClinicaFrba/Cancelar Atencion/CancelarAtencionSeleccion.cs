@@ -10,12 +10,12 @@ using ClinicaFrba.DataBase.Conexion;
 
 namespace ClinicaFrba.Cancelar_Atencion
 {
-    public partial class CancelarAtencion : Form
+    public partial class CancelarAtencionSeleccion : Form
     {
         Menu unMenu;
         ABM_usuario_DAO abm_usuario;
 
-        public CancelarAtencion(Menu menu)
+        public CancelarAtencionSeleccion(Menu menu)
         {
             abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();

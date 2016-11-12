@@ -27,7 +27,9 @@ namespace ClinicaFrba
     {
         private LoginDAO loginDAO;
         private ABM_usuario_DAO usuarioDAO;
+        private PlanMedico_DAO plan_medico_dao;
         int id_usuario_logeado;
+        string rol_logeado;
 
         public Menu(string user,int id_usuario, string rol)
         {
@@ -35,11 +37,12 @@ namespace ClinicaFrba
             InitializeComponent();
             labelUser.Text = user;
             id_usuario_logeado = id_usuario;
-
+            rol_logeado = rol;
 
             labelFecha.Text = ConstantesBD.fechaSistema.ToString();
             loginDAO = new LoginDAO();
             usuarioDAO = new ABM_usuario_DAO();
+            plan_medico_dao = new PlanMedico_DAO();
 
             if (rol == "Profesional")
             {
@@ -47,7 +50,10 @@ namespace ClinicaFrba
             }
             else
             {
-                id_usuario_logeado = usuarioDAO.get_id_afiliado(id_usuario_logeado);
+                if (rol == "Afiliado")
+                    id_usuario_logeado = usuarioDAO.get_id_afiliado(id_usuario_logeado);
+                else
+                    id_usuario_logeado = -1;
             }
 
             List<string> funciones = this.loginDAO.get_funcionalidades(rol);
@@ -116,8 +122,26 @@ namespace ClinicaFrba
 
         private void button_CancelarAtencion_Click(object sender, EventArgs e)
         {
-            CancelarAtencion menuCancelarAtencion = new CancelarAtencion(this);
-            menuCancelarAtencion.Show();
+            if (id_usuario_logeado == -1)
+            {
+                CancelarAtencionSeleccion menuCancelarAtencion = new CancelarAtencionSeleccion(this);
+                menuCancelarAtencion.Show();
+            }
+
+            if (rol_logeado == "Profesional")
+            {
+                CancelacionPorMedico cancelarMedico = new CancelacionPorMedico(this, id_usuario_logeado.ToString());
+                cancelarMedico.Show();
+            }
+            else
+            {
+                if (rol_logeado == "Afiliado")
+                {
+                    CancelacionPorAfiliado cancelarAfiliado = new CancelacionPorAfiliado(this, id_usuario_logeado);
+                    cancelarAfiliado.Show(); 
+                }
+            }
+
         }
 
         private void button_ListadoEstadistico_Click(object sender, EventArgs e)
@@ -145,9 +169,29 @@ namespace ClinicaFrba
 
         private void buttonComprarBono_Click(object sender, EventArgs e)
         {
-            CompraBono compraBono = new CompraBono(this);
-            compraBono.Show();
-            this.Hide();
+            if (id_usuario_logeado == -1)
+            {
+                CompraBono compraBono = new CompraBono(this);
+                compraBono.Show();
+                this.Hide();
+            }
+            else
+            {
+                List<string> lista_bonos = new List<string>();
+                lista_bonos = plan_medico_dao.get_id_bono_multiple(usuarioDAO.get_plan_medico(id_usuario_logeado.ToString()));
+
+                if (lista_bonos.Count == 0)
+                {
+                    MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
+                }
+                else
+                {
+                    SeleccionarBono seleccionBono = new SeleccionarBono(id_usuario_logeado.ToString(), lista_bonos, this);
+                    seleccionBono.Show();
+                    this.Hide();
+                }
+            }
+            
         }
 
         private void leerArchivoConfig()
@@ -206,7 +250,7 @@ namespace ClinicaFrba
 
         private void buttonPlanMedico_Click(object sender, EventArgs e)
         {
-            SubMenuPlanMedico menu = new SubMenuPlanMedico(this);
+            SubMenuPlanMedico menu = new SubMenuPlanMedico(this, id_usuario_logeado);
             menu.Show();
             this.Hide();
         }

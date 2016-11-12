@@ -161,11 +161,11 @@
     <Compile Include="Cancelar Atencion\CancelacionPorMedico.Designer.cs">
       <DependentUpon>CancelacionPorMedico.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cancelar Atencion\CancelarAtencion.cs">
+    <Compile Include="Cancelar Atencion\CancelarAtencionSeleccion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cancelar Atencion\CancelarAtencion.Designer.cs">
-      <DependentUpon>CancelarAtencion.cs</DependentUpon>
+    <Compile Include="Cancelar Atencion\CancelarAtencionSeleccion.Designer.cs">
+      <DependentUpon>CancelarAtencionSeleccion.cs</DependentUpon>
     </Compile>
     <Compile Include="Cancelar Atencion\SeleccionarAfiliado.cs">
       <SubType>Form</SubType>
@@ -374,8 +374,8 @@
     <EmbeddedResource Include="Cancelar Atencion\CancelacionPorMedico.resx">
       <DependentUpon>CancelacionPorMedico.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cancelar Atencion\CancelarAtencion.resx">
-      <DependentUpon>CancelarAtencion.cs</DependentUpon>
+    <EmbeddedResource Include="Cancelar Atencion\CancelarAtencionSeleccion.resx">
+      <DependentUpon>CancelarAtencionSeleccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Cancelar Atencion\SeleccionarAfiliado.resx">
       <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
