@@ -43,12 +43,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
+            this.labelCliente = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelCliente = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -194,6 +194,17 @@
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 51;
             // 
+            // labelCliente
+            // 
+            this.labelCliente.AutoSize = true;
+            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.labelCliente.Location = new System.Drawing.Point(165, 23);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(233, 26);
+            this.labelCliente.TabIndex = 147;
+            this.labelCliente.Text = "ELEGIR FAMILIAR PPAL";
+            // 
             // Id
             // 
             this.Id.HeaderText = "ID";
@@ -218,17 +229,7 @@
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
-            // 
-            // labelCliente
-            // 
-            this.labelCliente.AutoSize = true;
-            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(165, 23);
-            this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(233, 26);
-            this.labelCliente.TabIndex = 147;
-            this.labelCliente.Text = "ELEGIR FAMILIAR PPAL";
+            this.id_usuario.Visible = false;
             // 
             // EstablecerFamiliar
             // 
@@ -270,11 +271,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.DataGridView dataGridViewResultados;
+        private System.Windows.Forms.Label labelCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
-        private System.Windows.Forms.Label labelCliente;
     }
 }

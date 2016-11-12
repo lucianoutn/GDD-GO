@@ -209,7 +209,6 @@
             // 
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
-            this.Id.Visible = false;
             // 
             // Apellido
             // 

@@ -250,7 +250,7 @@ CREATE TABLE GDD_GO.dia_laboral
 CREATE TABLE GDD_GO.turno
 (
 	 id_turno numeric(18,0)
-	,desc_estado BIT
+	,desc_estado BIT		/*1=CANCELADO*/
 	,id_afiliado int
 	,id_profesional int
 	,primary key (id_turno)
@@ -261,12 +261,12 @@ CREATE TABLE GDD_GO.turno
 CREATE TABLE GDD_GO.horario
 (
 	id_horario int identity(1,1)
-	,desc_hora_desde DATETIME
-	,id_agenda int
-	,id_turno numeric(18,0)
-	,primary key (id_horario)
-	,foreign key (id_agenda) references GDD_GO.agenda
-	,foreign key (id_turno) references GDD_GO.turno(id_turno)
+   ,desc_hora_desde DATETIME
+   ,id_agenda int
+   ,id_turno numeric(18,0)
+   ,primary key (id_horario)
+   ,foreign key (id_agenda) references GDD_GO.agenda
+   ,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
 
 CREATE TABLE GDD_GO.consulta
@@ -289,8 +289,8 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
 	,id_turno numeric(18,0)
-	,id_usuario int
-	,desc_usuario int
+	,id_usuario int		/*ID de afiliado o de profesional*/
+	,desc_usuario int	/*1=Afiliado,  2=Profesional*/
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
@@ -902,19 +902,19 @@ Begin
 	
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 
-	 DECLARE my_Cursor CURSOR FOR Select tu.id_turno
+	DECLARE my_Cursor CURSOR FOR Select tu.id_turno
 										,af.id_afiliado
 										,1
-								From GDD_GO.afiliado af
-										Join GDD_GO.turno tu
-										On tu.id_afiliado = af.id_afiliado
-								Where af.id_usuario=@id_usuario;
+								  From GDD_GO.afiliado af
+									   Join GDD_GO.turno tu
+									   On tu.id_afiliado = af.id_afiliado
+								  Where af.id_usuario=@id_usuario;
 
-	 OPEN my_Cursor 
-	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario
+	OPEN my_Cursor 
+	FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario
 
-	 WHILE @@FETCH_STATUS = 0 
-	 BEGIN 
+	WHILE @@FETCH_STATUS = 0 
+	BEGIN 
 		 Insert into GDD_GO.tipo_cancelacion (	descripcion
 											   ,id_turno
 											   ,id_usuario
@@ -923,8 +923,8 @@ Begin
 			   ,@id_turno
 			   ,@id_afiliado
 			   ,@desc_usuario)
-	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario  
-	 END
+	FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario  
+	END
 
 	CLOSE my_Cursor
 	DEALLOCATE my_Cursor
