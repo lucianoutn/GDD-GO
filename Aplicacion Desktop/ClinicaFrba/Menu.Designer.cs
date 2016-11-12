@@ -105,7 +105,7 @@
             this.ButtonCalendar.Name = "ButtonCalendar";
             this.ButtonCalendar.Size = new System.Drawing.Size(163, 36);
             this.ButtonCalendar.TabIndex = 4;
-            this.ButtonCalendar.Text = "Calendario";
+            this.ButtonCalendar.Text = "Actualizar Agenda";
             this.ButtonCalendar.UseVisualStyleBackColor = true;
             this.ButtonCalendar.Click += new System.EventHandler(this.buttonCalendar_Click);
             // 
