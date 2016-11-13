@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubmenuRegistro));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -40,6 +41,7 @@
             this.idTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreAfiliado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
@@ -123,14 +125,31 @@
             // 
             // dataGridTurno
             // 
+            this.dataGridTurno.AllowUserToAddRows = false;
+            this.dataGridTurno.AllowUserToDeleteRows = false;
+            this.dataGridTurno.AllowUserToResizeColumns = false;
+            this.dataGridTurno.AllowUserToResizeRows = false;
             this.dataGridTurno.BackgroundColor = System.Drawing.Color.White;
             this.dataGridTurno.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridTurno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTurno,
             this.Horario,
             this.nombreAfiliado});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.MediumPurple;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridTurno.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridTurno.Location = new System.Drawing.Point(6, 19);
+            this.dataGridTurno.MultiSelect = false;
             this.dataGridTurno.Name = "dataGridTurno";
+            this.dataGridTurno.ReadOnly = true;
+            this.dataGridTurno.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridTurno.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridTurno.ShowEditingIcon = false;
             this.dataGridTurno.Size = new System.Drawing.Size(479, 178);
             this.dataGridTurno.TabIndex = 8;
             // 
@@ -139,21 +158,34 @@
             this.idTurno.HeaderText = "Nº Turno";
             this.idTurno.Name = "idTurno";
             this.idTurno.ReadOnly = true;
-            this.idTurno.Width = 60;
+            this.idTurno.Width = 70;
             // 
             // Horario
             // 
             this.Horario.HeaderText = "Horario";
             this.Horario.Name = "Horario";
             this.Horario.ReadOnly = true;
-            this.Horario.Width = 80;
+            this.Horario.Width = 90;
             // 
             // nombreAfiliado
             // 
             this.nombreAfiliado.HeaderText = "Nombre Afiliado";
             this.nombreAfiliado.Name = "nombreAfiliado";
             this.nombreAfiliado.ReadOnly = true;
-            this.nombreAfiliado.Width = 250;
+            this.nombreAfiliado.Width = 260;
+            // 
+            // registrar
+            // 
+            this.registrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.registrar.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.registrar.Location = new System.Drawing.Point(546, 223);
+            this.registrar.Name = "registrar";
+            this.registrar.Size = new System.Drawing.Size(185, 33);
+            this.registrar.TabIndex = 5;
+            this.registrar.Text = "Registrar Llegada";
+            this.registrar.UseVisualStyleBackColor = true;
+            this.registrar.Click += new System.EventHandler(this.registrar_Click);
             // 
             // SubmenuRegistro
             // 
@@ -164,6 +196,7 @@
             this.ClientSize = new System.Drawing.Size(749, 333);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.registrar);
             this.Controls.Add(this.buttonVolver);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmenuRegistro";
@@ -191,5 +224,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAfiliado;
+        private System.Windows.Forms.Button registrar;
     }
 }
