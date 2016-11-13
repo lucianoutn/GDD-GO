@@ -38,16 +38,13 @@ namespace ClinicaFrba.Compra_Bono
             {
                 if (!string.IsNullOrWhiteSpace(abm_usuario.get_nombre(textBoxIdAfiliado.Text)))
                 {
-                    List<string> lista_bonos = new List<string>();
-                    lista_bonos = plan_medico_dao.get_id_bono_multiple(abm_usuario.get_plan_medico(textBoxIdAfiliado.Text));
-
-                    if (lista_bonos.Count == 0)
+                    if (abm_usuario.get_plan_medico(textBoxIdAfiliado.Text) == 0)
                     {
                         MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
                     }
                     else
                     {
-                        SeleccionarBono seleccionBono = new SeleccionarBono(textBoxIdAfiliado.Text ,lista_bonos, this);
+                        SeleccionarBono seleccionBono = new SeleccionarBono(textBoxIdAfiliado.Text, this);
                         seleccionBono.Show();
                         this.Hide();
                     }

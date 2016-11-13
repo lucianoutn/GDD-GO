@@ -177,16 +177,13 @@ namespace ClinicaFrba
             }
             else
             {
-                List<string> lista_bonos = new List<string>();
-                lista_bonos = plan_medico_dao.get_id_bono_multiple(usuarioDAO.get_plan_medico(id_usuario_logeado.ToString()));
-
-                if (lista_bonos.Count == 0)
+                if (usuarioDAO.get_plan_medico(id_usuario_logeado.ToString()) == 0)
                 {
                     MessageBox.Show("El afiliado no posee un Plan Médico. Por favor, dirigirse al Menú Principal y seleccionar la opcion Plan Médico, luego comprar un Plan Médico.");
                 }
                 else
                 {
-                    SeleccionarBono seleccionBono = new SeleccionarBono(id_usuario_logeado.ToString(), lista_bonos, this);
+                    SeleccionarBono seleccionBono = new SeleccionarBono(id_usuario_logeado.ToString(), this);
                     seleccionBono.Show();
                     this.Hide();
                 }

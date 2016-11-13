@@ -49,10 +49,10 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
         
-        public void comprarBono(String id_tipo_bono, String id_afiliado)
+        public void comprarBono(String id_afiliado)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.bono_comprado (id_tipo_bono, id_afiliado, desc_estado, desc_fecha_compra, desc_fecha_impresion) Values "+
-                                                      "("+id_tipo_bono+", "+ id_afiliado+", 0, GETDATE(), GETDATE())");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.bono_comprado (id_afiliado, id_bono_comprado, desc_estado, desc_fecha_compra, desc_fecha_impresion) Values "+
+                                                      "("+id_afiliado+", (select Max(id_bono_comprado)+1 from GDD_GO.bono_comprado), 0, GETDATE(), GETDATE())");
         }
 
         public String get_nombre(String id_plan_medico)

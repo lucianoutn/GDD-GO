@@ -14,28 +14,17 @@ namespace ClinicaFrba.Compra_Bono
     public partial class SeleccionarBono : Form
     {
         Form unForm;
-        List<string> un_lista_bonos;
         ABM_usuario_DAO abm_usuario;
         PlanMedico_DAO plan_medico_dao;
         String unIdAfiliado;
 
-        public SeleccionarBono(String idAfiliado, List<string> lista_bonos, Form form)
+        public SeleccionarBono(String idAfiliado, Form form)
         {
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();
             InitializeComponent();
             unForm = form;
-            un_lista_bonos = lista_bonos;
             unIdAfiliado = idAfiliado;
-            cargarDatos();
-        }
-
-        private void cargarDatos()
-        {
-            for (int i = 0; i < un_lista_bonos.Count; i++)
-            {
-                comboBoxBonos.Items.Add(un_lista_bonos[i]);
-            }
         }
 
         private void buttonVolver_Click(object sender, EventArgs e)
@@ -49,12 +38,10 @@ namespace ClinicaFrba.Compra_Bono
             int cantidad = 0;
             try
             {
-                String bono = comboBoxBonos.SelectedItem.ToString();
-
                 cantidad = int.Parse(textBoxCantidad.Text);
                 for (int i = 0; i < cantidad; i++)
                 {
-                    plan_medico_dao.comprarBono(bono, unIdAfiliado);
+                    plan_medico_dao.comprarBono(unIdAfiliado);
                 }
 
                 MessageBox.Show("Compra realizada con exito");
