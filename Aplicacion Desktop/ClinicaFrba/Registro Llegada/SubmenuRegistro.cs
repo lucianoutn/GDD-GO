@@ -94,7 +94,7 @@ namespace ClinicaFrba.Registro_Llegada
                     //muestro bono utilizado y cantidad disponible
                     MessageBox.Show("Se utilizó el bono cuyo ID es el: "+id_bono+" y al afiliado le quedan "+cantDisponible+" bonos disponibles");
 
-                    //marco la fecha y hora de llegada
+                    //marco la fecha y hora de llegada en la consulta
                     DAO.registrarHoraLlegada(id_turno);
 
                     MessageBox.Show("Llegada del afiliado registrada");
