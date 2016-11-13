@@ -89,11 +89,16 @@ namespace ClinicaFrba.DataBase.Conexion
             try
             {
                 this.GD2C2016.ejecutarSentenciaSinRetorno(
-                        "insert into GDD_GO.turno (id_afiliado,id_profesional,desc_estado)"+
-                        "values("+afiliado.ToString()+","+prof.ToString()+",0)");
+                        "insert into "+ConstantesBD.tabla_turno+
+                        " (id_turno, id_afiliado, desc_estado)"+
+                        " values ("+
+                        "((select TOP(1) id_turno from "+ConstantesBD.tabla_turno+
+                        " order by id_turno desc) + 1),"+
+                        afiliado.ToString()+", 0) ");
 
                 resultado = this.GD2C2016.ejecutarSentenciaConRetorno(
-                        "select TOP(1) id_turno from GDD_GO.turno order by id_turno desc");
+                        "select TOP(1) id_turno from "+ConstantesBD.tabla_turno+
+                        " order by id_turno desc");
             }
             catch (Exception)
             {

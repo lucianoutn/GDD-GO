@@ -13,18 +13,18 @@ namespace ClinicaFrba.Compra_Bono
 {
     public partial class SeleccionarBono : Form
     {
-        CompraBono unCompraBono;
+        Form unForm;
         List<string> un_lista_bonos;
         ABM_usuario_DAO abm_usuario;
         PlanMedico_DAO plan_medico_dao;
         String unIdAfiliado;
 
-        public SeleccionarBono(String idAfiliado, List<string> lista_bonos, CompraBono compraBono)
+        public SeleccionarBono(String idAfiliado, List<string> lista_bonos, Form form)
         {
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();
             InitializeComponent();
-            unCompraBono = compraBono;
+            unForm = form;
             un_lista_bonos = lista_bonos;
             unIdAfiliado = idAfiliado;
             cargarDatos();
@@ -40,7 +40,7 @@ namespace ClinicaFrba.Compra_Bono
 
         private void buttonVolver_Click(object sender, EventArgs e)
         {
-            unCompraBono.Show();
+            unForm.Show();
             this.Close();
         }
 

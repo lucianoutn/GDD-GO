@@ -89,50 +89,65 @@ namespace ClinicaFrba.Listados
             comboBoxMes.Enabled = true;
         }
 
+        private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            comboBoxTop5.Enabled = false;
+            cargar_lista();
+        }
+
+
+
         public void cargar_lista()
         {
             SqlDataReader lectorTop5;
 
-            string condicionSemAnio = " ";
+            string condicionSemOMesAnio = " ";
 
             switch (comboBoxSemestre.Text)
             { 
                 case "Primer Semestre":
-                    condicionSemAnio = condicionSemAnio + " MONTH(desc_hora_desde) BETWEEN '1' AND '6' ";
+                    condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
                     break;
 
                 case "Segundo Semestre":
-                    condicionSemAnio = condicionSemAnio + " MONTH(desc_hora_desde) BETWEEN '7' AND '12' ";
+                    condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
                     break;
+            }
+
+            if(!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
+            {
+                condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
+                     // cuando se elige solo mes y no año
             }
 
             if (!(string.IsNullOrWhiteSpace(comboBoxAnio.Text)))
             {
-                condicionSemAnio = condicionSemAnio + " YEAR(desc_hora_desde) = '" + comboBoxAnio.Text + "'";
+                condicionSemOMesAnio = condicionSemOMesAnio + " AND YEAR(co.desc_hora_consulta) = '" + comboBoxAnio.Text + "'";
             }
 
-            this.condicion_guardada = condicionSemAnio;
+            this.condicion_guardada = condicionSemOMesAnio;
 
             switch (comboBoxTop5.Text)
             { 
                 case "Especialidades con más cancelaciones": /*Tanto de afiliados como profesionales*/
-                    lectorTop5 = listEstDAO.getCancelaciones(condicionSemAnio);
+                    lectorTop5 = listEstDAO.getCancelaciones(condicionSemOMesAnio);
                     break;
 
                 case "Profesionales más consultados por especialidad":
-                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionSemAnio);
+                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionSemOMesAnio);
+                    cargar_grid_profMasConsultadosPorEsp(lectorTop5);
                     break;
 
                 case "Profesionales con menos horas trabajadas por especialidad":
-                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionSemAnio);
+                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionSemOMesAnio);
                     break;
 
                 case "Afiliados con más bonos comprados":
-                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionSemAnio);
+                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionSemOMesAnio);
                     break;
 
                 case "Especialidades con más bonos de consulta utilizados":
-                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionSemAnio);
+                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionSemOMesAnio);
                     break;
 
             }
@@ -145,10 +160,54 @@ namespace ClinicaFrba.Listados
         
         }
 
-        private void cargar_grid_profMasConsultadosPorEsp()
+
+
+
+
+
+
+
+
+        private void cargar_grid_profMasConsultadosPorEsp(SqlDataReader lector)
         {
-    
+            SqlDataReader lectorT5;
+            int i = 0;
+
+            lectorT5 = lector;
+
+            List<DataGridViewRow> filas = new List<DataGridViewRow>();
+            Object[] columnas = new Object[5];
+
+            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
+
+            while (lectorT5.Read())
+            {
+                i++;
+                columnas[0] = i.ToString();
+                columnas[1] = lectorT5["desc_apellido"].ToString();
+                columnas[2] = lectorT5["desc_nombre"].ToString();
+                columnas[3] = lectorT5["Especialidad"].ToString();
+                columnas[4] = lectorT5["Cantidad"].ToString();
+               // columnas[5] = lectorT5["Col_GrupoFam"].ToString();
+                
+                filas.Add(new DataGridViewRow());
+                filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+            }
+
+            lectorT5.Close();
+            dataGridViewTop5.Rows.AddRange(filas.ToArray());
         }
+
+
+
+
+
+
+
+
+
+
+
 
         private void cargar_grid_profConMenosHorasTrabajadas()
         {
@@ -202,19 +261,17 @@ namespace ClinicaFrba.Listados
             if(comboBoxAnio.Text != "")
             {
                 comboBoxSemestre.Enabled = true;
+                comboBoxMes.Enabled = true;
             }
             else
             {
                 comboBoxSemestre.Enabled = false;
                 comboBoxTop5.Enabled = false;
+                comboBoxMes.Enabled = false;
             }
         }
 
-        private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+       
 
         
     }

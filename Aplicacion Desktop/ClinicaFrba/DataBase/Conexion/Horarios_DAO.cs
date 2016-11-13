@@ -91,13 +91,15 @@ namespace ClinicaFrba.DataBase.Conexion
 
         private List<Horario> armarDia(DiaAuxiliar dia)
         {
+            Boolean flagDiaCreado = true;
             List<Horario> list = new List<Horario>();
             DateTime aux = dia.fecha;
-            while (dia.fechafin.CompareTo(aux) >= 0)
+            while (dia.fechafin.CompareTo(aux) >= 0 && flagDiaCreado)
             {
                 if(es_diaLaboral(aux.DayOfWeek,dia.dia))
                 {
                     list.AddRange(armarHorarios(dia.agenda, dia.duracion, aux, dia.inicio, dia.fin));
+                    flagDiaCreado = false;
                 }
                 aux = aux.AddDays(1);
             }

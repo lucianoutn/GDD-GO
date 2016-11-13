@@ -158,24 +158,14 @@ CREATE TABLE GDD_GO.hist_cambios_plan_afiliado
 	,foreign key (id_plan_medico_anterior) references GDD_GO.plan_medico(id_plan_medico)
 )
 
-CREATE TABLE GDD_GO.tipo_bono
-(
-	 id_tipo_bono numeric(18,0)
-	,id_plan_medico int
-	,primary key (id_tipo_bono)
-	,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
-)
-
 CREATE TABLE GDD_GO.bono_comprado
 (
-	  id_bono_comprado int identity(1,1)
-	 ,id_tipo_bono numeric(18,0)
+	  id_bono_comprado int
 	 ,id_afiliado int
 	 ,desc_estado bit
 	 ,desc_fecha_compra DATETIME
 	 ,desc_fecha_impresion DATETIME
 	 ,primary key (id_bono_comprado)
-	 ,foreign key (id_tipo_bono) references GDD_GO.tipo_bono(id_tipo_bono)
 	 ,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
 )
 
@@ -249,30 +239,28 @@ CREATE TABLE GDD_GO.dia_laboral
 
 CREATE TABLE GDD_GO.turno
 (
-	 id_turno numeric(18,0)
-	,desc_estado BIT
+	 id_turno int
+	,desc_estado BIT		/*1=CANCELADO*/
 	,id_afiliado int
-	,id_profesional int
 	,primary key (id_turno)
-	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
-	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
+	,foreign key (id_afiliado) references GDD_GO.afiliado
 )
 
 CREATE TABLE GDD_GO.horario
 (
 	id_horario int identity(1,1)
-	,desc_hora_desde DATETIME
-	,id_agenda int
-	,id_turno numeric(18,0)
-	,primary key (id_horario)
-	,foreign key (id_agenda) references GDD_GO.agenda
-	,foreign key (id_turno) references GDD_GO.turno(id_turno)
+   ,desc_hora_desde DATETIME
+   ,id_agenda int
+   ,id_turno int
+   ,primary key (id_horario)
+   ,foreign key (id_agenda) references GDD_GO.agenda
+   ,foreign key (id_turno) references GDD_GO.turno
 )
 
 CREATE TABLE GDD_GO.consulta
 (
 	 id_consulta int identity(1,1)
-	,id_turno numeric(18,0)
+	,id_turno int
 	,id_bono int
 	,desc_sintomas VARCHAR(255)
 	,desc_enfermedades VARCHAR (255)
@@ -283,14 +271,13 @@ CREATE TABLE GDD_GO.consulta
 	,foreign key (id_bono) references GDD_GO.bono_comprado(id_bono_comprado)
 )
 
-
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
 	 id_tipo_cancelacion int identity(1,1)
 	,descripcion varchar(255)
-	,id_turno numeric(18,0)
-	,id_usuario int
-	,desc_usuario int
+	,id_turno int
+	,id_usuario int		/*ID de afiliado o de profesional*/
+	,desc_usuario int	/*1=Afiliado,  2=Profesional*/
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
@@ -360,7 +347,7 @@ else
 	Begin
 		if not exists (Select 'existe' from GDD_GO.usuario us
 					   where us.id_usuario = @usuario and 
-							 us.desc_password = HASHBYTES('sha2_256', @pass)	)--cambiar a sha2_256 para la entrega
+							 us.desc_password = HASHBYTES('sha1', @pass)	)--cambiar a sha2_256 para la entrega
 		Begin
 			Select 'incorrecto' as mensaje
 			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
@@ -474,7 +461,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('@',m.Paciente_Mail)-1) + '_' + CONVERT(varchar(4),YEAR(m.Paciente_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(m.Paciente_Mail,1 ,CHARINDEX('_',m.Paciente_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Afiliado'
 		,Paciente_Dni
 From gd_esquema.Maestra m
@@ -487,7 +474,7 @@ Insert Into #usuarios 	(	 username
 Select	 Distinct
 		SUBSTRING(Medico_Mail,1 ,CHARINDEX('@',Medico_Mail)-1)+ '_' + CONVERT(varchar(4),YEAR(Medico_Fecha_Nac))
 		--,HASHBYTES('sha1',SUBSTRING(Medico_Mail,1 ,CHARINDEX('_',Medico_Mail)-1))--cambiar a sha2_256 para la entrega
-		,HASHBYTES('sha2_256','1234')--cambiar a sha2_256 para la entrega
+		,HASHBYTES('sha1','1234')--cambiar a sha2_256 para la entrega
 		,'Profesional'
 		,Medico_Dni
 From gd_esquema.Maestra
@@ -665,14 +652,11 @@ Go
 /*TURNO*/
 Insert into GDD_GO.turno	(	id_turno
 							   ,id_afiliado
-							   ,id_profesional
 							   ,desc_estado	)
-Select Turno_Numero, af.id_afiliado, pr.id_profesional, 0
+Select Turno_Numero, af.id_afiliado,0
 From gd_esquema.Maestra
 join GDD_GO.afiliado af
 	 On Paciente_Dni = af.desc_dni
-join GDD_GO.profesional pr
-	 On Medico_Dni = pr.desc_dni
 Where Turno_Numero is not null And Consulta_Sintomas is null
 
 Go
@@ -707,21 +691,9 @@ Set fecha_desde = (
 
 
 Go
-/*Tipo_Bono*/
-Insert into GDD_GO.tipo_bono(	id_tipo_bono
-							   ,id_plan_medico
-)
-Select distinct 
-				m.Bono_Consulta_Numero
-			   ,p.id_plan_medico
-From GDD_GO.plan_medico p
-join gd_esquema.Maestra m	on m.Plan_Med_Codigo = p.id_plan_medico
-where m.Bono_Consulta_Numero is not null and m.Bono_Consulta_Fecha_Impresion is not null
-
-Go
 
 /*Bonos Comprado*/
-Insert into GDD_GO.bono_comprado(	id_tipo_bono
+Insert into GDD_GO.bono_comprado(	id_bono_comprado
 								   ,id_afiliado
 								   ,desc_fecha_compra
 								   ,desc_fecha_impresion
@@ -735,7 +707,19 @@ Select
 From gd_esquema.Maestra m
 Join GDD_GO.afiliado a
 	 On a.desc_dni = m.Paciente_Dni
-Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Fecha_Impresion Is not null
+Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Numero Is not null
+
+Select
+	m.Bono_Consulta_Numero
+	,a.id_afiliado
+	,m.Compra_Bono_Fecha
+	,m.Bono_Consulta_Fecha_Impresion
+From gd_esquema.Maestra m
+Join GDD_GO.afiliado a
+	 On a.desc_dni = m.Paciente_Dni
+Where m.Bono_Consulta_Numero is not null
+AND m.Compra_Bono_Fecha is not null 
+order by m.Paciente_Dni,m.Bono_Consulta_Numero
 
 /*Consultas*/
 Insert into GDD_GO.consulta(
@@ -751,12 +735,11 @@ select	m.Consulta_Sintomas,
 		h.desc_hora_desde,
 		h.desc_hora_desde,
 		t.id_turno,
-		bc.id_bono_comprado
+		m.Bono_Consulta_Numero
 from gd_esquema.Maestra m
 join GDD_GO.afiliado a				ON a.desc_dni = m.Paciente_Dni
 join GDD_GO.turno t					ON a.id_afiliado = t.id_afiliado and t.id_turno = m.Turno_Numero
 join GDD_GO.horario h				ON h.id_turno = t.id_turno
-join GDD_GO.bono_comprado bc		on bc.id_tipo_bono = m.Bono_Consulta_Numero
 where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
 and		m.Compra_Bono_Fecha is null
@@ -770,7 +753,7 @@ Insert into GDD_GO.usuario	(	 desc_username
 								,desc_password
 								,desc_estado
 								,intentos_login		)
-Values	 ('admin', HASHBYTES('sha2_256', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
+Values	 ('admin', HASHBYTES('sha1', 'w23e'), 1,0)--cambiar a sha2_256 para la entrega
 Go
 
 --Inserto Roles existentes
@@ -902,19 +885,19 @@ Begin
 	
 	Update GDD_GO.usuario Set desc_estado=2, desc_fecha_inhabilitado=GETDATE() where id_usuario = @id_usuario;
 
-	 DECLARE my_Cursor CURSOR FOR Select tu.id_turno
+	DECLARE my_Cursor CURSOR FOR Select tu.id_turno
 										,af.id_afiliado
 										,1
-								From GDD_GO.afiliado af
-										Join GDD_GO.turno tu
-										On tu.id_afiliado = af.id_afiliado
-								Where af.id_usuario=@id_usuario;
+								  From GDD_GO.afiliado af
+									   Join GDD_GO.turno tu
+									   On tu.id_afiliado = af.id_afiliado
+								  Where af.id_usuario=@id_usuario;
 
-	 OPEN my_Cursor 
-	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario
+	OPEN my_Cursor 
+	FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario
 
-	 WHILE @@FETCH_STATUS = 0 
-	 BEGIN 
+	WHILE @@FETCH_STATUS = 0 
+	BEGIN 
 		 Insert into GDD_GO.tipo_cancelacion (	descripcion
 											   ,id_turno
 											   ,id_usuario
@@ -923,8 +906,8 @@ Begin
 			   ,@id_turno
 			   ,@id_afiliado
 			   ,@desc_usuario)
-	 FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario  
-	 END
+	FETCH NEXT FROM my_Cursor into @id_turno, @id_afiliado, @desc_usuario  
+	END
 
 	CLOSE my_Cursor
 	DEALLOCATE my_Cursor
@@ -973,19 +956,7 @@ begin
 	where id_rol = @id_rol
 end
 Go
-
-Create Trigger  GDD_GO.tr_cancelar_turno
-On GDD_GO.tipo_cancelacion
-After insert
-As
-Declare @id_turno int
-
-Set @id_turno = (Select id_turno from inserted)
-Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
-Go
-
-/*
-IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
+/*IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
 	DROP TABLE GDD_GO.tipo_cancelacion
 CREATE TABLE GDD_GO.tipo_cancelacion
 (
@@ -997,5 +968,11 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
-*/
 
+*/
+select TOP(1) id_turno from GDD_GO.turno order by id_turno desc
+
+insert into GDD_GO.turno (id_turno, id_afiliado, desc_estado)
+values (((select TOP(1) id_turno from GDD_GO.turno order by id_turno desc) + 1),8,0)
+
+select TOP(1) id_turno from GDD_GO.turno order by id_turno desc

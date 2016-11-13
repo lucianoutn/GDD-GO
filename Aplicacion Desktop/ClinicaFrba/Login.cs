@@ -49,7 +49,7 @@ namespace ClinicaFrba
                         int id_usuario = loginDAO.get_id_usuario(textBoxUserName.Text);
                         string rol = loginDAO.get_rol(id_usuario);
 
-                        Menu menu = new Menu(textBoxUserName.Text, rol);
+                        Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
                         menu.Show();
                         this.Hide();
                         break;

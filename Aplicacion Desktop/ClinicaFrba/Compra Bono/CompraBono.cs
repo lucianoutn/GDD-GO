@@ -21,6 +21,7 @@ namespace ClinicaFrba.Compra_Bono
         {
             InitializeComponent();
             unMenu = menu;
+
             abm_usuario = new ABM_usuario_DAO();
             plan_medico_dao = new PlanMedico_DAO();
         }

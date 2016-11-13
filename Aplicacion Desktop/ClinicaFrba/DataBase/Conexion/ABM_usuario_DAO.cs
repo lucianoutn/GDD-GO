@@ -245,5 +245,25 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Close();
             return user;
         }
+
+        public int get_id_afiliado(int id_usuario)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from " + ConstantesBD.tabla_afiliados + " where id_usuario = " + id_usuario + "");
+            lector.Read();
+            int cantidad;
+            int.TryParse(lector["id_afiliado"].ToString(), out cantidad);
+            lector.Close();
+            return cantidad;
+        }
+
+        public int get_id_profesional(int id_usuario)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from " + ConstantesBD.tabla_profesional + " where id_usuario = " + id_usuario + "");
+            lector.Read();
+            int cantidad;
+            int.TryParse(lector["id_profesional"].ToString(), out cantidad);
+            lector.Close();
+            return cantidad;
+        }
     }
 }
