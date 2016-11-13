@@ -171,7 +171,7 @@ CREATE TABLE GDD_GO.bono_comprado
 	  id_bono_comprado int identity(1,1)
 	 ,id_tipo_bono numeric(18,0)
 	 ,id_afiliado int
-	 ,desc_estado bit
+	 ,desc_estado bit /* 1:vigente 0:ya utilizado*/
 	 ,desc_fecha_compra DATETIME
 	 ,desc_fecha_impresion DATETIME
 	 ,primary key (id_bono_comprado)
