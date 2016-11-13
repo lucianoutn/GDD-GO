@@ -69,6 +69,43 @@ namespace ClinicaFrba.Registro_Llegada
 
         }
 
+        private void registrar_Click(object sender, EventArgs e)
+        {
+           //valido fila selecionada
+            if (dataGridTurno.SelectedRows.Count == 0)
+                MessageBox.Show("Seleccione un turno según el afiliado");
+            else
+            {
+                DataGridViewRow fila = dataGridTurno.SelectedRows[0];
+                int id_turno = int.Parse(fila.Cells["idTurno"].Value.ToString());
+                int id_afiliado = DAO.getIdAfSegunTurno(id_turno);
+                int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado);
+
+                //valido que tenga bonos disponibles
+                if (cantDisponible == 0)
+                    MessageBox.Show("El afiliado no tiene bonos de consulta disponibles");
+                else
+                {
+                    //tomo el primer bono disponible, marco el bono como usado y decremento el total
+                    int id_bono = DAO.getUnBonoDisponible(id_afiliado);
+                    DAO.marcarBonoUtilizado(id_bono);
+                    cantDisponible--;
+                   
+                    //muestro bono utilizado y cantidad disponible
+                    MessageBox.Show("Se utilizó el bono cuyo ID es el: "+id_bono+" y al afiliado le quedan "+cantDisponible+" bonos disponibles");
+
+                    //marco la fecha y hora de llegada
+                    DAO.registrarHoraLlegada(id_turno);
+
+                    MessageBox.Show("Llegada del afiliado registrada");
+                    this.Close();
+
+                }
+
+            }
+          
+        }
+
        
     }
 }

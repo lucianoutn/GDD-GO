@@ -65,7 +65,9 @@ namespace ClinicaFrba.DataBase.Conexion
             reader.Read();
             int idprofElegido = Int32.Parse(reader["id_profesional"].ToString());
             reader.Close();
-           
+            
+            //tiene hardcodeada una fecha para testing !!SACAR ANTES DE ENTREGA!!
+            //tambien checkea por turnos cancelados
            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = '2015-3-31' /* convert(date, GETDATE()) */ and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
  
            List<int> resultado = new List<int>();
@@ -98,6 +100,45 @@ namespace ClinicaFrba.DataBase.Conexion
             string nombre = reader["nombre"].ToString();
             reader.Close();
             return nombre;
+        }
+
+        public int getIdAfSegunTurno(int id_turno)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno =+'" + id_turno + "'");
+            reader.Read();
+            int id_afiliado = Int32.Parse(reader["id_afiliado"].ToString());
+            reader.Close();
+            return id_afiliado;
+        }
+
+        public int getCantBonosDisponibles(int id_afiliado)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1 group by id_afiliado");
+            reader.Read();
+            int cant = Int32.Parse(reader["cant"].ToString());
+            reader.Close();
+            return cant;
+        }
+
+        public int getUnBonoDisponible(int id_afiliado)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1");
+            reader.Read();
+            int id_bono = Int32.Parse(reader["id"].ToString());
+            reader.Close();
+            return id_bono;
+        }
+
+        public void marcarBonoUtilizado(int id_bono)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.bono_comprado set desc_estado = 0 where id_bono_comprado=" + id_bono);
+        
+        }
+
+        public void registrarHoraLlegada(int id_turno)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.consulta set desc_hora_llegada = GETDATE() where id_turno=" + id_turno);
+        
         }
     }
 }

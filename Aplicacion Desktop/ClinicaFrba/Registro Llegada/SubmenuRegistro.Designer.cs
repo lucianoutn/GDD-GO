@@ -41,6 +41,7 @@
             this.idTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreAfiliado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.registrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
@@ -173,6 +174,19 @@
             this.nombreAfiliado.ReadOnly = true;
             this.nombreAfiliado.Width = 260;
             // 
+            // registrar
+            // 
+            this.registrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.registrar.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.registrar.Location = new System.Drawing.Point(546, 223);
+            this.registrar.Name = "registrar";
+            this.registrar.Size = new System.Drawing.Size(185, 33);
+            this.registrar.TabIndex = 5;
+            this.registrar.Text = "Registrar Llegada";
+            this.registrar.UseVisualStyleBackColor = true;
+            this.registrar.Click += new System.EventHandler(this.registrar_Click);
+            // 
             // SubmenuRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,6 +196,7 @@
             this.ClientSize = new System.Drawing.Size(749, 333);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.registrar);
             this.Controls.Add(this.buttonVolver);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SubmenuRegistro";
@@ -209,5 +224,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAfiliado;
+        private System.Windows.Forms.Button registrar;
     }
 }
