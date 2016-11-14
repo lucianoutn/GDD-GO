@@ -970,9 +970,4 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 )
 
 */
-select TOP(1) id_turno from GDD_GO.turno order by id_turno desc
 
-insert into GDD_GO.turno (id_turno, id_afiliado, desc_estado)
-values (((select TOP(1) id_turno from GDD_GO.turno order by id_turno desc) + 1),8,0)
-
-select TOP(1) id_turno from GDD_GO.turno order by id_turno desc
