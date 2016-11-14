@@ -24,7 +24,6 @@ namespace ClinicaFrba.Registro_Resultado
             regResult = new RegistroResultado_DAO();
             InitializeComponent();
             unMenu = menu;
-            cargarDatos();
         }
 
         private void button_Volver_Click(object sender, EventArgs e)
@@ -33,20 +32,16 @@ namespace ClinicaFrba.Registro_Resultado
             this.Close();
         }
 
-        public void cargarDatos()
-        {           
-            //labelHoraLlegada.Text = DateTime.Now.ToString("G");
-            labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
-        }
-
+    
         private void button_cargarAfiliado_Click(object sender, EventArgs e)
         {
             String afiliado = textBoxAfiliado.Text;
             
             DateTime fecha =  regResult.mostrarFechaTurno(afiliado);
+            string horaTurno = regResult.mostrarHoraTurnoLlegada(afiliado);
             labelFechaTurno.Text = ConstantesBD.darFormatoFecha(fecha);
-            
-            labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
+            labelHoraLlegada.Text = horaTurno;
+            //labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
         }
 
 
@@ -61,8 +56,7 @@ namespace ClinicaFrba.Registro_Resultado
                             String hora = labelHoraLlegada.Text;
 
                             regResult.cargarLlegadaEnConsulta(nroAfiliado, hora);
-                            
-
+                           
                             RegistrarResultado subMenRegistraResult = new RegistrarResultado(this, nroAfiliado);
                             subMenRegistraResult.Show();
                             this.Hide();

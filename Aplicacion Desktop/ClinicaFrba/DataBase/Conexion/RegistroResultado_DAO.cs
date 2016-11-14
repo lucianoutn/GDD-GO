@@ -87,8 +87,39 @@ namespace ClinicaFrba.DataBase.Conexion
 
             return fechaTurno;
         }
- 
+
+        /*  CONVERT(VARCHAR(10), Fecha_Contacto, 108) AS Fecha_Contacto*/
+        public String mostrarHoraTurnoLlegada(String idAfiliado)
+        {
+            int turno = get_turno(idAfiliado);
+            String horaTurno = "";
+
+            MessageBox.Show("SELECT CONVERT(VARCHAR(10), desc_hora_llegada,108) from GDD_GO.consulta WHERE id_turno = '" + turno + "'");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT CONVERT(VARCHAR(10), desc_hora_llegada,108) from GDD_GO.consulta WHERE id_turno = '" + turno + "'");
+            if (lector.Read())
+            {
+                horaTurno = (String)lector[0];
+            }
+
+            lector.Close();
+
+            return horaTurno;
+        }
+
+        public string getHoraTurno(int turno_id)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno =+'" + turno_id + "'");
+            reader.Read();
+            DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
+            reader.Close();
+            return hora.ToString("hh':'mm");
+        }
+
+
+        
+        }
+
 
 
     }
-}
+
