@@ -654,11 +654,14 @@ Go
 /*TURNO*/
 Insert into GDD_GO.turno	(	id_turno
 							   ,id_afiliado
+							   ,id_profesional
 							   ,desc_estado	)
-Select Turno_Numero, af.id_afiliado,0
+Select Turno_Numero, af.id_afiliado, pr.id_profesional, 0
 From gd_esquema.Maestra
 join GDD_GO.afiliado af
 	 On Paciente_Dni = af.desc_dni
+join GDD_GO.profesional pr
+ 	 On Medico_Dni = pr.desc_dni	 
 Where Turno_Numero is not null And Consulta_Sintomas is null
 
 Go
@@ -734,7 +737,7 @@ Insert into GDD_GO.consulta(
 )
 select	m.Consulta_Sintomas,
 		m.Consulta_Enfermedades,
-		h.desc_hora_desde,
+		null,
 		h.desc_hora_desde,
 		t.id_turno,
 		m.Bono_Consulta_Numero
