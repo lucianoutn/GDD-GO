@@ -242,8 +242,10 @@ CREATE TABLE GDD_GO.turno
 	 id_turno int
 	,desc_estado BIT		/*1=CANCELADO*/
 	,id_afiliado int
+	,id_profesional int
 	,primary key (id_turno)
-	,foreign key (id_afiliado) references GDD_GO.afiliado
+	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
+	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
 )
 
 CREATE TABLE GDD_GO.horario
