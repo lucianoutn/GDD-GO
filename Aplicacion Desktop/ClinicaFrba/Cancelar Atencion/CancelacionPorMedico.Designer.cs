@@ -85,6 +85,7 @@
             // 
             // buttonSeleccionar
             // 
+            this.buttonSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSeleccionar.Location = new System.Drawing.Point(350, 188);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(75, 23);

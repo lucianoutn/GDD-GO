@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VerificarAtencion));
             this.textBoxAfiliado = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,7 +77,8 @@
             // 
             // button_abrirCosulta
             // 
-            this.button_abrirCosulta.ForeColor = System.Drawing.Color.DarkRed;
+            this.button_abrirCosulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_abrirCosulta.ForeColor = System.Drawing.Color.DodgerBlue;
             this.button_abrirCosulta.Location = new System.Drawing.Point(309, 151);
             this.button_abrirCosulta.Name = "button_abrirCosulta";
             this.button_abrirCosulta.Size = new System.Drawing.Size(109, 23);
@@ -87,6 +89,8 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Volver.ForeColor = System.Drawing.Color.Maroon;
             this.button_Volver.Location = new System.Drawing.Point(15, 151);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -115,6 +119,7 @@
             // 
             // button_cargarAfiliado
             // 
+            this.button_cargarAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_cargarAfiliado.Location = new System.Drawing.Point(309, 12);
             this.button_cargarAfiliado.Name = "button_cargarAfiliado";
             this.button_cargarAfiliado.Size = new System.Drawing.Size(109, 23);
@@ -137,7 +142,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxAfiliado);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VerificarAtencion";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Resultado de Atención Médica";
             this.ResumeLayout(false);
             this.PerformLayout();

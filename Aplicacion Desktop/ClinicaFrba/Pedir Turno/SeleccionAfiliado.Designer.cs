@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionAfiliado));
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonConfirm = new System.Windows.Forms.Button();
             this.comboBoxAf = new System.Windows.Forms.ComboBox();
@@ -36,6 +37,7 @@
             // 
             // buttonBack
             // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBack.Location = new System.Drawing.Point(29, 132);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 32);
@@ -46,6 +48,7 @@
             // 
             // buttonConfirm
             // 
+            this.buttonConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonConfirm.Location = new System.Drawing.Point(193, 133);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 31);
@@ -84,9 +87,11 @@
             this.Controls.Add(this.buttonBack);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SeleccionAfiliado";
-            this.Text = "VistaCalendario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Vista Calendario";
             this.ResumeLayout(false);
             this.PerformLayout();
 

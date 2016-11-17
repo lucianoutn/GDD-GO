@@ -56,6 +56,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // 
             // buttonEliminar
             // 
+            this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonEliminar.Location = new System.Drawing.Point(434, 437);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
@@ -66,6 +67,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(64, 438);
             this.buttonVolver.Name = "buttonVolver";
@@ -77,6 +79,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBuscar.Location = new System.Drawing.Point(435, 212);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
@@ -87,6 +90,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // 
             // buttonLimpiar
             // 
+            this.buttonLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLimpiar.Location = new System.Drawing.Point(64, 212);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);

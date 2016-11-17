@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarProfesional));
             this.labelCliente = new System.Windows.Forms.Label();
             this.buttonSeleccionar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
@@ -65,6 +66,7 @@
             // 
             // buttonSeleccionar
             // 
+            this.buttonSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSeleccionar.Location = new System.Drawing.Point(388, 424);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(75, 23);
@@ -75,6 +77,7 @@
             // 
             // buttonVolver
             // 
+            this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
             this.buttonVolver.Location = new System.Drawing.Point(17, 424);
             this.buttonVolver.Name = "buttonVolver";
@@ -86,6 +89,7 @@
             // 
             // buttonBuscar
             // 
+            this.buttonBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBuscar.Location = new System.Drawing.Point(388, 198);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
@@ -96,6 +100,7 @@
             // 
             // buttonLimpiar
             // 
+            this.buttonLimpiar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonLimpiar.Location = new System.Drawing.Point(17, 198);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
@@ -242,7 +247,9 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarProfesional";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Seleccionar Profesional";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

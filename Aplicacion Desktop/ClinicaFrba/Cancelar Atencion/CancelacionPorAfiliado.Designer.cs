@@ -90,6 +90,7 @@
             // 
             // buttonCancelar
             // 
+            this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonCancelar.Location = new System.Drawing.Point(316, 281);
             this.buttonCancelar.Name = "buttonCancelar";
             this.buttonCancelar.Size = new System.Drawing.Size(75, 37);

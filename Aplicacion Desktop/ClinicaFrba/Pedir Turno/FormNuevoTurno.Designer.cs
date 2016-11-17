@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormNuevoTurno));
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
@@ -119,6 +120,7 @@
             // 
             // buttonNext
             // 
+            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonNext.Location = new System.Drawing.Point(359, 307);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
@@ -129,6 +131,7 @@
             // 
             // buttonBack
             // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBack.Location = new System.Drawing.Point(12, 307);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
@@ -179,8 +182,10 @@
             this.Controls.Add(this.dataGridView);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FormNuevoTurno";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Nuevo Turno";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

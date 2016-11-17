@@ -28,23 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Listado_Estadistico));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.comboBoxSemestre = new System.Windows.Forms.ComboBox();
             this.comboBoxTop5 = new System.Windows.Forms.ComboBox();
             this.dataGridViewTop5 = new System.Windows.Forms.DataGridView();
-            this.button_volver = new System.Windows.Forms.Button();
-            this.button_limpiar = new System.Windows.Forms.Button();
-            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
-            this.labelMes = new System.Windows.Forms.Label();
-            this.comboBoxMes = new System.Windows.Forms.ComboBox();
             this.Col_nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_GrupoFam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_volver = new System.Windows.Forms.Button();
+            this.button_limpiar = new System.Windows.Forms.Button();
+            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
+            this.labelMes = new System.Windows.Forms.Label();
+            this.comboBoxMes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,6 +78,7 @@
             // 
             // comboBoxSemestre
             // 
+            this.comboBoxSemestre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSemestre.FormattingEnabled = true;
             this.comboBoxSemestre.Location = new System.Drawing.Point(170, 54);
             this.comboBoxSemestre.Name = "comboBoxSemestre";
@@ -86,6 +88,7 @@
             // 
             // comboBoxTop5
             // 
+            this.comboBoxTop5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTop5.FormattingEnabled = true;
             this.comboBoxTop5.Location = new System.Drawing.Point(170, 88);
             this.comboBoxTop5.Name = "comboBoxTop5";
@@ -107,53 +110,6 @@
             this.dataGridViewTop5.Name = "dataGridViewTop5";
             this.dataGridViewTop5.Size = new System.Drawing.Size(618, 150);
             this.dataGridViewTop5.TabIndex = 5;
-            // 
-            // button_volver
-            // 
-            this.button_volver.Location = new System.Drawing.Point(25, 310);
-            this.button_volver.Name = "button_volver";
-            this.button_volver.Size = new System.Drawing.Size(75, 23);
-            this.button_volver.TabIndex = 7;
-            this.button_volver.Text = "Volver";
-            this.button_volver.UseVisualStyleBackColor = true;
-            this.button_volver.Click += new System.EventHandler(this.button_volver_Click);
-            // 
-            // button_limpiar
-            // 
-            this.button_limpiar.Location = new System.Drawing.Point(568, 310);
-            this.button_limpiar.Name = "button_limpiar";
-            this.button_limpiar.Size = new System.Drawing.Size(75, 23);
-            this.button_limpiar.TabIndex = 8;
-            this.button_limpiar.Text = "Limpiar";
-            this.button_limpiar.UseVisualStyleBackColor = true;
-            this.button_limpiar.Click += new System.EventHandler(this.button_limpiar_Click);
-            // 
-            // comboBoxAnio
-            // 
-            this.comboBoxAnio.FormattingEnabled = true;
-            this.comboBoxAnio.Location = new System.Drawing.Point(170, 20);
-            this.comboBoxAnio.Name = "comboBoxAnio";
-            this.comboBoxAnio.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxAnio.TabIndex = 10;
-            this.comboBoxAnio.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnio_SelectedIndexChanged);
-            // 
-            // labelMes
-            // 
-            this.labelMes.AutoSize = true;
-            this.labelMes.Location = new System.Drawing.Point(397, 57);
-            this.labelMes.Name = "labelMes";
-            this.labelMes.Size = new System.Drawing.Size(30, 13);
-            this.labelMes.TabIndex = 11;
-            this.labelMes.Text = "Mes:";
-            // 
-            // comboBoxMes
-            // 
-            this.comboBoxMes.FormattingEnabled = true;
-            this.comboBoxMes.Location = new System.Drawing.Point(433, 53);
-            this.comboBoxMes.Name = "comboBoxMes";
-            this.comboBoxMes.Size = new System.Drawing.Size(121, 21);
-            this.comboBoxMes.TabIndex = 12;
-            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
             // 
             // Col_nro
             // 
@@ -185,6 +141,58 @@
             this.Col_GrupoFam.HeaderText = "Grupo Familiar";
             this.Col_GrupoFam.Name = "Col_GrupoFam";
             // 
+            // button_volver
+            // 
+            this.button_volver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_volver.ForeColor = System.Drawing.Color.Maroon;
+            this.button_volver.Location = new System.Drawing.Point(25, 310);
+            this.button_volver.Name = "button_volver";
+            this.button_volver.Size = new System.Drawing.Size(75, 23);
+            this.button_volver.TabIndex = 7;
+            this.button_volver.Text = "Volver";
+            this.button_volver.UseVisualStyleBackColor = true;
+            this.button_volver.Click += new System.EventHandler(this.button_volver_Click);
+            // 
+            // button_limpiar
+            // 
+            this.button_limpiar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_limpiar.Location = new System.Drawing.Point(568, 310);
+            this.button_limpiar.Name = "button_limpiar";
+            this.button_limpiar.Size = new System.Drawing.Size(75, 23);
+            this.button_limpiar.TabIndex = 8;
+            this.button_limpiar.Text = "Limpiar";
+            this.button_limpiar.UseVisualStyleBackColor = true;
+            this.button_limpiar.Click += new System.EventHandler(this.button_limpiar_Click);
+            // 
+            // comboBoxAnio
+            // 
+            this.comboBoxAnio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxAnio.FormattingEnabled = true;
+            this.comboBoxAnio.Location = new System.Drawing.Point(170, 20);
+            this.comboBoxAnio.Name = "comboBoxAnio";
+            this.comboBoxAnio.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxAnio.TabIndex = 10;
+            this.comboBoxAnio.SelectedIndexChanged += new System.EventHandler(this.comboBoxAnio_SelectedIndexChanged);
+            // 
+            // labelMes
+            // 
+            this.labelMes.AutoSize = true;
+            this.labelMes.Location = new System.Drawing.Point(397, 57);
+            this.labelMes.Name = "labelMes";
+            this.labelMes.Size = new System.Drawing.Size(30, 13);
+            this.labelMes.TabIndex = 11;
+            this.labelMes.Text = "Mes:";
+            // 
+            // comboBoxMes
+            // 
+            this.comboBoxMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMes.FormattingEnabled = true;
+            this.comboBoxMes.Location = new System.Drawing.Point(433, 53);
+            this.comboBoxMes.Name = "comboBoxMes";
+            this.comboBoxMes.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMes.TabIndex = 12;
+            this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
+            // 
             // Listado_Estadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,7 +209,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Listado_Estadistico";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado Estadistico";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).EndInit();
             this.ResumeLayout(false);

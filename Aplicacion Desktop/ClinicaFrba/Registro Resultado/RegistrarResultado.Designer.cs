@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistrarResultado));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxSintoma = new System.Windows.Forms.TextBox();
@@ -72,6 +73,8 @@
             // 
             // button_Volver
             // 
+            this.button_Volver.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_Volver.ForeColor = System.Drawing.Color.Maroon;
             this.button_Volver.Location = new System.Drawing.Point(16, 153);
             this.button_Volver.Name = "button_Volver";
             this.button_Volver.Size = new System.Drawing.Size(75, 23);
@@ -82,7 +85,8 @@
             // 
             // button_cerrarConsulta
             // 
-            this.button_cerrarConsulta.ForeColor = System.Drawing.Color.DarkRed;
+            this.button_cerrarConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_cerrarConsulta.ForeColor = System.Drawing.Color.DodgerBlue;
             this.button_cerrarConsulta.Location = new System.Drawing.Point(231, 153);
             this.button_cerrarConsulta.Name = "button_cerrarConsulta";
             this.button_cerrarConsulta.Size = new System.Drawing.Size(98, 23);
@@ -122,8 +126,10 @@
             this.Controls.Add(this.textBoxSintoma);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "RegistrarResultado";
-            this.Text = "RegistrarResultado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Registrar Resultado";
             this.ResumeLayout(false);
             this.PerformLayout();
 

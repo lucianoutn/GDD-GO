@@ -58,12 +58,12 @@
             // 
             // comboBoxProff
             // 
+            this.comboBoxProff.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxProff.FormattingEnabled = true;
             this.comboBoxProff.Location = new System.Drawing.Point(29, 36);
             this.comboBoxProff.Name = "comboBoxProff";
             this.comboBoxProff.Size = new System.Drawing.Size(239, 27);
             this.comboBoxProff.TabIndex = 5;
-            this.comboBoxProff.Text = "Profesionales";
             this.comboBoxProff.SelectedIndexChanged += new System.EventHandler(this.comboBoxProff_SelectedIndexChanged);
             // 
             // CalendarAdmin
@@ -80,7 +80,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "CalendarAdmin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "VistaCalendario";
+            this.Text = "Vista Calendario";
             this.ResumeLayout(false);
 
         }
