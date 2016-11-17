@@ -111,18 +111,30 @@ namespace ClinicaFrba.DataBase.Conexion
             return id_afiliado;
         }
 
-        public int getCantBonosDisponibles(int id_afiliado)
-        {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1 group by id_afiliado");
+        public int getCantBonosDisponibles(int id_afiliado) /*verifica tambien que los bonos sean del mismo plan actual del afiliado */
+        {   //estado bono =1: "Disponible" estado =0:"utilizado"
+            int id_planMedico = this.getIdPlanMedico(id_afiliado);
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1 and id_plan_medico =+'"+ id_planMedico +"' group by id_afiliado");
             reader.Read();
             int cant = Int32.Parse(reader["cant"].ToString());
             reader.Close();
             return cant;
         }
 
-        public int getUnBonoDisponible(int id_afiliado)
+        public int getIdPlanMedico(int id_afiliado)
         {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1");
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_plan_medico as id from GDD_GO.afiliado where id_afiliado =+'" + id_afiliado);
+            reader.Read();
+            int id = Int32.Parse(reader["id"].ToString());
+            reader.Close();
+            return id;
+        }
+
+        public int getUnBonoDisponible(int id_afiliado) /*verifica tambien que los bonos sean del mismo plan actual del afiliado */
+        {   //estado bono =1: "Disponible" estado =0:"utilizado"
+        
+            int id_planMedico = this.getIdPlanMedico(id_afiliado);
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado where id_afiliado =+'" + id_afiliado + "' and desc_estado = 1and id_plan_medico =+'" + id_planMedico);
             reader.Read();
             int id_bono = Int32.Parse(reader["id"].ToString());
             reader.Close();
