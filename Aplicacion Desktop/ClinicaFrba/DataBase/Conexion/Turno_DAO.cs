@@ -18,7 +18,7 @@ namespace ClinicaFrba.DataBase.Conexion
         
         public List<string> get_turnos(int id_afiliado)
         {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h Join GDD_GO.turno t On t.id_turno = h.id_turno Where t.id_afiliado = "+id_afiliado+ " AND t.desc_estado!=1");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h Join GDD_GO.turno t On t.id_turno = h.id_turno Where t.id_afiliado = "+id_afiliado+ " AND t.desc_estado!=1 order by h.desc_hora_desde asc");
             List<string> resultado = new List<string>();
 
             while (lector.Read())

@@ -126,7 +126,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CancelacionPorMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CancelacionPorMedico";
+            this.Text = "Cancelacion Por Medico";
             this.ResumeLayout(false);
             this.PerformLayout();
 

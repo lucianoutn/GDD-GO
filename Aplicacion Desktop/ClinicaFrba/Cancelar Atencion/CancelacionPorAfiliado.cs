@@ -45,6 +45,7 @@ namespace ClinicaFrba.Cancelar_Atencion
                                             prof_dao.get_nombre(turno_dao.get_profesional(desc_id)),
                                             esp_dao.get_descripcion_segun_turno(desc_id),
                                             desc_id);
+                
             }    
         }
 
@@ -56,12 +57,28 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
+            if (dataGridViewResultados.SelectedRows.Count == 0)
+                MessageBox.Show("Debe seleccionar un turno");
+            else
+            {
+
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
-                int id = int.Parse(fila.Cells["Id_turno"].Value.ToString());
+                string dia = fila.Cells["Dia"].Value.ToString();
+                if (true) // ACA HAY Q VALIDAR Q DIA NO SEA IGUAL A HOY
+                    MessageBox.Show("No puede cancelar, los turnos se deben cancelar con mas de un día de anticipacion");
+                else
+                {
 
-                turno_dao.cancelarTurno(id, textBoxMotivo.Text,id_afiliado,1);
+                    int id = int.Parse(fila.Cells["Id_turno"].Value.ToString());
 
-                MessageBox.Show("Turno cancelado");
+                    turno_dao.cancelarTurno(id, textBoxMotivo.Text, id_afiliado, 1);
+
+                    MessageBox.Show("Turno cancelado");
+                    unMenu.Show();
+                    this.Close();
+                }
+
+            }
         }
         
     }

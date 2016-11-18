@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelacionPorAfiliado));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Id_turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonCancelar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxMotivo = new System.Windows.Forms.TextBox();
             this.labelCliente = new System.Windows.Forms.Label();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id_turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,6 +56,10 @@
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToResizeColumns = false;
+            this.dataGridViewResultados.AllowUserToResizeRows = false;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Dia,
@@ -63,30 +67,14 @@
             this.Especialidad,
             this.Id_turno});
             this.dataGridViewResultados.Location = new System.Drawing.Point(52, 114);
+            this.dataGridViewResultados.MultiSelect = false;
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewResultados.ShowEditingIcon = false;
             this.dataGridViewResultados.Size = new System.Drawing.Size(339, 161);
             this.dataGridViewResultados.TabIndex = 1;
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Dia";
-            this.Dia.Name = "Dia";
-            // 
-            // Profesional
-            // 
-            this.Profesional.HeaderText = "Profesional";
-            this.Profesional.Name = "Profesional";
-            // 
-            // Especialidad
-            // 
-            this.Especialidad.HeaderText = "Especialidad";
-            this.Especialidad.Name = "Especialidad";
-            // 
-            // Id_turno
-            // 
-            this.Id_turno.HeaderText = "Turno";
-            this.Id_turno.Name = "Id_turno";
-            this.Id_turno.Visible = false;
             // 
             // buttonCancelar
             // 
@@ -126,6 +114,32 @@
             this.labelCliente.TabIndex = 148;
             this.labelCliente.Text = "CANCELACION DE TURNO";
             // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 80;
+            // 
+            // Profesional
+            // 
+            this.Profesional.HeaderText = "Profesional";
+            this.Profesional.Name = "Profesional";
+            this.Profesional.ReadOnly = true;
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            // 
+            // Id_turno
+            // 
+            this.Id_turno.HeaderText = "Turno";
+            this.Id_turno.Name = "Id_turno";
+            this.Id_turno.ReadOnly = true;
+            this.Id_turno.Visible = false;
+            // 
             // CancelacionPorAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -140,7 +154,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CancelacionPorAfiliado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CancelacionPorAfiliado";
+            this.Text = "Cancelacion Por Afiliado";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -151,13 +165,13 @@
 
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.DataGridView dataGridViewResultados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Profesional;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id_turno;
         private System.Windows.Forms.Button buttonCancelar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxMotivo;
         private System.Windows.Forms.Label labelCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Profesional;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Especialidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id_turno;
     }
 }
