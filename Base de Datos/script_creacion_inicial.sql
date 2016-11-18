@@ -714,6 +714,7 @@ Join GDD_GO.afiliado a
 	 On a.desc_dni = m.Paciente_Dni
 Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Numero Is not null
 
+/*
 Select
 	m.Bono_Consulta_Numero
 	,a.id_afiliado
@@ -725,7 +726,7 @@ Join GDD_GO.afiliado a
 Where m.Bono_Consulta_Numero is not null
 AND m.Compra_Bono_Fecha is not null 
 order by m.Paciente_Dni,m.Bono_Consulta_Numero
-
+*/
 /*Consultas*/
 Insert into GDD_GO.consulta(
 	 desc_sintomas
@@ -961,18 +962,3 @@ begin
 	where id_rol = @id_rol
 end
 Go
-/*IF EXISTS (SELECT 'existe' FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'GDD_GO' AND TABLE_NAME = 'tipo_cancelacion')
-	DROP TABLE GDD_GO.tipo_cancelacion
-CREATE TABLE GDD_GO.tipo_cancelacion
-(
-	 id_tipo_cancelacion int identity(1,1)
-	,descripcion varchar(255)
-	,id_turno numeric(18,0)
-	,id_usuario int
-	,desc_usuario int
-	,primary key (id_tipo_cancelacion)
-	,foreign key (id_turno) references GDD_GO.turno(id_turno)
-)
-
-*/
-
