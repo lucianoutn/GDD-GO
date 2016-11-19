@@ -76,6 +76,7 @@ namespace ClinicaFrba.Registro_Llegada
             {
                 DataGridViewRow fila = dataGridTurno.SelectedRows[0];
                 int id_turno = int.Parse(fila.Cells["idTurno"].Value.ToString());
+                string desc_hora_consulta = fila.Cells["Horario"].Value.ToString();
                 int id_afiliado = DAO.getIdAfSegunTurno(id_turno);
                 int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado);
 
@@ -95,9 +96,10 @@ namespace ClinicaFrba.Registro_Llegada
 
     /* VER SI HAY Q REGISTRAR LA CONSULTA COMPLETA ACA */
 
+                    //inserto el registro consulta:
                     //marco la fecha y hora de llegada en la consulta
-                    DAO.registrarHoraLlegada(id_turno);
-
+                    //DAO.registrarHoraLlegada(id_turno);
+                    DAO.insertarConsulta(id_turno, id_bono, desc_hora_consulta);
                     MessageBox.Show("Llegada del afiliado registrada");
                     this.Close();
 

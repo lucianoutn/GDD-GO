@@ -146,11 +146,19 @@ namespace ClinicaFrba.DataBase.Conexion
             this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.bono_comprado set desc_estado = 0 where id_bono_comprado=" + id_bono);
         
         }
-
-        public void registrarHoraLlegada(int id_turno)
+        /*
+         public void registrarHoraLlegada(int id_turno)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.consulta set desc_hora_llegada = GETDATE() where id_turno=" + id_turno);
         
+        }
+        */
+
+
+        public void insertarConsulta(int id_turno, int id_bono, string desc_hora_consulta)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.consulta(desc_hora_llegada, desc_hora_consulta, id_turno, id_bono) values( GETDATE(),'"+ desc_hora_consulta +"',"+ id_turno +","+ id_bono +")");
+         
         }
     }
 }
