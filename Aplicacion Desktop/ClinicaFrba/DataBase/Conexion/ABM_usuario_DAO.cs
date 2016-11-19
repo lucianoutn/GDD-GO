@@ -133,6 +133,22 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
+        public List<string> get_id_afiliado(String id_afiliado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_afiliado from GDD_GO.afiliado where id_afiliado="+id_afiliado);
+
+            List<string> resultado = new List<string>();
+
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["id_afiliado"].ToString());
+            }
+
+            lector.Close();
+            return resultado;
+        }
+
         public void actualizarAfiliado(String desc_direccion, String descMail, String descTelefono, String sexo, String estado_civil,int idAfiliado)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set desc_direccion='"+desc_direccion+

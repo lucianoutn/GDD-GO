@@ -55,25 +55,22 @@ namespace ClinicaFrba.Cancelar_Atencion
             {
                 lista_usuarios_afiliados = abm_usuario.get_id_afiliado_multiple(desc_nombre, desc_apellido, desc_dni);
 
-
-                for (int i = 0; i < lista_usuarios_afiliados.Count; i++)
-                {
-                    desc_id = lista_usuarios_afiliados[i];
-
-                    dataGridViewResultados.Rows.Add(desc_id,
-                                              abm_usuario.get_nombre(desc_id).ToString(),
-                                              abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString(),
-                                              abm_usuario.get_id_usuario(desc_id).ToString());
-                }
             }
             else
             {
+                lista_usuarios_afiliados = abm_usuario.get_id_afiliado(desc_id);
+                
+            } 
+            
+            for (int i = 0; i < lista_usuarios_afiliados.Count; i++)
+            {
+                desc_id = lista_usuarios_afiliados[i];
+
                 dataGridViewResultados.Rows.Add(desc_id,
-                                              abm_usuario.get_nombre(desc_id).ToString(),
-                                              abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString(),
-                                              abm_usuario.get_id_usuario(desc_id).ToString());
+                                            abm_usuario.get_nombre(desc_id).ToString(),
+                                            abm_usuario.get_apellido(desc_id).ToString(),
+                                            abm_usuario.get_dni(desc_id).ToString(),
+                                            abm_usuario.get_id_usuario(desc_id).ToString());
             }
         }
 

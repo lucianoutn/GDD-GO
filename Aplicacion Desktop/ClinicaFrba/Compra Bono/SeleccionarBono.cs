@@ -36,19 +36,27 @@ namespace ClinicaFrba.Compra_Bono
         private void buttonComprar_Click(object sender, EventArgs e)
         {
             int cantidad = 0;
-            try
+            int unPlan = abm_usuario.get_plan_medico(unIdAfiliado);
+            if (unPlan == 0)
             {
-                cantidad = int.Parse(textBoxCantidad.Text);
-                for (int i = 0; i < cantidad; i++)
-                {
-                    plan_medico_dao.comprarBono(unIdAfiliado);
-                }
-
-                MessageBox.Show("Compra realizada con exito");
+                MessageBox.Show("Compre un Plan Medico antes de realizar la compra de Bonos");
             }
-            catch
+            else
             {
-                MessageBox.Show("Ingrese una cantidad.");
+                try
+                {
+                    cantidad = int.Parse(textBoxCantidad.Text);
+                    for (int i = 0; i < cantidad; i++)
+                    {
+                        plan_medico_dao.comprarBono(unIdAfiliado, unPlan);
+                    }
+
+                    MessageBox.Show("Compra realizada con exito");
+                }
+                catch
+                {
+                    MessageBox.Show("Ingrese una cantidad.");
+                }
             }
         }
     }

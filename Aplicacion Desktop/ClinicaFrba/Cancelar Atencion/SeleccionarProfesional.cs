@@ -49,30 +49,28 @@ namespace ClinicaFrba.Cancelar_Atencion
             String desc_dni = textBoxDni.Text;
             String desc_id = textBoxId.Text;
 
-            if (string.IsNullOrWhiteSpace(textBoxId.Text))
+           if (string.IsNullOrWhiteSpace(textBoxId.Text))
             {
                 lista_usuarios_profesionales = profesionales_dao.get_profesional_multiple(desc_nombre, desc_apellido, desc_dni);
 
+            }
+            else
+            {
+                lista_usuarios_profesionales = profesionales_dao.get_profesional_multiple(desc_id);
+                
+            }
 
                 for (int i = 0; i < lista_usuarios_profesionales.Count; i++)
                 {
                     desc_id = lista_usuarios_profesionales[i].getid().ToString();
 
                     dataGridViewResultados.Rows.Add(desc_id,
-                                              lista_usuarios_profesionales[i].getnombre(),
-                                              lista_usuarios_profesionales[i].getapellido(),
-                                              lista_usuarios_profesionales[i].getdni().ToString(),
-                                              lista_usuarios_profesionales[i].getid().ToString());
+                                                lista_usuarios_profesionales[i].getnombre(),
+                                                lista_usuarios_profesionales[i].getapellido(),
+                                                lista_usuarios_profesionales[i].getdni().ToString(),
+                                                lista_usuarios_profesionales[i].getid().ToString());
                 }
-            }
-            else
-            {
-                dataGridViewResultados.Rows.Add(desc_id,
-                                              lista_usuarios_profesionales[0].getnombre(),
-                                              lista_usuarios_profesionales[0].getapellido(),
-                                              lista_usuarios_profesionales[0].getdni().ToString(),
-                                              lista_usuarios_profesionales[0].getid().ToString());
-            }
+
         }
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
