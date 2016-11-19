@@ -31,6 +31,50 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
+        public List<string> get_meses()
+        {
+            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_desde) as MESES FROM " + ConstantesBD.tabla_horario + " as co ORDER BY MESES asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_desde) as MESES FROM " + ConstantesBD.tabla_horario + " as co ORDER BY MESES asc");
+            List<string> resultado = new List<string>();
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["MESES"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
+
+        public List<string> get_primerSemestre()
+        {
+            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ORDER BY MESES asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ORDER BY MESES asc");
+            List<string> resultado = new List<string>();
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["MESES"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
+
+        public List<string> get_segundoSemestre()
+        {
+            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ORDER BY MESES asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ORDER BY MESES asc");
+            List<string> resultado = new List<string>();
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["MESES"].ToString());
+            }
+            lector.Close();
+            return resultado;
+        }
+
+        
+
         public SqlDataReader getCancelaciones(string condicion)
         {
             SqlDataReader resultado;
