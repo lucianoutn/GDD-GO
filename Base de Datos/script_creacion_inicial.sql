@@ -162,11 +162,13 @@ CREATE TABLE GDD_GO.bono_comprado
 (
 	  id_bono_comprado int
 	 ,id_afiliado int
+	 ,id_plan_medico int
 	 ,desc_estado bit /* 1:vigente 0:ya utilizado*/
 	 ,desc_fecha_compra DATETIME
 	 ,desc_fecha_impresion DATETIME
 	 ,primary key (id_bono_comprado)
 	 ,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
+	 ,foreign key (id_plan_medico) references GDD_GO.plan_medico(id_plan_medico)
 )
 
 CREATE TABLE GDD_GO.profesional
@@ -700,12 +702,14 @@ Go
 /*Bonos Comprado*/
 Insert into GDD_GO.bono_comprado(	id_bono_comprado
 								   ,id_afiliado
+								   ,id_plan_medico
 								   ,desc_fecha_compra
 								   ,desc_fecha_impresion
 								   ,desc_estado			)
 Select
 	   m.Bono_Consulta_Numero
 	  ,a.id_afiliado
+	  ,m.Plan_Med_Codigo
 	  ,m.Compra_Bono_Fecha
 	  ,m.Bono_Consulta_Fecha_Impresion
 	  ,1
@@ -714,19 +718,6 @@ Join GDD_GO.afiliado a
 	 On a.desc_dni = m.Paciente_Dni
 Where m.Compra_Bono_Fecha is not null AND m.Bono_Consulta_Numero Is not null
 
-/*
-Select
-	m.Bono_Consulta_Numero
-	,a.id_afiliado
-	,m.Compra_Bono_Fecha
-	,m.Bono_Consulta_Fecha_Impresion
-From gd_esquema.Maestra m
-Join GDD_GO.afiliado a
-	 On a.desc_dni = m.Paciente_Dni
-Where m.Bono_Consulta_Numero is not null
-AND m.Compra_Bono_Fecha is not null 
-order by m.Paciente_Dni,m.Bono_Consulta_Numero
-*/
 /*Consultas*/
 Insert into GDD_GO.consulta(
 	 desc_sintomas
