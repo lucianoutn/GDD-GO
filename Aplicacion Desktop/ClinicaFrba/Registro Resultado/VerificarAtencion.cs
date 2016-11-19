@@ -36,11 +36,20 @@ namespace ClinicaFrba.Registro_Resultado
         private void button_cargarAfiliado_Click(object sender, EventArgs e)
         {
             String afiliado = textBoxAfiliado.Text;
+
+            if (regResult.llegoAlTurno(afiliado) == 0)
+            {
+                DateTime fecha = regResult.mostrarFechaTurno(afiliado);
+                string horaTurno = regResult.mostrarHoraTurnoLlegada(afiliado);
+                labelFechaTurno.Text = ConstantesBD.darFormatoFecha(fecha);
+                labelHoraLlegada.Text = horaTurno;
+            }
+            else
+            {
+                MessageBox.Show("No llegó al turno", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
             
-            DateTime fecha =  regResult.mostrarFechaTurno(afiliado);
-            string horaTurno = regResult.mostrarHoraTurnoLlegada(afiliado);
-            labelFechaTurno.Text = ConstantesBD.darFormatoFecha(fecha);
-            labelHoraLlegada.Text = horaTurno;
             //labelHoraLlegada.Text = DateTime.Now.ToString("hh:mm:ss");
         }
 
@@ -53,9 +62,9 @@ namespace ClinicaFrba.Registro_Resultado
                         if (regResult.afiliadoExistente(textBoxAfiliado.Text) == 0)
                         {
                             String nroAfiliado = textBoxAfiliado.Text;
-                            String hora = labelHoraLlegada.Text;
+                            //String hora = labelHoraLlegada.Text;
 
-                            regResult.cargarLlegadaEnConsulta(nroAfiliado, hora);
+                           // regResult.cargarLlegadaEnConsulta(nroAfiliado, hora);
                            
                             RegistrarResultado subMenRegistraResult = new RegistrarResultado(this, nroAfiliado);
                             subMenRegistraResult.Show();
