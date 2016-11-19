@@ -58,26 +58,47 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
         {
             
             int flag = 0;
-            if (!ConstantesBD.horarioInicio(
-                Int32.Parse(textBox1.Text),
-                Int32.Parse(textBox2.Text),
-                desc_dia))
+            try
+            {
+                if (!ConstantesBD.horarioInicio(
+                    Int32.Parse(textBox1.Text),
+                    Int32.Parse(textBox2.Text),
+                    desc_dia))
+                {
+                    flag++;
+                }
+            }
+            catch (Exception)
             {
                 flag++;
             }
-            if (!ConstantesBD.horarioFin(
-                Int32.Parse(textBox3.Text),
-                Int32.Parse(textBox4.Text),
-                desc_dia))
+            try
+            {
+                if (!ConstantesBD.horarioFin(
+                    Int32.Parse(textBox3.Text),
+                    Int32.Parse(textBox4.Text),
+                    desc_dia))
+                {
+                    flag = flag + 2;
+                }
+            }
+            catch (Exception)
             {
                 flag = flag + 2;
             }
-            if (flag == 0)
+            try
             {
-                if (Int32.Parse(textBox1.Text + textBox2.Text) >= Int32.Parse(textBox3.Text + textBox4.Text))
+                if (flag == 0)
                 {
-                    flag = 4;
+                    if (Int32.Parse(textBox1.Text + textBox2.Text) >= Int32.Parse(textBox3.Text + textBox4.Text))
+                    {
+                        flag = 4;
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                flag = 4;
             }
             return flag;
         }
