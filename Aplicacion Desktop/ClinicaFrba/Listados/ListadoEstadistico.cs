@@ -43,22 +43,14 @@ namespace ClinicaFrba.Listados
             comboBoxSemestre.Items.Add("Primer semestre");
             comboBoxSemestre.Items.Add("Segundo semestre");
 
+            /*comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            foreach (string aux1 in listEstDAO.get_meses())
+            {
+                comboBoxMes.Items.Add(aux1);
+            }*/
+
             comboBoxAnio.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            comboBoxMes.Items.Add("01");
-            comboBoxMes.Items.Add("02");
-            comboBoxMes.Items.Add("03");
-            comboBoxMes.Items.Add("04");
-            comboBoxMes.Items.Add("05");
-            comboBoxMes.Items.Add("06");
-            comboBoxMes.Items.Add("07");
-            comboBoxMes.Items.Add("08");
-            comboBoxMes.Items.Add("09");
-            comboBoxMes.Items.Add("10");
-            comboBoxMes.Items.Add("11");
-            comboBoxMes.Items.Add("12");
-
-            comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
 
             foreach (string aux in listEstDAO.get_anios())
             {
@@ -101,23 +93,25 @@ namespace ClinicaFrba.Listados
         {
             SqlDataReader lectorTop5;
 
-            string condicionSemOMesAnio = " ";
+            string condicionSemOMesAnio = " "; // debe permitir enviar el semestre completo o algún mes elegido pero dentro del semestre
 
-            switch (comboBoxSemestre.Text)
-            { 
-                case "Primer Semestre":
-                    condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
-                    break;
+           
+                switch (comboBoxSemestre.Text) // semestre completo ¿Por alguna razón ya no manda el semestre completo :( ?
+                {
+                    case "Primer Semestre":
+                        condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
+                        break;
 
-                case "Segundo Semestre":
-                    condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
-                    break;
-            }
+                    case "Segundo Semestre":
+                        condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
+                        break;
+                }
+            
 
-            if(!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
+            if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)) && !(string.IsNullOrWhiteSpace(comboBoxSemestre.Text)))
             {
                 condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
-                     // cuando se elige solo mes y no año
+                     // cuando se elige un mes dentro semestre
             }
 
             if (!(string.IsNullOrWhiteSpace(comboBoxAnio.Text)))
@@ -155,20 +149,12 @@ namespace ClinicaFrba.Listados
         }
 
 
-        private void cargar_grid_cancelaciones()
+        private void cargar_grid_cancelaciones() // 1 listado, creo que debe ir en otra form porque el grid es distinto
         { 
         
         }
 
-
-
-
-
-
-
-
-
-        private void cargar_grid_profMasConsultadosPorEsp(SqlDataReader lector)
+        private void cargar_grid_profMasConsultadosPorEsp(SqlDataReader lector) // punto 2 de listado hecho
         {
             SqlDataReader lectorT5;
             int i = 0;
@@ -187,7 +173,7 @@ namespace ClinicaFrba.Listados
                 columnas[1] = lectorT5["desc_apellido"].ToString();
                 columnas[2] = lectorT5["desc_nombre"].ToString();
                 columnas[3] = lectorT5["Especialidad"].ToString();
-                columnas[4] = lectorT5["Cantidad"].ToString();
+                columnas[4] = lectorT5["Cantidad"].ToString(); // consultados
                // columnas[5] = lectorT5["Col_GrupoFam"].ToString();
                 
                 filas.Add(new DataGridViewRow());
@@ -200,44 +186,109 @@ namespace ClinicaFrba.Listados
 
 
 
+        private void cargar_grid_profConMenosHorasTrabajadas(SqlDataReader lector)
+        {
+            {
+                SqlDataReader lectorT5;
+                int i = 0;
 
+                lectorT5 = lector;
 
+                List<DataGridViewRow> filas = new List<DataGridViewRow>();
+                Object[] columnas = new Object[5];
 
+                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false; // no visible porque no va grupo familiar
 
+                while (lectorT5.Read())
+                {
+                    i++;
+                    columnas[0] = i.ToString();
+                    columnas[1] = lectorT5["desc_apellido"].ToString();
+                    columnas[2] = lectorT5["desc_nombre"].ToString();
+                    columnas[3] = lectorT5["Especialidad"].ToString();
+                    columnas[4] = lectorT5["Cantidad"].ToString(); //menos horas trabajadas
+                    // columnas[5] = lectorT5["Col_GrupoFam"].ToString();
 
+                    filas.Add(new DataGridViewRow());
+                    filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+                }
 
+                lectorT5.Close();
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());
+            }
+        }
 
+        private void cargar_grid_afiliadosConMasBonosComp(SqlDataReader lector)
+        {
+            {
+                SqlDataReader lectorT5;
+                int i = 0;
 
+                lectorT5 = lector;
 
-        private void cargar_grid_profConMenosHorasTrabajadas()
+                List<DataGridViewRow> filas = new List<DataGridViewRow>();
+                Object[] columnas = new Object[6]; // 6 porque agrego grupo familiar
+
+                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = true; // visible porque agrego grupo familiar
+
+                while (lectorT5.Read())
+                {
+                    i++;
+                    columnas[0] = i.ToString();
+                    columnas[1] = lectorT5["desc_apellido"].ToString(); //apellido afiliado
+                    columnas[2] = lectorT5["desc_nombre"].ToString();//nombre afiliado
+                    columnas[3] = lectorT5["Especialidad"].ToString();
+                    columnas[4] = lectorT5["Cantidad"].ToString(); //cantidad de bonos comprados
+                    columnas[5] = lectorT5["Col_GrupoFam"].ToString();
+
+                    filas.Add(new DataGridViewRow());
+                    filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+                }
+
+                lectorT5.Close();
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());
+            }
+        }
+
+        private void cargar_grid_profConMasBonosConsultUtil() // 5 listado, creo que debe ir en otra form porque el grid es distinto
         {
         
         }
 
-        private void cargar_grid_afiliadosConMasBonosComp()
-        {
-        
-        }
-
-        private void cargar_grid_profConMasBonosConsultUtil()
-        {
-        
-        }
-
-        private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) // la idea es que muestre meses según el semestre elegido 
         {
             comboBoxSemestre.Enabled = false;
 
             if(comboBoxSemestre.Text != "")
             {
-                comboBoxMes.Enabled = false;
+                comboBoxMes.Enabled = true;
                 comboBoxTop5.Enabled = true;
+
+               /* if (comboBoxSemestre.Text == "Primer Semestre")
+                {
+                    foreach (string aux2 in listEstDAO.get_primerSemestre())
+                    {
+                        comboBoxMes.Items.Add(aux2);
+                    }
+                } 
+                else
+                {
+                    foreach (string aux3 in listEstDAO.get_segundoSemestre())
+                    {
+                        comboBoxMes.Items.Add(aux3);
+                    }
+                }*/
             }
             else
             {
                 comboBoxTop5.Enabled = false;
             }
         }
+
+
+       
+
+
 
         private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -261,7 +312,7 @@ namespace ClinicaFrba.Listados
             if(comboBoxAnio.Text != "")
             {
                 comboBoxSemestre.Enabled = true;
-                comboBoxMes.Enabled = true;
+               // comboBoxMes.Enabled = true;
             }
             else
             {
