@@ -305,6 +305,12 @@
     <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
     </Compile>
+    <Compile Include="SelectRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectRoles.Designer.cs">
+      <DependentUpon>SelectRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="SinImplementar\SinImplementarSubMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -428,6 +434,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
       <DependentUpon>VerificarAtencion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SelectRoles.resx">
+      <DependentUpon>SelectRoles.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SinImplementar\SinImplementarSubMenu.resx">
       <DependentUpon>SinImplementarSubMenu.cs</DependentUpon>

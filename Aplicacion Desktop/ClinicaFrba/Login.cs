@@ -47,12 +47,29 @@ namespace ClinicaFrba
                     case "correcto":
 
                         int id_usuario = loginDAO.get_id_usuario(textBoxUserName.Text);
-                        string rol = loginDAO.get_rol(id_usuario);
+                        //  VERIFICANDO SI TIENE MULTIPLES ROLES Y PREGUNTANDO CUAL ELIGE
+                        int cant_roles = loginDAO.get_cant_roles(id_usuario);
+                        if (cant_roles > 1)
+                        {
+                            MessageBox.Show("El usuario tiene multiples roles asignados, favor seleccione uno");
+                            SelectRoles selectRoles = new SelectRoles(id_usuario);
+                            selectRoles.Show();
+                        
+                            string rol = loginDAO.get_rol(id_usuario);
+                            Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
+                            menu.Show();
+                            this.Hide();
+                            break;
+                        }
 
-                        Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
-                        menu.Show();
-                        this.Hide();
-                        break;
+                        else
+                        {
+                            string rol = loginDAO.get_rol(id_usuario);
+                            Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
+                            menu.Show();
+                            this.Hide();
+                            break;
+                        }   
                 }
             }
         }

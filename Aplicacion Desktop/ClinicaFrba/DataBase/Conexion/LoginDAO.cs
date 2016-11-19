@@ -43,7 +43,28 @@ namespace ClinicaFrba.DataBase.Conexion
             return id;
         }
 
+
+        public int get_cant_roles(int id_usuario)
+        {
+            SqlDataReader usuario = this.GD2C2016.ejecutarSentenciaConRetorno("Select Count(*) as 'Cant' from GDD_GO.vista_rol_usuario where id_usuario = '" +
+                                                                                                    id_usuario.ToString() + "' and desc_estado_rol = 1");
+            usuario.Read();
+            int cant = Int32.Parse(usuario["Cant"].ToString());
+            usuario.Close();
+            return cant;
+        } 
+        
         public string get_rol(int id_usuario)
+        {
+            SqlDataReader rol = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_nombre_rol from GDD_GO.vista_rol_usuario where id_usuario = '" +
+                                                                                                    id_usuario.ToString() + "' and desc_estado_rol = 1");
+            rol.Read();
+            string desc_nombre_rol = rol["desc_nombre_rol"].ToString();
+            rol.Close();
+            return desc_nombre_rol;
+        }
+
+        public string get_roles(int id_usuario)
         {
             SqlDataReader rol = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_nombre_rol from GDD_GO.vista_rol_usuario where id_usuario = '" +
                                                                                                     id_usuario.ToString() + "' and desc_estado_rol = 1");
