@@ -193,6 +193,42 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
+        public List<Profesional> get_profesional_multiple(String id_profesional)
+        {
+            List<Profesional> lista = new List<Profesional>();
+
+            SqlDataReader r = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.profesional where id_profesional=" + id_profesional);
+
+            try
+            {
+                while (r.Read())
+                {
+                    Profesional profesional = null;
+                    profesional = new Profesional(
+                                    r.GetInt32(0),
+                                    r.GetString(1),
+                                    r.GetString(2),
+                                    r.GetString(3),
+                                    r.GetInt32(4),
+                                    r.GetString(5),
+                                    r.GetInt32(6),
+                                    r.GetString(7),
+                                    r.GetDateTime(8),
+                                    r.GetDateTime(9),
+                                    r.GetString(10),
+                                    r.GetString(11),
+                                    r.GetInt32(12));
+                    lista.Add(profesional);
+                }
+                r.Close();
+                return lista;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El READ del comando se encuentra vacio", e);
+            }
+        }
+
         public String get_nombre(int id_afiliado)
         {
             string apellido = "";

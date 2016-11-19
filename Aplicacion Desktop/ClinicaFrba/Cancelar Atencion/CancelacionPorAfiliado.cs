@@ -64,7 +64,11 @@ namespace ClinicaFrba.Cancelar_Atencion
 
                 DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
                 string dia = fila.Cells["Dia"].Value.ToString();
-                if (true) // ACA HAY Q VALIDAR Q DIA NO SEA IGUAL A HOY
+
+                DateTime myDate = Convert.ToDateTime(dia);
+                DateTime myDate2 = Convert.ToDateTime(ConstantesBD.fechaSistema);
+
+                if ((int)(myDate2 - myDate).TotalDays<2) // ACA HAY Q VALIDAR Q DIA NO SEA IGUAL A HOY
                     MessageBox.Show("No puede cancelar, los turnos se deben cancelar con mas de un día de anticipacion");
                 else
                 {

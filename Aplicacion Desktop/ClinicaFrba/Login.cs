@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using ClinicaFrba.DataBase.Conexion;
+using ClinicaFrba.SeleccionDeRol;
+
 
 namespace ClinicaFrba
 {
     public partial class Login : Form
     {
         private LoginDAO loginDAO;
+        
 
         public Login()
         {
@@ -52,13 +55,8 @@ namespace ClinicaFrba
                         if (cant_roles > 1)
                         {
                             MessageBox.Show("El usuario tiene multiples roles asignados, favor seleccione uno");
-                            SelectRoles selectRoles = new SelectRoles(id_usuario);
-                            selectRoles.Show();
-                        
-                            string rol = loginDAO.get_rol(id_usuario);
-                            Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
-                            menu.Show();
-                            this.Hide();
+                            SeleccionRol roles = new SeleccionRol(id_usuario, this);
+                            roles.Show();
                             break;
                         }
 
@@ -72,6 +70,13 @@ namespace ClinicaFrba
                         }   
                 }
             }
+        }
+
+        public void rolSeleccionado(string rol, int id_usuario)
+        {
+            Menu menu = new Menu(textBoxUserName.Text, id_usuario, rol);
+            menu.Show();
+            this.Hide();
         }
 
         private void leerArchivoConfig()
