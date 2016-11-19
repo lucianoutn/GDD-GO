@@ -50,13 +50,11 @@ namespace ClinicaFrba.Registro_Llegada
         private void comboProfesional_SelectedIndexChanged(object sender, EventArgs e)
         {
             string profElegido = comboProfesional.SelectedItem.ToString();
-            //int idProfElegido = DAO.getidProf(profElegido);
             dataGridTurno.Rows.Clear();
             dataGridTurno.Refresh();
                        
             List<int> turnosHoy = DAO.turnosHoy(profElegido);
-            //turnosHoy.ForEach(delegate(string s) { dataGridTurno.Rows.Add(s); });
-
+           
             for (int i = 0; i < turnosHoy.Count; i++)
             {
                 int id_turno = turnosHoy[i];
@@ -81,12 +79,12 @@ namespace ClinicaFrba.Registro_Llegada
                 int id_afiliado = DAO.getIdAfSegunTurno(id_turno);
                 int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado);
 
-                //valido que tenga bonos disponibles
+                //valido que tenga bonos disponibles y verifica tambien que los bonos sean del mismo plan actual del afiliado 
                 if (cantDisponible == 0)
                     MessageBox.Show("El afiliado no tiene bonos de consulta disponibles");
                 else
                 {
-                    //tomo el primer bono disponible, marco el bono como usado y decremento el total
+                    //tomo el primer bono disponible, marco el bono como usado y decremento el total y verifica tambien que los bonos sean del mismo plan actual del afiliado
                     int id_bono = DAO.getUnBonoDisponible(id_afiliado);
                     DAO.marcarBonoUtilizado(id_bono);
                     cantDisponible--;
