@@ -1,6 +1,6 @@
-﻿namespace ClinicaFrba
+﻿namespace ClinicaFrba.SeleccionDeRol
 {
-    partial class SelectRoles
+    partial class SeleccionRol
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectRoles));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionRol));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.comboRoles = new System.Windows.Forms.ComboBox();
             this.seleccionar = new System.Windows.Forms.Button();
@@ -43,7 +43,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(176, 83);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Elegir un Rol";
             // 
@@ -66,18 +66,19 @@
             this.seleccionar.TabIndex = 5;
             this.seleccionar.Text = "Seleccionar";
             this.seleccionar.UseVisualStyleBackColor = true;
+            this.seleccionar.Click += new System.EventHandler(this.seleccionar_Click);
             // 
-            // SelectRoles
+            // SeleccionRol
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(200, 105);
+            this.ClientSize = new System.Drawing.Size(197, 102);
             this.Controls.Add(this.groupBox1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SelectRoles";
+            this.Name = "SeleccionRol";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roles Multiples";
-            this.Load += new System.EventHandler(this.SelectRoles_Load);
+            this.Load += new System.EventHandler(this.SeleccionRol_Load);
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -88,7 +89,5 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboRoles;
         private System.Windows.Forms.Button seleccionar;
-
-
     }
 }

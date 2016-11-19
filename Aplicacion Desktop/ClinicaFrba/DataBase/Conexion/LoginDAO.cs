@@ -64,14 +64,17 @@ namespace ClinicaFrba.DataBase.Conexion
             return desc_nombre_rol;
         }
 
-        public string get_roles(int id_usuario)
+        public List<string> get_roles(int id_usuario)
         {
-            SqlDataReader rol = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_nombre_rol from GDD_GO.vista_rol_usuario where id_usuario = '" +
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_nombre_rol from GDD_GO.vista_rol_usuario where id_usuario = '" +
                                                                                                     id_usuario.ToString() + "' and desc_estado_rol = 1");
-            rol.Read();
-            string desc_nombre_rol = rol["desc_nombre_rol"].ToString();
-            rol.Close();
-            return desc_nombre_rol;
+            List<string> resultado = new List<string>();
+            while (lector.Read())
+            {
+                resultado.Add(lector["desc_nombre_rol"].ToString());
+            }
+            lector.Close();
+            return resultado;
         }
 
         public List<string> get_funcionalidades(string rol)
