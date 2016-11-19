@@ -34,6 +34,25 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
+        public int llegoAlTurno(String afiliado)
+        {
+            int turno = get_turno(afiliado);
+            MessageBox.Show("SELECT 1 FROM GDD_GO.consulta WHERE id_turno = '" + turno + "' AND desc_hora_llegada IS NOT NULL");
+            SqlDataReader llegada = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT 1 FROM GDD_GO.consulta WHERE id_turno = '" + turno + "' AND desc_hora_llegada IS NOT NULL");
+
+            if(llegada.HasRows)
+            {
+                llegada.Close();
+                return 0;
+            }
+            else
+            {
+                llegada.Close();
+                return 1;
+            }
+        }
+
+       /* No necesito cargar la llegada en el registro de atención del turno, solo se necesita verificar que llegó
 
         public void cargarLlegadaEnConsulta(String afi, String llegada)
         {
@@ -43,7 +62,7 @@ namespace ClinicaFrba.DataBase.Conexion
             this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_hora_llegada = '" + llegada +
                                                       "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");        
         }
-
+        */
         public void cargarDiagnosticoEnConsulta(String unAfi, String unSintoma, String unDiagnostico)
         {
             int turno = get_turno(unAfi);

@@ -63,6 +63,7 @@
             this.textBoxSintoma.Name = "textBoxSintoma";
             this.textBoxSintoma.Size = new System.Drawing.Size(144, 20);
             this.textBoxSintoma.TabIndex = 2;
+            this.textBoxSintoma.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSintoma_KeyPress);
             // 
             // textBoxDiagnostico
             // 
@@ -70,6 +71,7 @@
             this.textBoxDiagnostico.Name = "textBoxDiagnostico";
             this.textBoxDiagnostico.Size = new System.Drawing.Size(144, 20);
             this.textBoxDiagnostico.TabIndex = 3;
+            this.textBoxDiagnostico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxDiagnostico_KeyPress);
             // 
             // button_Volver
             // 
