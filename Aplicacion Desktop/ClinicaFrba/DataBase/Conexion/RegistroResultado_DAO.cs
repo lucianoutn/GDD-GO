@@ -143,36 +143,38 @@ namespace ClinicaFrba.DataBase.Conexion
             SqlDataReader r = null;
             try
             {
+                /*
                 r = GD2C2016.ejecutarSentenciaConRetorno("select tu.id_turno, af.desc_apellido, af.desc_nombre, af.desc_dni, co.desc_hora_llegada from GDD_GO.consulta co "
                                                         +"join GDD_GO.turno tu on tu.id_turno = co.id_turno and tu.id_profesional = "+id_usuario_logeado
                                                         +" join GDD_GO.afiliado af on af.id_afiliado = tu.id_afiliado "
                                                         +"where co.desc_enfermedades is null and "
-	                                                    +"DATEDIFF(day,desc_hora_consulta,'"+ConstantesBD.fechaSistema+"') = 0");
+                                                        + "DATEDIFF(day,desc_hora_consulta,'" + ConstantesBD.fechaSistema + "') = 0");
+                */
+                r = GD2C2016.ejecutarSentenciaConRetorno("select tu.id_turno, af.desc_apellido, af.desc_nombre, af.desc_dni, co.desc_hora_llegada from GDD_GO.consulta co "
+                                                        + "join GDD_GO.turno tu on tu.id_turno = co.id_turno and tu.id_profesional = 1 join GDD_GO.afiliado af on af.id_afiliado = tu.id_afiliado ");
             }
             catch (Exception e)
             {
                 throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
             }
-            try
-            {
-                while (r.Read())
+            
+            while (r.Read())
                 {
-                    TurnoProfesional turnoProfesional = null;
-                    turnoProfesional = new TurnoProfesional(
+                    
+                TurnoProfesional turnoProfesional = null;
+                
+                turnoProfesional = new TurnoProfesional(
                                     r.GetInt32(0),
                                     r.GetString(1),
                                     r.GetString(2),
                                     r.GetInt32(3),
-                                    r.GetString(4));
+                                    r.GetSqlDateTime(4).ToString());
                     lista.Add(turnoProfesional);
+
+                    i++;
                 }
                 r.Close();
                 return lista;
-            }
-            catch (Exception e)
-            {
-                throw new Exception("El READ del comando se encuentra vacio", e);
-            }
         }
     }
 

@@ -16,9 +16,6 @@ namespace ClinicaFrba.Cancelar_Atencion
         ABM_usuario_DAO abm_usuario;
         List<string> lista_usuarios_afiliados = new List<string>();
 
-        int unSexo, unDesc_Estado_Civil;
-        String unDesc_Nombre, unDesc_Apellido, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Fecha_Nac;
-
         public SeleccionarAfiliado(Form menu)
         {
             abm_usuario = new ABM_usuario_DAO();
