@@ -300,11 +300,17 @@
     <Compile Include="Registro Resultado\RegistrarResultado.designer.cs">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\SeleccionarTurno.cs">
+    <Compile Include="Registro Resultado\SeleccionarMedicoResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\SeleccionarTurno.designer.cs">
-      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
+    <Compile Include="Registro Resultado\SeleccionarMedicoResultado.Designer.cs">
+      <DependentUpon>SeleccionarMedicoResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\SeleccionarTurnoResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\SeleccionarTurnoResultado.designer.cs">
+      <DependentUpon>SeleccionarTurnoResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="SeleccionDeRol\SeleccionRol.cs">
       <SubType>Form</SubType>
@@ -433,8 +439,11 @@
     <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\SeleccionarTurno.resx">
-      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\SeleccionarMedicoResultado.resx">
+      <DependentUpon>SeleccionarMedicoResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\SeleccionarTurnoResultado.resx">
+      <DependentUpon>SeleccionarTurnoResultado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionDeRol\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>

@@ -116,8 +116,18 @@ namespace ClinicaFrba
 
         private void button_RegResultAtenMedica_Click_1(object sender, EventArgs e)
         {
-            SeleccionarTurno menuAtenMedica = new SeleccionarTurno(this, id_usuario_logeado);
-            menuAtenMedica.Show();
+            if (id_usuario_logeado == -1)
+            {
+                SeleccionarMedicoResultado seleccionMedico = new SeleccionarMedicoResultado(this);
+                this.Hide();
+                seleccionMedico.Show();
+            }
+            else
+            {
+                SeleccionarTurnoResultado menuAtenMedica = new SeleccionarTurnoResultado(this, id_usuario_logeado);
+                this.Hide();
+                menuAtenMedica.Show();
+            }
         }
 
         private void button_CancelarAtencion_Click(object sender, EventArgs e)
