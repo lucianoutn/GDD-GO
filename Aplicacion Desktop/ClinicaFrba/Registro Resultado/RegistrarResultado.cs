@@ -13,24 +13,19 @@ namespace ClinicaFrba.Registro_Resultado
     public partial class RegistrarResultado : Form
     {
         ABM_usuario_DAO abm_usuario;
-        VerificarAtencion subMenuVerAtencion;
-        String afiliado = "";
+        SeleccionarTurno subMenuVerAtencion;
+        int unTurno = 0;
         RegistroResultado_DAO regResult;
 
-        public RegistrarResultado(VerificarAtencion subMenuAtencion, String unAfiliado)
+        public RegistrarResultado(SeleccionarTurno subMenuAtencion, int turnoSeleccionado)
         {
             abm_usuario = new ABM_usuario_DAO();
             regResult = new RegistroResultado_DAO();
             InitializeComponent();
             subMenuVerAtencion = subMenuAtencion;
-            afiliado = unAfiliado;
-            cargarDatos();
+            unTurno = turnoSeleccionado;
         }
 
-        public void cargarDatos()
-        {
-            labelAfiliado.Text = afiliado;
-        }
 
         private void button_Volver_Click(object sender, EventArgs e)
         {
@@ -44,7 +39,7 @@ namespace ClinicaFrba.Registro_Resultado
             {
                 String sintoma = textBoxSintoma.Text;
                 String diagnostico = textBoxDiagnostico.Text;
-                regResult.cargarDiagnosticoEnConsulta(afiliado, sintoma, diagnostico);
+                regResult.cargarDiagnosticoEnConsulta(unTurno, sintoma, diagnostico);
                 MessageBox.Show("Diagnóstico cargado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.None);
                 this.Close();
             }

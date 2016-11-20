@@ -198,6 +198,7 @@
     <Compile Include="DataBase\Entidades\Afiliado.cs" />
     <Compile Include="DataBase\Conexion\Turno_DAO.cs" />
     <Compile Include="DataBase\Entidades\Agenda.cs" />
+    <Compile Include="DataBase\Entidades\TurnoProfesional.cs" />
     <Compile Include="DataBase\Entidades\DiaAuxiliar.cs" />
     <Compile Include="DataBase\Entidades\DiaLaboral.cs" />
     <Compile Include="DataBase\Entidades\Horario.cs" />
@@ -299,11 +300,11 @@
     <Compile Include="Registro Resultado\RegistrarResultado.designer.cs">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\VerificarAtencion.cs">
+    <Compile Include="Registro Resultado\SeleccionarTurno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\VerificarAtencion.designer.cs">
-      <DependentUpon>VerificarAtencion.cs</DependentUpon>
+    <Compile Include="Registro Resultado\SeleccionarTurno.designer.cs">
+      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
     </Compile>
     <Compile Include="SeleccionDeRol\SeleccionRol.cs">
       <SubType>Form</SubType>
@@ -432,8 +433,8 @@
     <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\VerificarAtencion.resx">
-      <DependentUpon>VerificarAtencion.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\SeleccionarTurno.resx">
+      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionDeRol\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>

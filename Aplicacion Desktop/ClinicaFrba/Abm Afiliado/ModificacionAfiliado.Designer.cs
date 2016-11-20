@@ -188,15 +188,16 @@
             this.Nombre,
             this.Dni,
             this.id_usuario});
-            this.dataGridViewResultados.Location = new System.Drawing.Point(49, 231);
+            this.dataGridViewResultados.Location = new System.Drawing.Point(97, 233);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(346, 140);
             this.dataGridViewResultados.TabIndex = 51;
             // 
             // Id
             // 
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
+            this.Id.Visible = false;
             // 
             // Apellido
             // 
@@ -217,6 +218,7 @@
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
+            this.id_usuario.Visible = false;
             // 
             // ModificacionAfiliado
             // 

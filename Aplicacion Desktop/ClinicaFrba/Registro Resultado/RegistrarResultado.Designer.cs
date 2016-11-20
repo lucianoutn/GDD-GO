@@ -35,8 +35,6 @@
             this.textBoxDiagnostico = new System.Windows.Forms.TextBox();
             this.button_Volver = new System.Windows.Forms.Button();
             this.button_cerrarConsulta = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelAfiliado = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -88,7 +86,7 @@
             // button_cerrarConsulta
             // 
             this.button_cerrarConsulta.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_cerrarConsulta.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.button_cerrarConsulta.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.button_cerrarConsulta.Location = new System.Drawing.Point(231, 153);
             this.button_cerrarConsulta.Name = "button_cerrarConsulta";
             this.button_cerrarConsulta.Size = new System.Drawing.Size(98, 23);
@@ -97,31 +95,11 @@
             this.button_cerrarConsulta.UseVisualStyleBackColor = true;
             this.button_cerrarConsulta.Click += new System.EventHandler(this.button_cerrarConsulta_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Afiliado: ";
-            // 
-            // labelAfiliado
-            // 
-            this.labelAfiliado.AutoSize = true;
-            this.labelAfiliado.Location = new System.Drawing.Point(87, 12);
-            this.labelAfiliado.Name = "labelAfiliado";
-            this.labelAfiliado.Size = new System.Drawing.Size(53, 13);
-            this.labelAfiliado.TabIndex = 8;
-            this.labelAfiliado.Text = "unAfiliado";
-            // 
             // RegistrarResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(341, 196);
-            this.Controls.Add(this.labelAfiliado);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.button_cerrarConsulta);
             this.Controls.Add(this.button_Volver);
             this.Controls.Add(this.textBoxDiagnostico);
@@ -145,7 +123,5 @@
         private System.Windows.Forms.TextBox textBoxDiagnostico;
         private System.Windows.Forms.Button button_Volver;
         private System.Windows.Forms.Button button_cerrarConsulta;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label labelAfiliado;
     }
 }

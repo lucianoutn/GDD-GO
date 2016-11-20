@@ -39,7 +39,6 @@ D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.VistaJornada.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Llegada.SubmenuRegistro.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.RegistrarResultado.resources
-D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.VerificarAtencion.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.exe
@@ -91,3 +90,5 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Seleccio
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SinImplementar.SinImplementarSubMenu.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\bin\Debug\ClinicaFrba.exe.config
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.SeleccionDeRol.SeleccionRol.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registro_Resultado.SeleccionarTurno.resources

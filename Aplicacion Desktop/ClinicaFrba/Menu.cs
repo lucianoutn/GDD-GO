@@ -116,7 +116,7 @@ namespace ClinicaFrba
 
         private void button_RegResultAtenMedica_Click_1(object sender, EventArgs e)
         {
-            VerificarAtencion menuAtenMedica = new VerificarAtencion(this);
+            SeleccionarTurno menuAtenMedica = new SeleccionarTurno(this, id_usuario_logeado);
             menuAtenMedica.Show();
         }
 
