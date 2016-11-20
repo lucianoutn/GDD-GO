@@ -26,6 +26,11 @@ namespace ClinicaFrba.DataBase.Entidades
             afiliado_id = id;
         }
 
+        public void set_apellido(String unUser)
+        {
+            username=unUser;
+        }
+
         public String get_apellido()
         {
             return desc_apellido;
