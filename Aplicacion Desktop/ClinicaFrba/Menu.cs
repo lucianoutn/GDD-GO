@@ -262,7 +262,7 @@ namespace ClinicaFrba
         {
             if (labelUser.Text.CompareTo("admin") == 0)
             {
-                SeleccionAfiliado vista = new SeleccionAfiliado(this);
+                Pedir_Turno.SeleccionarAfiliado vista = new Pedir_Turno.SeleccionarAfiliado(this);
                 vista.Show();
                 this.Hide();
             }
