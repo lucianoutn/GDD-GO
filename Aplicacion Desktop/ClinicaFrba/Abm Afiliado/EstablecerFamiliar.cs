@@ -52,7 +52,6 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-
             dataGridViewResultados.Rows.Clear();
             dataGridViewResultados.Refresh();
 
@@ -71,19 +70,25 @@ namespace ClinicaFrba.Abm_Afiliado
                     desc_id = lista_usuarios_afiliados[i];
 
                     dataGridViewResultados.Rows.Add(desc_id,
-                                              abm_usuario.get_nombre(desc_id).ToString(),
-                                              abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString(),
-                                              abm_usuario.get_id_usuario(desc_id).ToString());
+                                                    abm_usuario.get_nombre(desc_id).ToString(),
+                                                    abm_usuario.get_apellido(desc_id).ToString(),
+                                                    abm_usuario.get_dni(desc_id).ToString(),
+                                                    abm_usuario.get_id_usuario(desc_id).ToString());
                 }
             }
             else
             {
-                dataGridViewResultados.Rows.Add(desc_id,
-                                              abm_usuario.get_nombre(desc_id).ToString(),
-                                              abm_usuario.get_apellido(desc_id).ToString(),
-                                              abm_usuario.get_dni(desc_id).ToString(),
-                                              abm_usuario.get_id_usuario(desc_id).ToString());
+                int dni = abm_usuario.get_dni(desc_id);
+
+                if (dni != 0)
+                {
+                    dataGridViewResultados.Rows.Add(desc_id,
+                                                    abm_usuario.get_nombre(desc_id).ToString(),
+                                                    abm_usuario.get_apellido(desc_id).ToString(),
+                                                    dni.ToString(),
+                                                    abm_usuario.get_id_usuario(desc_id).ToString());
+                }
+             
             }
         }
 
