@@ -81,6 +81,7 @@ namespace ClinicaFrba.DataBase.Conexion
             }
                 if (!resultado.Read())
                 {
+                    resultado.Close();
                     throw new Exception("No Retorno");
                 }
             Int32 aux = resultado.GetInt32(0);
