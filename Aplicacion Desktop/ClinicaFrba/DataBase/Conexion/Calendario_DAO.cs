@@ -17,15 +17,23 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public bool validarFecha(Profesional prof, DateTime fecha)
         {
-            SqlDataReader r = null;
-            r = GD2C2016.ejecutarSentenciaConRetorno
-                    ("select count(*) from " + ConstantesBD.tabla_agenda + " ag " +
-                    " where ag.id_profesional = " + prof.getid().ToString() +
-                    " and ag.fecha_hasta > " + fechaSQL(fecha));
-            r.Read();
-            Boolean aux = r.GetInt32(0) == 0;
-            r.Close();
-            return aux;
+            Boolean aux;
+            try 
+	        {	        
+        		SqlDataReader r = null;
+                r = GD2C2016.ejecutarSentenciaConRetorno
+                        ("select count(*) from " + ConstantesBD.tabla_agenda + " ag " +
+                        " where ag.id_profesional = " + prof.getid().ToString() +
+                        " and ag.fecha_hasta > " + fechaSQL(fecha));
+                r.Read();
+                aux = r.GetInt32(0) == 0;
+                r.Close();
+                return aux;
+	        }
+	        catch (Exception)
+	        {
+                return false;
+            }            
         }
         public Int32 controlHorarios(List<DiaLaboral> lista)
         {

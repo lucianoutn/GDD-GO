@@ -244,17 +244,17 @@
     <Compile Include="Pedir Turno\ConfirmacionTurno.Designer.cs">
       <DependentUpon>ConfirmacionTurno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Pedir Turno\SeleccionAfiliado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pedir Turno\SeleccionAfiliado.Designer.cs">
-      <DependentUpon>SeleccionAfiliado.cs</DependentUpon>
-    </Compile>
     <Compile Include="Pedir Turno\FormNuevoTurno.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Pedir Turno\FormNuevoTurno.Designer.cs">
       <DependentUpon>FormNuevoTurno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedir Turno\SeleccionarAfiliado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedir Turno\SeleccionarAfiliado.Designer.cs">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -399,8 +399,8 @@
     <EmbeddedResource Include="Pedir Turno\FormNuevoTurno.resx">
       <DependentUpon>FormNuevoTurno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Pedir Turno\SeleccionAfiliado.resx">
-      <DependentUpon>SeleccionAfiliado.cs</DependentUpon>
+    <EmbeddedResource Include="Pedir Turno\SeleccionarAfiliado.resx">
+      <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

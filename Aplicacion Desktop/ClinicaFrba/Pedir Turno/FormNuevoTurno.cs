@@ -25,7 +25,7 @@ namespace ClinicaFrba.Pedir_Turno
         private Especialidad especialidad;
         private List<Horario> lista;
 
-        public FormNuevoTurno(Form eleccion,Form menuppal, String name)
+        public FormNuevoTurno(Form eleccion,Form menuppal,String name)
         {
             InitializeComponent();
             anterior = eleccion;

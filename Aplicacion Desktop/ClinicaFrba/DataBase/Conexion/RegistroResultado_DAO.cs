@@ -171,7 +171,6 @@ namespace ClinicaFrba.DataBase.Conexion
                                     r.GetSqlDateTime(4).ToString());
                     lista.Add(turnoProfesional);
 
-                    i++;
                 }
                 r.Close();
                 return lista;
