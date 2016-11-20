@@ -35,14 +35,21 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
             }
-            while (r.Read())
+            try
             {
-                DiaAuxiliar aux = new DiaAuxiliar(r.GetInt32(0), r.GetInt32(3), r.GetString(7)[0],
-                            r.GetDateTime(1), r.GetDateTime(2),
-                            r.GetDateTime(8), r.GetDateTime(9));
-                lista_D.Add(aux);
+                while (r.Read())
+                {
+                    DiaAuxiliar aux = new DiaAuxiliar(r.GetInt32(0), r.GetInt32(3), r.GetString(7)[0],
+                                r.GetDateTime(1), r.GetDateTime(2),
+                                r.GetDateTime(8), r.GetDateTime(9));
+                    lista_D.Add(aux);
+                }
+                r.Close();
             }
-            r.Close();
+            catch (Exception e)
+            {
+                throw new Exception("No hay respuestas para armar Dias ", e);
+            }
 
             foreach (DiaAuxiliar item in lista_D)
             {
@@ -180,7 +187,7 @@ namespace ClinicaFrba.DataBase.Conexion
         }
         private Boolean es_diaLaboral(DayOfWeek a, char b)
         {
-            return b.Equals(convertirDia(a));
+            return b.Equals(convertirDia(a)) || b.Equals('Z');
         }
         private char convertirDia(DayOfWeek a)
         {
