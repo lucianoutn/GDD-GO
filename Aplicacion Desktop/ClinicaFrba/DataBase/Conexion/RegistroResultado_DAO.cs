@@ -53,22 +53,8 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
-       /* No necesito cargar la llegada en el registro de atención del turno, solo se necesita verificar que llegó
-
-        public void cargarLlegadaEnConsulta(String afi, String llegada)
-        {
-            int turno = get_turno(afi);
-            MessageBox.Show("UPDATE GDD_GO.consulta set desc_hora_llegada = '" + llegada +
-                                                      "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");
-            this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_hora_llegada = '" + llegada +
-                                                      "' + DATEADD(dd,0,DATEDIFF(dd,0,desc_hora_consulta)) WHERE id_turno = '" + turno + "';");        
-        }
-        */
         public void cargarDiagnosticoEnConsulta(int turno, String unSintoma, String unDiagnostico)
         {
-            MessageBox.Show("UPDATE GDD_GO.consulta set desc_sintomas = '" + unSintoma +
-                                                     "', desc_enfermedades = '" + unDiagnostico +
-                                                     "' WHERE id_turno = '" + turno + "';");
             this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_sintomas = '" + unSintoma + 
                                                                                "', desc_enfermedades = '" + unDiagnostico + 
                                                                                "' WHERE id_turno = '" + turno + "';");
@@ -143,15 +129,12 @@ namespace ClinicaFrba.DataBase.Conexion
             SqlDataReader r = null;
             try
             {
-                /*
                 r = GD2C2016.ejecutarSentenciaConRetorno("select tu.id_turno, af.desc_apellido, af.desc_nombre, af.desc_dni, co.desc_hora_llegada from GDD_GO.consulta co "
                                                         +"join GDD_GO.turno tu on tu.id_turno = co.id_turno and tu.id_profesional = "+id_usuario_logeado
                                                         +" join GDD_GO.afiliado af on af.id_afiliado = tu.id_afiliado "
                                                         +"where co.desc_enfermedades is null and "
-                                                        + "DATEDIFF(day,desc_hora_consulta,'" + ConstantesBD.fechaSistema + "') = 0");
-                */
-                r = GD2C2016.ejecutarSentenciaConRetorno("select tu.id_turno, af.desc_apellido, af.desc_nombre, af.desc_dni, co.desc_hora_llegada from GDD_GO.consulta co "
-                                                        + "join GDD_GO.turno tu on tu.id_turno = co.id_turno and tu.id_profesional = 1 join GDD_GO.afiliado af on af.id_afiliado = tu.id_afiliado ");
+                                                        + "DATEDIFF(day,desc_hora_consulta,'" + ConstantesBD.fechaSistema + "') = 0 order by co.desc_hora_llegada");
+
             }
             catch (Exception e)
             {
