@@ -69,7 +69,7 @@ namespace ClinicaFrba.Registro_Resultado
 
                 RegistrarResultado registrarResultado = new RegistrarResultado(this, id_turno);
                 registrarResultado.Show();
-                this.Close();
+                this.Hide(); 
 
             }
             catch

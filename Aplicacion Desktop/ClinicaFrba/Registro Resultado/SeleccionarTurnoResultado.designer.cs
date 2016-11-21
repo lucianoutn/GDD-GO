@@ -114,8 +114,10 @@
             // 
             // hora_llegada
             // 
+            this.hora_llegada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.hora_llegada.HeaderText = "Hora Llegada";
             this.hora_llegada.Name = "hora_llegada";
+            this.hora_llegada.Width = 96;
             // 
             // id_turno
             // 
@@ -123,7 +125,7 @@
             this.id_turno.Name = "id_turno";
             this.id_turno.Visible = false;
             // 
-            // SeleccionarTurno
+            // SeleccionarTurnoResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -136,7 +138,7 @@
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "SeleccionarTurno";
+            this.Name = "SeleccionarTurnoResultado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Resultado de Atención Médica";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTurnos)).EndInit();
