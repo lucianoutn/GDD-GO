@@ -41,6 +41,7 @@ namespace ClinicaFrba.Registro_Resultado
                 String diagnostico = textBoxDiagnostico.Text;
                 regResult.cargarDiagnosticoEnConsulta(unTurno, sintoma, diagnostico);
                 MessageBox.Show("Diagnóstico cargado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.None);
+                subMenuVerAtencion.Show();
                 this.Close();
             }
             else
