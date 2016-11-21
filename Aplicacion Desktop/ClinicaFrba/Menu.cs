@@ -153,7 +153,7 @@ namespace ClinicaFrba
 
         private void buttonCalendar_Click(object sender, EventArgs e)
         {
-            if (labelUser.Text.CompareTo("admin") == 0)
+            if (labelUser.Text.ToLower().CompareTo("admin") == 0)
             {
                 CalendarAdmin vistaAdmin = new CalendarAdmin(this);
                 vistaAdmin.Show();
@@ -260,7 +260,7 @@ namespace ClinicaFrba
 
         private void pedidoTurno_Click(object sender, EventArgs e)
         {
-            if (labelUser.Text.CompareTo("admin") == 0)
+            if (labelUser.Text.ToLower().CompareTo("admin") == 0)
             {
                 Pedir_Turno.SeleccionarAfiliado vista = new Pedir_Turno.SeleccionarAfiliado(this);
                 vista.Show();

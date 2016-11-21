@@ -129,6 +129,7 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
             if (dateTimePickerFin.Checked)
             {
                 errorDateFin.Clear();
+                cambioFechaF = false;
                 Calendario_DAO calendarioDAO = new Calendario_DAO();
 
                 if (!calendarioDAO.validarFecha(profesional, dateTimePickerIni.Value.Date))

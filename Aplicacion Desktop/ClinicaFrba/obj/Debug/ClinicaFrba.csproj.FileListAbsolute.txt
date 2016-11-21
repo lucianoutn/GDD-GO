@@ -29,7 +29,6 @@ C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debu
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Menu.resources
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Pedir_Turno.ConfirmacionTurno.resources
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Pedir_Turno.FormNuevoTurno.resources
-C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Pedir_Turno.SeleccionAfiliado.resources
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Pedir_Turno.SeleccionarAfiliado.resources
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Properties.Resources.resources
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Registrar_Agenta_Medico.ConfirmacionAgenda.resources

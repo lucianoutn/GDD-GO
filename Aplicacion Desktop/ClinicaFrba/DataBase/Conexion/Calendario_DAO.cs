@@ -24,7 +24,8 @@ namespace ClinicaFrba.DataBase.Conexion
                 r = GD2C2016.ejecutarSentenciaConRetorno
                         ("select count(*) from " + ConstantesBD.tabla_agenda + " ag " +
                         " where ag.id_profesional = " + prof.getid().ToString() +
-                        " and ag.fecha_hasta > " + fechaSQL(fecha));
+                        " and ag.fecha_hasta >= " + fechaSQL(fecha)+
+                        " and ag.fecha_desde <= " + fechaSQL(fecha));
                 r.Read();
                 aux = r.GetInt32(0) == 0;
                 r.Close();
