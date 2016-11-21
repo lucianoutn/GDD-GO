@@ -13,11 +13,11 @@ namespace ClinicaFrba.Registro_Resultado
     public partial class RegistrarResultado : Form
     {
         ABM_usuario_DAO abm_usuario;
-        SeleccionarTurno subMenuVerAtencion;
+        SeleccionarTurnoResultado subMenuVerAtencion;
         int unTurno = 0;
         RegistroResultado_DAO regResult;
 
-        public RegistrarResultado(SeleccionarTurno subMenuAtencion, int turnoSeleccionado)
+        public RegistrarResultado(SeleccionarTurnoResultado subMenuAtencion, int turnoSeleccionado)
         {
             abm_usuario = new ABM_usuario_DAO();
             regResult = new RegistroResultado_DAO();

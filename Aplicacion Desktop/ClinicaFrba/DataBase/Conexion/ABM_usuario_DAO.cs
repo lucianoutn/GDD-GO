@@ -208,10 +208,13 @@ namespace ClinicaFrba.DataBase.Conexion
         public int get_dni(String id_afiliado)
         {
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_dni from GDD_GO.afiliado where id_afiliado = " + id_afiliado + "");
-            lector.Read();
-            int cantidad;
-            int.TryParse(lector["desc_dni"].ToString(), out cantidad);
+            
+            int cantidad = 0;
+            
+            if (lector.Read())
+                int.TryParse(lector["desc_dni"].ToString(), out cantidad);
             lector.Close();
+            
             return cantidad;
         }
 
@@ -233,9 +236,11 @@ namespace ClinicaFrba.DataBase.Conexion
         public int get_id_usuario(String id_afiliado)
         {
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_usuario from " + ConstantesBD.tabla_afiliados +" where id_afiliado = " + id_afiliado + "");
-            lector.Read();
-            int cantidad;
-            int.TryParse(lector["id_usuario"].ToString(), out cantidad);
+            
+            int cantidad=0;
+            if (lector.Read())
+                int.TryParse(lector["id_usuario"].ToString(), out cantidad);
+            
             lector.Close();
             return cantidad;
         }

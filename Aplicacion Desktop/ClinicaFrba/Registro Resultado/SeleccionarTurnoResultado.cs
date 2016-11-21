@@ -12,14 +12,14 @@ using ClinicaFrba.DataBase.Entidades;
 
 namespace ClinicaFrba.Registro_Resultado
 {
-    public partial class SeleccionarTurno : Form
+    public partial class SeleccionarTurnoResultado : Form
     {
-        Menu unMenu;
+        Form unMenu;
         ABM_usuario_DAO abm_usuario;
         RegistroResultado_DAO regResult;
         int id_usuario_logeado;
 
-        public SeleccionarTurno(Menu menu, int unid_usuario_logeado)
+        public SeleccionarTurnoResultado(Form menu, int unid_usuario_logeado)
         {
             abm_usuario = new ABM_usuario_DAO();
             regResult = new RegistroResultado_DAO();

@@ -258,6 +258,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registrar Agenta Medico\SeleccionarProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registrar Agenta Medico\SeleccionarProfesional.Designer.cs">
+      <DependentUpon>SeleccionarProfesional.cs</DependentUpon>
+    </Compile>
     <Compile Include="Registrar Agenta Medico\VistaAgena.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -300,11 +306,17 @@
     <Compile Include="Registro Resultado\RegistrarResultado.designer.cs">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </Compile>
-    <Compile Include="Registro Resultado\SeleccionarTurno.cs">
+    <Compile Include="Registro Resultado\SeleccionarMedicoResultado.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Registro Resultado\SeleccionarTurno.designer.cs">
-      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
+    <Compile Include="Registro Resultado\SeleccionarMedicoResultado.Designer.cs">
+      <DependentUpon>SeleccionarMedicoResultado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro Resultado\SeleccionarTurnoResultado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro Resultado\SeleccionarTurnoResultado.designer.cs">
+      <DependentUpon>SeleccionarTurnoResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="SeleccionDeRol\SeleccionRol.cs">
       <SubType>Form</SubType>
@@ -415,6 +427,9 @@
     <EmbeddedResource Include="Registrar Agenta Medico\ConfirmacionAgenda.resx">
       <DependentUpon>ConfirmacionAgenda.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Registrar Agenta Medico\SeleccionarProfesional.resx">
+      <DependentUpon>SeleccionarProfesional.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registrar Agenta Medico\VistaAgena.resx">
       <DependentUpon>VistaAgena.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,8 +448,11 @@
     <EmbeddedResource Include="Registro Resultado\RegistrarResultado.resx">
       <DependentUpon>RegistrarResultado.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Registro Resultado\SeleccionarTurno.resx">
-      <DependentUpon>SeleccionarTurno.cs</DependentUpon>
+    <EmbeddedResource Include="Registro Resultado\SeleccionarMedicoResultado.resx">
+      <DependentUpon>SeleccionarMedicoResultado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro Resultado\SeleccionarTurnoResultado.resx">
+      <DependentUpon>SeleccionarTurnoResultado.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SeleccionDeRol\SeleccionRol.resx">
       <DependentUpon>SeleccionRol.cs</DependentUpon>
@@ -498,6 +516,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rolesBaja.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consultabig.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\consulta.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\farmacia2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

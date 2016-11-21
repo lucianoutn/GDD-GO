@@ -61,7 +61,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 51);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(12, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 13);
             this.label2.TabIndex = 53;
@@ -69,7 +70,9 @@
             // 
             // textBoxCantidad
             // 
-            this.textBoxCantidad.Location = new System.Drawing.Point(74, 48);
+            this.textBoxCantidad.BackColor = System.Drawing.Color.PaleGreen;
+            this.textBoxCantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxCantidad.Location = new System.Drawing.Point(81, 70);
             this.textBoxCantidad.Name = "textBoxCantidad";
             this.textBoxCantidad.Size = new System.Drawing.Size(100, 20);
             this.textBoxCantidad.TabIndex = 54;
@@ -78,11 +81,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.farmacia2;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(252, 178);
             this.Controls.Add(this.textBoxCantidad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonComprar);
             this.Controls.Add(this.buttonVolver);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarBono";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
