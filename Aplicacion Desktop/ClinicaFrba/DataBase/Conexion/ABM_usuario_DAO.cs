@@ -305,7 +305,7 @@ namespace ClinicaFrba.DataBase.Conexion
            reader.Read();
            DateTime hora = DateTime.Parse(reader["desc_fecha_modificacion"].ToString());
            reader.Close();
-           return hora.ToString("dd'/'MM'/'YYYY");
+           return hora.ToString("dd'/'MM'/'yyyy");
        }
 
        public string getMotivo(int id_historial)

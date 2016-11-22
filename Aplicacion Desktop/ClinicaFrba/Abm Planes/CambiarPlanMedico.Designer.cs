@@ -90,12 +90,18 @@
             // 
             // dataGridViewPlan
             // 
+            this.dataGridViewPlan.AllowUserToAddRows = false;
+            this.dataGridViewPlan.AllowUserToDeleteRows = false;
+            this.dataGridViewPlan.AllowUserToResizeColumns = false;
+            this.dataGridViewPlan.AllowUserToResizeRows = false;
             this.dataGridViewPlan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewPlan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id_plan,
             this.nombre_plan});
             this.dataGridViewPlan.Location = new System.Drawing.Point(140, 70);
             this.dataGridViewPlan.Name = "dataGridViewPlan";
+            this.dataGridViewPlan.ReadOnly = true;
+            this.dataGridViewPlan.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPlan.Size = new System.Drawing.Size(144, 145);
             this.dataGridViewPlan.TabIndex = 61;
             // 
@@ -103,12 +109,14 @@
             // 
             this.id_plan.HeaderText = "ID";
             this.id_plan.Name = "id_plan";
+            this.id_plan.ReadOnly = true;
             this.id_plan.Visible = false;
             // 
             // nombre_plan
             // 
             this.nombre_plan.HeaderText = "Nombre Plan";
             this.nombre_plan.Name = "nombre_plan";
+            this.nombre_plan.ReadOnly = true;
             // 
             // CambiarPlanMedico
             // 
