@@ -76,14 +76,12 @@ namespace ClinicaFrba.Registrar_Agenda_Medico
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
-            String familiar = "null";
-            
             DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
-            int id = int.Parse(fila.Cells["id_usuario"].Value.ToString());
+            Int32 id = Int32.Parse(fila.Cells["id"].Value.ToString());
 
             ABM_usuario_DAO dao = new ABM_usuario_DAO();
-
-            CalendarProf vistaProff = new CalendarProf(this, unMenu, dao.getUsuarioDe(id).getUsername());
+            CalendarProf vistaProff = new CalendarProf(this, unMenu,
+                dao.getUsuarioDe(lista_usuarios_profesionales[id].getusuario()).getUsername());
             vistaProff.Show();
             this.Hide();
        }
