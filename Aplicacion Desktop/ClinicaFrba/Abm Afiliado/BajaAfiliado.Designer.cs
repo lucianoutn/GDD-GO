@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BajaAfiliado));
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxId = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,17 +49,18 @@
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.labelCliente = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToOrderColumns = true;
+            this.dataGridViewResultados.AllowUserToResizeColumns = false;
+            this.dataGridViewResultados.AllowUserToResizeRows = false;
+            this.dataGridViewResultados.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -63,9 +69,44 @@
             this.Dni,
             this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(9, 261);
+            this.dataGridViewResultados.MultiSelect = false;
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewResultados.ShowEditingIcon = false;
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 0;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "DNI";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "ID Usuario";
+            this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
+            this.id_usuario.Visible = false;
             // 
             // groupBox1
             // 
@@ -204,32 +245,6 @@
             this.labelCliente.Size = new System.Drawing.Size(198, 26);
             this.labelCliente.TabIndex = 147;
             this.labelCliente.Text = "BAJA DE AFILIADO";
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "DNI";
-            this.Dni.Name = "Dni";
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "ID Usuario";
-            this.id_usuario.Name = "id_usuario";
-            this.id_usuario.Visible = false;
             // 
             // BajaAfiliado
             // 

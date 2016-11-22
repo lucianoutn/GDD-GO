@@ -181,6 +181,11 @@
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToResizeColumns = false;
+            this.dataGridViewResultados.AllowUserToResizeRows = false;
+            this.dataGridViewResultados.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -189,7 +194,11 @@
             this.Dni,
             this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(97, 233);
+            this.dataGridViewResultados.MultiSelect = false;
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewResultados.ShowEditingIcon = false;
             this.dataGridViewResultados.Size = new System.Drawing.Size(346, 140);
             this.dataGridViewResultados.TabIndex = 51;
             // 
@@ -197,27 +206,32 @@
             // 
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
             this.Id.Visible = false;
             // 
             // Apellido
             // 
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Dni
             // 
             this.Dni.HeaderText = "DNI";
             this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
             // 
             // id_usuario
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
             this.id_usuario.Visible = false;
             // 
             // ModificacionAfiliado
