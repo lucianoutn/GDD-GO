@@ -32,6 +32,7 @@
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonCambiarPlan = new System.Windows.Forms.Button();
             this.buttonComprarPlan = new System.Windows.Forms.Button();
+            this.consultaHistorico = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonVolver
@@ -49,7 +50,7 @@
             // buttonCambiarPlan
             // 
             this.buttonCambiarPlan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCambiarPlan.Location = new System.Drawing.Point(58, 54);
+            this.buttonCambiarPlan.Location = new System.Drawing.Point(58, 23);
             this.buttonCambiarPlan.Name = "buttonCambiarPlan";
             this.buttonCambiarPlan.Size = new System.Drawing.Size(162, 36);
             this.buttonCambiarPlan.TabIndex = 59;
@@ -60,7 +61,7 @@
             // buttonComprarPlan
             // 
             this.buttonComprarPlan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonComprarPlan.Location = new System.Drawing.Point(58, 119);
+            this.buttonComprarPlan.Location = new System.Drawing.Point(58, 65);
             this.buttonComprarPlan.Name = "buttonComprarPlan";
             this.buttonComprarPlan.Size = new System.Drawing.Size(162, 36);
             this.buttonComprarPlan.TabIndex = 60;
@@ -68,11 +69,23 @@
             this.buttonComprarPlan.UseVisualStyleBackColor = true;
             this.buttonComprarPlan.Click += new System.EventHandler(this.buttonComprarPlan_Click);
             // 
+            // consultaHistorico
+            // 
+            this.consultaHistorico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.consultaHistorico.Location = new System.Drawing.Point(58, 107);
+            this.consultaHistorico.Name = "consultaHistorico";
+            this.consultaHistorico.Size = new System.Drawing.Size(162, 36);
+            this.consultaHistorico.TabIndex = 60;
+            this.consultaHistorico.Text = "Consultar histórico de cambios de planes médicos";
+            this.consultaHistorico.UseVisualStyleBackColor = true;
+            this.consultaHistorico.Click += new System.EventHandler(this.consultaHistorico_Click);
+            // 
             // SubMenuPlanMedico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.consultaHistorico);
             this.Controls.Add(this.buttonComprarPlan);
             this.Controls.Add(this.buttonCambiarPlan);
             this.Controls.Add(this.buttonVolver);
@@ -80,6 +93,7 @@
             this.Name = "SubMenuPlanMedico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Plan Medico";
+            this.Load += new System.EventHandler(this.SubMenuPlanMedico_Load);
             this.ResumeLayout(false);
 
         }
@@ -89,5 +103,6 @@
         private System.Windows.Forms.Button buttonVolver;
         private System.Windows.Forms.Button buttonCambiarPlan;
         private System.Windows.Forms.Button buttonComprarPlan;
+        private System.Windows.Forms.Button consultaHistorico;
     }
 }

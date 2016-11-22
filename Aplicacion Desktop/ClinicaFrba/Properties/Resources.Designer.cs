@@ -95,6 +95,13 @@ namespace ClinicaFrba.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap historial {
+            get {
+                object obj = ResourceManager.GetObject("historial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap medicos {
             get {
                 object obj = ResourceManager.GetObject("medicos", resourceCulture);

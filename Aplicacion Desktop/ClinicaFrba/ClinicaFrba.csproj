@@ -83,6 +83,12 @@
     <Compile Include="Abm Afiliado\SubMenuAfiliado.Designer.cs">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Abm Planes\consultaHistoricoMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Abm Planes\consultaHistoricoMenu.Designer.cs">
+      <DependentUpon>consultaHistoricoMenu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Abm Planes\SeleccionarAfiliado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     <EmbeddedResource Include="Abm Afiliado\SubMenuAfiliado.resx">
       <DependentUpon>SubMenuAfiliado.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Abm Planes\consultaHistoricoMenu.resx">
+      <DependentUpon>consultaHistoricoMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Abm Planes\SeleccionarAfiliado.resx">
       <DependentUpon>SeleccionarAfiliado.cs</DependentUpon>
     </EmbeddedResource>
@@ -525,6 +534,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\farmacia2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\historial.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -286,5 +286,44 @@ namespace ClinicaFrba.DataBase.Conexion
             lector.Close();
             return cantidad;
         }
+
+       public List<int> getIdsHistorial(string id_afiliado)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.hist_cambios_plan_afiliado h where h.id_afiliado ='"+ id_afiliado +"' order by h.desc_fecha_modificacion asc");
+            List<int> resultado = new List<int>();
+            while (lector.Read())
+            {
+                resultado.Add(Int32.Parse(lector["id_historial"].ToString()));
+            }
+            lector.Close();
+            return resultado;
+        }
+
+       public string getFechaModificacion(int id_historial)
+       {
+           SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_fecha_modificacion from GDD_GO.hist_cambios_plan_afiliado where id_historial ='" + id_historial + "'");
+           reader.Read();
+           DateTime hora = DateTime.Parse(reader["desc_fecha_modificacion"].ToString());
+           reader.Close();
+           return hora.ToString("dd'/'MM'/'YYYY");
+       }
+
+       public string getMotivo(int id_historial)
+       {
+           SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_motivo from GDD_GO.hist_cambios_plan_afiliado where id_historial ='" + id_historial + "'");
+           reader.Read();
+           string motivo = reader["desc_motivo"].ToString();
+           reader.Close();
+           return motivo;
+       }
+
+       public int getPlanAnterior(int id_historial)
+       {
+           SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_plan_medico_anterior as id from GDD_GO.hist_cambios_plan_afiliado where id_historial ='" + id_historial + "'");
+           reader.Read();
+           int id = Int32.Parse(reader["id"].ToString());
+           reader.Close();
+           return id;
+       }
     }
 }

@@ -74,7 +74,7 @@
             this.textBoxIdAfiliado.Size = new System.Drawing.Size(100, 20);
             this.textBoxIdAfiliado.TabIndex = 59;
             // 
-            // CambiarPlanMedico
+            // SeleccionarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -84,9 +84,9 @@
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Name = "CambiarPlanMedico";
+            this.Name = "SeleccionarAfiliado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cambio de plan";
+            this.Text = "Compra / Cambio de plan";
             this.ResumeLayout(false);
             this.PerformLayout();
 

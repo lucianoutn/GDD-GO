@@ -63,5 +63,18 @@ namespace ClinicaFrba.Abm_Planes
             unMenu.Show();
             this.Close();
         }
+
+        private void SubMenuPlanMedico_Load(object sender, EventArgs e)
+        {
+            if (!(id_usuario_logeado == -1))
+                consultaHistorico.Hide();
+        }
+
+        private void consultaHistorico_Click(object sender, EventArgs e)
+        {
+            consultaHistoricoMenu consultaHistoricoMenu = new consultaHistoricoMenu(this);
+            consultaHistoricoMenu.Show();
+            this.Hide();
+        }
     }
 }

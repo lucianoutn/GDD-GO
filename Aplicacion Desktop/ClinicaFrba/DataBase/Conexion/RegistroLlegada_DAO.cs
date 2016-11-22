@@ -83,7 +83,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public string getHoraTurno(int turno_id)
         {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno =+'"+turno_id+"'");
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno ='"+turno_id+"'");
             reader.Read();
             DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
             reader.Close();
@@ -92,11 +92,11 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public string getAfTurno(int id_turno)
         {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno =+'" + id_turno + "'");
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno ='" + id_turno + "'");
             reader.Read();
             int id_afiliado = Int32.Parse(reader["id_afiliado"].ToString());
             reader.Close();
-            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select (desc_apellido +' '+ desc_nombre)as nombre from GDD_GO.afiliado where id_afiliado =+'" + id_afiliado + "'");
+            reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select (desc_apellido +' '+ desc_nombre)as nombre from GDD_GO.afiliado where id_afiliado ='" + id_afiliado + "'");
             reader.Read();
             string nombre = reader["nombre"].ToString();
             reader.Close();
@@ -105,7 +105,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public int getIdAfSegunTurno(int id_turno)
         {
-            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno =+'" + id_turno + "'");
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_afiliado from GDD_GO.turno where id_turno ='" + id_turno + "'");
             reader.Read();
             int id_afiliado = Int32.Parse(reader["id_afiliado"].ToString());
             reader.Close();
