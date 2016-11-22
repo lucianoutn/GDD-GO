@@ -33,6 +33,7 @@ namespace ClinicaFrba.DataBase.Conexion
         public void cancelarTurno(int id_turno, string motivo, int desc__cancelacion_usuario, int desc_usuario)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) values ('" + motivo + "', " + id_turno + ", " + desc__cancelacion_usuario + ","+desc_usuario+")");
+            new Horarios_DAO().liberarHorarioDelTurno(id_turno);
         }
 
         public void cancelarTurnoProfesional(string motivo, string desc__cancelacion_usuario, DateTime hora_desde, DateTime hora_hasta)
@@ -94,7 +95,7 @@ namespace ClinicaFrba.DataBase.Conexion
                         " values ("+
                         "((select TOP(1) id_turno from "+ConstantesBD.tabla_turno+
                         " order by id_turno desc) + 1),"+
-                        afiliado.ToString()+","+prof.ToString()+", 0, "+esp+") ");
+                        afiliado.ToString()+","+prof.ToString()+", 0, "+esp.ToString()+") ");
 
                 resultado = this.GD2C2016.ejecutarSentenciaConRetorno(
                         "select TOP(1) id_turno from "+ConstantesBD.tabla_turno+

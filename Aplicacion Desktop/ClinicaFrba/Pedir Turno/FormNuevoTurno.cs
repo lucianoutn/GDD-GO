@@ -143,7 +143,7 @@ namespace ClinicaFrba.Pedir_Turno
                 aux++;
             }
             dataGridView.Refresh();
-            dataGridView.Sort(dataGridView.Columns[0],ListSortDirection.Ascending);
+            dataGridView.Sort(dataGridView.Columns[1], ListSortDirection.Ascending);
             popApp.Hide();
         }
 

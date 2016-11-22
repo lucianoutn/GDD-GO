@@ -50,10 +50,14 @@ namespace ClinicaFrba.DataBase.Conexion
             {
                 throw new Exception("No hay respuestas para armar Dias ", e);
             }
+            DateTime hoy = new DateTime(
+                 ConstantesBD.getParteDeFecha(ConstantesBD.fechaSistema, 2),
+                 ConstantesBD.getParteDeFecha(ConstantesBD.fechaSistema, 1),
+                 ConstantesBD.getParteDeFecha(ConstantesBD.fechaSistema, 0));
 
             foreach (DiaAuxiliar item in lista_D)
             {
-                list.AddRange(armarDia(item));
+                list.AddRange(armarDia(item,hoy));
             }
 
             return list;
@@ -96,11 +100,18 @@ namespace ClinicaFrba.DataBase.Conexion
             return list;
         }
 
-        private List<Horario> armarDia(DiaAuxiliar dia)
+        private List<Horario> armarDia(DiaAuxiliar dia,DateTime hoy)
         {
             Boolean flagDiaCreado = true;
             List<Horario> list = new List<Horario>();
-            DateTime aux = dia.fecha;
+            DateTime aux;
+            if(dia.fecha.CompareTo(hoy)<0)
+            {
+                aux = hoy;
+            }else
+            {
+                aux = dia.fecha;
+            }
             while (dia.fechafin.CompareTo(aux) >= 0 && flagDiaCreado)
             {
                 if(es_diaLaboral(aux.DayOfWeek,dia.dia))
@@ -199,6 +210,12 @@ namespace ClinicaFrba.DataBase.Conexion
             else if (a.Equals(DayOfWeek.Saturday)) return 'S';
             else return 'D';
         }
-    
+
+
+        internal void liberarHorarioDelTurno(int id_turno)
+        {
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update "+ConstantesBD.tabla_horario+" Set id_turno= null "+
+                "where id_turno = "+id_turno.ToString());
+        }
     }
 }

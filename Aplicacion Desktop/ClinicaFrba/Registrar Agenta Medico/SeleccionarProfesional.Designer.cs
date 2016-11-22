@@ -233,7 +233,6 @@
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
-            this.id_usuario.Visible = false;
             // 
             // SeleccionarProfesional
             // 

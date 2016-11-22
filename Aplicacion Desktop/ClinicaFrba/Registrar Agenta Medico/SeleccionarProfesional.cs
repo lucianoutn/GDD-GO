@@ -69,7 +69,7 @@ namespace ClinicaFrba.Registrar_Agenda_Medico
                                                 lista_usuarios_profesionales[i].getnombre(),
                                                 lista_usuarios_profesionales[i].getapellido(),
                                                 lista_usuarios_profesionales[i].getdni().ToString(),
-                                                lista_usuarios_profesionales[i].getid().ToString());
+                                                lista_usuarios_profesionales[i].getusuario().ToString());
                 }
 
         }
@@ -77,11 +77,11 @@ namespace ClinicaFrba.Registrar_Agenda_Medico
         private void buttonSeleccionar_Click(object sender, EventArgs e)
         {
             DataGridViewRow fila = dataGridViewResultados.SelectedRows[0];
-            Int32 id = Int32.Parse(fila.Cells["id"].Value.ToString());
+            Int32 id = Int32.Parse(fila.Cells["id_usuario"].Value.ToString());
 
             ABM_usuario_DAO dao = new ABM_usuario_DAO();
             CalendarProf vistaProff = new CalendarProf(this, unMenu,
-                dao.getUsuarioDe(lista_usuarios_profesionales[id].getusuario()).getUsername());
+                dao.getUsuarioDe(id).getUsername());
             vistaProff.Show();
             this.Hide();
        }
