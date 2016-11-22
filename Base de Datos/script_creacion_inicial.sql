@@ -245,9 +245,11 @@ CREATE TABLE GDD_GO.turno
 	,desc_estado BIT		/*1=CANCELADO*/
 	,id_afiliado int
 	,id_profesional int
+	,id_especialidad int
 	,primary key (id_turno)
 	,foreign key (id_afiliado) references GDD_GO.afiliado(id_afiliado)
 	,foreign key (id_profesional) references GDD_GO.profesional(id_profesional)
+	,foreign key (id_especialidad) references GDD_GO.especialidad(id_especialidad)
 )
 
 CREATE TABLE GDD_GO.horario
@@ -657,8 +659,9 @@ Go
 Insert into GDD_GO.turno	(	id_turno
 							   ,id_afiliado
 							   ,id_profesional
-							   ,desc_estado	)
-Select Turno_Numero, af.id_afiliado, pr.id_profesional, 0
+							   ,desc_estado
+							   ,id_especialidad	)
+Select Turno_Numero, af.id_afiliado, pr.id_profesional, 0, Especialidad_Codigo
 From gd_esquema.Maestra
 join GDD_GO.afiliado af
 	 On Paciente_Dni = af.desc_dni
