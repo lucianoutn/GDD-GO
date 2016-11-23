@@ -42,17 +42,10 @@ namespace ClinicaFrba.Listados
             
             comboBoxSemestre.Items.Add("Primer semestre");
             comboBoxSemestre.Items.Add("Segundo semestre");
-            /*
-            comboBoxSemestre.Items.Add(1);
-            comboBoxSemestre.Items.Add(2);
-            */
+           
             comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
 
-           /* foreach (string aux1 in listEstDAO.get_meses())
-            {
-                comboBoxMes.Items.Add(aux1);
-            }*/
-
+         
             comboBoxAnio.DropDownStyle = ComboBoxStyle.DropDownList;
 
             foreach (string aux in listEstDAO.get_anios())
@@ -60,9 +53,9 @@ namespace ClinicaFrba.Listados
                 comboBoxAnio.Items.Add(aux);
             }
 
-            comboBoxTop5.Enabled = true;
-            comboBoxSemestre.Enabled = true;
-            comboBoxMes.Enabled = true;
+            comboBoxTop5.Enabled = false;
+            comboBoxSemestre.Enabled = false;
+            comboBoxMes.Enabled = false;
         }
 
         private void button_volver_Click(object sender, EventArgs e)
@@ -78,10 +71,10 @@ namespace ClinicaFrba.Listados
             comboBoxSemestre.SelectedIndex = -1;
             comboBoxMes.SelectedIndex = -1;
             dataGridViewTop5.Rows.Clear();
-            comboBoxSemestre.Enabled = true;
-            comboBoxTop5.Enabled = true;
+            comboBoxSemestre.Enabled = false;
+            comboBoxTop5.Enabled = false;
             comboBoxAnio.Enabled = true;
-            comboBoxMes.Enabled = true;
+            comboBoxMes.Enabled = false;
         }
 
         private void comboBoxTop5_SelectedIndexChanged(object sender, EventArgs e)
@@ -94,64 +87,63 @@ namespace ClinicaFrba.Listados
 
         public void cargar_lista()
         {
-            SqlDataReader lectorTop5;
-
-            string condicionSem = " "; // debe permitir enviar el semestre completo o algún mes elegido pero dentro del semestre
-            string condicionMes = " ";
+            SqlDataReader lectorTop5;            
+         
+            string condicion = " ";
             string condicionAnio = " ";
-            string condicionFinal = " ";
 
-            
-            switch (comboBoxSemestre.Text)
+            if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
             {
-                case "Primer semestre":
-                    condicionSem = condicionSem + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
-                    break;
-
-                case "Segundo semestre":
-                    condicionSem = condicionSem + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
-                    break;
+                condicion = condicion + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
             }
-            
-           
-                //MessageBox.Show("Debe seleccionar un semestre", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           
+            else
+            {
+                switch (comboBoxSemestre.Text)
+                {
+                    case "Primer semestre":
+                        condicion = condicion + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
+                        break;
 
-            if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)) /*&& !(string.IsNullOrWhiteSpace(comboBoxSemestre.Text))*/)
+                    case "Segundo semestre":
+                        condicion = condicion + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
+                        break;
+                }
+            }
+
+      /*      if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
             {
                 condicionMes = condicionMes + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
-                     // cuando se elige un mes dentro semestre
             }
-
+    */
             if (!(string.IsNullOrWhiteSpace(comboBoxAnio.Text)))
             {
                 condicionAnio = condicionAnio + " AND YEAR(co.desc_hora_consulta) = '" + comboBoxAnio.Text + "'";
             }
 
-            condicionFinal = condicionSem + condicionAnio; /*+ condicionMes + condicionAnio;*/
-            this.condicion_guardada = condicionFinal;
+            condicion = condicion + condicionAnio; /*+ condicionMes + condicionAnio;*/
+            this.condicion_guardada = condicion;
 
             switch (comboBoxTop5.Text)
             { 
                 case "Especialidades con más cancelaciones": /*Tanto de afiliados como profesionales*/
-                    lectorTop5 = listEstDAO.getCancelaciones(condicionFinal);
+                    lectorTop5 = listEstDAO.getCancelaciones(condicion);
                     break;
 
                 case "Profesionales más consultados por especialidad":
-                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionFinal);
+                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicion);
                     cargar_grid_profMasConsultadosPorEsp(lectorTop5);
                     break;
 
                 case "Profesionales con menos horas trabajadas por especialidad":
-                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionFinal);
+                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicion);
                     break;
 
                 case "Afiliados con más bonos comprados":
-                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionFinal);
+                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicion);
                     break;
 
                 case "Especialidades con más bonos de consulta utilizados":
-                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionFinal);
+                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicion);
                     break;
 
             }
@@ -298,10 +290,6 @@ namespace ClinicaFrba.Listados
                 comboBoxTop5.Enabled = false;
             }
         }
-
-
-       
-
 
 
         private void comboBoxMes_SelectedIndexChanged(object sender, EventArgs e)
