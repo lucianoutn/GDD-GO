@@ -90,7 +90,7 @@
             // buttonABMAfiliado
             // 
             this.buttonABMAfiliado.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonABMAfiliado.Location = new System.Drawing.Point(12, 45);
+            this.buttonABMAfiliado.Location = new System.Drawing.Point(181, 87);
             this.buttonABMAfiliado.Name = "buttonABMAfiliado";
             this.buttonABMAfiliado.Size = new System.Drawing.Size(163, 36);
             this.buttonABMAfiliado.TabIndex = 3;
@@ -101,7 +101,7 @@
             // ButtonCalendar
             // 
             this.ButtonCalendar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ButtonCalendar.Location = new System.Drawing.Point(181, 255);
+            this.ButtonCalendar.Location = new System.Drawing.Point(12, 45);
             this.ButtonCalendar.Name = "ButtonCalendar";
             this.ButtonCalendar.Size = new System.Drawing.Size(163, 36);
             this.ButtonCalendar.TabIndex = 4;
@@ -123,7 +123,7 @@
             // button_RegResultAtenMedica
             // 
             this.button_RegResultAtenMedica.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_RegResultAtenMedica.Location = new System.Drawing.Point(12, 171);
+            this.button_RegResultAtenMedica.Location = new System.Drawing.Point(12, 213);
             this.button_RegResultAtenMedica.Name = "button_RegResultAtenMedica";
             this.button_RegResultAtenMedica.Size = new System.Drawing.Size(163, 36);
             this.button_RegResultAtenMedica.TabIndex = 5;
@@ -134,7 +134,7 @@
             // button_CancelarAtencion
             // 
             this.button_CancelarAtencion.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_CancelarAtencion.Location = new System.Drawing.Point(12, 213);
+            this.button_CancelarAtencion.Location = new System.Drawing.Point(12, 255);
             this.button_CancelarAtencion.Name = "button_CancelarAtencion";
             this.button_CancelarAtencion.Size = new System.Drawing.Size(163, 36);
             this.button_CancelarAtencion.TabIndex = 6;
@@ -145,7 +145,7 @@
             // button_ListadoEstadistico
             // 
             this.button_ListadoEstadistico.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_ListadoEstadistico.Location = new System.Drawing.Point(12, 255);
+            this.button_ListadoEstadistico.Location = new System.Drawing.Point(12, 297);
             this.button_ListadoEstadistico.Name = "button_ListadoEstadistico";
             this.button_ListadoEstadistico.Size = new System.Drawing.Size(163, 36);
             this.button_ListadoEstadistico.TabIndex = 7;
@@ -156,9 +156,9 @@
             // buttonComprarBono
             // 
             this.buttonComprarBono.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonComprarBono.Location = new System.Drawing.Point(182, 171);
+            this.buttonComprarBono.Location = new System.Drawing.Point(12, 87);
             this.buttonComprarBono.Name = "buttonComprarBono";
-            this.buttonComprarBono.Size = new System.Drawing.Size(162, 36);
+            this.buttonComprarBono.Size = new System.Drawing.Size(163, 36);
             this.buttonComprarBono.TabIndex = 9;
             this.buttonComprarBono.Text = "Comprar Bono";
             this.buttonComprarBono.UseVisualStyleBackColor = true;
@@ -167,7 +167,7 @@
             // ABMUsuario
             // 
             this.ABMUsuario.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ABMUsuario.Location = new System.Drawing.Point(12, 87);
+            this.ABMUsuario.Location = new System.Drawing.Point(181, 171);
             this.ABMUsuario.Name = "ABMUsuario";
             this.ABMUsuario.Size = new System.Drawing.Size(163, 36);
             this.ABMUsuario.TabIndex = 11;
@@ -178,7 +178,7 @@
             // ABMProfesional
             // 
             this.ABMProfesional.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ABMProfesional.Location = new System.Drawing.Point(181, 87);
+            this.ABMProfesional.Location = new System.Drawing.Point(181, 129);
             this.ABMProfesional.Name = "ABMProfesional";
             this.ABMProfesional.Size = new System.Drawing.Size(163, 36);
             this.ABMProfesional.TabIndex = 11;
@@ -189,7 +189,7 @@
             // ABMEspecialidadesMedicas
             // 
             this.ABMEspecialidadesMedicas.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ABMEspecialidadesMedicas.Location = new System.Drawing.Point(12, 129);
+            this.ABMEspecialidadesMedicas.Location = new System.Drawing.Point(181, 213);
             this.ABMEspecialidadesMedicas.Name = "ABMEspecialidadesMedicas";
             this.ABMEspecialidadesMedicas.Size = new System.Drawing.Size(163, 36);
             this.ABMEspecialidadesMedicas.TabIndex = 11;
@@ -200,7 +200,7 @@
             // ABMPlan
             // 
             this.ABMPlan.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.ABMPlan.Location = new System.Drawing.Point(182, 129);
+            this.ABMPlan.Location = new System.Drawing.Point(181, 255);
             this.ABMPlan.Name = "ABMPlan";
             this.ABMPlan.Size = new System.Drawing.Size(163, 36);
             this.ABMPlan.TabIndex = 11;
@@ -220,9 +220,9 @@
             // 
             // buttonPlanMedico
             // 
-            this.buttonPlanMedico.Location = new System.Drawing.Point(182, 213);
+            this.buttonPlanMedico.Location = new System.Drawing.Point(181, 297);
             this.buttonPlanMedico.Name = "buttonPlanMedico";
-            this.buttonPlanMedico.Size = new System.Drawing.Size(162, 36);
+            this.buttonPlanMedico.Size = new System.Drawing.Size(163, 36);
             this.buttonPlanMedico.TabIndex = 13;
             this.buttonPlanMedico.Text = "Plan Médico";
             this.buttonPlanMedico.UseVisualStyleBackColor = true;
@@ -231,7 +231,7 @@
             // button_RegLlegadaAtenMedica
             // 
             this.button_RegLlegadaAtenMedica.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_RegLlegadaAtenMedica.Location = new System.Drawing.Point(182, 297);
+            this.button_RegLlegadaAtenMedica.Location = new System.Drawing.Point(12, 171);
             this.button_RegLlegadaAtenMedica.Name = "button_RegLlegadaAtenMedica";
             this.button_RegLlegadaAtenMedica.Size = new System.Drawing.Size(163, 36);
             this.button_RegLlegadaAtenMedica.TabIndex = 11;
@@ -242,7 +242,7 @@
             // pedidoTurno
             // 
             this.pedidoTurno.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pedidoTurno.Location = new System.Drawing.Point(12, 297);
+            this.pedidoTurno.Location = new System.Drawing.Point(12, 129);
             this.pedidoTurno.Name = "pedidoTurno";
             this.pedidoTurno.Size = new System.Drawing.Size(163, 36);
             this.pedidoTurno.TabIndex = 11;
