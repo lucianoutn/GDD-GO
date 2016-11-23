@@ -39,13 +39,16 @@ namespace ClinicaFrba.Listados
             comboBoxTop5.Items.Add("Especialidades con más bonos de consulta utilizados");
 
             comboBoxSemestre.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            
             comboBoxSemestre.Items.Add("Primer semestre");
             comboBoxSemestre.Items.Add("Segundo semestre");
+            /*
+            comboBoxSemestre.Items.Add(1);
+            comboBoxSemestre.Items.Add(2);
+            */
+            comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            /*comboBoxMes.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            foreach (string aux1 in listEstDAO.get_meses())
+           /* foreach (string aux1 in listEstDAO.get_meses())
             {
                 comboBoxMes.Items.Add(aux1);
             }*/
@@ -59,7 +62,7 @@ namespace ClinicaFrba.Listados
 
             comboBoxTop5.Enabled = true;
             comboBoxSemestre.Enabled = true;
-            comboBoxMes.Enabled = false;
+            comboBoxMes.Enabled = true;
         }
 
         private void button_volver_Click(object sender, EventArgs e)
@@ -93,55 +96,62 @@ namespace ClinicaFrba.Listados
         {
             SqlDataReader lectorTop5;
 
-            string condicionSemOMesAnio = " "; // debe permitir enviar el semestre completo o algún mes elegido pero dentro del semestre
+            string condicionSem = " "; // debe permitir enviar el semestre completo o algún mes elegido pero dentro del semestre
+            string condicionMes = " ";
+            string condicionAnio = " ";
+            string condicionFinal = " ";
 
-           
-                switch (comboBoxSemestre.Text) // semestre completo ¿Por alguna razón ya no manda el semestre completo :( ?
-                {
-                    case "Primer Semestre":
-                        condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
-                        break;
-
-                    case "Segundo Semestre":
-                        condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
-                        break;
-                }
             
-
-            if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)) && !(string.IsNullOrWhiteSpace(comboBoxSemestre.Text)))
+            switch (comboBoxSemestre.Text)
             {
-                condicionSemOMesAnio = condicionSemOMesAnio + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
+                case "Primer semestre":
+                    condicionSem = condicionSem + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
+                    break;
+
+                case "Segundo semestre":
+                    condicionSem = condicionSem + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
+                    break;
+            }
+            
+           
+                //MessageBox.Show("Debe seleccionar un semestre", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+           
+
+            if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)) /*&& !(string.IsNullOrWhiteSpace(comboBoxSemestre.Text))*/)
+            {
+                condicionMes = condicionMes + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
                      // cuando se elige un mes dentro semestre
             }
 
             if (!(string.IsNullOrWhiteSpace(comboBoxAnio.Text)))
             {
-                condicionSemOMesAnio = condicionSemOMesAnio + " AND YEAR(co.desc_hora_consulta) = '" + comboBoxAnio.Text + "'";
+                condicionAnio = condicionAnio + " AND YEAR(co.desc_hora_consulta) = '" + comboBoxAnio.Text + "'";
             }
 
-            this.condicion_guardada = condicionSemOMesAnio;
+            condicionFinal = condicionSem + condicionAnio; /*+ condicionMes + condicionAnio;*/
+            this.condicion_guardada = condicionFinal;
 
             switch (comboBoxTop5.Text)
             { 
                 case "Especialidades con más cancelaciones": /*Tanto de afiliados como profesionales*/
-                    lectorTop5 = listEstDAO.getCancelaciones(condicionSemOMesAnio);
+                    lectorTop5 = listEstDAO.getCancelaciones(condicionFinal);
                     break;
 
                 case "Profesionales más consultados por especialidad":
-                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionSemOMesAnio);
+                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionFinal);
                     cargar_grid_profMasConsultadosPorEsp(lectorTop5);
                     break;
 
                 case "Profesionales con menos horas trabajadas por especialidad":
-                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionSemOMesAnio);
+                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionFinal);
                     break;
 
                 case "Afiliados con más bonos comprados":
-                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionSemOMesAnio);
+                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionFinal);
                     break;
 
                 case "Especialidades con más bonos de consulta utilizados":
-                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionSemOMesAnio);
+                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionFinal);
                     break;
 
             }
@@ -264,20 +274,23 @@ namespace ClinicaFrba.Listados
                 comboBoxMes.Enabled = true;
                 comboBoxTop5.Enabled = true;
 
-               /* if (comboBoxSemestre.Text == "Primer Semestre")
+                if (comboBoxSemestre.Text == "Primer semestre")
                 {
                     foreach (string aux2 in listEstDAO.get_primerSemestre())
                     {
-                        comboBoxMes.Items.Add(aux2);
+                        comboBoxMes.Items.Add(aux2); //por cada selección suma meses !!
                     }
                 } 
                 else
                 {
-                    foreach (string aux3 in listEstDAO.get_segundoSemestre())
+                    if (comboBoxSemestre.Text == "Segundo semestre")
                     {
-                        comboBoxMes.Items.Add(aux3);
+                        foreach (string aux3 in listEstDAO.get_segundoSemestre())
+                        {
+                            comboBoxMes.Items.Add(aux3);
+                        }
                     }
-                }*/
+                }
             }
             else
             {

@@ -190,10 +190,10 @@
     <Compile Include="DataBase\Conexion\Calendario_DAO.cs" />
     <Compile Include="DataBase\Conexion\Afiliado_DAO.cs" />
     <Compile Include="DataBase\Conexion\Horarios_DAO.cs" />
+    <Compile Include="DataBase\Conexion\ListadoEstadistico_DAO.cs" />
     <Compile Include="DataBase\Conexion\RegistroLlegada_DAO.cs" />
     <Compile Include="DataBase\Conexion\Especialidades_DAO.cs" />
     <Compile Include="DataBase\Conexion\PlanMedico_DAO.cs" />
-    <Compile Include="DataBase\Conexion\ListadoEstadistico_DAO.cs" />
     <Compile Include="DataBase\Conexion\Profesionales_DAO.cs" />
     <Compile Include="DataBase\Conexion\ConstantesBD.cs" />
     <Compile Include="DataBase\Conexion\GDD_GO_DAO.cs" />
@@ -229,7 +229,7 @@
     <Compile Include="Listados\ListadoEstadistico.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Listados\ListadoEstadistico.Designer.cs">
+    <Compile Include="Listados\ListadoEstadistico.designer.cs">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
