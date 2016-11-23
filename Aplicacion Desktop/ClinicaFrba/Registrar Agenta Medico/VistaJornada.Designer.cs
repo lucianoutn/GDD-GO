@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaJornada));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonBack = new System.Windows.Forms.Button();
@@ -65,11 +66,13 @@
             // 
             // buttonBack
             // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
             this.buttonBack.Location = new System.Drawing.Point(19, 158);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 2;
-            this.buttonBack.Text = "atras";
+            this.buttonBack.Text = "Atras";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
@@ -103,6 +106,7 @@
             // 
             // buttonConfirm
             // 
+            this.buttonConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonConfirm.Location = new System.Drawing.Point(162, 157);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
@@ -152,8 +156,10 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "VistaJornada";
-            this.Text = "VistaJornada";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Vista Jornada";
             ((System.ComponentModel.ISupportInitialize)(this.errorHI)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorHF)).EndInit();
             this.ResumeLayout(false);

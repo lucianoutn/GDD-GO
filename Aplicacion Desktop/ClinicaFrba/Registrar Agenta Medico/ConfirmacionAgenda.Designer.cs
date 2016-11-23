@@ -230,7 +230,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfirmacionAgenda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ConfirmacionAgenda";
+            this.Text = "Confirmacion de Agenda";
             this.ResumeLayout(false);
             this.PerformLayout();
 

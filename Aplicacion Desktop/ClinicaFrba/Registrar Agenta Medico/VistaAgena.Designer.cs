@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VistaAgena));
             this.labelProfesional = new System.Windows.Forms.Label();
             this.labelEspecialidad = new System.Windows.Forms.Label();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
@@ -97,7 +98,7 @@
             this.buttonSiguiente.Text = "TodaviaNoSe";
             this.buttonSiguiente.UseVisualStyleBackColor = true;
             // 
-            // Agenda
+            // VistaAgena
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -109,7 +110,9 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.labelEspecialidad);
             this.Controls.Add(this.labelProfesional);
-            this.Name = "Agenda";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "VistaAgena";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Agenda";
             this.ResumeLayout(false);
             this.PerformLayout();
