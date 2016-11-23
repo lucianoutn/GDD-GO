@@ -81,6 +81,13 @@ namespace ClinicaFrba.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap estadistica {
+            get {
+                object obj = ResourceManager.GetObject("estadistica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap farmacia2 {
             get {
                 object obj = ResourceManager.GetObject("farmacia2", resourceCulture);

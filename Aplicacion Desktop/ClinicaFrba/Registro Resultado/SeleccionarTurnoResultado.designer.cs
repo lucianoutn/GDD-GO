@@ -77,6 +77,10 @@
             // 
             // dataGridViewTurnos
             // 
+            this.dataGridViewTurnos.AllowUserToAddRows = false;
+            this.dataGridViewTurnos.AllowUserToDeleteRows = false;
+            this.dataGridViewTurnos.AllowUserToResizeColumns = false;
+            this.dataGridViewTurnos.AllowUserToResizeRows = false;
             this.dataGridViewTurnos.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewTurnos.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.dataGridViewTurnos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -86,7 +90,11 @@
             this.hora_llegada,
             this.id_turno});
             this.dataGridViewTurnos.Location = new System.Drawing.Point(12, 25);
+            this.dataGridViewTurnos.MultiSelect = false;
             this.dataGridViewTurnos.Name = "dataGridViewTurnos";
+            this.dataGridViewTurnos.ReadOnly = true;
+            this.dataGridViewTurnos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTurnos.ShowEditingIcon = false;
             this.dataGridViewTurnos.Size = new System.Drawing.Size(435, 163);
             this.dataGridViewTurnos.TabIndex = 15;
             // 
@@ -105,24 +113,28 @@
             // 
             this.dni.HeaderText = "DNI";
             this.dni.Name = "dni";
+            this.dni.ReadOnly = true;
             // 
             // nombre
             // 
+            this.nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombre.HeaderText = "Nombre y Apellido";
             this.nombre.Name = "nombre";
-            this.nombre.Width = 150;
+            this.nombre.ReadOnly = true;
             // 
             // hora_llegada
             // 
             this.hora_llegada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
             this.hora_llegada.HeaderText = "Hora Llegada";
             this.hora_llegada.Name = "hora_llegada";
+            this.hora_llegada.ReadOnly = true;
             this.hora_llegada.Width = 96;
             // 
             // id_turno
             // 
             this.id_turno.HeaderText = "Id_turno";
             this.id_turno.Name = "id_turno";
+            this.id_turno.ReadOnly = true;
             this.id_turno.Visible = false;
             // 
             // SeleccionarTurnoResultado

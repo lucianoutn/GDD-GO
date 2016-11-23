@@ -35,23 +35,24 @@
             this.comboBoxSemestre = new System.Windows.Forms.ComboBox();
             this.comboBoxTop5 = new System.Windows.Forms.ComboBox();
             this.dataGridViewTop5 = new System.Windows.Forms.DataGridView();
+            this.button_volver = new System.Windows.Forms.Button();
+            this.button_limpiar = new System.Windows.Forms.Button();
+            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
+            this.labelMes = new System.Windows.Forms.Label();
+            this.comboBoxMes = new System.Windows.Forms.ComboBox();
             this.Col_nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_GrupoFam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button_volver = new System.Windows.Forms.Button();
-            this.button_limpiar = new System.Windows.Forms.Button();
-            this.comboBoxAnio = new System.Windows.Forms.ComboBox();
-            this.labelMes = new System.Windows.Forms.Label();
-            this.comboBoxMes = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label1.Location = new System.Drawing.Point(110, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 13);
@@ -61,6 +62,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label2.Location = new System.Drawing.Point(110, 57);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
@@ -70,6 +72,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Location = new System.Drawing.Point(110, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
@@ -98,6 +101,11 @@
             // 
             // dataGridViewTop5
             // 
+            this.dataGridViewTop5.AllowUserToAddRows = false;
+            this.dataGridViewTop5.AllowUserToDeleteRows = false;
+            this.dataGridViewTop5.AllowUserToResizeColumns = false;
+            this.dataGridViewTop5.AllowUserToResizeRows = false;
+            this.dataGridViewTop5.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
             this.dataGridViewTop5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTop5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Col_nro,
@@ -107,39 +115,13 @@
             this.Col_Cantidad,
             this.Col_GrupoFam});
             this.dataGridViewTop5.Location = new System.Drawing.Point(25, 147);
+            this.dataGridViewTop5.MultiSelect = false;
             this.dataGridViewTop5.Name = "dataGridViewTop5";
+            this.dataGridViewTop5.ReadOnly = true;
+            this.dataGridViewTop5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewTop5.ShowEditingIcon = false;
             this.dataGridViewTop5.Size = new System.Drawing.Size(618, 150);
             this.dataGridViewTop5.TabIndex = 5;
-            // 
-            // Col_nro
-            // 
-            this.Col_nro.HeaderText = "Orden";
-            this.Col_nro.Name = "Col_nro";
-            // 
-            // Col_apellido
-            // 
-            this.Col_apellido.HeaderText = "Apellido";
-            this.Col_apellido.Name = "Col_apellido";
-            // 
-            // Col_Nombre
-            // 
-            this.Col_Nombre.HeaderText = "Nombre";
-            this.Col_Nombre.Name = "Col_Nombre";
-            // 
-            // Col_Especialidad
-            // 
-            this.Col_Especialidad.HeaderText = "Especialidad";
-            this.Col_Especialidad.Name = "Col_Especialidad";
-            // 
-            // Col_Cantidad
-            // 
-            this.Col_Cantidad.HeaderText = "Cantidad";
-            this.Col_Cantidad.Name = "Col_Cantidad";
-            // 
-            // Col_GrupoFam
-            // 
-            this.Col_GrupoFam.HeaderText = "Grupo Familiar";
-            this.Col_GrupoFam.Name = "Col_GrupoFam";
             // 
             // button_volver
             // 
@@ -177,6 +159,7 @@
             // labelMes
             // 
             this.labelMes.AutoSize = true;
+            this.labelMes.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.labelMes.Location = new System.Drawing.Point(397, 57);
             this.labelMes.Name = "labelMes";
             this.labelMes.Size = new System.Drawing.Size(30, 13);
@@ -193,10 +176,51 @@
             this.comboBoxMes.TabIndex = 12;
             this.comboBoxMes.SelectedIndexChanged += new System.EventHandler(this.comboBoxMes_SelectedIndexChanged);
             // 
+            // Col_nro
+            // 
+            this.Col_nro.HeaderText = "Orden";
+            this.Col_nro.Name = "Col_nro";
+            this.Col_nro.ReadOnly = true;
+            this.Col_nro.Width = 50;
+            // 
+            // Col_apellido
+            // 
+            this.Col_apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Col_apellido.HeaderText = "Apellido";
+            this.Col_apellido.Name = "Col_apellido";
+            this.Col_apellido.ReadOnly = true;
+            // 
+            // Col_Nombre
+            // 
+            this.Col_Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Col_Nombre.HeaderText = "Nombre";
+            this.Col_Nombre.Name = "Col_Nombre";
+            this.Col_Nombre.ReadOnly = true;
+            // 
+            // Col_Especialidad
+            // 
+            this.Col_Especialidad.HeaderText = "Especialidad";
+            this.Col_Especialidad.Name = "Col_Especialidad";
+            this.Col_Especialidad.ReadOnly = true;
+            // 
+            // Col_Cantidad
+            // 
+            this.Col_Cantidad.HeaderText = "Cantidad";
+            this.Col_Cantidad.Name = "Col_Cantidad";
+            this.Col_Cantidad.ReadOnly = true;
+            this.Col_Cantidad.Width = 60;
+            // 
+            // Col_GrupoFam
+            // 
+            this.Col_GrupoFam.HeaderText = "Grupo Familiar";
+            this.Col_GrupoFam.Name = "Col_GrupoFam";
+            this.Col_GrupoFam.ReadOnly = true;
+            // 
             // Listado_Estadistico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.estadistica;
             this.ClientSize = new System.Drawing.Size(673, 345);
             this.Controls.Add(this.comboBoxMes);
             this.Controls.Add(this.labelMes);

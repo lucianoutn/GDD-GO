@@ -38,10 +38,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridTurno = new System.Windows.Forms.DataGridView();
+            this.registrar = new System.Windows.Forms.Button();
             this.idTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreAfiliado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registrar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
@@ -153,6 +153,19 @@
             this.dataGridTurno.Size = new System.Drawing.Size(479, 178);
             this.dataGridTurno.TabIndex = 8;
             // 
+            // registrar
+            // 
+            this.registrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.registrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.registrar.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.registrar.Location = new System.Drawing.Point(546, 223);
+            this.registrar.Name = "registrar";
+            this.registrar.Size = new System.Drawing.Size(185, 33);
+            this.registrar.TabIndex = 5;
+            this.registrar.Text = "Registrar Llegada";
+            this.registrar.UseVisualStyleBackColor = true;
+            this.registrar.Click += new System.EventHandler(this.registrar_Click);
+            // 
             // idTurno
             // 
             this.idTurno.HeaderText = "Nº Turno";
@@ -169,23 +182,10 @@
             // 
             // nombreAfiliado
             // 
+            this.nombreAfiliado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.nombreAfiliado.HeaderText = "Nombre Afiliado";
             this.nombreAfiliado.Name = "nombreAfiliado";
             this.nombreAfiliado.ReadOnly = true;
-            this.nombreAfiliado.Width = 260;
-            // 
-            // registrar
-            // 
-            this.registrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.registrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.registrar.ForeColor = System.Drawing.Color.DodgerBlue;
-            this.registrar.Location = new System.Drawing.Point(546, 223);
-            this.registrar.Name = "registrar";
-            this.registrar.Size = new System.Drawing.Size(185, 33);
-            this.registrar.TabIndex = 5;
-            this.registrar.Text = "Registrar Llegada";
-            this.registrar.UseVisualStyleBackColor = true;
-            this.registrar.Click += new System.EventHandler(this.registrar_Click);
             // 
             // SubmenuRegistro
             // 
@@ -221,9 +221,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridTurno;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button registrar;
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAfiliado;
-        private System.Windows.Forms.Button registrar;
     }
 }

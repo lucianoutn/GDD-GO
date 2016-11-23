@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SeleccionarMedicoResultado));
             this.labelCliente = new System.Windows.Forms.Label();
             this.buttonSeleccionar = new System.Windows.Forms.Button();
             this.buttonVolver = new System.Windows.Forms.Button();
@@ -196,6 +197,11 @@
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToResizeColumns = false;
+            this.dataGridViewResultados.AllowUserToResizeRows = false;
+            this.dataGridViewResultados.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -204,7 +210,11 @@
             this.Dni,
             this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(34, 253);
+            this.dataGridViewResultados.MultiSelect = false;
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewResultados.ShowEditingIcon = false;
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 151);
             this.dataGridViewResultados.TabIndex = 155;
             // 
@@ -212,26 +222,34 @@
             // 
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 50;
             // 
             // Apellido
             // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // Nombre
             // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Dni
             // 
             this.Dni.HeaderText = "DNI";
             this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
             // 
             // id_usuario
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
             this.id_usuario.Visible = false;
             // 
             // SeleccionarMedicoResultado
@@ -246,8 +264,10 @@
             this.Controls.Add(this.buttonLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataGridViewResultados);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarMedicoResultado";
-            this.Text = "SeleccionarMedicoResultado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Seleccionar Profesional";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();
