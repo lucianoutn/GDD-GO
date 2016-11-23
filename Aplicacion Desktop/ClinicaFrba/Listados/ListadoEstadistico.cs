@@ -268,6 +268,7 @@ namespace ClinicaFrba.Listados
         private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) // la idea es que muestre meses según el semestre elegido 
         {
             comboBoxSemestre.Enabled = false;
+            comboBoxMes.Items.Clear();
 
             if(comboBoxSemestre.Text != "")
             {
