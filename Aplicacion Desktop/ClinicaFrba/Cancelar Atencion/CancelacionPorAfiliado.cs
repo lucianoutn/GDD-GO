@@ -35,7 +35,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             dataGridViewResultados.Refresh();
             int desc_id;
 
-            List<String> lista_turnos = turno_dao.get_turnos(id_afiliado);
+            List<String> lista_turnos = turno_dao.get_turnos(id_afiliado,ConstantesBD.fechaSistema);
 
             for (int i = 0; i < lista_turnos.Count; i++)
             {
@@ -68,11 +68,8 @@ namespace ClinicaFrba.Cancelar_Atencion
                 DateTime myDate = Convert.ToDateTime(dia);
                 DateTime myDate2 = Convert.ToDateTime(ConstantesBD.fechaSistema);
 
-                if ((int)(myDate2 - myDate).TotalDays<2) // ACA HAY Q VALIDAR Q DIA NO SEA IGUAL A HOY
-                    MessageBox.Show("No puede cancelar, los turnos se deben cancelar con mas de un día de anticipacion");
-                else
+                if (myDate.CompareTo(myDate2) > 0)                     // ACA HAY Q VALIDAR Q DIA NO SEA IGUAL A HOY
                 {
-
                     int id = int.Parse(fila.Cells["Id_turno"].Value.ToString());
 
                     turno_dao.cancelarTurno(id, textBoxMotivo.Text, id_afiliado, 1);
@@ -80,6 +77,10 @@ namespace ClinicaFrba.Cancelar_Atencion
                     MessageBox.Show("Turno cancelado");
                     unMenu.Show();
                     this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("No puede cancelar, los turnos se deben cancelar con mas de un día de anticipacion");
                 }
 
             }

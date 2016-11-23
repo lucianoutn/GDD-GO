@@ -21,6 +21,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();
             unMenu = menu;
+            dataGridViewResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

@@ -23,6 +23,7 @@ namespace ClinicaFrba.Registrar_Agenda_Medico
             profesionales_dao = new ProfesionalesDAO();
             InitializeComponent();
             unMenu = menu;
+            dataGridViewResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

@@ -44,12 +44,12 @@ namespace ClinicaFrba.Pedir_Turno
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
+            this.labelCliente = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.labelCliente = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -187,6 +187,9 @@ namespace ClinicaFrba.Pedir_Turno
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToOrderColumns = true;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -196,33 +199,9 @@ namespace ClinicaFrba.Pedir_Turno
             this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(64, 258);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 51;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "ID";
-            this.Id.Name = "Id";
-            // 
-            // Apellido
-            // 
-            this.Apellido.HeaderText = "Apellido";
-            this.Apellido.Name = "Apellido";
-            // 
-            // Nombre
-            // 
-            this.Nombre.HeaderText = "Nombre";
-            this.Nombre.Name = "Nombre";
-            // 
-            // Dni
-            // 
-            this.Dni.HeaderText = "DNI";
-            this.Dni.Name = "Dni";
-            // 
-            // id_usuario
-            // 
-            this.id_usuario.HeaderText = "ID Usuario";
-            this.id_usuario.Name = "id_usuario";
             // 
             // labelCliente
             // 
@@ -234,6 +213,36 @@ namespace ClinicaFrba.Pedir_Turno
             this.labelCliente.Size = new System.Drawing.Size(249, 26);
             this.labelCliente.TabIndex = 147;
             this.labelCliente.Text = "SELECCIONAR AFILIADO";
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "ID";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            // 
+            // Apellido
+            // 
+            this.Apellido.HeaderText = "Apellido";
+            this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
+            // 
+            // Nombre
+            // 
+            this.Nombre.HeaderText = "Nombre";
+            this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
+            // 
+            // Dni
+            // 
+            this.Dni.HeaderText = "DNI";
+            this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
+            // 
+            // id_usuario
+            // 
+            this.id_usuario.HeaderText = "ID Usuario";
+            this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
             // 
             // SeleccionarAfiliado
             // 
@@ -275,11 +284,11 @@ namespace ClinicaFrba.Pedir_Turno
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxNombre;
         private System.Windows.Forms.DataGridView dataGridViewResultados;
+        private System.Windows.Forms.Label labelCliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Apellido;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
-        private System.Windows.Forms.Label labelCliente;
     }
 }

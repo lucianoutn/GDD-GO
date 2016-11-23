@@ -76,7 +76,7 @@ namespace ClinicaFrba.DataBase.Conexion
                         "on h.id_agenda = a.id_agenda "+
                         "where a.id_profesional = " + prof + " " +
                         "and a.id_especialidad = " + esp + " " +
-                        "and a.fecha_hasta >= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
+                        "and a.fecha_hasta <= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
                         "and h.desc_hora_desde > '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
                         "and h.id_turno = null  order by h.desc_hora_desde");
             }

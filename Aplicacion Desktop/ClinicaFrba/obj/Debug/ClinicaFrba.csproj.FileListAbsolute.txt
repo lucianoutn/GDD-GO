@@ -46,3 +46,4 @@ C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debu
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csproj.GenerateResource.Cache
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.exe
 C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
+C:\Users\Tc\Desktop\Federico 2016\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Abm_Planes.consultaHistoricoMenu.resources

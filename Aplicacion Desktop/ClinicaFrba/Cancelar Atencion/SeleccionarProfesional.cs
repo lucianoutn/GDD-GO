@@ -22,6 +22,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             profesionales_dao = new ProfesionalesDAO();
             InitializeComponent();
             unMenu = menu;
+            dataGridViewResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

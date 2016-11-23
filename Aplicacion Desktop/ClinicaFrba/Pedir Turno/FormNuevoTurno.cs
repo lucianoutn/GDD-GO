@@ -32,6 +32,7 @@ namespace ClinicaFrba.Pedir_Turno
             menu = menuppal;
             username = name;
             popApp.Hide();
+            dataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             prof_es_unico = false;
             esp_es_unica = false;
             ProfesionalesDAO profesionalesDAO = new ProfesionalesDAO();
@@ -139,11 +140,11 @@ namespace ClinicaFrba.Pedir_Turno
             {
                 item.orden = aux;
                 dataGridView.Rows.Add(
-                    item.orden,item.getDate(),item.getDay(),item.getTime(),item.getDuracion());
+                    item.orden,item.getDate(),item.getDay(),item.getTime(),item.getDuracion(),item.getFecha());
                 aux++;
             }
             dataGridView.Refresh();
-            dataGridView.Sort(dataGridView.Columns[1], ListSortDirection.Ascending);
+            dataGridView.Sort(dataGridView.Columns[5], ListSortDirection.Ascending);
             popApp.Hide();
         }
 
