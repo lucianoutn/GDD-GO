@@ -134,7 +134,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         private String fechaSQL(DateTime f)
         {
-            return "'" + f.Year.ToString() + "-" + f.Month.ToString() + "-" + f.Day.ToString() +
+            return "'" + f.Year.ToString() + "-" + f.Day.ToString() + "-" + f.Month.ToString() +
                     " " + f.Hour.ToString() + ":" + f.Minute.ToString() + ":00.000'";
         }
         
