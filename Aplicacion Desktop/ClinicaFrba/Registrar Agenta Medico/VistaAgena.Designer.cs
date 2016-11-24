@@ -82,15 +82,18 @@
             // 
             // buttonAtras
             // 
+            this.buttonAtras.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAtras.ForeColor = System.Drawing.Color.Maroon;
             this.buttonAtras.Location = new System.Drawing.Point(16, 285);
             this.buttonAtras.Name = "buttonAtras";
             this.buttonAtras.Size = new System.Drawing.Size(75, 23);
             this.buttonAtras.TabIndex = 5;
-            this.buttonAtras.Text = "atras";
+            this.buttonAtras.Text = "Atras";
             this.buttonAtras.UseVisualStyleBackColor = true;
             // 
             // buttonSiguiente
             // 
+            this.buttonSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonSiguiente.Location = new System.Drawing.Point(188, 285);
             this.buttonSiguiente.Name = "buttonSiguiente";
             this.buttonSiguiente.Size = new System.Drawing.Size(75, 23);

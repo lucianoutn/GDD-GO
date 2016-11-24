@@ -131,13 +131,12 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(248, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 26);
+            this.label4.Size = new System.Drawing.Size(60, 27);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Ingresar \r\nId:";
+            this.label4.Text = "Ingresar Id Afiliado:";
             // 
             // textBoxApellido
             // 
@@ -192,6 +191,11 @@
             // 
             // dataGridViewResultados
             // 
+            this.dataGridViewResultados.AllowUserToAddRows = false;
+            this.dataGridViewResultados.AllowUserToDeleteRows = false;
+            this.dataGridViewResultados.AllowUserToResizeColumns = false;
+            this.dataGridViewResultados.AllowUserToResizeRows = false;
+            this.dataGridViewResultados.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewResultados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewResultados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -200,7 +204,11 @@
             this.Dni,
             this.id_usuario});
             this.dataGridViewResultados.Location = new System.Drawing.Point(28, 244);
+            this.dataGridViewResultados.MultiSelect = false;
             this.dataGridViewResultados.Name = "dataGridViewResultados";
+            this.dataGridViewResultados.ReadOnly = true;
+            this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewResultados.ShowEditingIcon = false;
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 148;
             // 
@@ -208,27 +216,37 @@
             // 
             this.Id.HeaderText = "ID";
             this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 80;
             // 
             // Apellido
             // 
+            this.Apellido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Apellido.HeaderText = "Apellido";
             this.Apellido.Name = "Apellido";
+            this.Apellido.ReadOnly = true;
             // 
             // Nombre
             // 
+            this.Nombre.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nombre.HeaderText = "Nombre";
             this.Nombre.Name = "Nombre";
+            this.Nombre.ReadOnly = true;
             // 
             // Dni
             // 
             this.Dni.HeaderText = "DNI";
             this.Dni.Name = "Dni";
+            this.Dni.ReadOnly = true;
+            this.Dni.Width = 80;
             // 
             // id_usuario
             // 
             this.id_usuario.HeaderText = "ID Usuario";
             this.id_usuario.Name = "id_usuario";
+            this.id_usuario.ReadOnly = true;
             this.id_usuario.Visible = false;
+            this.id_usuario.Width = 80;
             // 
             // CompraBono
             // 

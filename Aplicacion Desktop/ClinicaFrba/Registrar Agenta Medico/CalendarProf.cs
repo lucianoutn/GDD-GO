@@ -282,5 +282,10 @@ namespace ClinicaFrba.Registrar_Agenta_Medico
                 }
             }
         }
+
+        private void CalendarProf_Load(object sender, EventArgs e)
+        {
+            textBoxTurno.Text = "30";
+        }
     }
 }

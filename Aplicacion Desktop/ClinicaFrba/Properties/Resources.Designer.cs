@@ -60,6 +60,13 @@ namespace ClinicaFrba.Properties {
             }
         }
         
+        internal static System.Drawing.Bitmap clock {
+            get {
+                object obj = ResourceManager.GetObject("clock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
         internal static System.Drawing.Bitmap coach_with_clipboard_400_clr {
             get {
                 object obj = ResourceManager.GetObject("coach_with_clipboard_400_clr", resourceCulture);
@@ -77,6 +84,13 @@ namespace ClinicaFrba.Properties {
         internal static System.Drawing.Bitmap consultabig {
             get {
                 object obj = ResourceManager.GetObject("consultabig", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap doctor_girl {
+            get {
+                object obj = ResourceManager.GetObject("doctor_girl", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

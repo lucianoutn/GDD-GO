@@ -141,11 +141,12 @@
             // buttonBack
             // 
             this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
             this.buttonBack.Location = new System.Drawing.Point(16, 220);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 10;
-            this.buttonBack.Text = "atras";
+            this.buttonBack.Text = "Atras";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 

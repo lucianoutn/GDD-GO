@@ -37,11 +37,12 @@
             // buttonBack1
             // 
             this.buttonBack1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack1.ForeColor = System.Drawing.Color.Maroon;
             this.buttonBack1.Location = new System.Drawing.Point(29, 132);
             this.buttonBack1.Name = "buttonBack1";
             this.buttonBack1.Size = new System.Drawing.Size(75, 32);
             this.buttonBack1.TabIndex = 3;
-            this.buttonBack1.Text = "atras";
+            this.buttonBack1.Text = "Atras";
             this.buttonBack1.UseVisualStyleBackColor = true;
             this.buttonBack1.Click += new System.EventHandler(this.buttonBack1_Click);
             // 

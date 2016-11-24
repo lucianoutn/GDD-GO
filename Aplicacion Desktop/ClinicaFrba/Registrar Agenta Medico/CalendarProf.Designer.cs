@@ -52,40 +52,46 @@
             this.errorDuracion = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorDias = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorEsp = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorDateIni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDateFin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDuracion)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEsp)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxEsp
             // 
             this.comboBoxEsp.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxEsp.FormattingEnabled = true;
-            this.comboBoxEsp.Location = new System.Drawing.Point(38, 42);
+            this.comboBoxEsp.Location = new System.Drawing.Point(114, 56);
             this.comboBoxEsp.Name = "comboBoxEsp";
-            this.comboBoxEsp.Size = new System.Drawing.Size(296, 27);
+            this.comboBoxEsp.Size = new System.Drawing.Size(231, 27);
             this.comboBoxEsp.TabIndex = 1;
             this.comboBoxEsp.SelectedIndexChanged += new System.EventHandler(this.comboBoxEsp_SelectedIndexChanged);
             // 
             // labelName
             // 
             this.labelName.AutoSize = true;
-            this.labelName.Location = new System.Drawing.Point(34, 9);
+            this.labelName.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelName.Location = new System.Drawing.Point(110, 9);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(73, 19);
+            this.labelName.Size = new System.Drawing.Size(77, 19);
             this.labelName.TabIndex = 2;
             this.labelName.Text = "labelProf";
             // 
             // buttonBack
             // 
             this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
             this.buttonBack.Location = new System.Drawing.Point(13, 339);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 32);
             this.buttonBack.TabIndex = 3;
-            this.buttonBack.Text = "atras";
+            this.buttonBack.Text = "Atras";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
@@ -102,7 +108,7 @@
             // 
             // dateTimePickerIni
             // 
-            this.dateTimePickerIni.Location = new System.Drawing.Point(157, 89);
+            this.dateTimePickerIni.Location = new System.Drawing.Point(157, 102);
             this.dateTimePickerIni.Name = "dateTimePickerIni";
             this.dateTimePickerIni.Size = new System.Drawing.Size(200, 26);
             this.dateTimePickerIni.TabIndex = 5;
@@ -119,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 95);
+            this.label3.Location = new System.Drawing.Point(9, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 19);
             this.label3.TabIndex = 14;
@@ -136,7 +142,7 @@
             // 
             // textBoxTurno
             // 
-            this.textBoxTurno.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.textBoxTurno.ForeColor = System.Drawing.SystemColors.ControlText;
             this.textBoxTurno.Location = new System.Drawing.Point(148, 307);
             this.textBoxTurno.Name = "textBoxTurno";
             this.textBoxTurno.Size = new System.Drawing.Size(75, 26);
@@ -249,11 +255,45 @@
             // 
             this.errorEsp.ContainerControl = this;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label1.Location = new System.Drawing.Point(229, 313);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 16);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "minutos";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::ClinicaFrba.Properties.Resources.doctor_girl;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(4, 1);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(104, 91);
+            this.pictureBox1.TabIndex = 27;
+            this.pictureBox1.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label2.Location = new System.Drawing.Point(114, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(130, 14);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Seleccionar Especialidad:";
+            // 
             // CalendarProf
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(369, 383);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.checkBoxS);
             this.Controls.Add(this.checkBoxV);
             this.Controls.Add(this.checkBoxJ);
@@ -271,6 +311,7 @@
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.labelName);
             this.Controls.Add(this.comboBoxEsp);
+            this.Controls.Add(this.pictureBox1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -278,11 +319,13 @@
             this.Name = "CalendarProf";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vista Calendario";
+            this.Load += new System.EventHandler(this.CalendarProf_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorDateIni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDateFin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDuracion)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorDias)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEsp)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,6 +356,9 @@
         private System.Windows.Forms.ErrorProvider errorDuracion;
         private System.Windows.Forms.ErrorProvider errorDias;
         private System.Windows.Forms.ErrorProvider errorEsp;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label2;
 
     }
 }
