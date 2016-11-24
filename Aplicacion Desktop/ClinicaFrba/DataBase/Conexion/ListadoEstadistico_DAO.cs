@@ -19,7 +19,6 @@ namespace ClinicaFrba.DataBase.Conexion
         
         public List<string> get_anios()
         {
-            MessageBox.Show("SELECT distinct YEAR(co.desc_hora_desde) as ANIOS FROM " + ConstantesBD.tabla_horario + " as co");
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct YEAR(co.desc_hora_desde) as ANIOS FROM " + ConstantesBD.tabla_horario + " as co");
             List<string> resultado = new List<string>();
 
@@ -33,7 +32,6 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_meses()
         {
-            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_desde) as MESES FROM " + ConstantesBD.tabla_horario + " as co ORDER BY MESES asc");
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_desde) as MESES FROM " + ConstantesBD.tabla_horario + " as co ORDER BY MESES asc");
             List<string> resultado = new List<string>();
 
@@ -47,7 +45,6 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_primerSemestre()
         {
-            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ORDER BY MESES asc");
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ORDER BY MESES asc");
             List<string> resultado = new List<string>();
 
@@ -61,7 +58,6 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_segundoSemestre()
         {
-            MessageBox.Show("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ORDER BY MESES asc");
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT distinct MONTH(co.desc_hora_consulta) as MESES FROM " + ConstantesBD.tabla_consulta + " as co WHERE MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ORDER BY MESES asc");
             List<string> resultado = new List<string>();
 
@@ -75,10 +71,26 @@ namespace ClinicaFrba.DataBase.Conexion
 
         
 
-        public SqlDataReader getCancelaciones(string condicion)
+        public SqlDataReader getCancelaciones_profesionales(string condicion)
         {
             SqlDataReader resultado;
-            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT TOP 5  pro.desc_apellido, pro.desc_nombre, es.descripcion as Especialidad, COUNT(co.id_turno) as Cantidad FROM "                                                                    + ConstantesBD.tabla_consulta + " as co INNER JOIN "                                                                    + ConstantesBD.tabla_turno + " as t ON co.id_turno = t.id_turno INNER JOIN "                                                                   + ConstantesBD.tabla_esp_por_profesional + " as esxp ON t.id_profesional = esxp.id_profesional INNER JOIN "                                                                   + ConstantesBD.tabla_profesional + " as pro ON esxp.id_profesional = pro.id_profesional INNER JOIN "                                                                   + ConstantesBD.tabla_especialidad + " as es ON esxp.id_especialidad = es.id_especialidad WHERE t.desc_estado = 1 AND "                                                                    + condicion                                                                    + " GROUP BY pro.desc_apellido, pro.desc_nombre, es.descripcion"                                                                    + " ORDER BY COUNT(co.id_turno) desc");
+            return resultado;
+        }
+
+        public SqlDataReader getCancelaciones_afiliados(string condicion)
+        {
+            SqlDataReader resultado;
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT TOP 5  a.desc_apellido, a.desc_nombre, es.descripcion as Especialidad, COUNT(co.id_turno) as Cantidad FROM "
+                                                                   + ConstantesBD.tabla_afiliados + " as a, "
+                                                                   + ConstantesBD.tabla_consulta + " as co INNER JOIN "
+                                                                   + ConstantesBD.tabla_turno + " as t ON co.id_turno = t.id_turno INNER JOIN "
+                                                                   + ConstantesBD.tabla_esp_por_profesional + " as esxp ON t.id_profesional = esxp.id_profesional INNER JOIN "
+                                                                   + ConstantesBD.tabla_profesional + " as pro ON esxp.id_profesional = pro.id_profesional INNER JOIN "
+                                                                   + ConstantesBD.tabla_especialidad + " as es ON esxp.id_especialidad = es.id_especialidad WHERE t.desc_estado = 1 AND t.id_afiliado = a.id_afiliado AND"
+                                                                   + condicion
+                                                                   + " GROUP BY a.desc_apellido, a.desc_nombre, es.descripcion"
+                                                                   + " ORDER BY COUNT(co.id_turno) desc");
             return resultado;
         }
 

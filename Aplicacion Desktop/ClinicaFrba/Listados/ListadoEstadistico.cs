@@ -32,7 +32,8 @@ namespace ClinicaFrba.Listados
             //Para no poder editar el comboBox
             comboBoxTop5.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            comboBoxTop5.Items.Add("Especialidades con más cancelaciones");
+            comboBoxTop5.Items.Add("Especialidades con más cancelaciones - Profesionales");
+            comboBoxTop5.Items.Add("Especialidades con más cancelaciones - Afiliados");
             comboBoxTop5.Items.Add("Profesionales más consultados por especialidad");
             comboBoxTop5.Items.Add("Profesionales con menos horas trabajadas por especialidad");
             comboBoxTop5.Items.Add("Afiliados con más bonos comprados");
@@ -83,8 +84,6 @@ namespace ClinicaFrba.Listados
             cargar_lista();
         }
 
-
-
         public void cargar_lista()
         {
             SqlDataReader lectorTop5;            
@@ -125,8 +124,14 @@ namespace ClinicaFrba.Listados
 
             switch (comboBoxTop5.Text)
             { 
-                case "Especialidades con más cancelaciones": /*Tanto de afiliados como profesionales*/
-                    lectorTop5 = listEstDAO.getCancelaciones(condicion);
+                case "Especialidades con más cancelaciones - Profesionales": /*Tanto de afiliados como profesionales*/
+                    lectorTop5 = listEstDAO.getCancelaciones_profesionales(condicion);
+                    cargar_grid_cancelaciones_profesionales(lectorTop5);
+                    break;
+
+                case "Especialidades con más cancelaciones - Afiliados": 
+                    lectorTop5 = listEstDAO.getCancelaciones_afiliados(condicion);
+                    cargar_grid_cancelaciones_afiliados(lectorTop5);
                     break;
 
                 case "Profesionales más consultados por especialidad":
@@ -136,14 +141,17 @@ namespace ClinicaFrba.Listados
 
                 case "Profesionales con menos horas trabajadas por especialidad":
                     lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicion);
+                    cargar_grid_profConMenosHorasTrabajadas(lectorTop5);
                     break;
 
                 case "Afiliados con más bonos comprados":
                     lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicion);
+                    cargar_grid_afiliadosConMasBonosComp(lectorTop5);
                     break;
 
                 case "Especialidades con más bonos de consulta utilizados":
                     lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicion);
+                    cargar_grid_profConMasBonosConsultUtil(lectorTop5);
                     break;
 
             }
@@ -151,9 +159,62 @@ namespace ClinicaFrba.Listados
         }
 
 
-        private void cargar_grid_cancelaciones() // 1 listado, creo que debe ir en otra form porque el grid es distinto
-        { 
-        
+        private void cargar_grid_cancelaciones_profesionales(SqlDataReader lector) //Cancelaciones  profesionales
+        {
+            SqlDataReader lectorT5;
+            int i = 0;
+
+            lectorT5 = lector;
+
+            List<DataGridViewRow> filas = new List<DataGridViewRow>();
+            Object[] columnas = new Object[5];
+
+            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
+
+            while (lectorT5.Read())
+            {
+                i++;
+                columnas[0] = i.ToString();
+                columnas[1] = lectorT5["desc_apellido"].ToString();
+                columnas[2] = lectorT5["desc_nombre"].ToString();
+                columnas[3] = lectorT5["Especialidad"].ToString();
+                columnas[4] = lectorT5["Cantidad"].ToString(); // cancelaciones
+               
+                filas.Add(new DataGridViewRow());
+                filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+            }
+
+            lectorT5.Close();
+            dataGridViewTop5.Rows.AddRange(filas.ToArray());
+        }
+
+        private void cargar_grid_cancelaciones_afiliados(SqlDataReader lector) //Cancelaciones por afiliado
+        {
+            SqlDataReader lectorT5;
+            int i = 0;
+
+            lectorT5 = lector;
+
+            List<DataGridViewRow> filas = new List<DataGridViewRow>();
+            Object[] columnas = new Object[5];
+
+            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
+
+            while (lectorT5.Read())
+            {
+                i++;
+                columnas[0] = i.ToString();
+                columnas[1] = lectorT5["desc_apellido"].ToString();
+                columnas[2] = lectorT5["desc_nombre"].ToString();
+                columnas[3] = lectorT5["Especialidad"].ToString();
+                columnas[4] = lectorT5["Cantidad"].ToString(); // cancelaciones
+                
+                filas.Add(new DataGridViewRow());
+                filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+            }
+
+            lectorT5.Close();
+            dataGridViewTop5.Rows.AddRange(filas.ToArray());
         }
 
         private void cargar_grid_profMasConsultadosPorEsp(SqlDataReader lector) // punto 2 de listado hecho
@@ -176,8 +237,7 @@ namespace ClinicaFrba.Listados
                 columnas[2] = lectorT5["desc_nombre"].ToString();
                 columnas[3] = lectorT5["Especialidad"].ToString();
                 columnas[4] = lectorT5["Cantidad"].ToString(); // consultados
-               // columnas[5] = lectorT5["Col_GrupoFam"].ToString();
-                
+                            
                 filas.Add(new DataGridViewRow());
                 filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
             }
@@ -190,7 +250,6 @@ namespace ClinicaFrba.Listados
 
         private void cargar_grid_profConMenosHorasTrabajadas(SqlDataReader lector)
         {
-            {
                 SqlDataReader lectorT5;
                 int i = 0;
 
@@ -209,20 +268,18 @@ namespace ClinicaFrba.Listados
                     columnas[2] = lectorT5["desc_nombre"].ToString();
                     columnas[3] = lectorT5["Especialidad"].ToString();
                     columnas[4] = lectorT5["Cantidad"].ToString(); //menos horas trabajadas
-                    // columnas[5] = lectorT5["Col_GrupoFam"].ToString();
-
+                 
                     filas.Add(new DataGridViewRow());
                     filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
                 }
 
                 lectorT5.Close();
                 dataGridViewTop5.Rows.AddRange(filas.ToArray());
-            }
+            
         }
 
         private void cargar_grid_afiliadosConMasBonosComp(SqlDataReader lector)
         {
-            {
                 SqlDataReader lectorT5;
                 int i = 0;
 
@@ -249,12 +306,37 @@ namespace ClinicaFrba.Listados
 
                 lectorT5.Close();
                 dataGridViewTop5.Rows.AddRange(filas.ToArray());
-            }
+            
         }
 
-        private void cargar_grid_profConMasBonosConsultUtil() // 5 listado, creo que debe ir en otra form porque el grid es distinto
+        private void cargar_grid_profConMasBonosConsultUtil(SqlDataReader lector) 
         {
-        
+                SqlDataReader lectorT5;
+                int i = 0;
+
+                lectorT5 = lector;
+
+                List<DataGridViewRow> filas = new List<DataGridViewRow>();
+                Object[] columnas = new Object[5];
+
+                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
+
+                while (lectorT5.Read())
+                {
+                    i++;
+                    columnas[0] = i.ToString();
+                    columnas[1] = lectorT5["desc_apellido"].ToString();
+                    columnas[2] = lectorT5["desc_nombre"].ToString();
+                    columnas[3] = lectorT5["Especialidad"].ToString();
+                    columnas[4] = lectorT5["Cantidad"].ToString(); 
+                 
+                    filas.Add(new DataGridViewRow());
+                    filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
+                }
+
+                lectorT5.Close();
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());
+            
         }
 
         private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) // la idea es que muestre meses según el semestre elegido 
