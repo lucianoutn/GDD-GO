@@ -112,8 +112,18 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public SqlDataReader getProfConMenosHorasTrabajadas(string condicion)
         {
+            MessageBox.Show("SELECT TOP 5  pro.desc_apellido, pro.desc_nombre, es.descripcion as Especialidad, (COUNT(co.id_turno)*2) as Cantidad FROM "
+                                                                   + ConstantesBD.tabla_consulta + " as co INNER JOIN "
+                                                                   + ConstantesBD.tabla_turno + " as t ON co.id_turno = t.id_turno INNER JOIN "
+                                                                   + ConstantesBD.tabla_esp_por_profesional + " as esxp ON t.id_profesional = esxp.id_profesional INNER JOIN "
+                                                                   + ConstantesBD.tabla_profesional + " as pro ON esxp.id_profesional = pro.id_profesional INNER JOIN "
+                                                                   + ConstantesBD.tabla_especialidad + " as es ON esxp.id_especialidad = es.id_especialidad WHERE t.desc_estado = 0 AND "
+                                                                   + condicion
+                                                                   + " GROUP BY pro.desc_apellido, pro.desc_nombre, es.descripcion"
+                                                                   + " ORDER BY (COUNT(co.id_turno)*2) ASC");
             SqlDataReader resultado;
-            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
+            resultado = this.GD2C2016.ejecutarSentenciaConRetorno("SELECT TOP 5  pro.desc_apellido, pro.desc_nombre, es.descripcion as Especialidad, (COUNT(co.id_turno)*2) as Cantidad FROM "                                                                    + ConstantesBD.tabla_consulta + " as co INNER JOIN "                                                                    + ConstantesBD.tabla_turno + " as t ON co.id_turno = t.id_turno INNER JOIN "                                                                   + ConstantesBD.tabla_esp_por_profesional + " as esxp ON t.id_profesional = esxp.id_profesional INNER JOIN "                                                                   + ConstantesBD.tabla_profesional + " as pro ON esxp.id_profesional = pro.id_profesional INNER JOIN "                                                                   + ConstantesBD.tabla_especialidad + " as es ON esxp.id_especialidad = es.id_especialidad WHERE t.desc_estado = 0 AND "                                                                    + condicion                                                                    + " GROUP BY pro.desc_apellido, pro.desc_nombre, es.descripcion"
+                                                                   + " ORDER BY (COUNT(co.id_turno)*2) ASC");
             return resultado;
         }
 
