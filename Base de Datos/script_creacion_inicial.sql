@@ -109,6 +109,7 @@ Create Table GDD_GO.afiliado
 	,id_familiar_principal int
 	,id_usuario int
 	,id_plan_medico int
+	,desc_nro_consulta int
 	,primary key (id_afiliado)
 	,foreign key (id_familiar_principal) references GDD_GO.afiliado(id_afiliado)
 	,foreign key (id_usuario)  references GDD_GO.usuario(id_usuario)
@@ -287,171 +288,7 @@ CREATE TABLE GDD_GO.tipo_cancelacion
 	,primary key (id_tipo_cancelacion)
 	,foreign key (id_turno) references GDD_GO.turno(id_turno)
 )
-/*-----------------------------------------------------------------------------------------------------------------------------------*/
-/*----------------------------	BORRADO DE STORED PROCEDURES	----------------------------*/
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'inicializar_modelo')
-	Drop procedure GDD_GO.inicializar_modelo
-Go
 
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'logearse')
-	Drop procedure GDD_GO.logearse
-Go
-
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'calcular_id_afiliado')
-	Drop procedure GDD_GO.calcular_id_afiliado
-Go
-
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_cambiar_plan_medico')
-	Drop procedure  GDD_GO.sp_cambiar_plan_medico
-Go
-
-If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_insertar_afiliado')
-	Drop trigger GDD_GO.insertar_afiliado
-Go
-
-If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baja_afiliado')
-	Drop trigger GDD_GO.tr_baja_afiliado
-Go
-
-If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_Agregar_Agenda')
-	Drop procedure GDD_GO.sp_Agregar_Agenda
-Go
-
-If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_cancelar_turno')
-	Drop trigger GDD_GO.tr_cancelar_turno
-Go
-
-
-/*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
---Iniciar Aplicacion
-Create procedure GDD_GO.inicializar_modelo (@fechasys varchar(10))
-as
-Declare @fecha date = convert(date, substring(@fechasys, 7, 4) + substring(@fechasys, 4, 2) + substring(@fechasys, 1, 2));
-
-Go
-
---Logeo y seguridad
-Create Procedure GDD_GO.logearse	(	 @user varchar(150)
-										,@pass varchar(150)	)
-As
-Declare @usuario int = 0;
-Declare @estado int = 0;
-Declare @intentos int = 0;
-
-Select	@usuario = us.id_usuario,
-		@estado = us.desc_estado,
-		@intentos = us.intentos_login
-From GDD_GO.usuario us
-Where us.desc_username = @user
-
-if (@usuario = 0)
-	Select 'invalido' as mensaje
-else
-	if (@estado = 2 OR @intentos = 3)
-		Select 'inhabilitado' as mensaje
-	else
-	Begin
-		if not exists (Select 'existe' from GDD_GO.usuario us
-					   where us.id_usuario = @usuario and 
-							 us.desc_password = HASHBYTES('sha1', @pass)	)--cambiar a sha2_256 para la entrega
-		Begin
-			Select 'incorrecto' as mensaje
-			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
-		End
-		else
-		Begin
-			Select 'correcto' as mensaje
-			Update GDD_GO.usuario set intentos_login = 0 where id_usuario=@usuario
-		End
-	End
-Go
-
-
---CAMBIAR PLAN MEDICO
-Create Procedure  GDD_GO.sp_cambiar_plan_medico	(	 @afiliado int
-													,@plan_medico int
-													,@motivo varchar(255)	)
-As
-Declare @plan_medico_anterior int;
-Begin
-	Set @plan_medico_anterior = (select id_plan_medico from GDD_GO.afiliado where id_afiliado=@afiliado)
-
-	Update GDD_GO.afiliado set id_plan_medico = @plan_medico where id_afiliado=@afiliado
-
-	Insert into GDD_GO.hist_cambios_plan_afiliado (id_afiliado, desc_fecha_modificacion,id_plan_medico_anterior, desc_motivo)
-	Values
-	(@afiliado, GETDATE(), @plan_medico_anterior, @motivo)
-End
-GO
-
---Nueva Agenda
-Create Procedure  GDD_GO.sp_Agregar_Agenda(
-		@profesional int,
-		@especialidad int,
-		@fecha_desde Datetime,
-		@fecha_hasta Datetime,	
-		@consulta int)
-As
-Declare @agenda int;
-Begin
-	INSERT INTO GDD_GO.agenda(
-			id_profesional, id_especialidad,
-            fecha_desde, fecha_hasta,duracion_consulta, estado)
-            VALUES (
-			@profesional,
-			@especialidad,
-			@fecha_desde,
-			@fecha_hasta,
-			@consulta, 0)
-
-	set @agenda = (select TOP(1) id_agenda from GDD_GO.agenda order by id_agenda desc)
-
-	select @agenda as mensaje
-	end
-GO
-/*----------------------------	BORRADO DE VISTAS	-------------------------*/
-
-If exists (select * FROM sys.views where name = 'vista_rol_usuario')
-Drop view GDD_GO.vista_rol_usuario
-Go
-
-If exists (select * FROM sys.views where name = 'vista_rol_funciones')
-Drop view GDD_GO.vista_rol_funciones
-Go
-
-If exists (select * FROM sys.views where name = 'vista_especialidad_profesional')
-Drop view GDD_GO.vista_especialidad_profesional
-Go
-
-/*----------------------------	CREACION DE VISTAS	-------------------------*/
-
-Create view GDD_GO.vista_rol_usuario
-As
-Select rxu.*, r.desc_nombre_rol, r.desc_estado_rol 
-from GDD_GO.roles_por_usuario rxu
-left join GDD_GO.rol r
-	on rxu.id_rol = r.id_rol
-Go
-
-Create view GDD_GO.vista_rol_funciones
-As
-Select r.desc_nombre_rol, f.desc_funcion
-From GDD_GO.funciones_por_rol fxr
-left join GDD_GO.rol r
-	on fxr.id_rol = r.id_rol
-left join GDD_GO.funcion f
-	on fxr.id_funcion = f.id_funcion
-Go
-
-Create view GDD_GO.vista_especialidad_profesional
-As
-Select (p.desc_apellido+' '+p.desc_nombre)as nombre, e.descripcion
-From GDD_GO.especialidades_por_profesional exf
-left join GDD_GO.profesional p
-	on exf.id_profesional = p.id_profesional
-left join GDD_GO.especialidad e
-	on exf.id_especialidad = e.id_especialidad
-Go
 
 /*----------------------------	MIGRACION DE DATOS	-------------------------*/
 Create Table #usuarios	(	 id int identity(1,1)
@@ -567,7 +404,8 @@ Insert into GDD_GO.afiliado(  id_afiliado
 							 ,desc_fecha_creacion
 							 ,desc_fecha_nac
 							 ,id_usuario		
-							 ,id_plan_medico)
+							 ,id_plan_medico
+							 ,desc_nro_consulta)
 Select	 Distinct      
 		 id*100+1
 		,ma.Paciente_Nombre
@@ -583,6 +421,7 @@ Select	 Distinct
 		,ma.Paciente_Fecha_Nac
 		,us.id
 		,ma.Plan_Med_Codigo
+		,0
 From gd_esquema.Maestra ma
 Join #usuarios us
 	 on us.id_entidad = ma.Paciente_Dni And
@@ -801,6 +640,195 @@ select id_usuario , 1
 	where desc_username = 'admin'
 go
 
+
+
+/*-----------------------------------------------------------------------------------------------------------------------------------*/
+/*----------------------------	BORRADO DE STORED PROCEDURES	----------------------------*/
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'inicializar_modelo')
+	Drop procedure GDD_GO.inicializar_modelo
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'logearse')
+	Drop procedure GDD_GO.logearse
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'calcular_id_afiliado')
+	Drop procedure GDD_GO.calcular_id_afiliado
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_cambiar_plan_medico')
+	Drop procedure  GDD_GO.sp_cambiar_plan_medico
+Go
+
+If exists (select'existe' From INFORMATION_SCHEMA.ROUTINES where SPECIFIC_NAME = 'sp_Agregar_Agenda')
+	Drop procedure GDD_GO.sp_Agregar_Agenda
+Go
+
+
+/*----------------------------	CREACION DE STORE PROCEDURES	----------------------------*/
+--Iniciar Aplicacion
+Create procedure GDD_GO.inicializar_modelo (@fechasys varchar(10))
+as
+Declare @fecha date = convert(date, substring(@fechasys, 7, 4) + substring(@fechasys, 4, 2) + substring(@fechasys, 1, 2));
+
+Go
+
+--Logeo y seguridad
+Create Procedure GDD_GO.logearse	(	 @user varchar(150)
+										,@pass varchar(150)	)
+As
+Declare @usuario int = 0;
+Declare @estado int = 0;
+Declare @intentos int = 0;
+
+Select	@usuario = us.id_usuario,
+		@estado = us.desc_estado,
+		@intentos = us.intentos_login
+From GDD_GO.usuario us
+Where us.desc_username = @user
+
+if (@usuario = 0)
+	Select 'invalido' as mensaje
+else
+	if (@estado = 2 OR @intentos = 3)
+		Select 'inhabilitado' as mensaje
+	else
+	Begin
+		if not exists (Select 'existe' from GDD_GO.usuario us
+					   where us.id_usuario = @usuario and 
+							 us.desc_password = HASHBYTES('sha1', @pass)	)--cambiar a sha2_256 para la entrega
+		Begin
+			Select 'incorrecto' as mensaje
+			Update GDD_GO.usuario set intentos_login = @intentos+1 where id_usuario=@usuario
+		End
+		else
+		Begin
+			Select 'correcto' as mensaje
+			Update GDD_GO.usuario set intentos_login = 0 where id_usuario=@usuario
+		End
+	End
+Go
+
+
+--CAMBIAR PLAN MEDICO
+Create Procedure  GDD_GO.sp_cambiar_plan_medico	(	 @afiliado int
+													,@plan_medico int
+													,@motivo varchar(255)	)
+As
+Declare @plan_medico_anterior int;
+Begin
+	Set @plan_medico_anterior = (select id_plan_medico from GDD_GO.afiliado where id_afiliado=@afiliado)
+
+	Update GDD_GO.afiliado set id_plan_medico = @plan_medico where id_afiliado=@afiliado
+
+	Insert into GDD_GO.hist_cambios_plan_afiliado (id_afiliado, desc_fecha_modificacion,id_plan_medico_anterior, desc_motivo)
+	Values
+	(@afiliado, GETDATE(), @plan_medico_anterior, @motivo)
+End
+GO
+
+--Nueva Agenda
+Create Procedure  GDD_GO.sp_Agregar_Agenda(
+		@profesional int,
+		@especialidad int,
+		@fecha_desde Datetime,
+		@fecha_hasta Datetime,	
+		@consulta int)
+As
+Declare @agenda int;
+Begin
+	INSERT INTO GDD_GO.agenda(
+			id_profesional, id_especialidad,
+            fecha_desde, fecha_hasta,duracion_consulta, estado)
+            VALUES (
+			@profesional,
+			@especialidad,
+			@fecha_desde,
+			@fecha_hasta,
+			@consulta, 0)
+
+	set @agenda = (select TOP(1) id_agenda from GDD_GO.agenda order by id_agenda desc)
+
+	select @agenda as mensaje
+	end
+GO
+
+
+/*----------------------------	BORRADO DE VISTAS	-------------------------*/
+
+If exists (select * FROM sys.views where name = 'vista_rol_usuario')
+Drop view GDD_GO.vista_rol_usuario
+Go
+
+If exists (select * FROM sys.views where name = 'vista_rol_funciones')
+Drop view GDD_GO.vista_rol_funciones
+Go
+
+If exists (select * FROM sys.views where name = 'vista_especialidad_profesional')
+Drop view GDD_GO.vista_especialidad_profesional
+Go
+
+/*----------------------------	CREACION DE VISTAS	-------------------------*/
+
+Create view GDD_GO.vista_rol_usuario
+As
+Select rxu.*, r.desc_nombre_rol, r.desc_estado_rol 
+from GDD_GO.roles_por_usuario rxu
+left join GDD_GO.rol r
+	on rxu.id_rol = r.id_rol
+Go
+
+Create view GDD_GO.vista_rol_funciones
+As
+Select r.desc_nombre_rol, f.desc_funcion
+From GDD_GO.funciones_por_rol fxr
+left join GDD_GO.rol r
+	on fxr.id_rol = r.id_rol
+left join GDD_GO.funcion f
+	on fxr.id_funcion = f.id_funcion
+Go
+
+Create view GDD_GO.vista_especialidad_profesional
+As
+Select (p.desc_apellido+' '+p.desc_nombre)as nombre, e.descripcion
+From GDD_GO.especialidades_por_profesional exf
+left join GDD_GO.profesional p
+	on exf.id_profesional = p.id_profesional
+left join GDD_GO.especialidad e
+	on exf.id_especialidad = e.id_especialidad
+Go
+
+
+
+
+/*----------------------------	BORRADO DE TRIGGERS	-------------------------*/
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_insertar_afiliado')
+	Drop trigger GDD_GO.tr_insertar_afiliado
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baja_afiliado')
+	Drop trigger GDD_GO.tr_baja_afiliado
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_cancelar_turno')
+	Drop trigger GDD_GO.tr_cancelar_turno
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baja_rol')
+	Drop trigger GDD_GO.tr_baja_rol
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_baja_rol_por_usuario')
+	Drop trigger GDD_GO.tr_baja_rol_por_usuario
+Go
+
+If exists (select 'existe' From sys.objects where type = 'TR' AND name = 'tr_sumar_nro_consulta_afiliado')
+	Drop trigger GDD_GO.tr_sumar_nro_consulta_afiliado
+Go
+
+
+/*----------------------------	CREACION DE TRIGGERS	-------------------------*/
+
 Create Trigger GDD_GO.tr_insertar_afiliado
 On GDD_GO.afiliado
 Instead of Insert
@@ -870,6 +898,9 @@ Begin
 
 End
 Go
+
+
+
 
 Create Trigger GDD_GO.tr_baja_afiliado
 On GDD_GO.usuario
@@ -954,5 +985,21 @@ if @estado = 0
 begin
 	Delete from GDD_GO.roles_por_usuario
 	where id_rol = @id_rol
+end
+Go
+
+Create Trigger  GDD_GO.tr_sumar_nro_consulta_afiliado
+On GDD_GO.consulta
+After update
+As
+Begin
+	Declare @id_turno int
+
+	Set @id_turno = (Select id_turno from inserted)
+
+	UPDATE GDD_GO.afiliado SET desc_nro_consulta = desc_nro_consulta +1 where id_afiliado = (	SELECT tu.id_afiliado
+																								From  GDD_GO.turno tu
+																								Where tu.id_turno = @id_turno AND
+																									  tu.id_afiliado = id_afiliado	)
 end
 Go
