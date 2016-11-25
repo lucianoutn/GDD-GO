@@ -132,6 +132,11 @@ namespace ClinicaFrba.DataBase.Conexion
             SqlDataReader resultado;
             resultado = this.GD2C2016.ejecutarSentenciaConRetorno("");
             return resultado;
+            /*
+             SELECT TOP 5 a.desc_apellido, a.desc_nombre, COUNT(co.id_turno) as Cantidad, 'No' as GrupoFamiliar             FROM GDD_GO.afiliado AS a             INNER JOIN GDD_GO.bono_comprado AS b ON a.id_afiliado = b.id_afiliado            INNER JOIN GDD_GO.consulta as co ON b.id_bono_comprado = co.id_bono            WHERE a.id_familiar_principal IS NULL AND            MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6'  AND YEAR (co.desc_hora_consulta) = '2015'            GROUP BY a.desc_apellido, a.desc_nombre            ORDER BY COUNT(co.id_turno) desc
+
+            SELECT TOP 5 a.desc_apellido, a.desc_nombre, COUNT(co.id_turno) as Cantidad, 'Sí' as GrupoFamiliar            FROM GDD_GO.afiliado AS a             INNER JOIN GDD_GO.bono_comprado AS b ON a.id_afiliado = b.id_afiliado            INNER JOIN GDD_GO.consulta as co ON b.id_bono_comprado = co.id_bono            WHERE a.id_familiar_principal IS NOT NULL AND             MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6'  AND YEAR (co.desc_hora_consulta) = '2015'            GROUP BY a.desc_apellido, a.desc_nombre            ORDER BY COUNT(co.id_turno) desc
+             */
         }
 
         public SqlDataReader getProfConMasBonosConsultUtilizados(string condicion)

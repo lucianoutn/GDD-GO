@@ -123,7 +123,7 @@ namespace ClinicaFrba.Abm_Afiliado
           
             MessageBox.Show("Afiliado creado. Bienvenido!");
             this.Close();
-            unMenu.Show();
+            unMenu.Close();
         }
     }
 }
