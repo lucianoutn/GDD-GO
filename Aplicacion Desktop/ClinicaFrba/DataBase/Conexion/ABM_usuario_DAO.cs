@@ -33,11 +33,17 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public int validarUsuarioExistente(String DNI)
         {
-            SqlDataReader userExistente = this.GD2C2016.ejecutarSentenciaConRetorno("select 1 from GDD_GO.usuario where desc_username='" + DNI + "';");
+            SqlDataReader userExistente = this.GD2C2016.ejecutarSentenciaConRetorno("select id_usuario from GDD_GO.usuario where desc_username='" + DNI + "';");
+
+            int cantidad = 0;
+
+            if (userExistente.Read())
+                int.TryParse(userExistente["id_usuario"].ToString(), out cantidad);
+           
             if (userExistente.HasRows)
             {
                 userExistente.Close();
-                return 0;
+                return cantidad;
             }
             else
             {
@@ -46,9 +52,9 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
-        public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac, String plan_medico)
+        public void altaAfiliado(String id_nro_familiar, String desc_Nombre, String desc_Apellido, int desc_sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom, String desc_Telefono, int desc_Estado_Civil, String desc_fecha_nac, String plan_medico, String id_usuario)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal,id_plan_medico) Values ('" +
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.afiliado(  desc_nombre ,desc_apellido,desc_sexo,desc_tipo_doc,desc_dni,desc_mail,desc_direccion,desc_telefono,desc_estado_civil,desc_fecha_nac,id_familiar_principal,id_plan_medico, id_usuario) Values ('" +
                                                         desc_Nombre + "','" +
                                                         desc_Apellido + "'," +
                                                         desc_sexo + ",'" +
@@ -60,7 +66,8 @@ namespace ClinicaFrba.DataBase.Conexion
                                                         desc_Estado_Civil + "," +
                                                         desc_fecha_nac + "," +
                                                         id_nro_familiar + "," +
-                                                        plan_medico +")");
+                                                        plan_medico +","+
+                                                        id_usuario+")");
         }
 
 

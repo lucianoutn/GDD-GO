@@ -17,9 +17,9 @@ namespace ClinicaFrba.Abm_Afiliado
         List<string> lista_usuarios_afiliados = new List<string>();
 
         int unSexo, unDesc_Estado_Civil;
-        String unDesc_Nombre, unDesc_Apellido, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Fecha_Nac;
+        String unDesc_Nombre, unDesc_Apellido, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Fecha_Nac, unId_usuario;
 
-        public EstablecerFamiliar(String desc_Nombre, String desc_Apellido, int sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom_Calle, String desc_Telefono, int desc_Estado_Civil, String desc_Fecha_Nac, AltaAfiliado menu)
+        public EstablecerFamiliar(String desc_Nombre, String desc_Apellido, int sexo, String tipo_doc, String desc_Dni, String desc_Mail, String desc_Dom_Calle, String desc_Telefono, int desc_Estado_Civil, String desc_Fecha_Nac, String id_usuario, AltaAfiliado menu)
         {
             abm_usuario = new ABM_usuario_DAO();
             InitializeComponent();
@@ -34,6 +34,7 @@ namespace ClinicaFrba.Abm_Afiliado
             unDesc_Fecha_Nac=desc_Fecha_Nac;
             unSexo = sexo;
             unDesc_Estado_Civil = desc_Estado_Civil;
+            unId_usuario = id_usuario;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
@@ -118,7 +119,7 @@ namespace ClinicaFrba.Abm_Afiliado
                 familiar = "null";
             }
 
-            abm_usuario.altaAfiliado(familiar, unDesc_Nombre, unDesc_Apellido, unSexo, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Estado_Civil, unDesc_Fecha_Nac, plan);
+            abm_usuario.altaAfiliado(familiar, unDesc_Nombre, unDesc_Apellido, unSexo, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Estado_Civil, unDesc_Fecha_Nac, plan, unId_usuario);
             
           
             MessageBox.Show("Afiliado creado. Bienvenido!");

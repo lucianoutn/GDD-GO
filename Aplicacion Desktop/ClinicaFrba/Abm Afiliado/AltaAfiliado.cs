@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ClinicaFrba.DataBase.Conexion;
+using ClinicaFrba.DataBase.Entidades;
 
 namespace ClinicaFrba.Abm_Afiliado
 {
@@ -14,10 +15,12 @@ namespace ClinicaFrba.Abm_Afiliado
     {
         SubMenuAfiliado unMenu;
         ABM_usuario_DAO abm_usuario;
+        ProfesionalesDAO profesional_dao;
 
         public AltaAfiliado(SubMenuAfiliado menu)
         {
             abm_usuario = new ABM_usuario_DAO();
+            profesional_dao = new ProfesionalesDAO();
             InitializeComponent();
             unMenu = menu;
             cargarDatos();
@@ -52,6 +55,8 @@ namespace ClinicaFrba.Abm_Afiliado
 
         private void buttonAlta_Click_1(object sender, EventArgs e)
         {
+            if (!checkBoxExistente.Checked)
+            {
                 // DNI EXISTENTE - SI ES = 1 ES PORQUE ES VALIDO EL DNI (NO ESTÁ INGRESADO TODAVIA)
                 if (abm_usuario.validarDNIExistente(textDni.Text) == 1)
                 {
@@ -109,7 +114,7 @@ namespace ClinicaFrba.Abm_Afiliado
 
                             abm_usuario.crearUsuario(user, pass);
 
-                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac, this);
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac,"(select ISNULL((Select MAX(id_usuario) from GDD_GO.usuario),0))", this);
                             altaAfiliado2.Show();
 
                             this.Hide();
@@ -126,7 +131,32 @@ namespace ClinicaFrba.Abm_Afiliado
                     MessageBox.Show("El DNI ingresado ya está registrado en el sistema");
                 }
             }
+            else
+            {
+                 int id_usuario = abm_usuario.validarUsuarioExistente(textBoxUserName.Text);
+                    if (id_usuario != 1)
+                    {
+                            Profesional prof = profesional_dao.getProfesionalDeId(id_usuario.ToString());
 
-       
+                        if (abm_usuario.validarDNIExistente(prof.getdni().ToString()) == 1)
+                        {
+                            String user = textBoxUserName.Text;
+                            String pass = textBoxPassword.Text;
+
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(prof.getnombre(), prof.getapellido(), 1, "DNI", prof.getdni().ToString(), prof.getmail(), prof.getdireccion(), prof.gettelefono().ToString(), 1, "'" + prof.getnacimiento().ToString() + "'", id_usuario.ToString(), this);
+                            altaAfiliado2.Show();
+
+                            this.Hide();
+                        }
+                        else
+                            MessageBox.Show("El Afiliado ingresado no existe");
+                    }
+                    else
+                    {
+                        MessageBox.Show("El Username ingresado no existe");
+
+                    }
+            }
         }
     }
+}

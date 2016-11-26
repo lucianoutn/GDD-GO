@@ -849,7 +849,7 @@ Begin
 	Declare @id_usuario int
 	Declare @id_plan_medico int
 
-	Select @nombre = desc_nombre, @apellido = desc_apellido, @sexo = desc_sexo, @tipo_doc = desc_tipo_doc, @dni=desc_dni, @mail=desc_mail, @direccion = desc_direccion, @telefono=desc_telefono, @estado_civil = desc_estado_civil, @fecha_nac = desc_fecha_nac, @id_familiar_ppal=id_familiar_principal, @id_plan_medico = id_plan_medico
+	Select @nombre = desc_nombre, @apellido = desc_apellido, @sexo = desc_sexo, @tipo_doc = desc_tipo_doc, @dni=desc_dni, @mail=desc_mail, @direccion = desc_direccion, @telefono=desc_telefono, @estado_civil = desc_estado_civil, @fecha_nac = desc_fecha_nac, @id_familiar_ppal=id_familiar_principal, @id_plan_medico = id_plan_medico, @id_usuario=id_usuario
 	From inserted;
 	
 	If (@id_familiar_ppal is null)
@@ -860,8 +860,6 @@ Begin
 	Begin
 		Set @id_afiliado = ISNULL((Select (MAX(af.id_afiliado)+1) from GDD_GO.afiliado af where af.id_familiar_principal = @id_familiar_ppal),@id_familiar_ppal+1)
 	End
-		Set @id_usuario = ISNULL((Select MAX(id_usuario) from GDD_GO.usuario),0);
-
 		Insert into GDD_GO.afiliado(  id_afiliado
 									 ,desc_nombre
 		   							 ,desc_apellido
