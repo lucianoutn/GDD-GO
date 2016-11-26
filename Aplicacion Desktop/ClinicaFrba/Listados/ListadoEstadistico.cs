@@ -88,72 +88,66 @@ namespace ClinicaFrba.Listados
         {
             SqlDataReader lectorTop5;            
          
-            string condicion = " ";
+            string condicionMeses = " ";
             string condicionAnio = " ";
 
             if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
             {
-                condicion = condicion + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
+                condicionMeses = condicionMeses + " = '" + comboBoxMes.Text + "'";
             }
             else
             {
                 switch (comboBoxSemestre.Text)
                 {
                     case "Primer semestre":
-                        condicion = condicion + " MONTH(co.desc_hora_consulta) BETWEEN '1' AND '6' ";
+                        condicionMeses = condicionMeses + " BETWEEN '1' AND '6' ";
                         break;
 
                     case "Segundo semestre":
-                        condicion = condicion + " MONTH(co.desc_hora_consulta) BETWEEN '7' AND '12' ";
+                        condicionMeses = condicionMeses + " BETWEEN '7' AND '12' ";
                         break;
                 }
             }
 
-      /*      if (!(string.IsNullOrWhiteSpace(comboBoxMes.Text)))
-            {
-                condicionMes = condicionMes + " MONTH(co.desc_hora_consulta) = '" + comboBoxMes.Text + "'";
-            }
-    */
             if (!(string.IsNullOrWhiteSpace(comboBoxAnio.Text)))
             {
-                condicionAnio = condicionAnio + " AND YEAR(co.desc_hora_consulta) = '" + comboBoxAnio.Text + "'";
+                condicionAnio = condicionAnio + "= '" + comboBoxAnio.Text + "'";
             }
 
-            condicion = condicion + condicionAnio; /*+ condicionMes + condicionAnio;*/
-            this.condicion_guardada = condicion;
+            //condicion = condicion + condicionAnio; /*+ condicionMes + condicionAnio;*/
+          //  this.condicion_guardada = condicion;
 
             switch (comboBoxTop5.Text)
             { 
                 case "Especialidades con más cancelaciones - Profesionales": /*Tanto de afiliados como profesionales*/
-                    lectorTop5 = listEstDAO.getCancelaciones_profesionales(condicion);
+                    lectorTop5 = listEstDAO.getCancelaciones_profesionales(condicionMeses,condicionAnio);
                     cargar_grid_cancelaciones_profesionales(lectorTop5);
                     break;
 
                 case "Especialidades con más cancelaciones - Afiliados": 
-                    lectorTop5 = listEstDAO.getCancelaciones_afiliados(condicion);
+                    lectorTop5 = listEstDAO.getCancelaciones_afiliados(condicionMeses,condicionAnio);
                     cargar_grid_cancelaciones_afiliados(lectorTop5);
                     break;
 
                 case "Profesionales más consultados por especialidad":
-                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicion);
+                    lectorTop5 = listEstDAO.getProfMasConsultaPorEspecialidad(condicionMeses,condicionAnio);
                     cargar_grid_profMasConsultadosPorEsp(lectorTop5);
                     break;
 
                 case "Profesionales con menos horas trabajadas por especialidad":
-                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicion);
+                    lectorTop5 = listEstDAO.getProfConMenosHorasTrabajadas(condicionMeses,condicionAnio);
                     cargar_grid_profConMenosHorasTrabajadas(lectorTop5);
                     break;
 
                 case "Afiliados con más bonos comprados":
-                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicion);
+                    lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionMeses,condicionAnio);
                     cargar_grid_afiliadosConMasBonosComp(lectorTop5);
                     break;
 
                 case "Especialidades con más bonos de consulta utilizados":
-                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicion);
+                    lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionMeses,condicionAnio);
                     cargar_grid_profConMasBonosConsultUtil(lectorTop5);
                     break;
-
             }
 
         }
@@ -246,8 +240,6 @@ namespace ClinicaFrba.Listados
             dataGridViewTop5.Rows.AddRange(filas.ToArray());
         }
 
-
-
         private void cargar_grid_profConMenosHorasTrabajadas(SqlDataReader lector)
         {
                 SqlDataReader lectorT5;
@@ -274,8 +266,7 @@ namespace ClinicaFrba.Listados
                 }
 
                 lectorT5.Close();
-                dataGridViewTop5.Rows.AddRange(filas.ToArray());
-            
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());          
         }
 
         private void cargar_grid_afiliadosConMasBonosComp(SqlDataReader lector)
@@ -286,27 +277,24 @@ namespace ClinicaFrba.Listados
                 lectorT5 = lector;
 
                 List<DataGridViewRow> filas = new List<DataGridViewRow>();
-                Object[] columnas = new Object[6]; // 6 porque agrego grupo familiar
+                Object[] columnas = new Object[5]; //  
 
-                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = true; // visible porque agrego grupo familiar
-
+                this.dataGridViewTop5.Columns["Especialidad"].Visible = false; // ROMPE, no me deja ocultar esp
                 while (lectorT5.Read())
                 {
                     i++;
                     columnas[0] = i.ToString();
                     columnas[1] = lectorT5["desc_apellido"].ToString(); //apellido afiliado
                     columnas[2] = lectorT5["desc_nombre"].ToString();//nombre afiliado
-                    columnas[3] = lectorT5["Especialidad"].ToString();
-                    columnas[4] = lectorT5["Cantidad"].ToString(); //cantidad de bonos comprados
-                    columnas[5] = lectorT5["Col_GrupoFam"].ToString();
+                    columnas[3] = lectorT5["Cantidad"].ToString(); //cantidad de bonos comprados
+                    columnas[4] = lectorT5["Col_GrupoFam"].ToString();
 
                     filas.Add(new DataGridViewRow());
                     filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
                 }
 
                 lectorT5.Close();
-                dataGridViewTop5.Rows.AddRange(filas.ToArray());
-            
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());           
         }
 
         private void cargar_grid_profConMasBonosConsultUtil(SqlDataReader lector) 
@@ -335,8 +323,7 @@ namespace ClinicaFrba.Listados
                 }
 
                 lectorT5.Close();
-                dataGridViewTop5.Rows.AddRange(filas.ToArray());
-            
+                dataGridViewTop5.Rows.AddRange(filas.ToArray());           
         }
 
         private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) // la idea es que muestre meses según el semestre elegido 
@@ -351,18 +338,18 @@ namespace ClinicaFrba.Listados
 
                 if (comboBoxSemestre.Text == "Primer semestre")
                 {
-                    foreach (string aux2 in listEstDAO.get_primerSemestre())
+                    for (int i = 1; i <= 6; i++ )
                     {
-                        comboBoxMes.Items.Add(aux2); //por cada selección suma meses !!
+                        comboBoxMes.Items.Add(i);
                     }
-                } 
+                 } 
                 else
                 {
                     if (comboBoxSemestre.Text == "Segundo semestre")
                     {
-                        foreach (string aux3 in listEstDAO.get_segundoSemestre())
+                        for (int i = 7; i <= 12; i++)
                         {
-                            comboBoxMes.Items.Add(aux3);
+                            comboBoxMes.Items.Add(i);
                         }
                     }
                 }
@@ -404,10 +391,6 @@ namespace ClinicaFrba.Listados
                 comboBoxTop5.Enabled = false;
                 comboBoxMes.Enabled = false;
             }
-        }
-
-       
-
-        
+        }      
     }
 }
