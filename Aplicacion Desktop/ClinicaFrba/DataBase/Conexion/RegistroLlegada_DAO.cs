@@ -70,7 +70,7 @@ namespace ClinicaFrba.DataBase.Conexion
             //tiene hardcodeada una fecha para testing !!SACAR ANTES DE ENTREGA!!
             //tambien checkea por turnos cancelados
             //SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = '2015-3-31' /* convert(date, GETDATE()) */ and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120) and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h left join GDD_GO.consulta co on co.id_turno=h.id_turno where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120) and  t.id_profesional = " + idprofElegido + " and  t.desc_estado = 0 and co.id_turno is null order by desc_hora_desde asc");
  
            List<int> resultado = new List<int>();
            while (lector.Read())

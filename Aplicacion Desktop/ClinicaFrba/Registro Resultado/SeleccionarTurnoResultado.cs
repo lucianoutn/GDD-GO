@@ -67,7 +67,7 @@ namespace ClinicaFrba.Registro_Resultado
                 DataGridViewRow fila = dataGridViewTurnos.SelectedRows[0];
                 int id_turno = int.Parse(fila.Cells["id_turno"].Value.ToString());
 
-                RegistrarResultado registrarResultado = new RegistrarResultado(this, id_turno);
+                RegistrarResultado registrarResultado = new RegistrarResultado(unMenu, id_turno);
                 registrarResultado.Show();
                 this.Hide(); 
 

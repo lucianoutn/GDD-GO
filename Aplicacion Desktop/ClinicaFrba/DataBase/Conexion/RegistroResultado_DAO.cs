@@ -57,7 +57,7 @@ namespace ClinicaFrba.DataBase.Conexion
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("UPDATE GDD_GO.consulta set desc_sintomas = '" + unSintoma + 
                                                                                "', desc_enfermedades = '" + unDiagnostico + 
-                                                                               "' WHERE id_turno = '" + turno + "';");
+                                                                               "' WHERE id_turno = " + turno + ";");
         
         }
 
