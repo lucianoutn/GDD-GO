@@ -32,17 +32,17 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.buttonNext = new System.Windows.Forms.Button();
-            this.buttonBack = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.popApp = new System.Windows.Forms.Label();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Momento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonNext = new System.Windows.Forms.Button();
+            this.buttonBack = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.popApp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             // 
             this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(156, 29);
+            this.comboBox1.Location = new System.Drawing.Point(137, 29);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(278, 21);
             this.comboBox1.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(156, 56);
+            this.comboBox2.Location = new System.Drawing.Point(137, 56);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(278, 21);
             this.comboBox2.TabIndex = 1;
@@ -71,6 +71,7 @@
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AllowUserToOrderColumns = true;
+            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Key,
@@ -79,62 +80,14 @@
             this.Horario,
             this.Duracion,
             this.Momento});
+            this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dataGridView.Location = new System.Drawing.Point(12, 109);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(422, 192);
             this.dataGridView.TabIndex = 2;
-            // 
-            // buttonNext
-            // 
-            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonNext.Location = new System.Drawing.Point(359, 307);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(75, 23);
-            this.buttonNext.TabIndex = 3;
-            this.buttonNext.Text = "Siguiente";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBack.Location = new System.Drawing.Point(12, 307);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(75, 23);
-            this.buttonBack.TabIndex = 4;
-            this.buttonBack.Text = "atras";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Profesional:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 64);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Especialidad";
-            // 
-            // popApp
-            // 
-            this.popApp.AutoSize = true;
-            this.popApp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.popApp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.popApp.Location = new System.Drawing.Point(185, 312);
-            this.popApp.Name = "popApp";
-            this.popApp.Size = new System.Drawing.Size(76, 13);
-            this.popApp.TabIndex = 7;
-            this.popApp.Text = "Procesando....";
             // 
             // Key
             // 
@@ -177,6 +130,58 @@
             this.Momento.Name = "Momento";
             this.Momento.ReadOnly = true;
             this.Momento.Visible = false;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonNext.Location = new System.Drawing.Point(359, 307);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonNext.TabIndex = 3;
+            this.buttonNext.Text = "Siguiente";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
+            this.buttonBack.Location = new System.Drawing.Point(12, 307);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 23);
+            this.buttonBack.TabIndex = 4;
+            this.buttonBack.Text = "Atras";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(41, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Profesional:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Especialidad:";
+            // 
+            // popApp
+            // 
+            this.popApp.AutoSize = true;
+            this.popApp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.popApp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.popApp.Location = new System.Drawing.Point(185, 312);
+            this.popApp.Name = "popApp";
+            this.popApp.Size = new System.Drawing.Size(76, 13);
+            this.popApp.TabIndex = 7;
+            this.popApp.Text = "Procesando....";
             // 
             // FormNuevoTurno
             // 
