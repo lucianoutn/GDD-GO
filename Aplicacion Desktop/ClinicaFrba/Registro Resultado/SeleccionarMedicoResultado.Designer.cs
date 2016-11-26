@@ -136,13 +136,12 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
             this.label4.Location = new System.Drawing.Point(248, 71);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 26);
+            this.label4.Size = new System.Drawing.Size(65, 26);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Ingresar \r\nId:";
+            this.label4.Text = "Ingresar Id Profesional:";
             // 
             // textBoxApellido
             // 
