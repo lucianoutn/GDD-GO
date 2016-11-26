@@ -157,7 +157,7 @@ namespace ClinicaFrba.DataBase.Conexion
                 r = GD2C2016.ejecutarSentenciaConRetorno(
                         "select count(*) from " + ConstantesBD.tabla_horario + " h" +
                         " where h.id_agenda = "+agenda.ToString()+
-                        " and h.desc_hora_desde = "+ fechaSQL(fecha));
+                        " and h.desc_hora_desde = " + fechaSQL(fecha));
             }
             catch (Exception e)
             {
@@ -178,8 +178,10 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public String fechaSQL(DateTime f)
         {
-            return "'" + f.Year.ToString() + "-" + f.Month.ToString() + "-" + f.Day.ToString() +
+            string fechaSQL = "'" + f.Year.ToString() + "-" + f.Month.ToString() + "-" + f.Day.ToString() +
                     " " + f.Hour.ToString() + ":" + f.Minute.ToString() + ":00.000'";
+
+            return "CONVERT(Datetime, " + fechaSQL + ", 120)";
         }
 
         private String cambiarFormatoFecha(String fecha)
