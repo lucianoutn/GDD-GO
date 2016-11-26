@@ -133,7 +133,7 @@ namespace ClinicaFrba.DataBase.Conexion
                                                         +"join GDD_GO.turno tu on tu.id_turno = co.id_turno and tu.id_profesional = "+id_usuario_logeado
                                                         +" join GDD_GO.afiliado af on af.id_afiliado = tu.id_afiliado "
                                                         +"where co.desc_enfermedades is null and "
-                                                        + "DATEDIFF(day,desc_hora_consulta,'" + ConstantesBD.fechaSistema + "') = 0 order by co.desc_hora_llegada");
+                                                        + "DATEDIFF(day,desc_hora_consulta,convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120)) = 0 order by co.desc_hora_llegada");
 
             }
             catch (Exception e)
@@ -158,9 +158,21 @@ namespace ClinicaFrba.DataBase.Conexion
                 r.Close();
                 return lista;
         }
+
+        private String cambiarFormatoFecha(String fecha)
+        {
+            String fechaConFormato = "";
+            char[] delimitadores = { '/' };
+
+            string[] palabras = fecha.Split(delimitadores);
+
+            foreach (string s in palabras)
+            {
+                fechaConFormato = s + fechaConFormato;
+                fechaConFormato = "-" + fechaConFormato;
+            }
+            return fechaConFormato.Substring(1) + " 00:00:00.000";
+        }
     }
-
-
-
-    }
+}
 

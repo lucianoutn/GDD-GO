@@ -103,7 +103,7 @@ namespace ClinicaFrba.DataBase.Conexion
             reader.Read();
             DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
             reader.Close();
-            return hora.ToString("hh':'mm");
+            return hora.ToString();
         }
 
         public string getAfTurno(int id_turno)
@@ -174,7 +174,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public void insertarConsulta(int id_turno, int id_bono, string desc_hora_consulta)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.consulta(desc_hora_llegada, desc_hora_consulta, id_turno, id_bono) values( GETDATE(),'"+ desc_hora_consulta +"',"+ id_turno +","+ id_bono +")");
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Insert into GDD_GO.consulta(desc_hora_llegada, desc_hora_consulta, id_turno, id_bono) values( convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120)),'" + desc_hora_consulta + "'," + id_turno + "," + id_bono + ")");
          
         }
     }
