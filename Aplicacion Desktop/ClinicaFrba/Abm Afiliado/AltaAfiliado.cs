@@ -133,11 +133,13 @@ namespace ClinicaFrba.Abm_Afiliado
             }
             else
             {
-                 int id_usuario = abm_usuario.validarUsuarioExistente(textBoxUserName.Text);
-                    if (id_usuario != 1)
-                    {
-                            Profesional prof = profesional_dao.getProfesionalDeId(id_usuario.ToString());
+                int id_usuario = abm_usuario.validarUsuarioExistente(textBoxUserName.Text);
+                if (id_usuario != 1)
+                {
+                    Profesional prof = profesional_dao.getProfesionalDeId(id_usuario.ToString());
 
+                    if (prof != null)
+                    {
                         if (abm_usuario.validarDNIExistente(prof.getdni().ToString()) == 1)
                         {
                             String user = textBoxUserName.Text;
@@ -150,12 +152,18 @@ namespace ClinicaFrba.Abm_Afiliado
                         }
                         else
                             MessageBox.Show("El Afiliado ingresado no existe");
+
                     }
                     else
                     {
-                        MessageBox.Show("El Username ingresado no existe");
-
+                        MessageBox.Show("El Profesional no existe");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("El Username ingresado no existe");
+
+                }
             }
         }
     }

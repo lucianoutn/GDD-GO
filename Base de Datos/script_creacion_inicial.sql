@@ -874,7 +874,8 @@ Begin
 									 ,desc_fecha_creacion	
 									 ,id_familiar_principal
 									 ,id_usuario
-									 ,id_plan_medico	)
+									 ,id_plan_medico
+									 ,desc_nro_consulta	)
 		Values (    @id_afiliado
 				   ,@nombre
 				   ,@apellido
@@ -889,7 +890,8 @@ Begin
 				   ,GETDATE()	
 				   ,@id_familiar_ppal
 				   ,@id_usuario	
-				   ,@id_plan_medico	)
+				   ,@id_plan_medico
+				   ,0	)
 		
 		Insert into GDD_GO.roles_por_usuario (id_usuario, id_rol)
 		Values (	@id_usuario, 2)

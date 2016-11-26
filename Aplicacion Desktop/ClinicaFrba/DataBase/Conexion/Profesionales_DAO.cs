@@ -5,6 +5,7 @@ using System.Text;
 using ClinicaFrba.Conexion;
 using ClinicaFrba.DataBase.Entidades;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
@@ -98,16 +99,12 @@ namespace ClinicaFrba.DataBase.Conexion
         public Profesional getProfesionalDeId(String username)
         {
             SqlDataReader r = null;
-            try
+         
+            r = GD2C2016.ejecutarSentenciaConRetorno("select p.* from " + ConstantesBD.tabla_profesional +" p where p.id_usuario =" +username);
+
+            if (r.HasRows)
             {
-                r = GD2C2016.ejecutarSentenciaConRetorno("select p.* from " + ConstantesBD.tabla_profesional +" p where p.id_usuario =" +username);
-            }
-            catch (Exception e)
-            {
-                throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
-            }
-            try
-            {
+
                 r.Read();
                 Profesional profesional = new Profesional(
                                 r.GetInt32(0),
@@ -126,9 +123,10 @@ namespace ClinicaFrba.DataBase.Conexion
                 r.Close();
                 return profesional;
             }
-            catch (Exception e)
+            else
             {
-                throw new Exception("El READ del comando se encuentra vacio", e);
+                r.Close();
+                return null;
             }
         }
 
