@@ -32,10 +32,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_turnos(int id_afiliado, String fechaActual)
         {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h "+
-                "Join GDD_GO.turno t On t.id_turno = h.id_turno "+
-                "Where t.id_afiliado = " + id_afiliado + " AND t.desc_estado!=1 "+
-                "AND h.desc_hora_desde >= '"+ConstantesBD.cambiarFormatoFecha(fechaActual)+"' order by h.desc_hora_desde asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h Join GDD_GO.turno t On t.id_turno = h.id_turno Where t.id_afiliado = 201 AND t.desc_estado!=1 AND datediff(day, convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120),h.desc_hora_desde) > 2 order by h.desc_hora_desde asc");
             List<string> resultado = new List<string>();
 
             while (lector.Read())
@@ -172,5 +169,21 @@ namespace ClinicaFrba.DataBase.Conexion
             return "CONVERT(Datetime, " + fechaSQL + ", 120)";
         }
 
+
+
+        private String cambiarFormatoFecha(String fecha)
+        {
+            String fechaConFormato = "";
+            char[] delimitadores = { '/' };
+
+            string[] palabras = fecha.Split(delimitadores);
+
+            foreach (string s in palabras)
+            {
+                fechaConFormato = s + fechaConFormato;
+                fechaConFormato = "-" + fechaConFormato;
+            }
+            return fechaConFormato.Substring(1) + " 00:00:00.000";
+        }
     }
 }
