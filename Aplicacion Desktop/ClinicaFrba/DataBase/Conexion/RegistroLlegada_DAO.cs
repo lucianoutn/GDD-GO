@@ -61,7 +61,7 @@ namespace ClinicaFrba.DataBase.Conexion
         /* obtengo id del turno para el dia de la fecha */
         public List<int> turnosHoy(string profElegido)
         {
-            MessageBox.Show(cambiarFormatoFecha(ConstantesBD.fechaSistema));
+            //MessageBox.Show(cambiarFormatoFecha(ConstantesBD.fechaSistema));
             SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from GDD_GO.profesional where desc_apellido +' '+ desc_nombre = '"+profElegido+"'");
             reader.Read();
             int idprofElegido = Int32.Parse(reader["id_profesional"].ToString());
@@ -104,6 +104,15 @@ namespace ClinicaFrba.DataBase.Conexion
             DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
             reader.Close();
             return hora.ToString();
+        }
+
+        public string getHoraSolaTurno(int turno_id)
+        {
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno ='" + turno_id + "'");
+            reader.Read();
+            DateTime hora = DateTime.Parse(reader["desc_hora_desde"].ToString());
+            reader.Close();
+            return hora.ToString("hh':'mm");
         }
 
         public string getAfTurno(int id_turno)

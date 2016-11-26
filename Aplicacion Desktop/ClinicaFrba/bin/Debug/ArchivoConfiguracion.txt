@@ -1,4 +1,4 @@
-Fecha Sistema: 10/11/2016
+Fecha Sistema: 28/11/2016
 
 Parametros Conexion:
 	URL Servidor: localhost\SQLSERVER2012

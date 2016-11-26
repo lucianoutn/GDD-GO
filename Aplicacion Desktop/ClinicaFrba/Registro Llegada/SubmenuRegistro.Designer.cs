@@ -42,6 +42,7 @@
             this.idTurno = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nombreAfiliado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fechaConsulta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridTurno)).BeginInit();
@@ -134,7 +135,8 @@
             this.dataGridTurno.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idTurno,
             this.Horario,
-            this.nombreAfiliado});
+            this.nombreAfiliado,
+            this.fechaConsulta});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -187,6 +189,13 @@
             this.nombreAfiliado.Name = "nombreAfiliado";
             this.nombreAfiliado.ReadOnly = true;
             // 
+            // fechaConsulta
+            // 
+            this.fechaConsulta.HeaderText = "fechaConsulta";
+            this.fechaConsulta.Name = "fechaConsulta";
+            this.fechaConsulta.ReadOnly = true;
+            this.fechaConsulta.Visible = false;
+            // 
             // SubmenuRegistro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,5 +234,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idTurno;
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn nombreAfiliado;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fechaConsulta;
     }
 }

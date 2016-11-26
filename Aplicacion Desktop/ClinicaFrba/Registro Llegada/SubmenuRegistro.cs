@@ -60,8 +60,9 @@ namespace ClinicaFrba.Registro_Llegada
                 int id_turno = turnosHoy[i];
 
                 dataGridTurno.Rows.Add(id_turno,
-                                          DAO.getHoraTurno(id_turno),
-                                          DAO.getAfTurno(id_turno));
+                                       DAO.getHoraSolaTurno(id_turno),
+                                       DAO.getAfTurno(id_turno),
+                                       DAO.getHoraTurno(id_turno));
                                           
             }
 
@@ -76,7 +77,7 @@ namespace ClinicaFrba.Registro_Llegada
             {
                 DataGridViewRow fila = dataGridTurno.SelectedRows[0];
                 int id_turno = int.Parse(fila.Cells["idTurno"].Value.ToString());
-                string desc_hora_consulta = fila.Cells["Horario"].Value.ToString();
+                string desc_hora_consulta = fila.Cells["fechaConsulta"].Value.ToString();
                 int id_afiliado = DAO.getIdAfSegunTurno(id_turno);
                 int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado);
 
