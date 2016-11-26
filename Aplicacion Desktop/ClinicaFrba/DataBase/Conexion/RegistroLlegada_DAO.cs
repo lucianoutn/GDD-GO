@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ClinicaFrba.Conexion;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
@@ -60,7 +61,7 @@ namespace ClinicaFrba.DataBase.Conexion
         /* obtengo id del turno para el dia de la fecha */
         public List<int> turnosHoy(string profElegido)
         {
-
+            MessageBox.Show(cambiarFormatoFecha(ConstantesBD.fechaSistema));
             SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select id_profesional from GDD_GO.profesional where desc_apellido +' '+ desc_nombre = '"+profElegido+"'");
             reader.Read();
             int idprofElegido = Int32.Parse(reader["id_profesional"].ToString());
@@ -69,7 +70,7 @@ namespace ClinicaFrba.DataBase.Conexion
             //tiene hardcodeada una fecha para testing !!SACAR ANTES DE ENTREGA!!
             //tambien checkea por turnos cancelados
             //SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = '2015-3-31' /* convert(date, GETDATE()) */ and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = convert(date, GETDATE()) and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select * from GDD_GO.turno t, GDD_GO.horario h where t.id_turno = h.id_turno and convert(date, h.desc_hora_desde) = convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120) and t.id_profesional = '" + idprofElegido + "' and t.desc_estado = 0 order by desc_hora_desde asc");
  
            List<int> resultado = new List<int>();
            while (lector.Read())
@@ -81,6 +82,21 @@ namespace ClinicaFrba.DataBase.Conexion
            
         }
 
+
+        private String cambiarFormatoFecha(String fecha)
+        {
+            String fechaConFormato = "";
+            char[] delimitadores = { '/' };
+
+            string[] palabras = fecha.Split(delimitadores);
+
+            foreach (string s in palabras)
+            {
+                fechaConFormato = s + fechaConFormato;
+                fechaConFormato = "-" + fechaConFormato;
+            }
+            return fechaConFormato.Substring(1) + " 00:00:00.000";
+        }
         public string getHoraTurno(int turno_id)
         {
             SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select desc_hora_desde from GDD_GO.horario where id_turno ='"+turno_id+"'");

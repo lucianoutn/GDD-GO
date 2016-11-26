@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace ClinicaFrba.DataBase.Conexion
 {
@@ -29,7 +30,7 @@ namespace ClinicaFrba.DataBase.Conexion
                         "on d.id_agenda = a.id_agenda " +
                         "where a.id_profesional = " + prof.getid() + " " +
                         "and a.id_especialidad = " + esp.getID() + " " +
-                        "and a.fecha_hasta >= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ");
+                        "and a.fecha_hasta >= convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ,120)");
             }
             catch (Exception e)
             {
@@ -76,8 +77,8 @@ namespace ClinicaFrba.DataBase.Conexion
                         "on h.id_agenda = a.id_agenda "+
                         "where a.id_profesional = " + prof + " " +
                         "and a.id_especialidad = " + esp + " " +
-                        "and a.fecha_hasta <= '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
-                        "and h.desc_hora_desde > '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' " +
+                        "and a.fecha_hasta <= convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ,120)" +
+                        "and h.desc_hora_desde > convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "' ,120)" +
                         "and h.id_turno = null  order by h.desc_hora_desde");
             }
             catch (Exception e)
