@@ -949,10 +949,14 @@ Create Trigger  GDD_GO.tr_cancelar_turno
 On GDD_GO.tipo_cancelacion
 FOR insert
 As
-Declare @id_turno int
+Begin
+	Declare @id_turno int
 
-Set @id_turno = (Select id_turno from inserted)
-Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno;
+	Set @id_turno = (Select id_turno from inserted)
+	Update GDD_GO.turno set desc_estado=1 where id_turno = @id_turno
+	
+	delete from GDD_GO.horario where id_turno = @id_turno
+End
 Go
 
 -- TRIGGERs DE BAJA LOGICA DE ROL 
