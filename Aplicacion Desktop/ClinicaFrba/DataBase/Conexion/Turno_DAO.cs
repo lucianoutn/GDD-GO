@@ -47,19 +47,39 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
+
+        public List<string> get_turnos_profesional_por_fecha(String id_profesional, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("  select tu.id_turno from GDD_GO.turno tu "+
+                                                                             "  join GDD_GO.horario ho " +
+	                                                                         "  on ho.id_turno = tu.id_turno And " +
+		                                                                     "  ho.desc_hora_desde >= " +fechaSQL(fechaInicio)+" and " +
+		                                                                     "  ho.desc_hora_desde <= "+fechaSQL(fechaFinal)+
+                                                                             "  where tu.id_profesional = "+id_profesional);
+            List<string> resultado = new List<string>();
+
+            while (lector.Read())
+            {
+                resultado.Add(lector["id_turno"].ToString());
+            }
+
+            lector.Close();
+            return resultado;
+        }
+
+
         public void cancelarTurno(int id_turno, string motivo, int desc__cancelacion_usuario, int desc_usuario)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) values ('" + motivo + "', " + id_turno + ", " + desc__cancelacion_usuario + ","+desc_usuario+")");
             new Horarios_DAO().liberarHorarioDelTurno(id_turno);
         }
 
-        public void cancelarTurnoProfesional(string motivo, string desc__cancelacion_usuario, DateTime hora_desde, DateTime hora_hasta)
+        public void cancelarTurnoProfesional(string motivo, string desc__cancelacion_usuario, String id_turno)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno
                 ("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) "+
-                 "select '"+motivo+"',	tu.id_turno,		id_afiliado,		2"+
-                 " from GDD_GO.horario ho Join GDD_GO.turno tu On tu.id_turno=ho.id_horario And "+
-	             " ho.desc_hora_desde >= "+fechaSQL(hora_desde)+" ho.and desc_hora_desde <= "+fechaSQL(hora_hasta)+" where tu.id_afiliado="+desc__cancelacion_usuario);
+                 "select '" + motivo + "',	tu.id_turno,		" + desc__cancelacion_usuario + ",		2" +
+                 " from GDD_GO.turno tu where tu.id_turno ="+id_turno);
         }
 
         public int get_profesional(int id_turno)
