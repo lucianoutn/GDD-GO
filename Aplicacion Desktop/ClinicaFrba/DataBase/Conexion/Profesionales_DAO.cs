@@ -95,6 +95,44 @@ namespace ClinicaFrba.DataBase.Conexion
             }
         }
 
+        public Profesional getProfesionalDeId(String username)
+        {
+            SqlDataReader r = null;
+            try
+            {
+                r = GD2C2016.ejecutarSentenciaConRetorno("select p.* from " + ConstantesBD.tabla_profesional +" p where p.id_usuario =" +username);
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El comando solicitado no pudo ser ejecutado en el servidor SQL", e);
+            }
+            try
+            {
+                r.Read();
+                Profesional profesional = new Profesional(
+                                r.GetInt32(0),
+                                r.GetString(1),
+                                r.GetString(2),
+                                r.GetString(3),
+                                r.GetInt32(4),
+                                r.GetString(5),
+                                r.GetInt32(6),
+                                r.GetString(7),
+                                r.GetDateTime(8),
+                                r.GetDateTime(9),
+                                r.GetString(10),
+                                r.GetString(11),
+                                r.GetInt32(12));
+                r.Close();
+                return profesional;
+            }
+            catch (Exception e)
+            {
+                throw new Exception("El READ del comando se encuentra vacio", e);
+            }
+        }
+
+
 
         public List<Profesional> getProfesionalesConEspecialidad(Int32 ID_esp)
         {

@@ -63,6 +63,7 @@
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.checkBoxExistente = new System.Windows.Forms.CheckBox();
             this.groupBoxCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -364,6 +365,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.checkBoxExistente);
             this.groupBox1.Controls.Add(this.labelPassword);
             this.groupBox1.Controls.Add(this.textBoxUserName);
             this.groupBox1.Controls.Add(this.labelUserName);
@@ -371,7 +373,7 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox1.Location = new System.Drawing.Point(67, 350);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(333, 99);
+            this.groupBox1.Size = new System.Drawing.Size(333, 134);
             this.groupBox1.TabIndex = 151;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Usuario";
@@ -410,6 +412,17 @@
             this.textBoxPassword.Size = new System.Drawing.Size(95, 20);
             this.textBoxPassword.TabIndex = 153;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            // 
+            // checkBoxExistente
+            // 
+            this.checkBoxExistente.AutoSize = true;
+            this.checkBoxExistente.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBoxExistente.Location = new System.Drawing.Point(102, 111);
+            this.checkBoxExistente.Name = "checkBoxExistente";
+            this.checkBoxExistente.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxExistente.TabIndex = 156;
+            this.checkBoxExistente.Text = "Usuario Existente";
+            this.checkBoxExistente.UseVisualStyleBackColor = true;
             // 
             // AltaAfiliado
             // 
@@ -471,6 +484,7 @@
         private System.Windows.Forms.TextBox textBoxUserName;
         private System.Windows.Forms.Label labelUserName;
         private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.CheckBox checkBoxExistente;
 
     }
 }
