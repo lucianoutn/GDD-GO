@@ -136,15 +136,20 @@ namespace ClinicaFrba.Abm_Afiliado
                  int id_usuario = abm_usuario.validarUsuarioExistente(textBoxUserName.Text);
                     if (id_usuario != 1)
                     {
-                        Profesional prof = profesional_dao.getProfesionalDeId(id_usuario.ToString());
+                            Profesional prof = profesional_dao.getProfesionalDeId(id_usuario.ToString());
 
-                        String user = textBoxUserName.Text;
-                        String pass = textBoxPassword.Text;
+                        if (abm_usuario.validarDNIExistente(prof.getdni().ToString()) == 1)
+                        {
+                            String user = textBoxUserName.Text;
+                            String pass = textBoxPassword.Text;
 
-                        EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(prof.getnombre(), prof.getapellido(), 1, "DNI", prof.getdni().ToString(), prof.getmail(), prof.getdireccion(), prof.gettelefono().ToString(), 1, "'"+prof.getnacimiento().ToString()+"'", id_usuario.ToString(), this);
-                        altaAfiliado2.Show();
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(prof.getnombre(), prof.getapellido(), 1, "DNI", prof.getdni().ToString(), prof.getmail(), prof.getdireccion(), prof.gettelefono().ToString(), 1, "'" + prof.getnacimiento().ToString() + "'", id_usuario.ToString(), this);
+                            altaAfiliado2.Show();
 
-                        this.Hide();
+                            this.Hide();
+                        }
+                        else
+                            MessageBox.Show("El Afiliado ingresado no existe");
                     }
                     else
                     {
