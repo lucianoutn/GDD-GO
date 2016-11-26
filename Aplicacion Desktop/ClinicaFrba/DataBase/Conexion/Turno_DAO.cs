@@ -47,12 +47,13 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_turnos_profesional_por_fecha(String id_profesional, DateTime fechaInicio, DateTime fechaFinal)
         {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("  select tu.id_turno from GDD_GO.turno tu "+
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("  select tu.id_turno from GDD_GO.turno tu " +
                                                                              "  join GDD_GO.horario ho " +
-	                                                                         "  on ho.id_turno = tu.id_turno And " +
-		                                                                     "  ho.desc_hora_desde >= " +fechaSQL(fechaInicio)+" and " +
-		                                                                     "  ho.desc_hora_desde <= "+fechaSQL(fechaFinal)+
-                                                                             "  where tu.id_profesional = "+id_profesional);
+                                                                             "  on ho.id_turno = tu.id_turno And " +
+                                                                             "  ho.desc_hora_desde >= " + fechaSQL(fechaInicio) + " and " +
+                                                                             "  ho.desc_hora_desde <= " + fechaSQL(fechaFinal) +
+                                                                             " and datediff(DAY, convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120),ho.desc_hora_desde  )>2" +
+                                                                             "  where tu.id_profesional = " + id_profesional);
             List<string> resultado = new List<string>();
 
             while (lector.Read())
