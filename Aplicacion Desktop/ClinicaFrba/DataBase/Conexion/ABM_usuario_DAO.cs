@@ -91,7 +91,8 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public void comprarPlanMedico(String id_afiliado, String id_plan_medico)
         {
-            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set id_plan_medico="+id_plan_medico+" where id_afiliado="+id_afiliado);
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set id_plan_medico=" + id_plan_medico + " where id_afiliado=" + id_afiliado);
+            this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set id_plan_medico=" + id_plan_medico + " where id_familiar_principal=" + id_afiliado);
         }
 
         public List<string> get_afiliados_con_dni(String dni)

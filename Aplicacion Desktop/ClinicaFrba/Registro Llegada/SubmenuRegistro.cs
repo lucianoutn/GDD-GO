@@ -79,7 +79,15 @@ namespace ClinicaFrba.Registro_Llegada
                 int id_turno = int.Parse(fila.Cells["idTurno"].Value.ToString());
                 string desc_hora_consulta = fila.Cells["fechaConsulta"].Value.ToString();
                 int id_afiliado = DAO.getIdAfSegunTurno(id_turno);
-                int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado);
+
+                bool esFamiliarPpal = false;
+
+                if (id_afiliado / 10 == 1)
+                {
+                    esFamiliarPpal = true;
+                }
+
+                int cantDisponible = DAO.getCantBonosDisponibles(id_afiliado,esFamiliarPpal);
 
                 //valido que tenga bonos disponibles y verifica tambien que los bonos sean del mismo plan actual del afiliado 
                 if (cantDisponible == 0)
@@ -87,7 +95,7 @@ namespace ClinicaFrba.Registro_Llegada
                 else
                 {
                     //tomo el primer bono disponible, marco el bono como usado y decremento el total y verifica tambien que los bonos sean del mismo plan actual del afiliado
-                    int id_bono = DAO.getUnBonoDisponible(id_afiliado);
+                    int id_bono = DAO.getUnBonoDisponible(id_afiliado, esFamiliarPpal);
                     DAO.marcarBonoUtilizado(id_bono);
                     cantDisponible--;
                    
