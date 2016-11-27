@@ -32,7 +32,7 @@ namespace ClinicaFrba.DataBase.Conexion
 
         public List<string> get_turnos(int id_afiliado, String fechaActual)
         {
-            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h Join GDD_GO.turno t On t.id_turno = h.id_turno Where t.id_afiliado = 201 AND t.desc_estado!=1 AND datediff(day, convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120),h.desc_hora_desde) > 2 order by h.desc_hora_desde asc");
+            SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("Select h.id_turno From GDD_GO.horario h Join GDD_GO.turno t On t.id_turno = h.id_turno Where t.id_afiliado = "+id_afiliado+" AND t.desc_estado!=1 AND datediff(day, convert(date, '" + cambiarFormatoFecha(ConstantesBD.fechaSistema) + "',120),h.desc_hora_desde) > 2 order by h.desc_hora_desde asc");
             List<string> resultado = new List<string>();
 
             while (lector.Read())
@@ -69,7 +69,7 @@ namespace ClinicaFrba.DataBase.Conexion
         public void cancelarTurno(int id_turno, string motivo, int desc__cancelacion_usuario, int desc_usuario)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("insert into GDD_GO.tipo_cancelacion (descripcion, id_turno, id_usuario, desc_usuario) values ('" + motivo + "', " + id_turno + ", " + desc__cancelacion_usuario + ","+desc_usuario+")");
-            new Horarios_DAO().liberarHorarioDelTurno(id_turno);
+      
         }
 
         public void cancelarTurnoProfesional(string motivo, string desc__cancelacion_usuario, String id_turno)
