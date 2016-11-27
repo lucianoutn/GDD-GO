@@ -16,8 +16,7 @@ namespace ClinicaFrba.Listados
         Menu unMenu;
         ABM_usuario_DAO abm_usuario;
         ListadoEstadistico_DAO listEstDAO = new ListadoEstadistico_DAO();
-        string condicion_guardada;
-
+        
         public Listado_Estadistico(Menu menu)
         {
             abm_usuario = new ABM_usuario_DAO();
@@ -114,9 +113,6 @@ namespace ClinicaFrba.Listados
                 condicionAnio = condicionAnio + "= '" + comboBoxAnio.Text + "'";
             }
 
-            //condicion = condicion + condicionAnio; /*+ condicionMes + condicionAnio;*/
-          //  this.condicion_guardada = condicion;
-
             switch (comboBoxTop5.Text)
             { 
                 case "Especialidades con más cancelaciones - Profesionales": /*Tanto de afiliados como profesionales*/
@@ -139,14 +135,20 @@ namespace ClinicaFrba.Listados
                     cargar_grid_profConMenosHorasTrabajadas(lectorTop5);
                     break;
 
-                case "Afiliados con más bonos comprados":
+                case "Afiliados con más bonos comprados": //Deberán ir en otro form
                     lectorTop5 = listEstDAO.getAfiliadosConMasBonosComprados(condicionMeses,condicionAnio);
-                    cargar_grid_afiliadosConMasBonosComp(lectorTop5);
+                   /* cargar_grid_afiliadosConMasBonosComp(lectorTop5);*/
+                    TopBonosComprados topBonosComp = new TopBonosComprados();
+                    topBonosComp.Show();
+                    topBonosComp.cargarListBonosUtilizados(lectorTop5);
                     break;
 
-                case "Especialidades con más bonos de consulta utilizados":
+                case "Especialidades con más bonos de consulta utilizados"://Deberán ir en otro form
                     lectorTop5 = listEstDAO.getProfConMasBonosConsultUtilizados(condicionMeses,condicionAnio);
-                    cargar_grid_profConMasBonosConsultUtil(lectorTop5);
+                   /* cargar_grid_profConMasBonosConsultUtil(lectorTop5);*/
+                    TopEspecialidades topEspecialidades = new TopEspecialidades();
+                    topEspecialidades.Show();
+                    topEspecialidades.cargarListaEsp(lectorTop5);
                     break;
             }
 
@@ -162,8 +164,6 @@ namespace ClinicaFrba.Listados
 
             List<DataGridViewRow> filas = new List<DataGridViewRow>();
             Object[] columnas = new Object[5];
-
-            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
 
             while (lectorT5.Read())
             {
@@ -192,8 +192,6 @@ namespace ClinicaFrba.Listados
             List<DataGridViewRow> filas = new List<DataGridViewRow>();
             Object[] columnas = new Object[5];
 
-            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
-
             while (lectorT5.Read())
             {
                 i++;
@@ -220,8 +218,6 @@ namespace ClinicaFrba.Listados
 
             List<DataGridViewRow> filas = new List<DataGridViewRow>();
             Object[] columnas = new Object[5];
-
-            this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
 
             while (lectorT5.Read())
             {
@@ -250,8 +246,6 @@ namespace ClinicaFrba.Listados
                 List<DataGridViewRow> filas = new List<DataGridViewRow>();
                 Object[] columnas = new Object[5];
 
-                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false; // no visible porque no va grupo familiar
-
                 while (lectorT5.Read())
                 {
                     i++;
@@ -269,64 +263,7 @@ namespace ClinicaFrba.Listados
                 dataGridViewTop5.Rows.AddRange(filas.ToArray());          
         }
 
-        private void cargar_grid_afiliadosConMasBonosComp(SqlDataReader lector)
-        {
-                SqlDataReader lectorT5;
-                int i = 0;
-
-                lectorT5 = lector;
-
-                List<DataGridViewRow> filas = new List<DataGridViewRow>();
-                Object[] columnas = new Object[5]; //  
-
-                this.dataGridViewTop5.Columns["Especialidad"].Visible = false; // ROMPE, no me deja ocultar esp
-                while (lectorT5.Read())
-                {
-                    i++;
-                    columnas[0] = i.ToString();
-                    columnas[1] = lectorT5["desc_apellido"].ToString(); //apellido afiliado
-                    columnas[2] = lectorT5["desc_nombre"].ToString();//nombre afiliado
-                    columnas[3] = lectorT5["Cantidad"].ToString(); //cantidad de bonos comprados
-                    columnas[4] = lectorT5["Col_GrupoFam"].ToString();
-
-                    filas.Add(new DataGridViewRow());
-                    filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
-                }
-
-                lectorT5.Close();
-                dataGridViewTop5.Rows.AddRange(filas.ToArray());           
-        }
-
-        private void cargar_grid_profConMasBonosConsultUtil(SqlDataReader lector) 
-        {
-                SqlDataReader lectorT5;
-                int i = 0;
-
-                lectorT5 = lector;
-
-                List<DataGridViewRow> filas = new List<DataGridViewRow>();
-                Object[] columnas = new Object[5];
-
-                this.dataGridViewTop5.Columns["Col_GrupoFam"].Visible = false;
-
-                while (lectorT5.Read())
-                {
-                    i++;
-                    columnas[0] = i.ToString();
-                    columnas[1] = lectorT5["desc_apellido"].ToString();
-                    columnas[2] = lectorT5["desc_nombre"].ToString();
-                    columnas[3] = lectorT5["Especialidad"].ToString();
-                    columnas[4] = lectorT5["Cantidad"].ToString(); 
-                 
-                    filas.Add(new DataGridViewRow());
-                    filas[filas.Count - 1].CreateCells(dataGridViewTop5, columnas);
-                }
-
-                lectorT5.Close();
-                dataGridViewTop5.Rows.AddRange(filas.ToArray());           
-        }
-
-        private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) // la idea es que muestre meses según el semestre elegido 
+        private void comboBoxSemestre_SelectedIndexChanged(object sender, EventArgs e) 
         {
             comboBoxSemestre.Enabled = false;
             comboBoxMes.Items.Clear();
@@ -391,6 +328,8 @@ namespace ClinicaFrba.Listados
                 comboBoxTop5.Enabled = false;
                 comboBoxMes.Enabled = false;
             }
-        }      
+        }
+
+           
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Listado_Estadistico));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.Col_Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Col_GrupoFam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTop5)).BeginInit();
             this.SuspendLayout();
             // 
@@ -112,12 +112,12 @@
             this.Col_apellido,
             this.Col_Nombre,
             this.Col_Especialidad,
-            this.Col_Cantidad,
-            this.Col_GrupoFam});
+            this.Col_Cantidad});
             this.dataGridViewTop5.Location = new System.Drawing.Point(25, 147);
             this.dataGridViewTop5.MultiSelect = false;
             this.dataGridViewTop5.Name = "dataGridViewTop5";
             this.dataGridViewTop5.ReadOnly = true;
+            this.dataGridViewTop5.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridViewTop5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTop5.ShowEditingIcon = false;
             this.dataGridViewTop5.Size = new System.Drawing.Size(618, 150);
@@ -178,6 +178,8 @@
             // 
             // Col_nro
             // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Col_nro.DefaultCellStyle = dataGridViewCellStyle1;
             this.Col_nro.HeaderText = "Orden";
             this.Col_nro.Name = "Col_nro";
             this.Col_nro.ReadOnly = true;
@@ -209,12 +211,6 @@
             this.Col_Cantidad.Name = "Col_Cantidad";
             this.Col_Cantidad.ReadOnly = true;
             this.Col_Cantidad.Width = 60;
-            // 
-            // Col_GrupoFam
-            // 
-            this.Col_GrupoFam.HeaderText = "Grupo Familiar";
-            this.Col_GrupoFam.Name = "Col_GrupoFam";
-            this.Col_GrupoFam.ReadOnly = true;
             // 
             // Listado_Estadistico
             // 
@@ -261,6 +257,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Especialidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Col_GrupoFam;
     }
 }

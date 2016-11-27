@@ -232,6 +232,18 @@
     <Compile Include="Listados\ListadoEstadistico.designer.cs">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Listados\TopBonosComprados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\TopBonosComprados.Designer.cs">
+      <DependentUpon>TopBonosComprados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Listados\TopEspecialidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Listados\TopEspecialidades.Designer.cs">
+      <DependentUpon>TopEspecialidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -407,6 +419,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Listados\ListadoEstadistico.resx">
       <DependentUpon>ListadoEstadistico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\TopBonosComprados.resx">
+      <DependentUpon>TopBonosComprados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Listados\TopEspecialidades.resx">
+      <DependentUpon>TopEspecialidades.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
