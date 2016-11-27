@@ -39,9 +39,16 @@ namespace ClinicaFrba.Abm_Planes
                 {
                     if (opcionElegida == 0)
                     {
-                        CambiarPlanMedico seleccionPlan = new CambiarPlanMedico(textBoxIdAfiliado.Text, this);
-                        seleccionPlan.Show();
-                        this.Hide();
+                        if (abm_usuario.get_plan_medico(textBoxIdAfiliado.Text) == 0)
+                        {
+                            MessageBox.Show("El Afiliado no tiene un Plan Médico. Por favor, dirigirse al menu anterior y seleccionar la opcion Comprar Plan Médico");
+                        }
+                        else
+                        {
+                            CambiarPlanMedico seleccionPlan = new CambiarPlanMedico(textBoxIdAfiliado.Text, this);
+                            seleccionPlan.Show();
+                            this.Hide();
+                        }
                     }
                     else
                     {

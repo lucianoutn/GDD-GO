@@ -257,7 +257,7 @@ namespace ClinicaFrba.DataBase.Conexion
         {
             SqlDataReader lector = this.GD2C2016.ejecutarSentenciaConRetorno("select id_plan_medico from GDD_GO.afiliado where id_afiliado="+id_afiliado);
             lector.Read();
-            int cantidad;
+            int cantidad=0;
             int.TryParse(lector["id_plan_medico"].ToString(), out cantidad);
             lector.Close();
             return cantidad;
