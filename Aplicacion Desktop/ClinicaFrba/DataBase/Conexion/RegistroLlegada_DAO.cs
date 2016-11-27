@@ -143,11 +143,12 @@ namespace ClinicaFrba.DataBase.Conexion
             int cant=0;
             SqlDataReader reader = null;
 
-            if(esFamiliarPpal)
+            if (esFamiliarPpal)
             {
-                reader= this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =" + id_afiliado + " and desc_estado = 1 and id_plan_medico =" + id_planMedico + " group by id_afiliado");
+                reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =" + id_afiliado + " and desc_estado = 1 and id_plan_medico =" + id_planMedico + " group by id_afiliado");
                 reader.Read();
                 cant = Int32.Parse(reader["cant"].ToString());
+
                 reader.Close();
             }
             else
@@ -155,9 +156,28 @@ namespace ClinicaFrba.DataBase.Conexion
                 reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado co Join GDD_GO.afiliado af on co.id_afiliado = af.id_familiar_principal where desc_estado = 1 and co.id_plan_medico =" + id_planMedico + " and af.id_afiliado=" + id_afiliado);
                 reader.Read();
                 cant = Int32.Parse(reader["cant"].ToString());
+
+
                 reader.Close();
+                if (cant == 0)
+                {
+                    cant = getCantBonosDisponibles2(id_afiliado,id_planMedico);
+                }
             }
 
+            return cant;
+        }
+
+        public int getCantBonosDisponibles2(int id_afiliado, int id_planMedico) /*verifica tambien que los bonos sean del mismo plan actual del afiliado */
+        {   //estado bono =1: "Disponible" estado =0:"utilizado"
+            SqlDataReader reader2 = null;
+            int cant = 0;
+            
+            reader2 = this.GD2C2016.ejecutarSentenciaConRetorno("Select count(*) as cant from GDD_GO.bono_comprado where id_afiliado =" + id_afiliado + " and desc_estado = 1 and id_plan_medico =" + id_planMedico + " group by id_afiliado");
+            reader2.Read();
+            cant = Int32.Parse(reader2["cant"].ToString());
+
+            reader2.Close();
             return cant;
         }
 
@@ -176,7 +196,7 @@ namespace ClinicaFrba.DataBase.Conexion
             int id_planMedico = this.getIdPlanMedico(id_afiliado);
             int id_bono = 0;
 
-            if(esFamiliarPpal)
+            if (esFamiliarPpal)
             {
                 SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado where id_afiliado =" + id_afiliado + " and desc_estado = 1 and id_plan_medico =" + id_planMedico);
                 reader.Read();
@@ -185,14 +205,39 @@ namespace ClinicaFrba.DataBase.Conexion
             }
             else
             {
-                SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado co join GDD_GO.afiliado af on af.id_familiar_principal=co.id_afiliado where desc_estado = 1 and co.id_plan_medico ="+id_planMedico+" and af.id_afiliado="+id_afiliado);
+                SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado co join GDD_GO.afiliado af on af.id_familiar_principal=co.id_afiliado where desc_estado = 1 and co.id_plan_medico =" + id_planMedico + " and af.id_afiliado=" + id_afiliado);
                 reader.Read();
-                id_bono = Int32.Parse(reader["id"].ToString());
+
+                try
+                {
+                    int.TryParse(reader["id"].ToString(), out id_bono);
+                }
+                catch
+                {
+                    id_bono = 0;
+                }
                 reader.Close();
+                if (id_bono == 0)
+                {
+                    id_bono = getUnBonoDisponible2(id_afiliado, id_planMedico);
+                }
+                
             }
-            
+
             return id_bono;
         }
+
+        public int getUnBonoDisponible2(int id_afiliado, int id_planMedico) /*verifica tambien que los bonos sean del mismo plan actual del afiliado */
+        {   //estado bono =1: "Disponible" estado =0:"utilizado"
+            int id_bono = 0;
+            SqlDataReader reader = this.GD2C2016.ejecutarSentenciaConRetorno("Select top 1 id_bono_comprado as id from GDD_GO.bono_comprado where id_afiliado =" + id_afiliado + " and desc_estado = 1 and id_plan_medico =" + id_planMedico);
+            reader.Read();
+            id_bono = Int32.Parse(reader["id"].ToString());
+            reader.Close();
+
+            return id_bono;
+        }
+
 
         public void marcarBonoUtilizado(int id_bono)
         {

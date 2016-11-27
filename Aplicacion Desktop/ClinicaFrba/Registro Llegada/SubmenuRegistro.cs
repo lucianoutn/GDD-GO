@@ -82,7 +82,7 @@ namespace ClinicaFrba.Registro_Llegada
 
                 bool esFamiliarPpal = false;
 
-                if (id_afiliado / 10 == 1)
+                if (id_afiliado % 10 == 1)
                 {
                     esFamiliarPpal = true;
                 }
