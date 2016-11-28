@@ -188,11 +188,16 @@ namespace ClinicaFrba.Pedir_Turno
 
         private void buttonPagSig_Click(object sender, EventArgs e)
         {
+
             dataGridView.Rows.Clear();
             dataGridView.Refresh();
 
             pagActual = pagActual + 10;
 
+            if (pagActual >= lista.Count)
+            {
+                pagActual = pagActual - 10;
+            }
             if (pagActual + 10 >= lista.Count)
             {
                 totalPagActual = lista.Count;
