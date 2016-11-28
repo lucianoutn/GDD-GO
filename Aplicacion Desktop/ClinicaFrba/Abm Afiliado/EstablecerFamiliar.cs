@@ -15,6 +15,8 @@ namespace ClinicaFrba.Abm_Afiliado
         AltaAfiliado unMenu;
         ABM_usuario_DAO abm_usuario;
         List<string> lista_usuarios_afiliados = new List<string>();
+        int pagActual = 0;
+        int totalPagActual = 10;
 
         int unSexo, unDesc_Estado_Civil;
         String unDesc_Nombre, unDesc_Apellido, unTipo_doc, unDesc_Dni, unDesc_Mail, unDesc_Dom_Calle, unDesc_Telefono, unDesc_Fecha_Nac, unId_usuario;
@@ -55,6 +57,8 @@ namespace ClinicaFrba.Abm_Afiliado
         {
             dataGridViewResultados.Rows.Clear();
             dataGridViewResultados.Refresh();
+            pagActual = 0;
+            totalPagActual = 10;
 
             String desc_nombre = textBoxNombre.Text;
             String desc_apellido = textBoxApellido.Text;
@@ -65,17 +69,7 @@ namespace ClinicaFrba.Abm_Afiliado
             {
                 lista_usuarios_afiliados = abm_usuario.get_id_afiliado_multiple(desc_nombre, desc_apellido, desc_dni);
 
-
-                for (int i = 0; i < lista_usuarios_afiliados.Count; i++)
-                {
-                    desc_id = lista_usuarios_afiliados[i];
-
-                    dataGridViewResultados.Rows.Add(desc_id,
-                                                    abm_usuario.get_nombre(desc_id).ToString(),
-                                                    abm_usuario.get_apellido(desc_id).ToString(),
-                                                    abm_usuario.get_dni(desc_id).ToString(),
-                                                    abm_usuario.get_id_usuario(desc_id).ToString());
-                }
+                cargarGrid();
             }
             else
             {
@@ -90,6 +84,22 @@ namespace ClinicaFrba.Abm_Afiliado
                                                     abm_usuario.get_id_usuario(desc_id).ToString());
                 }
              
+            }
+        }
+
+        private void cargarGrid()
+        {
+            String desc_id;
+
+            for (int i = pagActual; i < totalPagActual; i++)
+            {
+                desc_id = lista_usuarios_afiliados[i];
+
+                dataGridViewResultados.Rows.Add(desc_id,
+                                                abm_usuario.get_nombre(desc_id).ToString(),
+                                                abm_usuario.get_apellido(desc_id).ToString(),
+                                                abm_usuario.get_dni(desc_id).ToString(),
+                                                abm_usuario.get_id_usuario(desc_id).ToString());
             }
         }
 
@@ -125,6 +135,39 @@ namespace ClinicaFrba.Abm_Afiliado
             MessageBox.Show("Afiliado creado. Bienvenido!");
             this.Close();
             unMenu.Close();
+        }
+
+        private void buttonPagSig_Click(object sender, EventArgs e)
+        {
+            dataGridViewResultados.Rows.Clear();
+            dataGridViewResultados.Refresh();
+
+            pagActual = pagActual + 10;
+
+            if (pagActual+10 >= lista_usuarios_afiliados.Count)
+            {
+                totalPagActual = lista_usuarios_afiliados.Count;
+            }
+            else
+            {
+                totalPagActual = pagActual + 10;
+            }
+
+            cargarGrid();
+        }
+
+        private void buttonPagAnt_Click(object sender, EventArgs e)
+        {
+            dataGridViewResultados.Rows.Clear();
+            dataGridViewResultados.Refresh();
+
+            if (pagActual != 0)
+            {
+                pagActual = pagActual - 10;
+                totalPagActual = pagActual + 10;
+            }
+
+            cargarGrid();
         }
     }
 }
