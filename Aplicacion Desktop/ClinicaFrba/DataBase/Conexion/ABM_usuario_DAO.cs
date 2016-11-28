@@ -157,7 +157,7 @@ namespace ClinicaFrba.DataBase.Conexion
             return resultado;
         }
 
-        public void actualizarAfiliado(String desc_direccion, String descMail, String descTelefono, String sexo, String estado_civil,int idAfiliado)
+        public void actualizarAfiliado(String desc_direccion, String descMail, String descTelefono, int sexo, int estado_civil,int idAfiliado)
         {
             this.GD2C2016.ejecutarSentenciaSinRetorno("Update GDD_GO.afiliado set desc_direccion='"+desc_direccion+
                                                                               "', desc_mail='"+descMail+

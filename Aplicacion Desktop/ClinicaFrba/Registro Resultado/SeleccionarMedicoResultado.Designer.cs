@@ -49,6 +49,8 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonPagAnt = new System.Windows.Forms.Button();
+            this.buttonPagSig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -58,16 +60,16 @@
             this.labelCliente.AutoSize = true;
             this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(102, 18);
+            this.labelCliente.Location = new System.Drawing.Point(114, 18);
             this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(249, 26);
+            this.labelCliente.Size = new System.Drawing.Size(289, 26);
             this.labelCliente.TabIndex = 161;
-            this.labelCliente.Text = "SELECCIONAR AFILIADO";
+            this.labelCliente.Text = "SELECCIONAR PROFESIONAL";
             // 
             // buttonSeleccionar
             // 
             this.buttonSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSeleccionar.Location = new System.Drawing.Point(405, 433);
+            this.buttonSeleccionar.Location = new System.Drawing.Point(405, 559);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
             this.buttonSeleccionar.Size = new System.Drawing.Size(75, 23);
             this.buttonSeleccionar.TabIndex = 160;
@@ -79,7 +81,7 @@
             // 
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(34, 433);
+            this.buttonVolver.Location = new System.Drawing.Point(34, 559);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 159;
@@ -214,7 +216,7 @@
             this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewResultados.ShowEditingIcon = false;
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 151);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 255);
             this.dataGridViewResultados.TabIndex = 155;
             // 
             // Id
@@ -251,12 +253,34 @@
             this.id_usuario.ReadOnly = true;
             this.id_usuario.Visible = false;
             // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(34, 514);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 163;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(365, 514);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 162;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
+            // 
             // SeleccionarMedicoResultado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
-            this.ClientSize = new System.Drawing.Size(517, 488);
+            this.ClientSize = new System.Drawing.Size(517, 594);
+            this.Controls.Add(this.buttonPagAnt);
+            this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonSeleccionar);
             this.Controls.Add(this.buttonVolver);
@@ -298,5 +322,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
     }
 }

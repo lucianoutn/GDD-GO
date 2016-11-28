@@ -34,9 +34,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxTelefono = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.textBoxEstadoCivil = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBoxSexo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Limpiar = new System.Windows.Forms.Button();
             this.textBoxMail = new System.Windows.Forms.TextBox();
@@ -44,6 +42,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxDireccion = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.radioButtonFemenino = new System.Windows.Forms.RadioButton();
+            this.radioButtonMasculino = new System.Windows.Forms.RadioButton();
+            this.comboEstadoCivil = new System.Windows.Forms.ComboBox();
+            this.comboDominio = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,7 +54,7 @@
             // 
             this.button_volver.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
             this.button_volver.ForeColor = System.Drawing.Color.Maroon;
-            this.button_volver.Location = new System.Drawing.Point(51, 360);
+            this.button_volver.Location = new System.Drawing.Point(25, 396);
             this.button_volver.Name = "button_volver";
             this.button_volver.Size = new System.Drawing.Size(75, 23);
             this.button_volver.TabIndex = 25;
@@ -72,11 +75,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.comboDominio);
+            this.groupBox1.Controls.Add(this.comboEstadoCivil);
+            this.groupBox1.Controls.Add(this.radioButtonFemenino);
+            this.groupBox1.Controls.Add(this.radioButtonMasculino);
             this.groupBox1.Controls.Add(this.textBoxTelefono);
             this.groupBox1.Controls.Add(this.label8);
-            this.groupBox1.Controls.Add(this.textBoxEstadoCivil);
             this.groupBox1.Controls.Add(this.label7);
-            this.groupBox1.Controls.Add(this.textBoxSexo);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.Limpiar);
             this.groupBox1.Controls.Add(this.textBoxMail);
@@ -87,51 +93,38 @@
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.groupBox1.Location = new System.Drawing.Point(25, 58);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(325, 286);
+            this.groupBox1.Size = new System.Drawing.Size(383, 318);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingreso de datos nuevos";
             // 
             // textBoxTelefono
             // 
-            this.textBoxTelefono.Location = new System.Drawing.Point(142, 197);
+            this.textBoxTelefono.Location = new System.Drawing.Point(143, 219);
             this.textBoxTelefono.Name = "textBoxTelefono";
             this.textBoxTelefono.Size = new System.Drawing.Size(100, 20);
             this.textBoxTelefono.TabIndex = 17;
+            this.textBoxTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Telefono_Key_Press);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label8.Location = new System.Drawing.Point(72, 200);
+            this.label8.Location = new System.Drawing.Point(73, 222);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(52, 13);
             this.label8.TabIndex = 16;
             this.label8.Text = "Telefono:";
             // 
-            // textBoxEstadoCivil
-            // 
-            this.textBoxEstadoCivil.Location = new System.Drawing.Point(142, 155);
-            this.textBoxEstadoCivil.Name = "textBoxEstadoCivil";
-            this.textBoxEstadoCivil.Size = new System.Drawing.Size(100, 20);
-            this.textBoxEstadoCivil.TabIndex = 15;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label7.Location = new System.Drawing.Point(62, 158);
+            this.label7.Location = new System.Drawing.Point(63, 180);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 13);
             this.label7.TabIndex = 14;
             this.label7.Text = "Estado Civil:";
-            // 
-            // textBoxSexo
-            // 
-            this.textBoxSexo.Location = new System.Drawing.Point(142, 118);
-            this.textBoxSexo.Name = "textBoxSexo";
-            this.textBoxSexo.Size = new System.Drawing.Size(100, 20);
-            this.textBoxSexo.TabIndex = 11;
             // 
             // label5
             // 
@@ -146,7 +139,7 @@
             // Limpiar
             // 
             this.Limpiar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Limpiar.Location = new System.Drawing.Point(26, 241);
+            this.Limpiar.Location = new System.Drawing.Point(28, 282);
             this.Limpiar.Name = "Limpiar";
             this.Limpiar.Size = new System.Drawing.Size(75, 23);
             this.Limpiar.TabIndex = 9;
@@ -164,7 +157,7 @@
             // Guardar
             // 
             this.Guardar.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Guardar.Location = new System.Drawing.Point(211, 241);
+            this.Guardar.Location = new System.Drawing.Point(213, 282);
             this.Guardar.Name = "Guardar";
             this.Guardar.Size = new System.Drawing.Size(75, 23);
             this.Guardar.TabIndex = 2;
@@ -199,12 +192,64 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Direccion:";
             // 
+            // radioButtonFemenino
+            // 
+            this.radioButtonFemenino.AutoSize = true;
+            this.radioButtonFemenino.ForeColor = System.Drawing.SystemColors.Desktop;
+            this.radioButtonFemenino.Location = new System.Drawing.Point(143, 142);
+            this.radioButtonFemenino.Name = "radioButtonFemenino";
+            this.radioButtonFemenino.Size = new System.Drawing.Size(71, 17);
+            this.radioButtonFemenino.TabIndex = 115;
+            this.radioButtonFemenino.TabStop = true;
+            this.radioButtonFemenino.Text = "Femenino";
+            this.radioButtonFemenino.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonMasculino
+            // 
+            this.radioButtonMasculino.AutoSize = true;
+            this.radioButtonMasculino.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.radioButtonMasculino.Location = new System.Drawing.Point(143, 119);
+            this.radioButtonMasculino.Name = "radioButtonMasculino";
+            this.radioButtonMasculino.Size = new System.Drawing.Size(73, 17);
+            this.radioButtonMasculino.TabIndex = 114;
+            this.radioButtonMasculino.TabStop = true;
+            this.radioButtonMasculino.Text = "Masculino";
+            this.radioButtonMasculino.UseVisualStyleBackColor = true;
+            // 
+            // comboEstadoCivil
+            // 
+            this.comboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboEstadoCivil.FormattingEnabled = true;
+            this.comboEstadoCivil.Location = new System.Drawing.Point(143, 180);
+            this.comboEstadoCivil.Name = "comboEstadoCivil";
+            this.comboEstadoCivil.Size = new System.Drawing.Size(90, 21);
+            this.comboEstadoCivil.TabIndex = 116;
+            // 
+            // comboDominio
+            // 
+            this.comboDominio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboDominio.FormattingEnabled = true;
+            this.comboDominio.Location = new System.Drawing.Point(268, 76);
+            this.comboDominio.Name = "comboDominio";
+            this.comboDominio.Size = new System.Drawing.Size(90, 21);
+            this.comboDominio.TabIndex = 117;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.label9.Location = new System.Drawing.Point(244, 80);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 13);
+            this.label9.TabIndex = 118;
+            this.label9.Text = "@";
+            // 
             // ListadoModificar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
-            this.ClientSize = new System.Drawing.Size(374, 398);
+            this.ClientSize = new System.Drawing.Size(452, 448);
             this.Controls.Add(this.button_volver);
             this.Controls.Add(this.presentacion);
             this.Controls.Add(this.groupBox1);
@@ -224,7 +269,6 @@
         private System.Windows.Forms.Button button_volver;
         private System.Windows.Forms.Label presentacion;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBoxSexo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Limpiar;
         private System.Windows.Forms.TextBox textBoxMail;
@@ -234,8 +278,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxTelefono;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBoxEstadoCivil;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.RadioButton radioButtonFemenino;
+        private System.Windows.Forms.RadioButton radioButtonMasculino;
+        private System.Windows.Forms.ComboBox comboEstadoCivil;
+        private System.Windows.Forms.ComboBox comboDominio;
+        private System.Windows.Forms.Label label9;
 
     }
 }

@@ -16,12 +16,15 @@ namespace ClinicaFrba.Registro_Resultado
         Form unMenu;
         ProfesionalesDAO profesionales_dao;
         List<Profesional> lista_usuarios_profesionales = new List<Profesional>();
+        int pagActual = 0;
+        int totalPagActual = 10;
 
         public SeleccionarMedicoResultado(Form menu)
         {
             profesionales_dao = new ProfesionalesDAO();
             InitializeComponent();
             unMenu = menu;
+            dataGridViewResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void buttonSeleccionar_Click(object sender, EventArgs e)
@@ -40,6 +43,8 @@ namespace ClinicaFrba.Registro_Resultado
         {
             dataGridViewResultados.Rows.Clear();
             dataGridViewResultados.Refresh();
+            pagActual = 0;
+            totalPagActual = 10;
 
             String desc_nombre = textBoxNombre.Text;
             String desc_apellido = textBoxApellido.Text;
@@ -54,10 +59,19 @@ namespace ClinicaFrba.Registro_Resultado
             else
             {
                 lista_usuarios_profesionales = profesionales_dao.get_profesional_multiple(desc_id);
+                totalPagActual = 1;
 
             }
 
-            for (int i = 0; i < lista_usuarios_profesionales.Count; i++)
+            cargarGrid();
+
+        }
+
+        private void cargarGrid()
+        {
+            String desc_id;
+
+            for (int i = pagActual; i < totalPagActual; i++)
             {
                 desc_id = lista_usuarios_profesionales[i].getid().ToString();
 
@@ -81,6 +95,43 @@ namespace ClinicaFrba.Registro_Resultado
         {
             unMenu.Show();
             this.Close();
+        }
+
+        private void buttonPagSig_Click(object sender, EventArgs e)
+        {
+            dataGridViewResultados.Rows.Clear();
+            dataGridViewResultados.Refresh();
+
+            pagActual = pagActual + 10;
+
+            if (pagActual >= lista_usuarios_profesionales.Count)
+            {
+                pagActual = pagActual - 10;
+            }
+            if (pagActual + 10 >= lista_usuarios_profesionales.Count)
+            {
+                totalPagActual = lista_usuarios_profesionales.Count;
+            }
+            else
+            {
+                totalPagActual = pagActual + 10;
+            }
+
+            cargarGrid();
+        }
+
+        private void buttonPagAnt_Click(object sender, EventArgs e)
+        {
+            dataGridViewResultados.Rows.Clear();
+            dataGridViewResultados.Refresh();
+
+            if (pagActual != 0)
+            {
+                pagActual = pagActual - 10;
+                totalPagActual = pagActual + 10;
+            }
+
+            cargarGrid();
         }
 
     }

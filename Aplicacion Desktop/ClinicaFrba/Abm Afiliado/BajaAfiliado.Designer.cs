@@ -49,6 +49,8 @@
             this.buttonVolver = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
             this.labelCliente = new System.Windows.Forms.Label();
+            this.buttonPagAnt = new System.Windows.Forms.Button();
+            this.buttonPagSig = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -74,7 +76,7 @@
             this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewResultados.ShowEditingIcon = false;
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 253);
             this.dataGridViewResultados.TabIndex = 0;
             // 
             // Id
@@ -217,7 +219,7 @@
             // buttonVolver
             // 
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(9, 441);
+            this.buttonVolver.Location = new System.Drawing.Point(12, 573);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 49;
@@ -227,7 +229,7 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(379, 440);
+            this.buttonEliminar.Location = new System.Drawing.Point(382, 572);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 50;
@@ -246,12 +248,34 @@
             this.labelCliente.TabIndex = 147;
             this.labelCliente.Text = "BAJA DE AFILIADO";
             // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(9, 520);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 151;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(340, 520);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 150;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
+            // 
             // BajaAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
-            this.ClientSize = new System.Drawing.Size(470, 507);
+            this.ClientSize = new System.Drawing.Size(470, 608);
+            this.Controls.Add(this.buttonPagAnt);
+            this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
@@ -293,5 +317,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
     }
 }

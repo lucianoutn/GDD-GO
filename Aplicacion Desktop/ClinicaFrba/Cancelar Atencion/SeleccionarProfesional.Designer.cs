@@ -49,6 +49,8 @@
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonPagAnt = new System.Windows.Forms.Button();
+            this.buttonPagSig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -67,9 +69,9 @@
             // buttonSeleccionar
             // 
             this.buttonSeleccionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSeleccionar.Location = new System.Drawing.Point(388, 424);
+            this.buttonSeleccionar.Location = new System.Drawing.Point(388, 563);
             this.buttonSeleccionar.Name = "buttonSeleccionar";
-            this.buttonSeleccionar.Size = new System.Drawing.Size(75, 23);
+            this.buttonSeleccionar.Size = new System.Drawing.Size(75, 21);
             this.buttonSeleccionar.TabIndex = 153;
             this.buttonSeleccionar.Text = "Seleccionar";
             this.buttonSeleccionar.UseVisualStyleBackColor = true;
@@ -79,9 +81,9 @@
             // 
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(17, 424);
+            this.buttonVolver.Location = new System.Drawing.Point(17, 563);
             this.buttonVolver.Name = "buttonVolver";
-            this.buttonVolver.Size = new System.Drawing.Size(75, 23);
+            this.buttonVolver.Size = new System.Drawing.Size(75, 21);
             this.buttonVolver.TabIndex = 152;
             this.buttonVolver.Text = "Volver";
             this.buttonVolver.UseVisualStyleBackColor = true;
@@ -211,7 +213,7 @@
             this.dataGridViewResultados.Name = "dataGridViewResultados";
             this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 151);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 254);
             this.dataGridViewResultados.TabIndex = 148;
             // 
             // Id
@@ -250,12 +252,34 @@
             this.id_usuario.Visible = false;
             this.id_usuario.Width = 80;
             // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(17, 504);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 156;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(348, 504);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 155;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
+            // 
             // SeleccionarProfesional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
-            this.ClientSize = new System.Drawing.Size(487, 481);
+            this.ClientSize = new System.Drawing.Size(498, 605);
+            this.Controls.Add(this.buttonPagAnt);
+            this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonSeleccionar);
             this.Controls.Add(this.buttonVolver);
@@ -297,6 +321,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
 
     }
 }

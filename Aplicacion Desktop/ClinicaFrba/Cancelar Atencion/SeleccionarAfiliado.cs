@@ -53,6 +53,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             String desc_dni = textBoxDni.Text;
             String desc_id = textBoxId.Text;
 
+
             if (string.IsNullOrWhiteSpace(textBoxId.Text))
             {
                 lista_usuarios_afiliados = abm_usuario.get_id_afiliado_multiple(desc_nombre, desc_apellido, desc_dni);
@@ -71,6 +72,7 @@ namespace ClinicaFrba.Cancelar_Atencion
                                                     dni.ToString(),
                                                     abm_usuario.get_id_usuario(desc_id).ToString());
                 }
+                totalPagActual = 1;
                 
             } 
         }
@@ -111,35 +113,46 @@ namespace ClinicaFrba.Cancelar_Atencion
 
         private void buttonPagSig_Click(object sender, EventArgs e)
         {
-            dataGridViewResultados.Rows.Clear();
-            dataGridViewResultados.Refresh();
-
-            pagActual = pagActual + 10;
-
-            if (pagActual + 10 >= lista_usuarios_afiliados.Count)
+            if (totalPagActual != 1)
             {
-                totalPagActual = lista_usuarios_afiliados.Count;
-            }
-            else
-            {
-                totalPagActual = pagActual + 10;
-            }
+                dataGridViewResultados.Rows.Clear();
+                dataGridViewResultados.Refresh();
 
-            cargarGrid();
+                pagActual = pagActual + 10;
+
+                if (pagActual >= lista_usuarios_afiliados.Count)
+                {
+                    pagActual = pagActual - 10;
+                }
+                if (pagActual + 10 >= lista_usuarios_afiliados.Count)
+                {
+                    totalPagActual = lista_usuarios_afiliados.Count;
+                }
+                else
+                {
+                    totalPagActual = pagActual + 10;
+                }
+
+                cargarGrid();
+
+            }
         }
 
         private void buttonPagAnt_Click(object sender, EventArgs e)
         {
-            dataGridViewResultados.Rows.Clear();
-            dataGridViewResultados.Refresh();
-
-            if (pagActual != 0)
+            if (totalPagActual != 1)
             {
-                pagActual = pagActual - 10;
-                totalPagActual = pagActual + 10;
-            }
+                dataGridViewResultados.Rows.Clear();
+                dataGridViewResultados.Refresh();
 
-            cargarGrid();
+                if (pagActual != 0)
+                {
+                    pagActual = pagActual - 10;
+                    totalPagActual = pagActual + 10;
+                }
+
+                cargarGrid(); 
+            }
         }
     }
 }
