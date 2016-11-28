@@ -112,9 +112,9 @@ namespace ClinicaFrba.Abm_Afiliado
                                 sexo = 0;
                             }
 
-                            abm_usuario.crearUsuario(user, pass);
+                            //abm_usuario.crearUsuario(user, pass);
 
-                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac,"(select ISNULL((Select MAX(id_usuario) from GDD_GO.usuario),0))", this);
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(desc_Nombre, desc_Apellido, sexo, tipo_doc, desc_Dni, desc_Mail, desc_Dom_Calle, desc_Telefono, desc_Estado_Civil, desc_Fecha_Nac,"(select ISNULL((Select MAX(id_usuario) from GDD_GO.usuario),0))",user, pass, this);
                             altaAfiliado2.Show();
 
                             this.Hide();
@@ -143,9 +143,9 @@ namespace ClinicaFrba.Abm_Afiliado
                         if (abm_usuario.validarDNIExistente(prof.getdni().ToString()) == 1)
                         {
                             String user = textBoxUserName.Text;
-                            String pass = textBoxPassword.Text;
+                            String pass = "NO";
 
-                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(prof.getnombre(), prof.getapellido(), 1, "DNI", prof.getdni().ToString(), prof.getmail(), prof.getdireccion(), prof.gettelefono().ToString(), 1, "'" + prof.getnacimiento().ToString() + "'", id_usuario.ToString(), this);
+                            EstablecerFamiliar altaAfiliado2 = new EstablecerFamiliar(prof.getnombre(), prof.getapellido(), 1, "DNI", prof.getdni().ToString(), prof.getmail(), prof.getdireccion(), prof.gettelefono().ToString(), 1, "'" + prof.getnacimiento().ToString() + "'", id_usuario.ToString(),user, pass, this);
                             altaAfiliado2.Show();
 
                             this.Hide();
