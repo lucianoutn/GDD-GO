@@ -59,11 +59,11 @@
             this.buttonAlta = new System.Windows.Forms.Button();
             this.labelCliente = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBoxExistente = new System.Windows.Forms.CheckBox();
             this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.labelUserName = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.checkBoxExistente = new System.Windows.Forms.CheckBox();
             this.groupBoxCliente.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -235,6 +235,7 @@
             this.textTelefono.Name = "textTelefono";
             this.textTelefono.Size = new System.Drawing.Size(100, 20);
             this.textTelefono.TabIndex = 95;
+            this.textTelefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_Telefono_Key_Press);
             // 
             // label16
             // 
@@ -305,6 +306,7 @@
             this.textDni.Name = "textDni";
             this.textDni.Size = new System.Drawing.Size(80, 20);
             this.textDni.TabIndex = 77;
+            this.textDni.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_DNI_Key_Press);
             // 
             // label6
             // 
@@ -378,6 +380,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Usuario";
             // 
+            // checkBoxExistente
+            // 
+            this.checkBoxExistente.AutoSize = true;
+            this.checkBoxExistente.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.checkBoxExistente.Location = new System.Drawing.Point(102, 111);
+            this.checkBoxExistente.Name = "checkBoxExistente";
+            this.checkBoxExistente.Size = new System.Drawing.Size(108, 17);
+            this.checkBoxExistente.TabIndex = 156;
+            this.checkBoxExistente.Text = "Usuario Existente";
+            this.checkBoxExistente.UseVisualStyleBackColor = true;
+            // 
             // labelPassword
             // 
             this.labelPassword.AutoSize = true;
@@ -412,17 +425,6 @@
             this.textBoxPassword.Size = new System.Drawing.Size(95, 20);
             this.textBoxPassword.TabIndex = 153;
             this.textBoxPassword.UseSystemPasswordChar = true;
-            // 
-            // checkBoxExistente
-            // 
-            this.checkBoxExistente.AutoSize = true;
-            this.checkBoxExistente.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.checkBoxExistente.Location = new System.Drawing.Point(102, 111);
-            this.checkBoxExistente.Name = "checkBoxExistente";
-            this.checkBoxExistente.Size = new System.Drawing.Size(108, 17);
-            this.checkBoxExistente.TabIndex = 156;
-            this.checkBoxExistente.Text = "Usuario Existente";
-            this.checkBoxExistente.UseVisualStyleBackColor = true;
             // 
             // AltaAfiliado
             // 

@@ -37,6 +37,7 @@ namespace ClinicaFrba.Abm_Afiliado
             unSexo = sexo;
             unDesc_Estado_Civil = desc_Estado_Civil;
             unId_usuario = id_usuario;
+            dataGridViewResultados.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void buttonLimpiar_Click(object sender, EventArgs e)

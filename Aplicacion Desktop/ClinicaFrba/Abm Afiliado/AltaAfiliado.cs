@@ -166,5 +166,26 @@ namespace ClinicaFrba.Abm_Afiliado
                 }
             }
         }
+
+        private void textBox_DNI_Key_Press(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Ingresar solo numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void textBox_Telefono_Key_Press(object sender, KeyPressEventArgs e)
+        {
+            if ((char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Ingresar solo numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+        
     }
 }

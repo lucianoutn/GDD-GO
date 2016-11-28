@@ -44,12 +44,14 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
-            this.labelCliente = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelCliente = new System.Windows.Forms.Label();
+            this.buttonPagAnt = new System.Windows.Forms.Button();
+            this.buttonPagSig = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -57,7 +59,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // buttonEliminar
             // 
             this.buttonEliminar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonEliminar.Location = new System.Drawing.Point(434, 437);
+            this.buttonEliminar.Location = new System.Drawing.Point(435, 603);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 56;
@@ -69,7 +71,7 @@ namespace ClinicaFrba.Cancelar_Atencion
             // 
             this.buttonVolver.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(64, 438);
+            this.buttonVolver.Location = new System.Drawing.Point(64, 603);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 55;
@@ -203,19 +205,8 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.dataGridViewResultados.Name = "dataGridViewResultados";
             this.dataGridViewResultados.ReadOnly = true;
             this.dataGridViewResultados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 257);
             this.dataGridViewResultados.TabIndex = 51;
-            // 
-            // labelCliente
-            // 
-            this.labelCliente.AutoSize = true;
-            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(165, 23);
-            this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(249, 26);
-            this.labelCliente.TabIndex = 147;
-            this.labelCliente.Text = "SELECCIONAR AFILIADO";
             // 
             // Id
             // 
@@ -252,11 +243,44 @@ namespace ClinicaFrba.Cancelar_Atencion
             this.id_usuario.ReadOnly = true;
             this.id_usuario.Width = 60;
             // 
+            // labelCliente
+            // 
+            this.labelCliente.AutoSize = true;
+            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.labelCliente.Location = new System.Drawing.Point(165, 23);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(249, 26);
+            this.labelCliente.TabIndex = 147;
+            this.labelCliente.Text = "SELECCIONAR AFILIADO";
+            // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(64, 542);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 151;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(395, 542);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 150;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
+            // 
             // SeleccionarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 510);
+            this.ClientSize = new System.Drawing.Size(580, 650);
+            this.Controls.Add(this.buttonPagAnt);
+            this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonEliminar);
             this.Controls.Add(this.buttonVolver);
@@ -298,5 +322,7 @@ namespace ClinicaFrba.Cancelar_Atencion
         private System.Windows.Forms.DataGridViewTextBoxColumn Nombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dni;
         private System.Windows.Forms.DataGridViewTextBoxColumn id_usuario;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
     }
 }

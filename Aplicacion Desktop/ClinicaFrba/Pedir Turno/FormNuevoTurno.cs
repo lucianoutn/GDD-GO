@@ -24,6 +24,8 @@ namespace ClinicaFrba.Pedir_Turno
         private Profesional profesional;
         private Especialidad especialidad;
         private List<Horario> lista;
+        int pagActual = 0;
+        int totalPagActual = 10;
 
         public FormNuevoTurno(Form eleccion,Form menuppal,String name)
         {
@@ -136,6 +138,7 @@ namespace ClinicaFrba.Pedir_Turno
             Horarios_DAO DAO = new Horarios_DAO();
             lista = DAO.getHorariosDe(profesional, especialidad);
             Int32 aux = 0;
+            /*
             foreach (Horario item in lista)
             {
                 item.orden = aux;
@@ -143,6 +146,17 @@ namespace ClinicaFrba.Pedir_Turno
                     item.orden,item.getDate(),item.getDay(),item.getTime(),item.getDuracion(),item.getFecha());
                 aux++;
             }
+            */
+
+            for (int i = pagActual; i < totalPagActual; i++)
+            {
+                lista[i].orden = aux;
+                dataGridView.Rows.Add(
+                    lista[i].orden, lista[i].getDate(), lista[i].getDay(), lista[i].getTime(), lista[i].getDuracion(), lista[i].getFecha());
+                aux++;
+            }
+
+
             dataGridView.Refresh();
             dataGridView.Sort(dataGridView.Columns[5], ListSortDirection.Ascending);
             popApp.Hide();
@@ -170,6 +184,39 @@ namespace ClinicaFrba.Pedir_Turno
             {
                 return;
             }
+        }
+
+        private void buttonPagSig_Click(object sender, EventArgs e)
+        {
+            dataGridView.Rows.Clear();
+            dataGridView.Refresh();
+
+            pagActual = pagActual + 10;
+
+            if (pagActual + 10 >= lista.Count)
+            {
+                totalPagActual = lista.Count;
+            }
+            else
+            {
+                totalPagActual = pagActual + 10;
+            }
+
+            iniciarGrid();
+        }
+
+        private void buttonPagAnt_Click(object sender, EventArgs e)
+        {
+            dataGridView.Rows.Clear();
+            dataGridView.Refresh();
+
+            if (pagActual != 0)
+            {
+                pagActual = pagActual - 10;
+                totalPagActual = pagActual + 10;
+            }
+
+            iniciarGrid();
         }
     }
 }

@@ -147,3 +147,5 @@ E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.pdb
 D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.csprojResolveAssemblyReference.cache
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.TopBonosComprados.resources
 E:\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.TopEspecialidades.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.TopBonosComprados.resources
+D:\Archivos de programa\Progs\C#\GDD-GO\Aplicacion Desktop\ClinicaFrba\obj\Debug\ClinicaFrba.Listados.TopEspecialidades.resources

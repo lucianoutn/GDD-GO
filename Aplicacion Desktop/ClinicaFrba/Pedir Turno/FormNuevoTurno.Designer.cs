@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.popApp = new System.Windows.Forms.Label();
+            this.buttonPagAnt = new System.Windows.Forms.Button();
+            this.buttonPagSig = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -134,7 +136,7 @@
             // buttonNext
             // 
             this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonNext.Location = new System.Drawing.Point(359, 307);
+            this.buttonNext.Location = new System.Drawing.Point(359, 366);
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 3;
@@ -146,7 +148,7 @@
             // 
             this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonBack.Location = new System.Drawing.Point(12, 307);
+            this.buttonBack.Location = new System.Drawing.Point(12, 366);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(75, 23);
             this.buttonBack.TabIndex = 4;
@@ -177,17 +179,39 @@
             this.popApp.AutoSize = true;
             this.popApp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.popApp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.popApp.Location = new System.Drawing.Point(185, 312);
+            this.popApp.Location = new System.Drawing.Point(185, 371);
             this.popApp.Name = "popApp";
             this.popApp.Size = new System.Drawing.Size(76, 13);
             this.popApp.TabIndex = 7;
             this.popApp.Text = "Procesando....";
             // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(12, 307);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 153;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(319, 307);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 152;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
+            // 
             // FormNuevoTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 342);
+            this.ClientSize = new System.Drawing.Size(455, 422);
+            this.Controls.Add(this.buttonPagAnt);
+            this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.popApp);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -222,5 +246,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Momento;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
     }
 }
