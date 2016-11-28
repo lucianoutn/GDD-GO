@@ -73,7 +73,7 @@
             this.l_duracionTurno.Name = "l_duracionTurno";
             this.l_duracionTurno.Size = new System.Drawing.Size(98, 13);
             this.l_duracionTurno.TabIndex = 2;
-            this.l_duracionTurno.Text = "Duracion del Turno";
+            this.l_duracionTurno.Text = "Duración del Turno";
             // 
             // l_valorDuracion
             // 
@@ -116,9 +116,9 @@
             this.l_valorDias.AutoSize = true;
             this.l_valorDias.Location = new System.Drawing.Point(23, 112);
             this.l_valorDias.Name = "l_valorDias";
-            this.l_valorDias.Size = new System.Drawing.Size(55, 13);
+            this.l_valorDias.Size = new System.Drawing.Size(57, 13);
             this.l_valorDias.TabIndex = 7;
-            this.l_valorDias.Text = "Valor Dias";
+            this.l_valorDias.Text = "Valor Días";
             // 
             // l_TurnosPorSemana
             // 

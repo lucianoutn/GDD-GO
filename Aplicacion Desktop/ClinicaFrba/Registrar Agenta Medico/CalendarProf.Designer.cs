@@ -127,7 +127,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(9, 109);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 19);
+            this.label3.Size = new System.Drawing.Size(120, 19);
             this.label3.TabIndex = 14;
             this.label3.Text = "FECHA INICIO:";
             // 
@@ -136,7 +136,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(9, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 19);
+            this.label4.Size = new System.Drawing.Size(98, 19);
             this.label4.TabIndex = 15;
             this.label4.Text = "FECHA FIN:";
             // 
@@ -154,9 +154,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(9, 188);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(185, 19);
+            this.label5.Size = new System.Drawing.Size(183, 19);
             this.label5.TabIndex = 17;
-            this.label5.Text = "Marcar dias que Asistirá:";
+            this.label5.Text = "Marcar días que asistirá:";
             // 
             // label7
             // 
@@ -164,9 +164,9 @@
             this.label7.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Italic);
             this.label7.Location = new System.Drawing.Point(118, 288);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(136, 16);
+            this.label7.Size = new System.Drawing.Size(122, 16);
             this.label7.TabIndex = 19;
-            this.label7.Text = "DURACION TURNO";
+            this.label7.Text = "Duración de turno";
             // 
             // errorDateIni
             // 

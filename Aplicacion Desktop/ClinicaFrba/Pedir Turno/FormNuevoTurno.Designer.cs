@@ -32,12 +32,6 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Momento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -45,6 +39,12 @@
             this.popApp = new System.Windows.Forms.Label();
             this.buttonPagAnt = new System.Windows.Forms.Button();
             this.buttonPagSig = new System.Windows.Forms.Button();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Momento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -83,20 +83,92 @@
             this.Duracion,
             this.Momento});
             this.dataGridView.GridColor = System.Drawing.SystemColors.ActiveBorder;
-            this.dataGridView.Location = new System.Drawing.Point(12, 109);
+            this.dataGridView.Location = new System.Drawing.Point(26, 109);
             this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(422, 192);
+            this.dataGridView.Size = new System.Drawing.Size(443, 192);
             this.dataGridView.TabIndex = 2;
+            // 
+            // buttonNext
+            // 
+            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonNext.Location = new System.Drawing.Point(394, 366);
+            this.buttonNext.Name = "buttonNext";
+            this.buttonNext.Size = new System.Drawing.Size(75, 23);
+            this.buttonNext.TabIndex = 3;
+            this.buttonNext.Text = "Siguiente";
+            this.buttonNext.UseVisualStyleBackColor = true;
+            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
+            // 
+            // buttonBack
+            // 
+            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
+            this.buttonBack.Location = new System.Drawing.Point(28, 366);
+            this.buttonBack.Name = "buttonBack";
+            this.buttonBack.Size = new System.Drawing.Size(75, 23);
+            this.buttonBack.TabIndex = 4;
+            this.buttonBack.Text = "Atrás";
+            this.buttonBack.UseVisualStyleBackColor = true;
+            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Profesional:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(33, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 13);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "Especialidad:";
+            // 
+            // popApp
+            // 
+            this.popApp.AutoSize = true;
+            this.popApp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.popApp.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.popApp.Location = new System.Drawing.Point(185, 371);
+            this.popApp.Name = "popApp";
+            this.popApp.Size = new System.Drawing.Size(76, 13);
+            this.popApp.TabIndex = 7;
+            this.popApp.Text = "Procesando....";
+            // 
+            // buttonPagAnt
+            // 
+            this.buttonPagAnt.Location = new System.Drawing.Point(26, 307);
+            this.buttonPagAnt.Name = "buttonPagAnt";
+            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
+            this.buttonPagAnt.TabIndex = 153;
+            this.buttonPagAnt.Text = "Pág Anterior";
+            this.buttonPagAnt.UseVisualStyleBackColor = true;
+            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
+            // 
+            // buttonPagSig
+            // 
+            this.buttonPagSig.Location = new System.Drawing.Point(354, 307);
+            this.buttonPagSig.Name = "buttonPagSig";
+            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
+            this.buttonPagSig.TabIndex = 152;
+            this.buttonPagSig.Text = "Pág Siguiente";
+            this.buttonPagSig.UseVisualStyleBackColor = true;
+            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
             // 
             // Key
             // 
-            this.Key.HeaderText = "Key";
+            this.Key.HeaderText = "Orden";
             this.Key.Name = "Key";
             this.Key.ReadOnly = true;
-            this.Key.Width = 30;
+            this.Key.Width = 50;
             // 
             // FechaAtencion
             // 
@@ -133,83 +205,12 @@
             this.Momento.ReadOnly = true;
             this.Momento.Visible = false;
             // 
-            // buttonNext
-            // 
-            this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonNext.Location = new System.Drawing.Point(359, 366);
-            this.buttonNext.Name = "buttonNext";
-            this.buttonNext.Size = new System.Drawing.Size(75, 23);
-            this.buttonNext.TabIndex = 3;
-            this.buttonNext.Text = "Siguiente";
-            this.buttonNext.UseVisualStyleBackColor = true;
-            this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
-            // 
-            // buttonBack
-            // 
-            this.buttonBack.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonBack.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonBack.Location = new System.Drawing.Point(12, 366);
-            this.buttonBack.Name = "buttonBack";
-            this.buttonBack.Size = new System.Drawing.Size(75, 23);
-            this.buttonBack.TabIndex = 4;
-            this.buttonBack.Text = "Atras";
-            this.buttonBack.UseVisualStyleBackColor = true;
-            this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Profesional:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(33, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 13);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Especialidad:";
-            // 
-            // popApp
-            // 
-            this.popApp.AutoSize = true;
-            this.popApp.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.popApp.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.popApp.Location = new System.Drawing.Point(185, 371);
-            this.popApp.Name = "popApp";
-            this.popApp.Size = new System.Drawing.Size(76, 13);
-            this.popApp.TabIndex = 7;
-            this.popApp.Text = "Procesando....";
-            // 
-            // buttonPagAnt
-            // 
-            this.buttonPagAnt.Location = new System.Drawing.Point(12, 307);
-            this.buttonPagAnt.Name = "buttonPagAnt";
-            this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
-            this.buttonPagAnt.TabIndex = 153;
-            this.buttonPagAnt.Text = "Pág Anterior";
-            this.buttonPagAnt.UseVisualStyleBackColor = true;
-            this.buttonPagAnt.Click += new System.EventHandler(this.buttonPagAnt_Click);
-            // 
-            // buttonPagSig
-            // 
-            this.buttonPagSig.Location = new System.Drawing.Point(319, 307);
-            this.buttonPagSig.Name = "buttonPagSig";
-            this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
-            this.buttonPagSig.TabIndex = 152;
-            this.buttonPagSig.Text = "Pág Siguiente";
-            this.buttonPagSig.UseVisualStyleBackColor = true;
-            this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
-            // 
             // FormNuevoTurno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(455, 422);
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
+            this.ClientSize = new System.Drawing.Size(520, 422);
             this.Controls.Add(this.buttonPagAnt);
             this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.popApp);
@@ -240,13 +241,13 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label popApp;
+        private System.Windows.Forms.Button buttonPagAnt;
+        private System.Windows.Forms.Button buttonPagSig;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn FechaAtencion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dia;
         private System.Windows.Forms.DataGridViewTextBoxColumn Horario;
         private System.Windows.Forms.DataGridViewTextBoxColumn Duracion;
         private System.Windows.Forms.DataGridViewTextBoxColumn Momento;
-        private System.Windows.Forms.Button buttonPagAnt;
-        private System.Windows.Forms.Button buttonPagSig;
     }
 }

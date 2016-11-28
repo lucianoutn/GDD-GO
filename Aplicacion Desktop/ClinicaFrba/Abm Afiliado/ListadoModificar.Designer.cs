@@ -203,6 +203,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(374, 398);
             this.Controls.Add(this.button_volver);
             this.Controls.Add(this.presentacion);

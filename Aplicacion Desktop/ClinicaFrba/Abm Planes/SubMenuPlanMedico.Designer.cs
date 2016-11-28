@@ -84,6 +84,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.coach_with_clipboard_400_clr;
             this.ClientSize = new System.Drawing.Size(284, 224);
             this.Controls.Add(this.consultaHistorico);
             this.Controls.Add(this.buttonComprarPlan);

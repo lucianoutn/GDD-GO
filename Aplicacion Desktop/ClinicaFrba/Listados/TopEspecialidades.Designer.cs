@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TopEspecialidades));
             this.dataGridViewEspecialidades = new System.Windows.Forms.DataGridView();
-            this.button_volver = new System.Windows.Forms.Button();
-            this.labelTop = new System.Windows.Forms.Label();
             this.Col_nro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_esp = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Col_cant = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_volver = new System.Windows.Forms.Button();
+            this.labelTop = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEspecialidades)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +61,26 @@
             this.dataGridViewEspecialidades.Size = new System.Drawing.Size(340, 147);
             this.dataGridViewEspecialidades.TabIndex = 5;
             // 
+            // Col_nro
+            // 
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Col_nro.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Col_nro.HeaderText = "Orden";
+            this.Col_nro.Name = "Col_nro";
+            this.Col_nro.ReadOnly = true;
+            // 
+            // Col_esp
+            // 
+            this.Col_esp.HeaderText = "Especialidad";
+            this.Col_esp.Name = "Col_esp";
+            this.Col_esp.ReadOnly = true;
+            // 
+            // Col_cant
+            // 
+            this.Col_cant.HeaderText = "Cantidad";
+            this.Col_cant.Name = "Col_cant";
+            this.Col_cant.ReadOnly = true;
+            // 
             // button_volver
             // 
             this.button_volver.ForeColor = System.Drawing.Color.DarkRed;
@@ -81,26 +102,6 @@
             this.labelTop.TabIndex = 2;
             this.labelTop.Text = "Top:";
             // 
-            // Col_nro
-            // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Col_nro.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Col_nro.HeaderText = "Orden";
-            this.Col_nro.Name = "Col_nro";
-            this.Col_nro.ReadOnly = true;
-            // 
-            // Col_esp
-            // 
-            this.Col_esp.HeaderText = "Especialidad";
-            this.Col_esp.Name = "Col_esp";
-            this.Col_esp.ReadOnly = true;
-            // 
-            // Col_cant
-            // 
-            this.Col_cant.HeaderText = "Cantidad";
-            this.Col_cant.Name = "Col_cant";
-            this.Col_cant.ReadOnly = true;
-            // 
             // TopEspecialidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -110,6 +111,7 @@
             this.Controls.Add(this.labelTop);
             this.Controls.Add(this.button_volver);
             this.Controls.Add(this.dataGridViewEspecialidades);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TopEspecialidades";
             this.Text = "TopEspecialidades";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEspecialidades)).EndInit();

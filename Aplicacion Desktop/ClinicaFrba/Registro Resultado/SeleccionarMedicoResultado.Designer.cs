@@ -60,9 +60,9 @@
             this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
             this.labelCliente.Location = new System.Drawing.Point(102, 18);
             this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(289, 26);
+            this.labelCliente.Size = new System.Drawing.Size(249, 26);
             this.labelCliente.TabIndex = 161;
-            this.labelCliente.Text = "SELECCIONAR PROFESIONAL";
+            this.labelCliente.Text = "SELECCIONAR AFILIADO";
             // 
             // buttonSeleccionar
             // 
@@ -255,6 +255,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(517, 488);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonSeleccionar);
@@ -266,7 +267,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SeleccionarMedicoResultado";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Seleccionar Profesional";
+            this.Text = "Seleccionar Afiliado";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).EndInit();

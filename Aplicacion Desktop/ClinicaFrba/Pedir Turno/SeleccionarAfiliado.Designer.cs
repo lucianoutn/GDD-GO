@@ -44,12 +44,12 @@ namespace ClinicaFrba.Pedir_Turno
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxNombre = new System.Windows.Forms.TextBox();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
-            this.labelCliente = new System.Windows.Forms.Label();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Apellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Nombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Dni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id_usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.labelCliente = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
@@ -206,17 +206,6 @@ namespace ClinicaFrba.Pedir_Turno
             this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
             this.dataGridViewResultados.TabIndex = 51;
             // 
-            // labelCliente
-            // 
-            this.labelCliente.AutoSize = true;
-            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(165, 23);
-            this.labelCliente.Name = "labelCliente";
-            this.labelCliente.Size = new System.Drawing.Size(249, 26);
-            this.labelCliente.TabIndex = 147;
-            this.labelCliente.Text = "SELECCIONAR AFILIADO";
-            // 
             // Id
             // 
             this.Id.HeaderText = "ID";
@@ -252,10 +241,22 @@ namespace ClinicaFrba.Pedir_Turno
             this.id_usuario.ReadOnly = true;
             this.id_usuario.Width = 80;
             // 
+            // labelCliente
+            // 
+            this.labelCliente.AutoSize = true;
+            this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
+            this.labelCliente.Location = new System.Drawing.Point(165, 23);
+            this.labelCliente.Name = "labelCliente";
+            this.labelCliente.Size = new System.Drawing.Size(249, 26);
+            this.labelCliente.TabIndex = 147;
+            this.labelCliente.Text = "SELECCIONAR AFILIADO";
+            // 
             // SeleccionarAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(565, 510);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.buttonEliminar);

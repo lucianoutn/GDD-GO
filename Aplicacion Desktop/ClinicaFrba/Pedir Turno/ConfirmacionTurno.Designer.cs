@@ -64,7 +64,7 @@
             this.l_valorDuracion.Name = "l_valorDuracion";
             this.l_valorDuracion.Size = new System.Drawing.Size(77, 13);
             this.l_valorDuracion.TabIndex = 3;
-            this.l_valorDuracion.Text = "Valor Duracion";
+            this.l_valorDuracion.Text = "Valor Duración";
             // 
             // l_ValorHoras
             // 
@@ -80,9 +80,9 @@
             this.l_valorDias.AutoSize = true;
             this.l_valorDias.Location = new System.Drawing.Point(13, 13);
             this.l_valorDias.Name = "l_valorDias";
-            this.l_valorDias.Size = new System.Drawing.Size(55, 13);
+            this.l_valorDias.Size = new System.Drawing.Size(57, 13);
             this.l_valorDias.TabIndex = 7;
-            this.l_valorDias.Text = "Valor Dias";
+            this.l_valorDias.Text = "Valor Días";
             // 
             // buttonBack
             // 
@@ -99,7 +99,7 @@
             // buttonConfirm
             // 
             this.buttonConfirm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonConfirm.Location = new System.Drawing.Point(136, 190);
+            this.buttonConfirm.Location = new System.Drawing.Point(172, 190);
             this.buttonConfirm.Name = "buttonConfirm";
             this.buttonConfirm.Size = new System.Drawing.Size(75, 23);
             this.buttonConfirm.TabIndex = 11;
@@ -110,7 +110,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(68, 141);
+            this.label2.Location = new System.Drawing.Point(89, 141);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(23, 13);
             this.label2.TabIndex = 15;
@@ -120,7 +120,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(223, 226);
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
+            this.ClientSize = new System.Drawing.Size(268, 226);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonConfirm);
             this.Controls.Add(this.buttonBack);
@@ -132,7 +133,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ConfirmacionTurno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Confirmacion Agenda";
+            this.Text = "Confirmación Agenda";
             this.ResumeLayout(false);
             this.PerformLayout();
 

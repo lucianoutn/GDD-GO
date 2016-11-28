@@ -58,7 +58,7 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(16, 63);
+            this.monthCalendar1.Location = new System.Drawing.Point(27, 63);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 2;
             // 
@@ -94,9 +94,9 @@
             // buttonSiguiente
             // 
             this.buttonSiguiente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonSiguiente.Location = new System.Drawing.Point(188, 285);
+            this.buttonSiguiente.Location = new System.Drawing.Point(174, 285);
             this.buttonSiguiente.Name = "buttonSiguiente";
-            this.buttonSiguiente.Size = new System.Drawing.Size(75, 23);
+            this.buttonSiguiente.Size = new System.Drawing.Size(89, 23);
             this.buttonSiguiente.TabIndex = 6;
             this.buttonSiguiente.Text = "TodaviaNoSe";
             this.buttonSiguiente.UseVisualStyleBackColor = true;
@@ -105,6 +105,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(284, 320);
             this.Controls.Add(this.buttonSiguiente);
             this.Controls.Add(this.buttonAtras);

@@ -31,14 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CancelacionPorAfiliado));
             this.buttonVolver = new System.Windows.Forms.Button();
             this.dataGridViewResultados = new System.Windows.Forms.DataGridView();
-            this.buttonCancelar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxMotivo = new System.Windows.Forms.TextBox();
-            this.labelCliente = new System.Windows.Forms.Label();
             this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Profesional = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Especialidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Id_turno = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.buttonCancelar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxMotivo = new System.Windows.Forms.TextBox();
+            this.labelCliente = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,12 +76,38 @@
             this.dataGridViewResultados.Size = new System.Drawing.Size(339, 161);
             this.dataGridViewResultados.TabIndex = 1;
             // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Dia";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 80;
+            // 
+            // Profesional
+            // 
+            this.Profesional.HeaderText = "Profesional";
+            this.Profesional.Name = "Profesional";
+            this.Profesional.ReadOnly = true;
+            // 
+            // Especialidad
+            // 
+            this.Especialidad.HeaderText = "Especialidad";
+            this.Especialidad.Name = "Especialidad";
+            this.Especialidad.ReadOnly = true;
+            // 
+            // Id_turno
+            // 
+            this.Id_turno.HeaderText = "Turno";
+            this.Id_turno.Name = "Id_turno";
+            this.Id_turno.ReadOnly = true;
+            this.Id_turno.Visible = false;
+            // 
             // buttonCancelar
             // 
             this.buttonCancelar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.buttonCancelar.Location = new System.Drawing.Point(316, 281);
+            this.buttonCancelar.Location = new System.Drawing.Point(279, 281);
             this.buttonCancelar.Name = "buttonCancelar";
-            this.buttonCancelar.Size = new System.Drawing.Size(75, 37);
+            this.buttonCancelar.Size = new System.Drawing.Size(112, 37);
             this.buttonCancelar.TabIndex = 2;
             this.buttonCancelar.Text = "Cancelar Turno";
             this.buttonCancelar.UseVisualStyleBackColor = true;
@@ -112,38 +138,13 @@
             this.labelCliente.Name = "labelCliente";
             this.labelCliente.Size = new System.Drawing.Size(255, 26);
             this.labelCliente.TabIndex = 148;
-            this.labelCliente.Text = "CANCELACION DE TURNO";
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Dia";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            this.Dia.Width = 80;
-            // 
-            // Profesional
-            // 
-            this.Profesional.HeaderText = "Profesional";
-            this.Profesional.Name = "Profesional";
-            this.Profesional.ReadOnly = true;
-            // 
-            // Especialidad
-            // 
-            this.Especialidad.HeaderText = "Especialidad";
-            this.Especialidad.Name = "Especialidad";
-            this.Especialidad.ReadOnly = true;
-            // 
-            // Id_turno
-            // 
-            this.Id_turno.HeaderText = "Turno";
-            this.Id_turno.Name = "Id_turno";
-            this.Id_turno.ReadOnly = true;
-            this.Id_turno.Visible = false;
+            this.labelCliente.Text = "CANCELACIÓN DE TURNO";
             // 
             // CancelacionPorAfiliado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::ClinicaFrba.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(437, 343);
             this.Controls.Add(this.labelCliente);
             this.Controls.Add(this.textBoxMotivo);

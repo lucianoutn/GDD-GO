@@ -51,7 +51,7 @@ namespace ClinicaFrba.Registro_Resultado
             
 
         }
-
+/*
         private void textBoxSintoma_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
@@ -72,7 +72,7 @@ namespace ClinicaFrba.Registro_Resultado
             }
         }
 
-       
+     */  
 
         
     }
