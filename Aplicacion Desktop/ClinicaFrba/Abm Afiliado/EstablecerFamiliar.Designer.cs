@@ -57,7 +57,7 @@
             // 
             // buttonEliminar
             // 
-            this.buttonEliminar.Location = new System.Drawing.Point(435, 475);
+            this.buttonEliminar.Location = new System.Drawing.Point(418, 595);
             this.buttonEliminar.Name = "buttonEliminar";
             this.buttonEliminar.Size = new System.Drawing.Size(75, 23);
             this.buttonEliminar.TabIndex = 56;
@@ -68,7 +68,7 @@
             // buttonVolver
             // 
             this.buttonVolver.ForeColor = System.Drawing.Color.Maroon;
-            this.buttonVolver.Location = new System.Drawing.Point(65, 476);
+            this.buttonVolver.Location = new System.Drawing.Point(47, 595);
             this.buttonVolver.Name = "buttonVolver";
             this.buttonVolver.Size = new System.Drawing.Size(75, 23);
             this.buttonVolver.TabIndex = 55;
@@ -78,7 +78,7 @@
             // 
             // buttonBuscar
             // 
-            this.buttonBuscar.Location = new System.Drawing.Point(435, 212);
+            this.buttonBuscar.Location = new System.Drawing.Point(418, 212);
             this.buttonBuscar.Name = "buttonBuscar";
             this.buttonBuscar.Size = new System.Drawing.Size(75, 23);
             this.buttonBuscar.TabIndex = 54;
@@ -88,7 +88,7 @@
             // 
             // buttonLimpiar
             // 
-            this.buttonLimpiar.Location = new System.Drawing.Point(64, 212);
+            this.buttonLimpiar.Location = new System.Drawing.Point(47, 212);
             this.buttonLimpiar.Name = "buttonLimpiar";
             this.buttonLimpiar.Size = new System.Drawing.Size(75, 23);
             this.buttonLimpiar.TabIndex = 53;
@@ -107,7 +107,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.textBoxNombre);
             this.groupBox1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.groupBox1.Location = new System.Drawing.Point(64, 70);
+            this.groupBox1.Location = new System.Drawing.Point(47, 70);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(446, 121);
             this.groupBox1.TabIndex = 52;
@@ -191,9 +191,9 @@
             this.Nombre,
             this.Dni,
             this.id_usuario});
-            this.dataGridViewResultados.Location = new System.Drawing.Point(64, 258);
+            this.dataGridViewResultados.Location = new System.Drawing.Point(47, 258);
             this.dataGridViewResultados.Name = "dataGridViewResultados";
-            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 150);
+            this.dataGridViewResultados.Size = new System.Drawing.Size(446, 286);
             this.dataGridViewResultados.TabIndex = 51;
             // 
             // Id
@@ -227,7 +227,7 @@
             this.labelCliente.AutoSize = true;
             this.labelCliente.Font = new System.Drawing.Font("Comic Sans MS", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCliente.ForeColor = System.Drawing.Color.Maroon;
-            this.labelCliente.Location = new System.Drawing.Point(165, 23);
+            this.labelCliente.Location = new System.Drawing.Point(148, 23);
             this.labelCliente.Name = "labelCliente";
             this.labelCliente.Size = new System.Drawing.Size(233, 26);
             this.labelCliente.TabIndex = 147;
@@ -235,7 +235,7 @@
             // 
             // buttonPagSig
             // 
-            this.buttonPagSig.Location = new System.Drawing.Point(395, 414);
+            this.buttonPagSig.Location = new System.Drawing.Point(378, 550);
             this.buttonPagSig.Name = "buttonPagSig";
             this.buttonPagSig.Size = new System.Drawing.Size(115, 23);
             this.buttonPagSig.TabIndex = 148;
@@ -245,7 +245,7 @@
             // 
             // buttonPagAnt
             // 
-            this.buttonPagAnt.Location = new System.Drawing.Point(64, 414);
+            this.buttonPagAnt.Location = new System.Drawing.Point(47, 550);
             this.buttonPagAnt.Name = "buttonPagAnt";
             this.buttonPagAnt.Size = new System.Drawing.Size(113, 23);
             this.buttonPagAnt.TabIndex = 149;
@@ -257,7 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(565, 510);
+            this.ClientSize = new System.Drawing.Size(536, 640);
             this.Controls.Add(this.buttonPagAnt);
             this.Controls.Add(this.buttonPagSig);
             this.Controls.Add(this.labelCliente);
