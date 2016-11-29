@@ -15,6 +15,8 @@ namespace ClinicaFrba.Pedir_Turno
         Form unMenu;
         ABM_usuario_DAO abm_usuario;
         List<string> lista_usuarios_afiliados = new List<string>();
+        int pagActual = 0;
+        int totalPagActual = 10;
 
         public SeleccionarAfiliado(Form menu)
         {
@@ -40,9 +42,11 @@ namespace ClinicaFrba.Pedir_Turno
 
         private void buttonBuscar_Click(object sender, EventArgs e)
         {
-
             dataGridViewResultados.Rows.Clear();
             dataGridViewResultados.Refresh();
+            pagActual = 0;
+            totalPagActual = 10;
+
 
             String desc_nombre = textBoxNombre.Text;
             String desc_apellido = textBoxApellido.Text;
@@ -53,22 +57,37 @@ namespace ClinicaFrba.Pedir_Turno
             {
                 lista_usuarios_afiliados = abm_usuario.get_id_afiliado_multiple(desc_nombre, desc_apellido, desc_dni);
 
+                cargarGrid();
             }
             else
             {
-                lista_usuarios_afiliados = abm_usuario.get_id_afiliado(desc_id);
-                
+                int dni = abm_usuario.get_dni(desc_id);
+
+                if (dni != 0)
+                {
+                    dataGridViewResultados.Rows.Add(desc_id,
+                                                    abm_usuario.get_nombre(desc_id).ToString(),
+                                                    abm_usuario.get_apellido(desc_id).ToString(),
+                                                    dni.ToString(),
+                                                    abm_usuario.get_id_usuario(desc_id).ToString());
+                }
+                totalPagActual = 1;
             } 
-            
-            for (int i = 0; i < lista_usuarios_afiliados.Count; i++)
+        }
+
+        private void cargarGrid()
+        {
+            String desc_id;
+
+            for (int i = pagActual; i < totalPagActual; i++)
             {
                 desc_id = lista_usuarios_afiliados[i];
 
                 dataGridViewResultados.Rows.Add(desc_id,
-                                            abm_usuario.get_nombre(desc_id).ToString(),
-                                            abm_usuario.get_apellido(desc_id).ToString(),
-                                            abm_usuario.get_dni(desc_id).ToString(),
-                                            abm_usuario.get_id_usuario(desc_id).ToString());
+                                                abm_usuario.get_nombre(desc_id).ToString(),
+                                                abm_usuario.get_apellido(desc_id).ToString(),
+                                                abm_usuario.get_dni(desc_id).ToString(),
+                                                abm_usuario.get_id_usuario(desc_id).ToString());
             }
         }
 
@@ -90,6 +109,50 @@ namespace ClinicaFrba.Pedir_Turno
             FormNuevoTurno formTurno = new FormNuevoTurno(this, unMenu,dao.getUsuarioDe(id).getUsername());
             formTurno.Show();
             this.Hide();
+        }
+
+        private void buttonPagSig_Click(object sender, EventArgs e)
+        {
+            if (totalPagActual != 1)
+            {
+                dataGridViewResultados.Rows.Clear();
+                dataGridViewResultados.Refresh();
+
+                pagActual = pagActual + 10;
+
+                if (pagActual >= lista_usuarios_afiliados.Count)
+                {
+                    pagActual = pagActual - 10;
+                }
+                if (pagActual + 10 >= lista_usuarios_afiliados.Count)
+                {
+                    totalPagActual = lista_usuarios_afiliados.Count;
+                }
+                else
+                {
+                    totalPagActual = pagActual + 10;
+                }
+
+                cargarGrid();
+
+            }
+        }
+
+        private void buttonPagAnt_Click(object sender, EventArgs e)
+        {
+            if (totalPagActual != 1)
+            {
+                dataGridViewResultados.Rows.Clear();
+                dataGridViewResultados.Refresh();
+
+                if (pagActual != 0)
+                {
+                    pagActual = pagActual - 10;
+                    totalPagActual = pagActual + 10;
+                }
+
+                cargarGrid();
+            }
         }
     }
 }
