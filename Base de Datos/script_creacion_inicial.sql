@@ -583,6 +583,16 @@ where	m.Consulta_Enfermedades is not null
 and		m.Consulta_Sintomas is not null
 and		m.Compra_Bono_Fecha is null
 
+Create Table #nro_consulta	(	 id_af int
+								,nro_consulta int	)
+
+Insert Into #nro_consulta 	(	 id_af
+								,nro_consulta	)
+select tu.id_afiliado,count(*)from GDD_GO.consulta cojoin GDD_GO.turno tu	 on tu.id_turno = co.id_turnogroup by tu.id_afiliadoorder by tu.id_afiliadoUPDATE Table_A SET Table_A.desc_nro_consulta = Table_B.nro_consulta
+FROM GDD_GO.afiliado AS Table_A
+	 INNER JOIN #nro_consulta AS Table_B
+				ON Table_A.id_afiliado = Table_B.id_af
+	drop table #nro_consulta
 
 /*----------------------------	FIN DE MIGRACION DE DATOS	-------------------------*/
 
