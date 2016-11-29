@@ -32,6 +32,12 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Momento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonNext = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -39,12 +45,6 @@
             this.popApp = new System.Windows.Forms.Label();
             this.buttonPagAnt = new System.Windows.Forms.Button();
             this.buttonPagSig = new System.Windows.Forms.Button();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaAtencion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Horario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Duracion = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Momento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +91,48 @@
             this.dataGridView.Size = new System.Drawing.Size(443, 192);
             this.dataGridView.TabIndex = 2;
             // 
+            // Key
+            // 
+            this.Key.HeaderText = "Orden";
+            this.Key.Name = "Key";
+            this.Key.ReadOnly = true;
+            this.Key.Width = 50;
+            // 
+            // FechaAtencion
+            // 
+            this.FechaAtencion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FechaAtencion.HeaderText = "Fecha";
+            this.FechaAtencion.Name = "FechaAtencion";
+            this.FechaAtencion.ReadOnly = true;
+            // 
+            // Dia
+            // 
+            this.Dia.HeaderText = "Día";
+            this.Dia.Name = "Dia";
+            this.Dia.ReadOnly = true;
+            this.Dia.Width = 80;
+            // 
+            // Horario
+            // 
+            this.Horario.HeaderText = "Horario";
+            this.Horario.Name = "Horario";
+            this.Horario.ReadOnly = true;
+            this.Horario.Width = 90;
+            // 
+            // Duracion
+            // 
+            this.Duracion.HeaderText = "Duracion";
+            this.Duracion.Name = "Duracion";
+            this.Duracion.ReadOnly = true;
+            this.Duracion.Width = 60;
+            // 
+            // Momento
+            // 
+            this.Momento.HeaderText = "Momento";
+            this.Momento.Name = "Momento";
+            this.Momento.ReadOnly = true;
+            this.Momento.Visible = false;
+            // 
             // buttonNext
             // 
             this.buttonNext.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -98,7 +140,7 @@
             this.buttonNext.Name = "buttonNext";
             this.buttonNext.Size = new System.Drawing.Size(75, 23);
             this.buttonNext.TabIndex = 3;
-            this.buttonNext.Text = "Siguiente";
+            this.buttonNext.Text = "Seleccionar";
             this.buttonNext.UseVisualStyleBackColor = true;
             this.buttonNext.Click += new System.EventHandler(this.buttonNext_Click);
             // 
@@ -162,48 +204,6 @@
             this.buttonPagSig.Text = "Pág Siguiente";
             this.buttonPagSig.UseVisualStyleBackColor = true;
             this.buttonPagSig.Click += new System.EventHandler(this.buttonPagSig_Click);
-            // 
-            // Key
-            // 
-            this.Key.HeaderText = "Orden";
-            this.Key.Name = "Key";
-            this.Key.ReadOnly = true;
-            this.Key.Width = 50;
-            // 
-            // FechaAtencion
-            // 
-            this.FechaAtencion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FechaAtencion.HeaderText = "Fecha";
-            this.FechaAtencion.Name = "FechaAtencion";
-            this.FechaAtencion.ReadOnly = true;
-            // 
-            // Dia
-            // 
-            this.Dia.HeaderText = "Día";
-            this.Dia.Name = "Dia";
-            this.Dia.ReadOnly = true;
-            this.Dia.Width = 80;
-            // 
-            // Horario
-            // 
-            this.Horario.HeaderText = "Horario";
-            this.Horario.Name = "Horario";
-            this.Horario.ReadOnly = true;
-            this.Horario.Width = 90;
-            // 
-            // Duracion
-            // 
-            this.Duracion.HeaderText = "Duracion";
-            this.Duracion.Name = "Duracion";
-            this.Duracion.ReadOnly = true;
-            this.Duracion.Width = 60;
-            // 
-            // Momento
-            // 
-            this.Momento.HeaderText = "Momento";
-            this.Momento.Name = "Momento";
-            this.Momento.ReadOnly = true;
-            this.Momento.Visible = false;
             // 
             // FormNuevoTurno
             // 
